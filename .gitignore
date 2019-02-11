@@ -10,8 +10,8 @@ __pycache__
 *.pyc
 
 # npm
-/node_modules/
-/dist/
+node_modules/
+dist/
 npm-debug.log*
 
 # pycharm

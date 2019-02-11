@@ -16,8 +16,7 @@ export default new Router({
         {
             path: '/blogs',
             name: 'blogs',
-            component: () =>
-                import('./views/Blogs.vue'),
+            component: () => import('./views/Blogs.vue'),
         },
     ],
 });

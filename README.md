@@ -11,6 +11,5 @@ General Directory Layout:
 ## Project setup
 ```
 npm run serve
-----
 npm run build
 ```

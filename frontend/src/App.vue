@@ -13,7 +13,7 @@ import Else from '@/components/Else';
 export default {
     name: 'App',
     components: {
-        AppNavigation,
+        Else,
     },
 };
 </script>

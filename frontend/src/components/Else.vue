@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-btn flat to="/">/home</v-btn>
-        <v-btn flat to="/blog">/blog</v-btn>
+        <a class="first" href="/">/home</a>
+        <a href="/blog">/blog</a>
         <!-- add languages here -->
     </div>
 </template>
@@ -9,14 +9,11 @@
 <script>
 export default {
     name: 'AppNavigation',
-    data: () => ({
-        languages: ['English', 'العربية', 'Fizz', 'Buzz'],
-    }),
 };
 </script>
 
 <style scoped>
-* {
-    text-transform: none !important;
+.first {
+    margin-right: 5px;
 }
 </style>

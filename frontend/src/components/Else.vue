@@ -11,7 +11,6 @@ export default {
     name: 'AppNavigation',
 };
 </script>
-
 <style scoped>
 .first {
     margin-right: 5px;

@@ -11,7 +11,7 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 Vue.use(VueI18n);
-const defaultLocale = 'ar';
+const defaultLocale = 'en';
 const languages = {
     en: en,
     ar: ar,

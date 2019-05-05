@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli')
+
 <template>
     <div id="app">
         <else></else>
@@ -15,5 +17,8 @@ export default {
     },
 };
 </script>
-
-<style></style>
+<style>
+* {
+    font-family: 'Merriweather Sans';
+}
+</style>

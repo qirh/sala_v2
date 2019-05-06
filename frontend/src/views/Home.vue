@@ -3,6 +3,8 @@
         <p class="cabeza">{{ $t('hey') }}</p>
         <p>{{ $t('me') }}</p>
         <p>{{ $t('work') }}</p>
+        <p>{{ $t('extra') }}</p>
+        <p>{{ $t('future') }}</p>
     </div>
 </template>
 

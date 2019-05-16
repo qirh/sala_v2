@@ -3,26 +3,36 @@
 
 <template>
     <div id="app">
-        <Main></Main>
+        <NavHeader></NavHeader>
         <router-view></router-view>
     </div>
 </template>
+
 <script>
-import Main from '@/components/Main';
+import NavHeader from '@/components/NavHeader';
+
 export default {
     name: 'App',
     components: {
-        Main,
+        NavHeader,
     },
 };
-</script>
-<script>
 cheet('↑ ↑ ↓ ↓ ← → ← → b a', () => {
     alert('Voilà!');
 });
 </script>
+
 <style>
 * {
     font-family: 'Merriweather Sans';
+}
+.flip {
+    overflow: hidden;
+    transition-duration: 0.8s;
+    transition-property: transform;
+}
+.flip:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
 }
 </style>

@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli')
+@import
+url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik')
 @import url('https://cdn.rawgit.com/namuol/cheet.js/master/cheet.min.js')
 
 <template>
-    <div id="app">
+    <div id="all" v-bind:class="{flip: doFlip}">
         <NavHeader></NavHeader>
         <router-view></router-view>
     </div>
@@ -16,14 +17,25 @@ export default {
     components: {
         NavHeader,
     },
+    data: () => {
+        return {
+            doFlip: false,
+        };
+    },
+    created() {
+       cheet('↑ ↑ ↓ ↓ ← → ← → b a', () => { 
+           this.doFlip = !this.doFlip;
+        });
+    },
 };
 </script>
 
 <style>
 * {
-    font-family: 'Merriweather Sans';
+    font-family: 'Rubik';
 }
 .flip {
+    background: red;
     overflow: hidden;
     transition-duration: 0.8s;
     transition-property: transform;

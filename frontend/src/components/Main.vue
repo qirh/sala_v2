@@ -5,7 +5,6 @@
         <!-- add languages here -->
     </div>
 </template>
-
 <script>
 export default {
     name: 'AppNavigation',

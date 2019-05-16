@@ -16,10 +16,14 @@ export default {
     components: {
         NavHeader,
     },
+    methods: {
+        cheet: ('↑ ',
+        () => {
+            //'↑ ↑ ↓ ↓ ← → ← → b a'
+            alert('Voilà!');
+        }),
+    },
 };
-cheet('↑ ↑ ↓ ↓ ← → ← → b a', () => {
-    alert('Voilà!');
-});
 </script>
 
 <style>

@@ -4,7 +4,6 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 
 <template>
     <div
-        id="all"
         class="flip cuerpo"
         v-bind:class="{
             'flip-v2': doFlip,
@@ -13,11 +12,9 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
         }"
     >
         <NavHeader></NavHeader>
-        <div>
-            <TransitionPage name="fade" mode="out-in">
-                <router-view></router-view>
-            </TransitionPage>
-        </div>
+        <TransitionPage name="fade" mode="out-in">
+            <router-view></router-view>
+        </TransitionPage>
     </div>
 </template>
 

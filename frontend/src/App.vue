@@ -1,9 +1,9 @@
 @import
-url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik')
+url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Inconsolata')
 @import url('https://cdn.rawgit.com/namuol/cheet.js/master/cheet.min.js')
 
 <template>
-    <div id="all" v-bind:class="{flip: doFlip}">
+    <div id="all" class="flip" v-bind:class="{flipv2: doFlip, dark: darkMode}">
         <NavHeader></NavHeader>
         <router-view></router-view>
     </div>
@@ -20,11 +20,19 @@ export default {
     data: () => {
         return {
             doFlip: false,
+            darkMode: false,
         };
     },
     created() {
-       cheet('↑ ↑ ↓ ↓ ← → ← → b a', () => { 
-           this.doFlip = !this.doFlip;
+        if (localStorage.darkMode) {
+            this.darkMode = localStorage.darkMode
+        }
+        cheet('↑ ↑ ↓ ↓ ← → ← → b a', () => { 
+            this.doFlip = !this.doFlip;
+        });
+        cheet('d a r k', () => { 
+            this.darkMode = !this.darkMode;
+            localStorage.darkMode = this.darkMode
         });
     },
 };
@@ -32,16 +40,23 @@ export default {
 
 <style>
 * {
-    font-family: 'Rubik';
+    font-family: 'Inconsolata';
 }
 .flip {
-    background: red;
     overflow: hidden;
-    transition-duration: 0.8s;
+    transition-duration: 1s;
     transition-property: transform;
 }
-.flip:hover {
+.flipv2 {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
+}
+.normal {
+    color: rgba(23, 23, 23, 0.8) !important;
+    background-color: rgba(247, 247, 247, 0.8);
+}
+.dark {
+    color: rgba(247, 247, 247, 0.8) !important;
+    background-color: rgba(23, 23, 23, 0.8);
 }
 </style>

@@ -6,7 +6,11 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
     <div
         id="all"
         class="flip cuerpo"
-        v-bind:class="{'flip-v2': doFlip, dark: darkMode}"
+        v-bind:class="{
+            'flip-v2': doFlip,
+            'dark-theme': darkMode,
+            'normal-theme': !darkMode,
+        }"
     >
         <NavHeader></NavHeader>
         <div>
@@ -47,7 +51,7 @@ export default {
         },
     },
     created() {
-        if (localStorage.darkMode) {
+        if (localStorage.darkMode > 0) {
             this.darkMode = localStorage.darkMode;
         }
         // eslint-disable-next-line

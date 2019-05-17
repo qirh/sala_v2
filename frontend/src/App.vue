@@ -4,15 +4,15 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 
 <template>
     <div
-        class="flip cuerpo"
+        class="flip cuerpo row"
         v-bind:class="{
             'flip-v2': doFlip,
             'dark-theme': darkMode,
             'normal-theme': !darkMode,
         }"
     >
-        <NavHeader></NavHeader>
-        <TransitionPage name="fade" mode="out-in">
+        <NavHeader class="bar column"></NavHeader>
+        <TransitionPage name="fade" mode="out-in" class="content column">
             <router-view></router-view>
         </TransitionPage>
     </div>

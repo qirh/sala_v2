@@ -5,7 +5,7 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 <template>
     <div
         id="all"
-        class="flip"
+        class="flip cuerpo"
         v-bind:class="{'flip-v2': doFlip, dark: darkMode}"
     >
         <NavHeader></NavHeader>
@@ -74,6 +74,6 @@ export default {
 };
 </script>
 
-<style>
-@import 'assets/global.css';
+<style lang="scss">
+@import 'assets/global.scss';
 </style>

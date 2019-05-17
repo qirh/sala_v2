@@ -1,7 +1,7 @@
 <template>
     <div>
-        <a class='first-link' href='/'>/home</a>
-        <a href='/blog'>/blog</a>
+        <a class="first-link" href="/">/home</a>
+        <a href="/blog">/blog</a>
         <!-- add languages here -->
     </div>
 </template>
@@ -12,6 +12,6 @@ export default {
     components: {},
 };
 </script>
-<style scoped>
-    @import '../assets/left.css';
+<style scoped lang="scss">
+@import '../assets/left.scss';
 </style>

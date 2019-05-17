@@ -13,11 +13,16 @@ export default new Router({
             path: '/',
             name: 'home',
             component: Home,
+            meta: { title: 'home' },
         },
         {
             path: '/blog',
             name: 'blog',
             component: Blog,
         },
+        {
+            path: '*',
+            redirect: '/'
+          },
     ],
 });

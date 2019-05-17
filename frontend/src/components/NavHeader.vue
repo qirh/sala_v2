@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a class='first' href='/'>/home</a>
+        <a class='first-link' href='/'>/home</a>
         <a href='/blog'>/blog</a>
         <!-- add languages here -->
     </div>
@@ -13,7 +13,5 @@ export default {
 };
 </script>
 <style scoped>
-.first {
-    margin-right: 5px;
-}
+    @import '../assets/left.css';
 </style>

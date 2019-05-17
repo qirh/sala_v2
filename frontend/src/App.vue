@@ -3,25 +3,42 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 @import url('https://cdn.rawgit.com/namuol/cheet.js/master/cheet.min.js')
 
 <template>
-    <div id="all" class="flip" v-bind:class="{flipv2: doFlip, dark: darkMode}">
+    <div id="all" class="flip" v-bind:class="{'flip-v2': doFlip, dark: darkMode}">
         <NavHeader></NavHeader>
-        <router-view></router-view>
+        <div>
+            <TransitionPage name="fade" mode="out-in">
+                <router-view></router-view>
+            </TransitionPage>
+        </div>
     </div>
 </template>
 
 <script>
 import NavHeader from '@/components/NavHeader';
+import TransitionPage from '@/components/TransitionPage';
+import Router from '@/router.js';
 
 export default {
     name: 'App',
     components: {
         NavHeader,
+        TransitionPage,
     },
     data: () => {
         return {
-            doFlip: false,
-            darkMode: false,
+            doFlip: 0,
+            darkMode: 0,
         };
+    },
+    methods: {
+        switchDark: function(){
+            if (this.darkMode) {
+                this.darkMode = 0;
+            } else {
+                this.darkMode = 1;
+            }
+            localStorage.darkMode = this.darkMode
+		}
     },
     created() {
         if (localStorage.darkMode) {
@@ -30,33 +47,22 @@ export default {
         cheet('↑ ↑ ↓ ↓ ← → ← → b a', () => { 
             this.doFlip = !this.doFlip;
         });
-        cheet('d a r k', () => { 
-            this.darkMode = !this.darkMode;
-            localStorage.darkMode = this.darkMode
+        cheet('d', () => { 
+            this.switchDark();
+        });
+        cheet('l i g h t', () => { 
+            this.switchDark();
+        });
+        cheet('h', () => { 
+            this.$router.push('/');
+        });
+        cheet('b', () => { 
+            this.$router.push('blog');
         });
     },
 };
 </script>
 
 <style>
-* {
-    font-family: 'Inconsolata';
-}
-.flip {
-    overflow: hidden;
-    transition-duration: 1s;
-    transition-property: transform;
-}
-.flipv2 {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-}
-.normal {
-    color: rgba(23, 23, 23, 0.8) !important;
-    background-color: rgba(247, 247, 247, 0.8);
-}
-.dark {
-    color: rgba(247, 247, 247, 0.8) !important;
-    background-color: rgba(23, 23, 23, 0.8);
-}
+@import 'assets/global.css';
 </style>

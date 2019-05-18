@@ -11,7 +11,7 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
             'normal-theme': !darkMode,
         }"
     >
-        <NavHeader class="bar column"></NavHeader>
+        <NavHeader class="links column"></NavHeader>
         <TransitionPage name="fade" mode="out-in" class="content column">
             <router-view></router-view>
         </TransitionPage>
@@ -62,14 +62,6 @@ export default {
         // eslint-disable-next-line
         cheet('d', () => {
             this.changeDarkState();
-        });
-        // eslint-disable-next-line
-        cheet('h', () => {
-            this.$router.push('/');
-        });
-        // eslint-disable-next-line
-        cheet('b', () => {
-            this.$router.push('blog');
         });
     },
 };

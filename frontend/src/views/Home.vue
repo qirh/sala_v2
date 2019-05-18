@@ -12,5 +12,15 @@
 export default {
     name: 'home',
     components: {},
+    created() {
+        // eslint-disable-next-line
+        cheet('←', () => {
+            this.$router.push('blog');
+        });
+        // eslint-disable-next-line
+        cheet('→', () => {
+            this.$router.push('blog');
+        });
+    },
 };
 </script>

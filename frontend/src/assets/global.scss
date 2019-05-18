@@ -7,6 +7,7 @@ $light-backg: rgba(247, 247, 247, 0.8);
 
 * {
     font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
+    text-decoration: none;
 }
 html, body {
     height: 100%;
@@ -19,6 +20,10 @@ p {
     font-weight: 300;
     line-height: 1.4;
     max-width: 26em;
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
 }
 .hey {
     font-weight: bold;
@@ -39,6 +44,10 @@ p {
 .normal-theme {
     color: $dark-text;
     background-color: $light-backg;
+    a {
+        color: $dark-text;
+        letter-spacing: -1px;
+    }
 }
 .dark-theme {
     color: $light-text;
@@ -53,9 +62,10 @@ p {
     float: left;
     width: 55%;
 }
-.bar {
+.links {
     float: right;
     width: 45%;
+    height: 100%;
 }
 @media screen and (max-width: 600px) {
     .column {

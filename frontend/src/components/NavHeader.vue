@@ -1,7 +1,7 @@
 <template>
     <div>
-        <a class="first-link" href="/">/home</a>
-        <a href="/blog">/blog</a>
+        <a class="first-link" href="/">/Home</a>
+        <a href="/blog">/Blog</a>
         <!-- add languages here -->
     </div>
 </template>

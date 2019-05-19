@@ -1,8 +1,8 @@
 .light-theme {
     color: $black-text;
-    background-color: $white-backg;
+    background-color: $light-backg;
     a {
-        color: $black-text;
+        color: $blue-light-text;
         &:hover {
             color: $gray-text;
         }
@@ -10,6 +10,11 @@
 }
 .dark-theme {
     color: $white-text;
-    background-color: $black-backg;
-
+    background-color: $dark-backg;
+    a {
+        color: $blue-dark-text;
+        &:hover {
+            color: $gray-text;
+        }
+    }
 }

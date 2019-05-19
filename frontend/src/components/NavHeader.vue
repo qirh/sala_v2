@@ -20,5 +20,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../assets/nav-header.scss';
+@import '../assets/themes.scss';
 @import '../assets/bidi.scss';
 </style>

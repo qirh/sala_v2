@@ -4,6 +4,15 @@
     font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
     text-decoration: none;
 }
+//https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -17,6 +26,8 @@ p {
 a {
     text-decoration: none;
     font-weight: bold;
+    letter-spacing: -1px;
+    text-transform: uppercase;
 }
 .hey {
     font-weight: bold;
@@ -29,18 +40,6 @@ a {
 .flip-v2 {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
-}
-.normal-theme {
-    color: $black-text;
-    background-color: $white-backg;
-    a {
-        color: $black-text;
-        letter-spacing: -1px;
-    }
-}
-.dark-theme {
-    color: $white-text;
-    background-color: $black-backg
 }
 .cuerpo {
     width: 100%;
@@ -85,10 +84,11 @@ a {
     box-sizing: border-box;
     min-height: 1px;
     position: relative;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
     width: 100%;
     margin-left: 0%;
+    margin-right: 0%;
     right: auto;
     left: auto;
 }

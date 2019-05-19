@@ -1,0 +1,15 @@
+.light-theme {
+    color: $black-text;
+    background-color: $white-backg;
+    a {
+        color: $black-text;
+        &:hover {
+            color: $gray-text;
+        }
+    }
+}
+.dark-theme {
+    color: $white-text;
+    background-color: $black-backg;
+
+}

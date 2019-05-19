@@ -8,7 +8,9 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
         v-bind:class="{
             'flip-v2': doFlip,
             'dark-theme': darkMode,
-            'normal-theme': !darkMode,
+            'light-theme': !darkMode,
+            'left-to-right': leftToRight,
+            'right-to-left': !leftToRight,
         }"
     >
         <NavHeader class="links column"></NavHeader>
@@ -32,6 +34,7 @@ export default {
         return {
             doFlip: 0,
             darkMode: 0,
+            leftToRight: 1,
         };
     },
     methods: {
@@ -69,4 +72,5 @@ export default {
 
 <style lang="scss">
 @import 'assets/global.scss';
+@import 'assets/themes.scss';
 </style>

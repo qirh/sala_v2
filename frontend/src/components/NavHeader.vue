@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="nav-header">
         <a class="first-link" href="/">/Home</a>
         <a href="/blog">/Blog</a>
         <!-- add languages here -->
@@ -13,5 +13,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/left.scss';
+@import '../assets/nav-header.scss';
+@import '../assets/bidi.scss';
 </style>

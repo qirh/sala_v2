@@ -4,10 +4,9 @@
     font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
     text-decoration: none;
 }
-html, body {
-}
 body {
-    margin: 8px;
+    display: flex;
+    justify-content: center;
 }
 p {
     font-size: 1.3em;
@@ -44,6 +43,7 @@ a {
     background-color: $black-backg
 }
 .cuerpo {
+    width: 100%;
     max-width: 970px;
     padding: 5vh 10vw;
     height: 100%;

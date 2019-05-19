@@ -1,7 +1,13 @@
 <template>
     <div class="nav-header">
-        <a class="first-link" href="/">/Home</a>
-        <a href="/blog">/Blog</a>
+        <div style="display: block">
+            <li class="link">
+                <a href="/">/Home</a>
+            </li>
+            <li class="link">
+                <a href="/blog">/Blog</a>
+            </li>
+        </div>
         <!-- add languages here -->
     </div>
 </template>

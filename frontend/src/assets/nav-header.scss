@@ -11,7 +11,7 @@
       }
 
       li a {
-          color: $dark-text;
+          color: $black-text;
           font-size: 16px;
           font-weight: 900;
           letter-spacing: -1px;
@@ -19,12 +19,12 @@
           text-transform: uppercase;
 
           &:hover {
-              color: $light-text;
+              color: $white-text;
           }
       }
 
       .line {
-        border-bottom: 2px solid $dark-text;
+        border-bottom: 2px solid $black-text;
         margin: 30px 0 30px auto;
         width: 100px;
       }
@@ -33,3 +33,6 @@
         margin-bottom: 10px;
       }
   }
+.link {
+    padding: 0;
+}

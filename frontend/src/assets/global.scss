@@ -32,16 +32,16 @@ a {
     -webkit-transform: rotate(360deg);
 }
 .normal-theme {
-    color: $dark-text;
-    background-color: $light-backg;
+    color: $black-text;
+    background-color: $white-backg;
     a {
-        color: $dark-text;
+        color: $black-text;
         letter-spacing: -1px;
     }
 }
 .dark-theme {
-    color: $light-text;
-    background-color: $dark-backg
+    color: $white-text;
+    background-color: $black-backg
 }
 .cuerpo {
     max-width: 970px;

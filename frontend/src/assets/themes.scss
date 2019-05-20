@@ -1,20 +1,25 @@
 .light-theme {
-    color: $black-text;
-    background-color: $light-backg;
+    color: $black;
+    background-color: $whitesmoke;
     a {
-        color: $blue-light-text;
+        color: $blue-light;
         &:hover {
-            color: $gray-text;
+            color: $gray;
+        }
+    }
+    .router-link-exact-active {
+        a {
+            color: $goldred;
         }
     }
 }
 .dark-theme {
-    color: $white-text;
-    background-color: $dark-backg;
+    color: $botticelli;
+    background-color: $blackpearl;
     a {
-        color: $blue-dark-text;
+        color: $blue-dark;
         &:hover {
-            color: $gray-text;
+            color: $gray;
         }
     }
 }

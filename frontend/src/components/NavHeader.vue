@@ -1,12 +1,12 @@
 <template>
     <div class="nav-header">
         <div style="display: block">
-            <li class="link">
-                <a href="/">/Home</a>
-            </li>
-            <li class="link">
-                <a href="/blog">/Blog</a>
-            </li>
+            <router-link class="link" tag="li" to="/">
+                <a>/Home</a>
+            </router-link>
+            <router-link class="link" tag="li" to="/blog">
+                <a>/Blog</a>
+            </router-link>
         </div>
         <!-- add languages here -->
     </div>

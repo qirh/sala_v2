@@ -2,24 +2,30 @@
     color: $black;
     background-color: $whitesmoke;
     a {
-        color: $blue-light;
+        color: $blue-0;
         &:hover {
-            color: $gray;
+            color: $gray !important;
         }
     }
-    .router-link-exact-active {
-        a {
-            color: $goldred;
-        }
+    hr {
+        background-color: $gray;
     }
 }
 .dark-theme {
     color: $botticelli;
     background-color: $blackpearl;
     a {
-        color: $blue-dark;
+        color: $blue-3;
         &:hover {
             color: $gray;
         }
+    }
+    .router-link-exact-active {
+        a {
+            color: $blue-2;
+        }
+    }
+    hr {
+        background-color: $botticelli;
     }
 }

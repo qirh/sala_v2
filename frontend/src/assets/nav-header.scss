@@ -9,8 +9,20 @@
         list-style-type: none;
         padding-bottom: 10px;
         @media screen and (min-width: $break-large) {
-            list-style-type: none;
-            padding-bottom: 5px;
         }
     }
+}
+.router-link-exact-active {
+    a {
+        border-bottom: solid 1px $gray;
+    }
+}
+.nav-items {
+    display: block;
+    margin: 15px 0 15px auto;
+}
+hr {
+    border: 0;
+    width: 96%;
+    height: 1px;
 }

@@ -1,13 +1,14 @@
 <template>
     <div class="nav-header">
-        <div style="display: block">
+        <div class="nav-items" style="display: block">
             <router-link class="link" tag="li" to="/">
-                <a>/Home</a>
+                <a>HOME</a>
             </router-link>
             <router-link class="link" tag="li" to="/blog">
-                <a>/Blog</a>
+                <a>BLOG</a>
             </router-link>
         </div>
+        <hr>
         <!-- add languages here -->
     </div>
 </template>

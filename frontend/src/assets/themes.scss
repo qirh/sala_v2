@@ -1,31 +1,38 @@
 .light-theme {
-    color: $black;
+    color: $gray;
     background-color: $whitesmoke;
     a {
-        color: $blue-0;
+        color: $blue;
         &:hover {
             color: $gray !important;
         }
     }
     hr {
-        background-color: $gray;
+        background-color: $botticelli;
+    }
+    .router-link-exact-active {
+        a {
+            color: $red;
+            border-bottom: solid 1px $red;
+        }
     }
 }
 .dark-theme {
     color: $botticelli;
     background-color: $blackpearl;
     a {
-        color: $blue-3;
+        color: $blue-fade;
         &:hover {
             color: $gray;
         }
     }
-    .router-link-exact-active {
-        a {
-            color: $blue-2;
-        }
-    }
     hr {
         background-color: $botticelli;
+    }
+    .router-link-exact-active {
+        a {
+            color: $yellow;
+            border-bottom: solid 1px $yellow;
+        }
     }
 }

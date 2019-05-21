@@ -61,6 +61,8 @@ export default {
     created() {
         if (localStorage.darkMode > 0) {
             this.registerDarkState(localStorage.darkMode);
+        } else {
+            this.registerDarkState(0);
         }
         // eslint-disable-next-line
         cheet('↑ ↑ ↓ ↓ ← → ← →', () => {

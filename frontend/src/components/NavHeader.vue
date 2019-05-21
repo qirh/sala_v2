@@ -2,12 +2,13 @@
     <div class="nav-header">
         <div class="nav-items" style="display: block">
             <router-link class="link" tag="li" to="/">
-                <a>HOME</a>
+                <a>Home</a>
             </router-link>
             <router-link class="link" tag="li" to="/blog">
-                <a>BLOG</a>
+                <a>Blog</a>
             </router-link>
         </div>
+        <!-- // eslint-disable-next-line -->
         <hr>
         <!-- add languages here -->
     </div>

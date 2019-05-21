@@ -7,8 +7,6 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
         class="flip cuerpo"
         v-bind:class="{
             'flip-v2': doFlip,
-            'dark-theme': darkMode,
-            'light-theme': !darkMode,
             'left-to-right': leftToRight,
             'right-to-left': !leftToRight,
         }"
@@ -38,13 +36,23 @@ export default {
         };
     },
     methods: {
+        registerDarkState: function(darkState) {
+            localStorage.darkMode = darkState;
+            if (darkState) {
+                document.body.classList.add('dark-theme');
+                document.body.classList.remove('light-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+            }
+        },
         changeDarkState: function() {
             if (this.darkMode) {
                 this.darkMode = 0;
             } else {
                 this.darkMode = 1;
             }
-            localStorage.darkMode = this.darkMode;
+            this.registerDarkState(this.darkMode);
         },
         changeFlipState: function() {
             this.doFlip = !this.doFlip;
@@ -52,7 +60,7 @@ export default {
     },
     created() {
         if (localStorage.darkMode > 0) {
-            this.darkMode = localStorage.darkMode;
+            this.registerDarkState(localStorage.darkMode);
         }
         // eslint-disable-next-line
         cheet('↑ ↑ ↓ ↓ ← → ← →', () => {

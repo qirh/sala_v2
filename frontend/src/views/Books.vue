@@ -5,7 +5,6 @@
 <script>
 export default {
     name: 'books',
-    components: {},
     created() {
         // eslint-disable-next-line
         cheet('←', () => {

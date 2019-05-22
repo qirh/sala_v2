@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="">
+        <a href="#" data-toggle="tooltip" data-placement="top" title="tool!">bla</a>
     </div>
 </template>
 
@@ -9,4 +10,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../assets/corner.scss';
 </style>

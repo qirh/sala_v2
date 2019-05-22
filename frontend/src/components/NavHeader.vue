@@ -26,7 +26,6 @@
 <script>
 export default {
     name: 'navheader',
-    components: {},
 };
 </script>
 <style scoped lang="scss">

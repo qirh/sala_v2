@@ -15,18 +15,21 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
         <TransitionPage name="fade" mode="out-in" class="content column">
             <router-view></router-view>
         </TransitionPage>
+        <Corner></Corner>
     </div>
 </template>
 
 <script>
 import NavHeader from '@/components/NavHeader';
 import TransitionPage from '@/components/TransitionPage';
+import Corner from '@/components/Corner';
 
 export default {
     name: 'App',
     components: {
         NavHeader,
         TransitionPage,
+        Corner,
     },
     data: () => {
         return {

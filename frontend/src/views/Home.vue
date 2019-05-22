@@ -11,7 +11,6 @@
 <script>
 export default {
     name: 'home',
-    components: {},
     created() {
         // eslint-disable-next-line
         cheet('←', () => {

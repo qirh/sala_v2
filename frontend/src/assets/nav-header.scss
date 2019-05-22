@@ -3,21 +3,22 @@
 .nav-header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: right;
+    @media screen and (min-width: $break-large) {
+        padding-top: 10vh;
+    }
     li {
         list-style-type: none;
-        padding-bottom: 10px;
-        @media screen and (min-width: $break-large) {
-        }
+        padding-bottom: 1vh;
     }
 }
 .nav-items {
     display: block;
-    margin: 15px 0 15px auto;
+    margin: 4vh 0vh 0vh auto;
 }
 hr {
     border: 0;
     width: 80%;
     height: 1px;
+    margin-top: 3vh;
 }

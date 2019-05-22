@@ -76,6 +76,26 @@ export default {
         cheet('d', () => {
             this.changeDarkState();
         });
+        // eslint-disable-next-line
+        cheet('h', () => {
+            this.$router.push('/');
+        });
+        // eslint-disable-next-line
+        cheet('p', () => {
+            this.$router.push('/p');
+        });
+        // eslint-disable-next-line
+        cheet('b', () => {
+            this.$router.push('/b');
+        });
+        // eslint-disable-next-line
+        cheet('r', () => {
+            this.$router.push('/r');
+        });
+        // eslint-disable-next-line
+        cheet('w', () => {
+            this.$router.push('/w');
+        });
     },
 };
 </script>

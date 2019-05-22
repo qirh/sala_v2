@@ -1,10 +1,10 @@
 <template>
-    <p>this is blog</p>
+    <p>this is projects</p>
 </template>
 
 <script>
 export default {
-    name: 'blog',
+    name: 'projects',
     components: {},
     created() {
         // eslint-disable-next-line
@@ -13,7 +13,7 @@ export default {
         });
         // eslint-disable-next-line
         cheet('→', () => {
-            this.$router.push('/');
+            this.$router.push('/b');
         });
     },
 };

@@ -4,8 +4,17 @@
             <router-link class="link" tag="li" to="/">
                 <a>Home</a>
             </router-link>
-            <router-link class="link" tag="li" to="/blog">
-                <a>Blog</a>
+            <router-link class="link" tag="li" to="/p">
+                <a>Projects</a>
+            </router-link>
+            <router-link class="link" tag="li" to="/b">
+                <a>Books</a>
+            </router-link>
+            <router-link class="link" tag="li" to="/r">
+                <a>Reading</a>
+            </router-link>
+            <router-link class="link" tag="li" to="/w">
+                <a>Writing</a>
             </router-link>
         </div>
         <!-- // eslint-disable-next-line -->

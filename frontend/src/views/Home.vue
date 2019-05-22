@@ -15,11 +15,11 @@ export default {
     created() {
         // eslint-disable-next-line
         cheet('←', () => {
-            this.$router.push('blog');
+            this.$router.push('w');
         });
         // eslint-disable-next-line
         cheet('→', () => {
-            this.$router.push('blog');
+            this.$router.push('p');
         });
     },
 };

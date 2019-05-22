@@ -1,7 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
+
+import Books from '@/views/Books';
 import Home from '@/views/Home';
-import Blog from '@/views/Blog';
+import Projects from '@/views/Projects';
+import Reading from '@/views/Reading';
+import Writing from '@/views/Writing';
 
 Vue.use(Router);
 
@@ -11,15 +16,28 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
             component: Home,
             meta: {title: 'home'},
         },
         {
-            path: '/blog',
-            name: 'blog',
-            component: Blog,
-            meta: {title: 'blog'},
+            path: '/b',
+            component: Books,
+            meta: {title: 'books'},
+        },
+        {
+            path: '/p',
+            component: Projects,
+            meta: {title: 'projects'},
+        },
+        {
+            path: '/r',
+            component: Reading,
+            meta: {title: 'reading'},
+        },
+        {
+            path: '/w',
+            component: Writing,
+            meta: {title: 'writing'},
         },
         {
             path: '*',

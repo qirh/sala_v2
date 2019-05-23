@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="corner">
         <a href="#" data-toggle="tooltip" data-placement="top" title="tool!">bla</a>
     </div>
 </template>

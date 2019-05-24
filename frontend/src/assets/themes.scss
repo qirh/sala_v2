@@ -1,38 +1,24 @@
 .light-theme {
     color: $gray;
     background-color: $whitesmoke;
-    a {
-        color: $blue;
-        &:hover {
-            color: $gray !important;
+    .nav-header {
+        a {
+            color: $blue;
         }
     }
     hr {
         background-color: $botticelli;
-    }
-    .router-link-exact-active {
-        a {
-            color: $red;
-            border-bottom: solid 1px $red;
-        }
     }
 }
 .dark-theme {
     color: $botticelli;
     background-color: $blackpearl;
-    a {
-        color: $blue-fade;
-        &:hover {
-            color: $gray;
+    .nav-header {
+        a {
+            color: $yellow;
         }
     }
     hr {
         background-color: $botticelli;
-    }
-    .router-link-exact-active {
-        a {
-            color: $yellow;
-            border-bottom: solid 1px $yellow;
-        }
     }
 }

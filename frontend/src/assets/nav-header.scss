@@ -7,9 +7,20 @@
     @media screen and (min-width: $break-large) {
         padding-top: 10vh;
     }
+    a {
+        opacity: 0.6;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .router-link-exact-active {
+        a {
+            opacity: 1;
+        }
+    }
     li {
         list-style-type: none;
-        padding-bottom: 1vh;
+        padding-bottom: 0.5vh;
     }
 }
 .nav-items {

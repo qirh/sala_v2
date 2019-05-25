@@ -7,6 +7,18 @@ import en from './locales/en.json';
 import ar from './locales/ar.json';
 import './registerServiceWorker';
 
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faBlog} from '@fortawesome/free-solid-svg-icons';
+import {
+    faVuejs,
+    faGithub,
+    faTelegram,
+    faGoodreads,
+} from '@fortawesome/free-brands-svg-icons';
+
+library.add(faVuejs, faGithub, faTelegram, faGoodreads, faBlog);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 Vue.use(VueI18n);

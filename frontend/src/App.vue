@@ -5,7 +5,7 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 <template>
     <div
         class="flip cuerpo"
-        v-bind:class="{
+        :class="{
             'flip-v2': doFlip,
             'left-to-right': leftToRight,
             'right-to-left': !leftToRight,

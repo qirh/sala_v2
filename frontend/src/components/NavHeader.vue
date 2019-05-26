@@ -37,10 +37,8 @@ export default {
     computed: {
         sunIcon() {
             if (this.$parent.darkMode) {
-                console.log('solid', this.$parent.darkMode);
                 return ['fas', 'sun'];
             } else {
-                console.log('regular', this.$parent.darkMode);
                 return ['far', 'sun'];
             }
         },

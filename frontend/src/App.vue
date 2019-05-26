@@ -62,10 +62,16 @@ export default {
         },
     },
     created() {
-        if (localStorage.darkMode > 0) {
-            this.registerDarkState(localStorage.darkMode);
+        if (isNaN(localStorage.darkMode)) {
+            if (matchMedia('(prefers-color-scheme: dark)').matches) {
+                this.changeDarkState(1);
+            }
         } else {
-            this.registerDarkState(0);
+            if (localStorage.darkMode > 0) {
+                this.changeDarkState(localStorage.darkMode);
+            } else {
+                this.changeDarkState(0);
+            }
         }
         // eslint-disable-next-line
         cheet('↑ ↑ ↓ ↓ ← → ← →', () => {

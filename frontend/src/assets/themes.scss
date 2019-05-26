@@ -10,8 +10,7 @@
         color: $purple;
     }
 }
-
-.light-theme {
+@mixin lightTheme {
     color: $gray;
     background-color: $white;
     .nav-header {
@@ -24,16 +23,31 @@
         background-color: $botticelli;
     }
 }
-.dark-theme {
+@mixin darkTheme {
     color: $botticelli;
     background-color: $blackpearl;
     .nav-header {
         @include anchorDarkColor;
     }
     .corner {
-        @include anchorDarkColor;
+        @include anchorLightColor;
     }
     hr {
         background-color: $botticelli;
     }
+}
+
+@media (prefers-color-scheme: light) {
+    @include lightTheme;
+}
+.light-theme {
+    @include lightTheme;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    @include darkTheme;
+}
+.dark-theme {
+    @include darkTheme;
 }

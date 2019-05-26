@@ -26,7 +26,7 @@
         </div>
         <hr />
         <div class="icons">
-            <font-awesome-icon :icon="sunIcon"></font-awesome-icon>
+            <font-awesome-icon v-on:click="this.$parent.changeDarkState" :icon="sunIcon"></font-awesome-icon>
         </div>
     </div>
 </template>

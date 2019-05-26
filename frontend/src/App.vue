@@ -76,10 +76,6 @@ export default {
             this.changeDarkState(localStorage.darkMode);
         }
         // eslint-disable-next-line
-        cheet('↑ ↑ ↓ ↓ ← → ← →', () => {
-            this.changeFlipState();
-        });
-        // eslint-disable-next-line
         cheet('f', () => {
             this.changeFlipState();
         });

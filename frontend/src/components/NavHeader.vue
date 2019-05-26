@@ -24,12 +24,27 @@
             <font-awesome-icon :icon="['fab', 'goodreads']"></font-awesome-icon>
             <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
         </div>
+        <hr />
+        <div class="icons">
+            <font-awesome-icon :icon="sunIcon"></font-awesome-icon>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'navheader',
+    computed: {
+        sunIcon() {
+            if (this.$parent.darkMode) {
+                console.log('solid', this.$parent.darkMode);
+                return ['fas', 'sun'];
+            } else {
+                console.log('regular', this.$parent.darkMode);
+                return ['far', 'sun'];
+            }
+        },
+    },
 };
 </script>
 <style scoped lang="scss">

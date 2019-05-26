@@ -12,7 +12,7 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
         }"
     >
         <NavHeader class="links column"></NavHeader>
-        <TransitionPage name="fade" mode="out-in" class="content column">
+        <TransitionPage class="content column">
             <router-view></router-view>
         </TransitionPage>
         <Corner></Corner>

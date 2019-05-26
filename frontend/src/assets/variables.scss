@@ -1,13 +1,18 @@
-$black: rgb(51, 51, 51);
+// light theme
 $gray: rgb(85, 85, 85);
-$botticelli: rgb(154, 164, 175);
-$hacienda: rgb(158, 117, 32);
 $blue: rgb(0, 123, 255);
-$blue-fade: rgb(111, 180, 250);
-$red: rgb(244, 42, 82);
-$yellow: rgb(208, 169, 11);
-
-$blackpearl: rgb(24, 30, 36);
+// light theme (background)
 $white: rgb(255, 255, 255);
+// light theme (alt)
+$red: rgb(244, 42, 82);
+
+// dark theme
+$botticelli: rgb(154, 164, 175);
+$yellow: rgb(208, 169, 11);
+// light theme (background)
+$blackpearl: rgb(24, 24, 24);
+// dark theme  (alt)
+$purple: rgb(187, 134, 252);
+
 
 $break-large: 768px

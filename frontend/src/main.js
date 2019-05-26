@@ -9,7 +9,11 @@ import './registerServiceWorker';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBlog} from '@fortawesome/free-solid-svg-icons';
+import {faBlog, faSun as faSunSolid} from '@fortawesome/free-solid-svg-icons';
+import {
+    faQuestionCircle,
+    faSun as faSunRegular,
+} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,
     faGithub,
@@ -17,7 +21,16 @@ import {
     faGoodreads,
 } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faVuejs, faGithub, faTelegram, faGoodreads, faBlog);
+library.add(
+    faVuejs,
+    faGithub,
+    faTelegram,
+    faGoodreads,
+    faBlog,
+    faQuestionCircle,
+    faSunSolid,
+    faSunRegular,
+);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 

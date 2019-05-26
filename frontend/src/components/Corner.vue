@@ -1,6 +1,7 @@
 <template>
     <div class="corner">
-        <a href="#" data-toggle="tooltip" data-placement="top" title="tool!">bla</a>
+        <font-awesome-icon :icon="['far', 'question-circle']">
+        </font-awesome-icon>
     </div>
 </template>
 

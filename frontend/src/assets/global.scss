@@ -9,7 +9,7 @@ html.color-theme-in-transition,
 html.color-theme-in-transition *,
 html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
-  transition: all 750ms !important;
+  transition: all 500ms linear !important;
   transition-delay: 0 !important;
 }
 
@@ -31,6 +31,13 @@ p {
 a {
     text-decoration: none;
 }
+svg {
+    opacity: .75;
+    transition: opacity .5s ease-in-out;
+}
+svg:hover {
+    opacity: 1;
+}
 .hey {
     font-weight: bold;
     font-size: 1.6em;
@@ -47,7 +54,7 @@ a {
 .cuerpo {
     width: 100%;
     max-width: 970px;
-    padding: 5vh 10vw;
+    padding: 5vh 5vw;
     height: 100%;
     margin-left: -15px;
     margin-right: -15px;

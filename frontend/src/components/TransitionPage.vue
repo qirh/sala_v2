@@ -89,12 +89,10 @@ export default {
     transition-timing-function: ease;
     overflow: hidden;
 }
-
 .fade-enter,
 .fade-leave-active {
     opacity: 0;
 }
-
 .slide-left-enter-active,
 .slide-left-leave-active,
 .slide-right-enter-active,
@@ -104,7 +102,6 @@ export default {
     transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
     overflow: hidden;
 }
-
 .slide-left-enter,
 .slide-right-leave-active {
     opacity: 0;
@@ -115,18 +112,15 @@ export default {
     opacity: 0;
     transform: translate(-2em, 0);
 }
-
 .zoom-enter-active,
 .zoom-leave-active {
     animation-duration: 0.5s;
     animation-fill-mode: both;
     animation-name: zoom;
 }
-
 .zoom-leave-active {
     animation-direction: reverse;
 }
-
 @keyframes zoom {
     from {
         opacity: 0;

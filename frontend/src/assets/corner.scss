@@ -1,11 +1,11 @@
 @import "variables";
 
 .corner {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
     display: none;
     @media screen and (min-width: $break-large) {
+        position: fixed;
+        right: 3vw;
+        top: 3vh;
         display: block;
     }
 }

@@ -49,12 +49,16 @@ export default {
                 document.body.classList.add('light-theme');
             }
         },
-        changeDarkState: function() {
+        flipDarkState: function() {
             if (this.darkMode) {
                 this.darkMode = 0;
             } else {
                 this.darkMode = 1;
             }
+            this.registerDarkState(this.darkMode);
+        },
+        changeDarkState: function(darkState) {
+            this.darkMode = darkState;
             this.registerDarkState(this.darkMode);
         },
         changeFlipState: function() {
@@ -65,13 +69,11 @@ export default {
         if (isNaN(localStorage.darkMode)) {
             if (matchMedia('(prefers-color-scheme: dark)').matches) {
                 this.changeDarkState(1);
-            }
-        } else {
-            if (localStorage.darkMode > 0) {
-                this.changeDarkState(localStorage.darkMode);
             } else {
                 this.changeDarkState(0);
             }
+        } else {
+            this.changeDarkState(localStorage.darkMode);
         }
         // eslint-disable-next-line
         cheet('↑ ↑ ↓ ↓ ← → ← →', () => {
@@ -83,7 +85,7 @@ export default {
         });
         // eslint-disable-next-line
         cheet('d', () => {
-            this.changeDarkState();
+            this.flipDarkState();
         });
         // eslint-disable-next-line
         cheet('h', () => {

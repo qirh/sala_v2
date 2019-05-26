@@ -1,10 +1,10 @@
-@mixin anchorLightColor{
+@mixin lightColors{
     color: $blue;
     a {
         color: $blue;
     }
 }
-@mixin anchorDarkColor{
+@mixin darkColors{
     color: $purple;
     a {
         color: $purple;
@@ -14,10 +14,10 @@
     color: $gray;
     background-color: $white;
     .nav-header {
-        @include anchorLightColor;
+        @include lightColors;
     }
     .corner {
-        @include anchorLightColor;
+        @include lightColors;
     }
     hr {
         background-color: $botticelli;
@@ -27,10 +27,10 @@
     color: $botticelli;
     background-color: $blackpearl;
     .nav-header {
-        @include anchorDarkColor;
+        @include darkColors;
     }
     .corner {
-        @include anchorLightColor;
+        @include darkColors;
     }
     hr {
         background-color: $botticelli;
@@ -43,7 +43,6 @@
 .light-theme {
     @include lightTheme;
 }
-
 
 @media (prefers-color-scheme: dark) {
     @include darkTheme;

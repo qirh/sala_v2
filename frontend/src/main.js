@@ -1,11 +1,14 @@
-import Vue from 'vue';
-import VueI18n from 'vue-i18n';
 import App from './App.vue';
+import Vue from 'vue';
 import router from './router';
 import store from './store';
+
+import VTooltip from 'v-tooltip';
+import './registerServiceWorker';
+
+import VueI18n from 'vue-i18n';
 import en from './locales/en.json';
 import ar from './locales/ar.json';
-import './registerServiceWorker';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -35,6 +38,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 Vue.use(VueI18n);
+Vue.use(VTooltip);
+
 const defaultLocale = 'en';
 const languages = {
     en: en,

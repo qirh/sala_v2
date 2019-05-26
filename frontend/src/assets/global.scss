@@ -33,6 +33,7 @@ a {
 }
 .hey {
     font-weight: bold;
+    font-size: 1.6em;
 }
 .flip {
     overflow: hidden;
@@ -57,11 +58,6 @@ a {
     align-items: normal;
     justify-content: flex-start;
 }
-.links {
-    flex: 0 0 25%;
-    max-width: 25%;
-
-}
 .content {
     flex: 0 0 100%;
     max-width: 100%;
@@ -72,7 +68,7 @@ a {
 }
 .links {
     flex: 0 0 100%;
-    max-width: 100%;
+    max-width: 50%;
     @media screen and (min-width: $break-large) {
         flex: 0 0 25%;
         max-width: 25%;

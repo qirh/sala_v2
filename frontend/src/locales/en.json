@@ -1,7 +1,4 @@
 {
   "hey": "Hello,",
-  "me": "My name is Saleh Alghusson. There are many Saleh Alghusson's in my family, but I'm the coolest one",
-  "work": "I work in technolgy as a full stack software engineer.",
-  "extra": "Besides programming, I'm intersted in human languages, I know a handful of them but not so well, as I usually get distracted by the point I've learnt the basic structure. I also love to read and being in nature, preferably at the same time :)",
-  "future": "In the next few years, I want to be fluent in a non-european/non-middle-eastren language. And for my career, I'd like to continue building general engineering skills but also specialze in either machine learning or security."
+  "main": "My name is Saleh Alghusson. There are many Saleh Alghusson's in my family, but I'm the coolest one. I work in technolgy as a full stack software engineer.\n\nBesides programming, I'm intersted in human languages, I know a handful of them but not so well, as I usually get distracted by the point I've learnt the basic structure. I also love to read and being in nature, preferably at the same time :)\n\nIn the next few years, I want to be fluent in a non-european/non-middle-eastren language. And for my career, I'd like to continue building general engineering skills but also specialze in either machine learning or security."
 }

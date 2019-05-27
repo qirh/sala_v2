@@ -1,10 +1,7 @@
 <template>
     <div>
-        <p class="hey">{{ $t('hey') }}</p>
-        <p>{{ $t('me') }}</p>
-        <p>{{ $t('work') }}</p>
-        <p>{{ $t('extra') }}</p>
-        <p>{{ $t('future') }}</p>
+        <p class="home-header">{{ $t('hey') }}</p>
+        <p class="home-main">{{ $t('main') }}</p>
     </div>
 </template>
 

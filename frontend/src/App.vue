@@ -4,9 +4,9 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 
 <template>
     <div
-        class="flip cuerpo"
+        class="flip-prep cuerpo"
         :class="{
-            'flip-v2': doFlip,
+            'flip-actually': this.$store.state.flip,
             'left-to-right': leftToRight,
             'right-to-left': !leftToRight,
         }"
@@ -23,6 +23,7 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
 import NavHeader from '@/components/NavHeader';
 import TransitionPage from '@/components/TransitionPage';
 import Corner from '@/components/Corner';
+import store from '@/store';
 
 export default {
     name: 'App',
@@ -33,15 +34,12 @@ export default {
     },
     data: () => {
         return {
-            doFlip: 0,
-            darkMode: 0,
             leftToRight: 1,
         };
     },
     methods: {
-        registerDarkState: function(darkState) {
-            localStorage.darkMode = darkState;
-            if (darkState) {
+        applyMode: function() {
+            if (this.$store.state.mode == 'dark') {
                 document.body.classList.add('dark-theme');
                 document.body.classList.remove('light-theme');
             } else {
@@ -49,39 +47,19 @@ export default {
                 document.body.classList.add('light-theme');
             }
         },
-        flipDarkState: function() {
-            if (this.darkMode) {
-                this.darkMode = 0;
-            } else {
-                this.darkMode = 1;
-            }
-            this.registerDarkState(this.darkMode);
-        },
-        changeDarkState: function(darkState) {
-            this.darkMode = darkState;
-            this.registerDarkState(this.darkMode);
-        },
-        changeFlipState: function() {
-            this.doFlip = !this.doFlip;
-        },
     },
     created() {
-        if (isNaN(localStorage.darkMode)) {
-            if (matchMedia('(prefers-color-scheme: dark)').matches) {
-                this.changeDarkState(1);
-            } else {
-                this.changeDarkState(0);
-            }
-        } else {
-            this.changeDarkState(localStorage.darkMode);
-        }
+        this.applyMode();
+        this.$store.watch((state, getters) => state.mode, (newVal) => {
+            this.applyMode();
+        });
         // eslint-disable-next-line
         cheet('f', () => {
-            this.changeFlipState();
+            store.commit('toggleFlip');
         });
         // eslint-disable-next-line
         cheet('d', () => {
-            this.flipDarkState();
+            store.commit('toggleMode');
         });
         // eslint-disable-next-line
         cheet('h', () => {

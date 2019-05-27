@@ -9,8 +9,8 @@ html.color-theme-in-transition,
 html.color-theme-in-transition *,
 html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
-  transition: all 500ms linear !important;
-  transition-delay: 0 !important;
+  transition: all 500ms linear;
+  transition-delay: 0;
 }
 
 html,
@@ -33,7 +33,6 @@ a {
 }
 svg {
     opacity: .75;
-    transition: opacity .5s ease-in-out;
 }
 svg:hover {
     opacity: 1;
@@ -42,12 +41,12 @@ svg:hover {
     font-weight: bold;
     font-size: 1.6em;
 }
-.flip {
+.flip-prep {
     overflow: hidden;
-    transition-duration: 1s;
+    transition-duration: 750ms !important;
     transition-property: transform;
 }
-.flip-v2 {
+.flip-actually {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
 }

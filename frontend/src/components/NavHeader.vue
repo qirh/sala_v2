@@ -27,7 +27,7 @@
         <hr />
         <div class="icons">
             <font-awesome-icon
-                v-on:click="this.$parent.changeDarkState"
+                v-on:click="$store.commit('toggleMode')"
                 :icon="sunIcon"
             >
             </font-awesome-icon>
@@ -40,7 +40,7 @@ export default {
     name: 'navheader',
     computed: {
         sunIcon() {
-            if (this.$parent.darkMode) {
+            if (this.$store.state.mode == 'dark') {
                 return ['fas', 'sun'];
             } else {
                 return ['far', 'sun'];

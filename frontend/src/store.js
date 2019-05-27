@@ -13,6 +13,7 @@ export default new Vuex.Store({
     state: {
         mode: 'light',
         flip: false,
+        direction: 'ltr',
     },
     getters: {
         getMode: (state) => {

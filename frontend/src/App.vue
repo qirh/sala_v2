@@ -6,9 +6,7 @@ url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Incons
     <div
         class="flip-prep cuerpo"
         :class="{
-            'flip-actually': this.$store.state.flip,
-            'left-to-right': leftToRight,
-            'right-to-left': !leftToRight,
+            'flip-actually': $store.state.flip,
         }"
     >
         <NavHeader class="links column"></NavHeader>
@@ -31,11 +29,6 @@ export default {
         NavHeader,
         TransitionPage,
         Corner,
-    },
-    data: () => {
-        return {
-            leftToRight: 1,
-        };
     },
     methods: {
         applyMode: function() {

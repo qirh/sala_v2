@@ -1,5 +1,18 @@
 <template>
-    <div class="corner">
+    <div
+        class="corner"
+        v-tooltip="{
+            content: 'bla',
+            placement: 'bottom-center',
+            classes: ['info'],
+            targetClasses: ['it-has-a-tooltip'],
+            offset: 100,
+            delay: {
+                show: 500,
+                hide: 300,
+            },
+        }"
+    >
         <font-awesome-icon :icon="['far', 'question-circle']">
         </font-awesome-icon>
     </div>

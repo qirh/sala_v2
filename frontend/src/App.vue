@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         applyMode: function() {
-            if (this.$store.state.mode == 'dark') {
+            if (store.state.mode == 'dark') {
                 document.body.classList.add('dark-theme');
                 document.body.classList.remove('light-theme');
             } else {
@@ -50,7 +50,7 @@ export default {
     },
     created() {
         this.applyMode();
-        this.$store.watch((state, getters) => state.mode, (newVal) => {
+        store.watch(() => {
             this.applyMode();
         });
         // eslint-disable-next-line

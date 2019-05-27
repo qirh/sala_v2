@@ -1,6 +1,7 @@
 @import "variables";
 
 * {
+    white-space: pre-wrap;
     font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
     text-decoration: none;
 }
@@ -40,9 +41,6 @@ svg:hover {
 .home-header {
     font-weight: bold;
     font-size: 1.6em;
-}
-.home-main {
-    white-space: pre-wrap;
 }
 .flip-prep {
     overflow: hidden;

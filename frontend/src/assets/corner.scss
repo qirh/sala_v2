@@ -11,10 +11,11 @@
 }
 .tooltip {
     display: block !important;
-    z-index: 10000;
+    z-index: 5;
     $color: rgba(#004499, .9);
 
     .tooltip-inner {
+        font-size: 0.7em;
         border-radius: 16px;
         background: $color;
         color: white;
@@ -45,7 +46,7 @@
     }
     &[aria-hidden='false'] {
         visibility: visible;
-        opacity: 0.9;
+        opacity: 1;
         transition: opacity 150ms;
     }
 }

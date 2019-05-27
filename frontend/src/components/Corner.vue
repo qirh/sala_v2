@@ -2,10 +2,11 @@
     <div
         class="corner"
         v-tooltip="{
-            content: 'toolTipText',
+            content: $t(textTooltip),
             classes: ['tooltip', 'info'],
             placement: placement,
-            offset: 30,
+            offset: 20,
+            show: true,
             delay: {
                 show: 500,
                 hide: 300,
@@ -22,7 +23,7 @@ export default {
     name: 'corner',
     data: function() {
         return {
-            toolTipText: 'this is tooltip',
+            textTooltip: 'tooltip',
             placement: this.$store.state.mode == 'ltr' ? 'left' : 'right',
         };
     },

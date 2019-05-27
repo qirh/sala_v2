@@ -2,15 +2,8 @@
     <div
         class="corner"
         v-tooltip="{
-            content: 'bla',
-            placement: 'bottom-center',
-            classes: ['info'],
-            targetClasses: ['it-has-a-tooltip'],
-            offset: 100,
-            delay: {
-                show: 500,
-                hide: 300,
-            },
+            content: 'toolTipText',
+            classes: tooltip,
         }"
     >
         <font-awesome-icon :icon="['far', 'question-circle']">
@@ -21,8 +14,13 @@
 <script>
 export default {
     name: 'corner',
+    data: function() {
+        return {
+            toolTipText: 'this is tooltip',
+        };
+    },
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 @import '../assets/corner.scss';
 </style>

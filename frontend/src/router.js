@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-
 import Books from '@/views/Books';
 import Home from '@/views/Home';
 import Projects from '@/views/Projects';

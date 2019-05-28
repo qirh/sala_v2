@@ -22,6 +22,10 @@
     hr {
         background-color: $botticelli;
     }
+    .tooltip-inner {
+        color: $white;
+        background-color: $gray;
+    }
 }
 @mixin darkTheme {
     color: $botticelli;
@@ -34,6 +38,10 @@
     }
     hr {
         background-color: $botticelli;
+    }
+    .tooltip-inner {
+        color: $botticelli;
+        background-color: $gray-dark;
     }
 }
 

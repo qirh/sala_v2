@@ -6,7 +6,6 @@
             classes: ['tooltip', 'info'],
             placement: placement,
             offset: 20,
-            show: true,
             delay: {
                 show: 500,
                 hide: 300,

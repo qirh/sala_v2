@@ -23,7 +23,7 @@ export default {
     data: function() {
         return {
             textTooltip: 'tooltip',
-            placement: this.$store.state.mode == 'ltr' ? 'left' : 'right',
+            placement: this.$store.state.direction == 'ltr' ? 'left' : 'right',
         };
     },
 };

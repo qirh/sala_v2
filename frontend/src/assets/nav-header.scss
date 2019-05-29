@@ -34,9 +34,16 @@ hr {
     margin: 3vh 0vh 3vh auto;
 }
 .svg-inline--fa {
+    font-size: 1.5em;
     opacity: .75;
     cursor: pointer;
+    margin-left: 0.35vw;
 }
 .svg-inline--fa:hover {
     opacity: 1;
+}
+.icons {
+    a {
+        opacity: 1;
+    }
 }

@@ -19,10 +19,40 @@
         </div>
         <hr />
         <div class="icons">
-            <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
-            <font-awesome-icon :icon="['fab', 'telegram']"></font-awesome-icon>
-            <font-awesome-icon :icon="['fab', 'goodreads']"></font-awesome-icon>
-            <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
+            <a
+                href="https://t.me/salghusson"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <font-awesome-icon
+                    :icon="['fab', 'telegram']"
+                ></font-awesome-icon>
+            </a>
+            <a
+                href="https://t.me/salghusson"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <font-awesome-icon
+                    :icon="['fab', 'github']"
+                ></font-awesome-icon>
+            </a>
+            <a
+                href="https://t.me/salghusson"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <font-awesome-icon
+                    :icon="['fab', 'goodreads']"
+                ></font-awesome-icon>
+            </a>
+            <a
+                href="https://t.me/salghusson"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
+            </a>
         </div>
         <hr />
         <div class="icons">

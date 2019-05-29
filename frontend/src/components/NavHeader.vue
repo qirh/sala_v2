@@ -29,7 +29,7 @@
                 ></font-awesome-icon>
             </a>
             <a
-                href="https://t.me/salghusson"
+                href="https://github.com/qirh"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -38,7 +38,7 @@
                 ></font-awesome-icon>
             </a>
             <a
-                href="https://t.me/salghusson"
+                href="https://www.goodreads.com/sal7"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -47,7 +47,7 @@
                 ></font-awesome-icon>
             </a>
             <a
-                href="https://t.me/salghusson"
+                href="https://qirh.github.io"
                 target="_blank"
                 rel="noopener noreferrer"
             >

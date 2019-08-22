@@ -53,12 +53,17 @@
             >
                 <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
             </a>
-            <br>
-             <font-awesome-icon
+            <br />
+
+            <div
+                class="mode-toggle"
                 v-on:click="$store.commit('toggleMode')"
-                :icon="sunIcon"
+                :class="darkDark"
             >
-            </font-awesome-icon>
+                <div class="toggle">
+                    <div id="subtoggle" type="checkbox"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -81,4 +86,5 @@ export default {
 @import '../assets/nav-header.scss';
 @import '../assets/themes.scss';
 @import '../assets/bidi.scss';
+@import '../assets/toggle-mode.scss';
 </style>

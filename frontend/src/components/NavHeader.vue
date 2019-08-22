@@ -53,10 +53,8 @@
             >
                 <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
             </a>
-        </div>
-        <hr />
-        <div class="icons">
-            <font-awesome-icon
+            <br>
+             <font-awesome-icon
                 v-on:click="$store.commit('toggleMode')"
                 :icon="sunIcon"
             >

@@ -10,8 +10,10 @@ html.color-theme-in-transition,
 html.color-theme-in-transition *,
 html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
-  transition: all 500ms linear;
+  transition: all 0.375s ease-in;
+  transition: background-color 0.375s ease-in;
   transition-delay: 0;
+
 }
 
 html,
@@ -28,6 +30,9 @@ p {
     font-weight: 300;
     line-height: 1.4;
     max-width: 26em;
+    &:first-child {
+        transition: color 0.375s ease-in;
+    }
 }
 a {
     text-decoration: none;
@@ -38,10 +43,10 @@ a {
 }
 .flip-prep {
     overflow: hidden;
-    transition-duration: 750ms !important;
     transition-property: transform;
 }
 .flip-actually {
+    transition: all 750ms linear !important;
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
 }

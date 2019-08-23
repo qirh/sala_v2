@@ -53,12 +53,13 @@
             >
                 <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
             </a>
-            <br />
 
+        </div>
+        <br />
+        <div class="icons">
             <div
                 class="mode-toggle"
                 v-on:click="$store.commit('toggleMode')"
-                :class="darkDark"
             >
                 <div class="toggle">
                     <div id="subtoggle" type="checkbox"></div>

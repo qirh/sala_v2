@@ -49,6 +49,7 @@ export default {
         // eslint-disable-next-line
         cheet('f', () => {
             store.commit('toggleFlip');
+            setTimeout(() => store.commit('toggleFlip'), 750);
         });
         // eslint-disable-next-line
         cheet('d', () => {

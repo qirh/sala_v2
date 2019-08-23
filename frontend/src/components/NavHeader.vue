@@ -47,20 +47,16 @@
                 ></font-awesome-icon>
             </a>
             <a
-                href="https://qirh.github.io"
+                href="https://saleh.soy"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
             </a>
-
         </div>
         <br />
         <div class="icons">
-            <div
-                class="mode-toggle"
-                v-on:click="$store.commit('toggleMode')"
-            >
+            <div class="mode-toggle" v-on:click="$store.commit('toggleMode')">
                 <div class="toggle">
                     <div id="subtoggle" type="checkbox"></div>
                 </div>

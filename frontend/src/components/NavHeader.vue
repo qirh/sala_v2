@@ -84,8 +84,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/nav-header.scss';
+@import '../assets/navHeader.scss';
 @import '../assets/themes.scss';
 @import '../assets/bidi.scss';
-@import '../assets/toggle-mode.scss';
+@import '../assets/toggleMode.scss';
 </style>

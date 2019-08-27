@@ -67,14 +67,6 @@ export default {
         cheet('b', () => {
             this.$router.push('/b');
         });
-        // eslint-disable-next-line
-        cheet('r', () => {
-            this.$router.push('/r');
-        });
-        // eslint-disable-next-line
-        cheet('w', () => {
-            this.$router.push('/w');
-        });
     },
 };
 </script>

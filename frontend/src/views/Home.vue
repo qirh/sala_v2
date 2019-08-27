@@ -1,7 +1,7 @@
 <template>
     <div>
         <p class="home-header">{{ $t(textHead) }}</p>
-        <p class="home-main">{{ $t(textMain) }}</p>
+        <p class="home-main" v-html="$t(textMain)"></p>
     </div>
 </template>
 

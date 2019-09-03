@@ -1,13 +1,49 @@
-@mixin lightColors{
-    color: $blue;
-    a {
-        color: $blue;
+@mixin lightColors($alt: false) {
+    @if $alt {
+            color: $blue;
+        a {
+            color: $blue;
+        }
+        #subtoggle {
+            &:before {
+              background-color: $blue;
+            }
+        }
+    }
+    @else {
+        color: $red;
+        a {
+            color: $red;
+        }
+        #subtoggle {
+            &:before {
+              background-color: $red;
+            }
+        }
     }
 }
-@mixin darkColors{
-    color: $purple;
-    a {
+@mixin darkColors($alt: false) {
+    @if $alt {
         color: $purple;
+        a {
+            color: $purple;
+        }
+        #subtoggle {
+            &:before {
+              background-color: $purple;
+            }
+        }
+    }
+    @else {
+        color: $yellow;
+        a {
+            color: $yellow;
+        }
+        #subtoggle {
+            &:before {
+              background-color: $yellow;
+            }
+        }
     }
 }
 @mixin lightTheme {
@@ -17,6 +53,9 @@
         @include lightColors;
     }
     .corner {
+        @include lightColors;
+    }
+    .toggle {
         @include lightColors;
     }
     hr {
@@ -34,6 +73,9 @@
         @include darkColors;
     }
     .corner {
+        @include darkColors;
+    }
+    .toggle {
         @include darkColors;
     }
     hr {

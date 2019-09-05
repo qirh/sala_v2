@@ -55,10 +55,6 @@ export default {
         cheet('d', () => {
             store.commit('toggleMode');
         });
-        // eslint-disable-next-line
-        cheet('h', () => {
-            this.$router.push('/');
-        });
     },
 };
 </script>

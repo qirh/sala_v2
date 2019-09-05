@@ -4,12 +4,6 @@
             <router-link class="link" tag="li" to="/">
                 <a>Home</a>
             </router-link>
-            <router-link class="link" tag="li" to="/p">
-                <a>Projects</a>
-            </router-link>
-            <router-link class="link" tag="li" to="/b">
-                <a>Books</a>
-            </router-link>
         </div>
         <hr />
         <div class="icons">

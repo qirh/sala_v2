@@ -1,5 +1,5 @@
-@mixin lightColors($alt: false) {
-    @if $alt {
+@mixin lightColors() {
+    @if $alt_colors {
             color: $blue;
         a {
             color: $blue;

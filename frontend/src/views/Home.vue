@@ -15,14 +15,12 @@ export default {
         };
     },
     created() {
-        // eslint-disable-next-line
+        //eslint-disable-next-line
+        /*
         cheet('←', () => {
             this.$router.push('w');
         });
-        // eslint-disable-next-line
-        cheet('→', () => {
-            this.$router.push('p');
-        });
+        */
     },
 };
 </script>

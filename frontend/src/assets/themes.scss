@@ -1,40 +1,37 @@
 @mixin lightColors() {
-    @if $alt_colors {
-            color: $blue;
-        a {
-            color: $blue;
-        }
-        #subtoggle {
-            &:before {
-              background-color: $blue;
-            }
-        }
+    color: $blue;
+    a {
+        color: $blue;
     }
-    @else {
-        color: $red;
-        a {
-            color: $red;
-        }
-        #subtoggle {
-            &:before {
-              background-color: $red;
-            }
+    #subtoggle {
+        &:before {
+            background-color: $blue;
         }
     }
 }
-@mixin darkColors($alt: false) {
-    @if $alt {
-        color: $purple;
-        a {
-            color: $purple;
-        }
-        #subtoggle {
-            &:before {
-              background-color: $purple;
-            }
+@mixin lightColorsAlt() {
+    color: $red;
+    a {
+        color: $red;
+    }
+    #subtoggle {
+        &:before {
+            background-color: $red;
         }
     }
-    @else {
+}
+@mixin darkColors() {
+    color: $purple;
+    a {
+        color: $purple;
+    }
+    #subtoggle {
+        &:before {
+            background-color: $purple;
+        }
+    }
+}
+@mixin darkColorsAlt() {
         color: $yellow;
         a {
             color: $yellow;
@@ -44,7 +41,6 @@
               background-color: $yellow;
             }
         }
-    }
 }
 @mixin lightTheme {
     color: $gray;
@@ -64,6 +60,17 @@
     .tooltip-inner {
         color: $white;
         background-color: $gray;
+    }
+}
+@mixin lightThemeAlt {
+    .nav-header {
+        @include lightColorsAlt;
+    }
+    .corner {
+        @include lightColorsAlt;
+    }
+    .toggle {
+        @include lightColorsAlt;
     }
 }
 @mixin darkTheme {
@@ -86,6 +93,17 @@
         background-color: $gray-dark;
     }
 }
+@mixin darkThemeAlt {
+    .nav-header {
+        @include darkColorsAlt;
+    }
+    .corner {
+        @include darkColorsAlt;
+    }
+    .toggle {
+        @include darkColorsAlt;
+    }
+}
 
 @media (prefers-color-scheme: light) {
     @include lightTheme;
@@ -93,10 +111,16 @@
 .light-theme {
     @include lightTheme;
 }
+.light-theme.alt-colors {
+    @include lightThemeAlt;
+}
 
 @media (prefers-color-scheme: dark) {
     @include darkTheme;
 }
 .dark-theme {
     @include darkTheme;
+}
+.dark-theme.alt-colors {
+    @include darkThemeAlt;
 }

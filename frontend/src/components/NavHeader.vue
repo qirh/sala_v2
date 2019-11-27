@@ -64,15 +64,6 @@ export default {
             writing: 'writing',
         };
     },
-    computed: {
-        sunIcon() {
-            if (this.$store.state.mode == 'dark') {
-                return ['fas', 'sun'];
-            } else {
-                return ['far', 'sun'];
-            }
-        },
-    },
 };
 </script>
 <style scoped lang="scss">

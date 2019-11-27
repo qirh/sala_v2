@@ -29,6 +29,7 @@
                 href="https://www.goodreads.com/sal7"
                 target="_blank"
                 rel="noopener noreferrer"
+                :title="$t('reading')"
             >
                 <font-awesome-icon
                     :icon="['fab', 'goodreads']"
@@ -38,6 +39,7 @@
                 href="https://saleh.soy"
                 target="_blank"
                 rel="noopener noreferrer"
+                :title="$t('writing')"
             >
                 <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
             </a>
@@ -56,6 +58,12 @@
 <script>
 export default {
     name: 'navheader',
+    data: () => {
+        return {
+            reading: 'reading',
+            writing: 'writing',
+        };
+    },
     computed: {
         sunIcon() {
             if (this.$store.state.mode == 'dark') {

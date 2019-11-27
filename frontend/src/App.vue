@@ -40,23 +40,34 @@ export default {
                 document.body.classList.add('light-theme');
             }
         },
+        applyNPS: () => {
+            if (store.state.npsFont) {
+                document.body.classList.add('nps-font');
+                document.body.classList.remove('regular-font');
+            } else {
+                document.body.classList.remove('nps-font');
+                document.body.classList.add('regular-font');
+            }
+        },
     },
     created() {
         this.applyTheme();
+        this.applyNPS();
         store.watch(() => {
             this.applyTheme();
+            this.applyNPS();
         });
         // eslint-disable-next-line
-        cheet('f l i p', () => {
+        cheet('f', () => {
             store.commit('toggleFlip');
             setTimeout(() => store.commit('toggleFlip'), 750);
         });
         // eslint-disable-next-line
-        cheet('t h e m e', () => {
+        cheet('t', () => {
             store.commit('toggleTheme');
         });
         // eslint-disable-next-line
-        cheet('n p s', () => {
+        cheet('n', () => {
             store.commit('toggleNPS');
         });
     },

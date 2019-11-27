@@ -3,8 +3,6 @@
 
 * {
     white-space: pre-wrap;
-    font-family: "nps";
-    //font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
     text-decoration: none;
 }
 //https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a
@@ -38,6 +36,12 @@ p {
 }
 a {
     text-decoration: none;
+}
+.regular-font {
+    font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
+}
+.nps-font {
+    font-family: "nps";
 }
 .home-header {
     font-weight: bold;

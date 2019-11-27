@@ -12,11 +12,8 @@ import ar from './locales/ar.json';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBlog, faSun as faSunSolid} from '@fortawesome/free-solid-svg-icons';
-import {
-    faQuestionCircle,
-    faSun as faSunRegular,
-} from '@fortawesome/free-regular-svg-icons';
+import {faBlog} from '@fortawesome/free-solid-svg-icons';
+import {faQuestionCircle} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,
     faGithub,
@@ -31,8 +28,6 @@ library.add(
     faGoodreads,
     faBlog,
     faQuestionCircle,
-    faSunSolid,
-    faSunRegular,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;

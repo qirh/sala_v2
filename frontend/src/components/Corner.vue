@@ -29,5 +29,5 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '../assets/corner.scss';
+@import '../assets/styles/corner.scss';
 </style>

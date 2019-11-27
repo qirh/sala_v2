@@ -1,8 +1,10 @@
 @import "variables";
+@import "fonts";
 
 * {
     white-space: pre-wrap;
-    font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
+    font-family: "nps";
+    //font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
     text-decoration: none;
 }
 //https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a

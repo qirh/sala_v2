@@ -11,22 +11,26 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
     state: {
-        mode: 'light',
+        theme: 'light',
         flip: false,
         direction: 'ltr',
+        npsFont: false,
     },
     getters: {
-        getMode: (state) => {
-            return state.mode;
+        getTheme: (state) => {
+            return state.theme;
         },
     },
     mutations: {
-        toggleMode(state) {
-            if (state.mode == 'light') {
-                state.mode = 'dark';
+        toggleTheme(state) {
+            if (state.theme == 'light') {
+                state.theme = 'dark';
             } else {
-                state.mode = 'light';
+                state.theme = 'light';
             }
+        },
+        toggleNPS(state) {
+            state.npsFont = !state.npsFont;
         },
         toggleFlip(state) {
             state.flip = !state.flip;

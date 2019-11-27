@@ -46,7 +46,7 @@
         </div>
         <br />
         <div class="icons">
-            <div class="mode-toggle" v-on:click="$store.commit('toggleMode')">
+            <div class="theme-toggle" v-on:click="$store.commit('toggleTheme')">
                 <div class="toggle">
                     <div id="subtoggle" type="checkbox"></div>
                 </div>
@@ -70,5 +70,5 @@ export default {
 @import '../assets/styles/navHeader.scss';
 //@import '../assets/themes.scss';  delete this?
 @import '../assets/styles/bidi.scss';
-@import '../assets/styles/toggleMode.scss';
+@import '../assets/styles/toggleTheme.scss';
 </style>

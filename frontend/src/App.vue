@@ -31,8 +31,8 @@ export default {
         Corner,
     },
     methods: {
-        applyMode: function() {
-            if (store.state.mode == 'dark') {
+        applyTheme: () => {
+            if (store.state.theme == 'dark') {
                 document.body.classList.add('dark-theme');
                 document.body.classList.remove('light-theme');
             } else {
@@ -42,18 +42,22 @@ export default {
         },
     },
     created() {
-        this.applyMode();
+        this.applyTheme();
         store.watch(() => {
-            this.applyMode();
+            this.applyTheme();
         });
         // eslint-disable-next-line
-        cheet('f', () => {
+        cheet('f l i p', () => {
             store.commit('toggleFlip');
             setTimeout(() => store.commit('toggleFlip'), 750);
         });
         // eslint-disable-next-line
-        cheet('d', () => {
-            store.commit('toggleMode');
+        cheet('t h e m e', () => {
+            store.commit('toggleTheme');
+        });
+        // eslint-disable-next-line
+        cheet('n p s', () => {
+            store.commit('toggleNPS');
         });
     },
 };

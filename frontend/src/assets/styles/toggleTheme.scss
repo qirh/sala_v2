@@ -2,7 +2,7 @@
 
 @import "variables";
 
-.mode-toggle {
+.theme-toggle {
   position: relative;
   margin: .5rem .5rem .5rem auto;
   padding: 0;
@@ -56,7 +56,7 @@
 }
 
 body.light-theme {
-  .mode-toggle {
+  .theme-toggle {
     background-color: darken($white, 5%);
     .toggle {
       box-shadow: inset 0 0 0 2px;
@@ -65,7 +65,7 @@ body.light-theme {
 }
 
 body.dark-theme {
-  .mode-toggle {
+  .theme-toggle {
     background-color: lighten($blackpearl, 10%);
     .toggle {
       box-shadow: inset 0 0 0 2px;

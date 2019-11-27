@@ -77,7 +77,7 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../assets/navHeader.scss';
-@import '../assets/themes.scss';
+//@import '../assets/themes.scss';  delete this?
 @import '../assets/bidi.scss';
 @import '../assets/toggleMode.scss';
 </style>

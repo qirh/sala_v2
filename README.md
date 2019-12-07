@@ -1,8 +1,7 @@
 # sala_v2
 
-v2.0 of my personal website
+Il y en a beaucoup comme ça, mais lui, c'est le mien.
 
-General Directory Layout:
 .
 +-- frontstage
 +-- backstage

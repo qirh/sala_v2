@@ -2,10 +2,6 @@
 
 Il y en a beaucoup comme ça, mais lui, c'est le mien.
 
-.
-+-- frontstage
-+-- backstage
-+-- blogs
     .
     ├── frontend
     ├── backend

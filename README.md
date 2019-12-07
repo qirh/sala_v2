@@ -7,6 +7,10 @@ General Directory Layout:
 +-- frontstage
 +-- backstage
 +-- blogs
+    .
+    ├── frontend
+    ├── backend
+    ├── blogs
 
 ## Project setup
 ```

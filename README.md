@@ -10,7 +10,7 @@ General Directory Layout:
     .
     ├── frontend
     ├── backend
-    ├── blogs
+    └── blogs
 
 ## Project setup
 ```

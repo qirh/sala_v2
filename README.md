@@ -17,3 +17,5 @@ General Directory Layout:
 npm run serve
 npm run build
 ```
+
+Licensed with [WTFPL](http://www.wtfpl.net).

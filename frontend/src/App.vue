@@ -22,6 +22,10 @@ import TransitionPage from '@/components/TransitionPage';
 import Corner from '@/components/Corner';
 import store from '@/store';
 
+import '../node_modules/splitting/dist/splitting.css';
+import '../node_modules/splitting/dist/splitting-cells.css';
+import Splitting from '../node_modules/splitting/dist/splitting.js';
+
 export default {
     name: 'App',
     components: {
@@ -50,6 +54,7 @@ export default {
         },
     },
     created() {
+        Splitting();
         this.applyTheme();
         this.applyNPS();
         store.watch(() => {
@@ -68,6 +73,9 @@ export default {
         // eslint-disable-next-line
         cheet('n', () => {
             store.commit('toggleNPS');
+        });
+        cheet('b', () => {
+            Splitting();
         });
     },
 };

@@ -32,8 +32,8 @@ library.add(
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
-Vue.use(VueI18n);
 Vue.use(VTooltip);
+Vue.use(VueI18n);
 
 const defaultLocale = 'en';
 const languages = {

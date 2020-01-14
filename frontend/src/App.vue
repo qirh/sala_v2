@@ -1,6 +1,5 @@
 @import
 url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Muli|Rubik|Inconsolata')
-@import url('https://cdn.rawgit.com/namuol/cheet.js/master/cheet.min.js')
 
 <template>
     <div

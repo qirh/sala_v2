@@ -54,7 +54,6 @@ export default {
         },
     },
     created() {
-        Splitting();
         this.applyTheme();
         this.applyNPS();
         store.watch(() => {
@@ -74,9 +73,9 @@ export default {
         cheet('n', () => {
             store.commit('toggleNPS');
         });
-        cheet('b', () => {
-            Splitting();
-        });
+    },
+    mounted() {
+        Splitting();
     },
 };
 </script>

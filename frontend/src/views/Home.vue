@@ -1,7 +1,6 @@
 <template>
     <div>
         <p class="home-header">{{ $t(textHead) }}</p>
-        <div data-splitting>{{ $t(textHead) }}</div>
         <p class="home-main" v-html="$t(textMain)"></p>
     </div>
 </template>

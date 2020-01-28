@@ -6,8 +6,8 @@ work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old we
 
     .
     ├── frontend
-    ├── backend
-    └── blogs
+    ├── backend -- deprecated
+    └── blogs -- deprecated
 
 ## project setup
 ```

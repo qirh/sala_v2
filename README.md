@@ -1,16 +1,19 @@
 # sala_v2
 
-Il y en a beaucoup comme ça, mais lui, c'est le mien.
+personal website v2. il y en a beaucoup comme ça, mais lui, c'est le mien.
+
+work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old website.
 
     .
     ├── frontend
     ├── backend
     └── blogs
 
-## Project setup
+## project setup
 ```
 npm run serve
 npm run build
 ```
 
-Licensed with [WTFPL](http://www.wtfpl.net).
+
+licensed with [WTFPL](http://www.wtfpl.net).

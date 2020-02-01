@@ -7,25 +7,22 @@
     @media screen and (min-width: $break-large) {
         padding-top: 10vh;
     }
-    a {
+    .nav-items {
+        margin-bottom: 4vh;
+    }
+    .langCode {
         opacity: 0.6;
+        cursor: pointer;
+        list-style-type: none;
+        height: 10vh;
         &:hover {
             opacity: 0.8;
         }
     }
-    .router-link-exact-active {
-        a {
-            opacity: 1;
-        }
-    }
-    li {
-        list-style-type: none;
-        padding-bottom: 0.5vh;
-    }
 }
 .nav-items {
     display: block;
-    margin: 4vh 0vh 0vh auto;
+    margin: 0vh 0vh 0vh auto;
 }
 hr {
     border: 0;

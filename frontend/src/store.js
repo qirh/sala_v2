@@ -15,12 +15,23 @@ export default new Vuex.Store({
         flip: false,
         direction: 'ltr',
         npsFont: false,
-        langs: ['en', 'es', 'ar'],
-    },
-    getters: {
-        getTheme: (state) => {
-            return state.theme;
-        },
+        langs: [
+            {
+                code: 'en',
+                name: 'English',
+                selected: true,
+            },
+            {
+                code: 'es',
+                name: 'Español',
+                selected: false,
+            },
+            {
+                code: 'ar',
+                name: 'العربية',
+                selected: false,
+            },
+        ],
     },
     mutations: {
         toggleTheme(state) {
@@ -35,6 +46,10 @@ export default new Vuex.Store({
         },
         toggleFlip(state) {
             state.flip = !state.flip;
+        },
+        changeLang(state, langCode) {
+            //console.log(langCode);
+            langCode == 'a';
         },
     },
     plugins: [vuexPersist.plugin],

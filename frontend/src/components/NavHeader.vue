@@ -1,7 +1,7 @@
 <template>
     <div class="nav-header">
         <div class="nav-items" v-if="langs.length">
-            <div  v-for="lang in langs" v-bind:key="lang.code">
+            <div v-for="lang in langs" v-bind:key="lang.code">
                 <div
                     v-if="!lang.selected"
                     v-on:click="$store.commit('changeLang', lang.code)"

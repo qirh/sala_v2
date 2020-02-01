@@ -16,7 +16,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "register-service-worker": "^1.5.2",
-    "splitting": "^1.0.6",
     "v-tooltip": "^2.0.2",
     "vue": "^2.5.22",
     "vue-i18n": "^8.0.0",

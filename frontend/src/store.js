@@ -15,6 +15,7 @@ export default new Vuex.Store({
         flip: false,
         direction: 'ltr',
         npsFont: false,
+        langs: ['en', 'es', 'ar'],
     },
     getters: {
         getTheme: (state) => {

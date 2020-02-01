@@ -1,5 +1,4 @@
-@import
-url('https://fonts.googleapis.com/css?family=Rubik|Inconsolata')
+@import url('https://fonts.googleapis.com/css?family=Rubik|Inconsolata')
 
 <template>
     <div
@@ -21,10 +20,6 @@ import NavHeader from '@/components/NavHeader';
 import TransitionPage from '@/components/TransitionPage';
 import Corner from '@/components/Corner';
 import store from '@/store';
-
-import '../node_modules/splitting/dist/splitting.css';
-import '../node_modules/splitting/dist/splitting-cells.css';
-import Splitting from '../node_modules/splitting/dist/splitting.js';
 
 export default {
     name: 'App',
@@ -73,9 +68,6 @@ export default {
         cheet('n', () => {
             store.commit('toggleNPS');
         });
-    },
-    mounted() {
-        Splitting();
     },
 };
 </script>

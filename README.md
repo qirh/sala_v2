@@ -4,11 +4,6 @@ personal website v2. il y en a beaucoup comme ça, mais lui, c'est le mien.
 
 work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old website.
 
-    .
-    ├── frontend
-    ├── backend -- deprecated
-    └── blogs -- deprecated
-
 ## project setup
 ```
 npm run serve

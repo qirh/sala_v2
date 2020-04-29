@@ -1,22 +1,10 @@
-# project
-env
-.env
-
 # mac
 .DS_Store
 xcuserdata/
-
-# python
-__pycache__
-*.pyc
-
 # npm
 node_modules/
 dist/
 npm-debug.log*
-
-# pycharm
-.idea
 
 # vscode
 .vscode

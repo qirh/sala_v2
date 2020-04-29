@@ -1,0 +1,19 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+      - '*'
+
+jobs:
+  build:
+    name: Build Vue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build

@@ -13,14 +13,12 @@
 </template>
 
 <script>
-// import NavHeader from '@/components/NavHeader';
 import Home from '@/components/Home';
 import store from '@/store';
 
 export default {
     name: 'App',
     components: {
-        // NavHeader,
         Home,
     },
     methods: {

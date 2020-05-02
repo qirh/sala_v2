@@ -7,16 +7,8 @@
 </template>
 
 <script>
-import store from '@/store';
-
 export default {
     name: 'ThemeToggler',
-    data: () => {
-        return {
-            textTooltip: 'tooltip',
-            placement: store.state.direction == 'ltr' ? 'left' : 'right',
-        };
-    },
 };
 </script>
 <style scoped lang="scss">

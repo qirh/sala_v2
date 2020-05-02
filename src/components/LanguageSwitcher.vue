@@ -1,14 +1,14 @@
 <template>
     <div v-if="langs.length">
         <div v-for="lang in langs" v-bind:key="lang.code">
-            <div
-                v-if="!lang.selected"
-                v-on:click="$store.commit('changeLang', lang.code)"
+            <a
+                v-if="lang.code != currentLang"
+                @click="$store.commit('changeLang', lang.code)"
                 :title="lang.code"
                 class="lang-item"
             >
                 {{ lang.name }}
-            </div>
+            </a>
         </div>
     </div>
 </template>
@@ -18,10 +18,13 @@ import store from '@/store';
 
 export default {
     name: 'LanguageSwitcher',
-    data: () => {
-        return {
-            langs: store.state.langs,
-        };
+    computed: {
+        currentLang() {
+            return store.state.currentLang;
+        },
+        langs() {
+            return store.state.langs;
+        }
     },
 };
 </script>

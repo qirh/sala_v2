@@ -13,23 +13,26 @@ export default new Vuex.Store({
     state: {
         theme: 'light',
         flip: false,
-        direction: 'ltr',
         npsFont: false,
+        currentLang: 'en',
         langs: [
             {
                 code: 'en',
                 name: 'English',
-                selected: true,
+                placement: 'left',
+                direction: 'ltr',
             },
             {
                 code: 'es',
                 name: 'Español',
-                selected: false,
+                placement: 'left',
+                direction: 'ltr',
             },
             {
                 code: 'ar',
-                name: 'العربية',
-                selected: false,
+                name: 'عربي',
+                placement: 'right',
+                direction: 'rtl',
             },
         ],
     },
@@ -48,8 +51,7 @@ export default new Vuex.Store({
             state.flip = !state.flip;
         },
         changeLang(state, langCode) {
-            // console.log(langCode);
-            langCode == 'a';
+            state.currentLang = langCode;
         },
     },
     plugins: [vuexPersist.plugin],

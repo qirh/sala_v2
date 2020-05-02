@@ -12,8 +12,9 @@
             },
         }"
     >
-        <font-awesome-icon :icon="['far', 'question-circle']">
-        </font-awesome-icon>
+        <font-awesome-icon
+            :icon="['far', 'question-circle']"
+        ></font-awesome-icon>
     </div>
 </template>
 
@@ -22,10 +23,14 @@ import store from '@/store';
 
 export default {
     name: 'Corner',
+    computed: {
+        placement() {
+            return store.state.langs.filter(lang => lang.code == store.state.currentLang).placement;
+        },
+    },
     data: () => {
         return {
             textTooltip: 'tooltip',
-            placement: store.state.direction == 'ltr' ? 'left' : 'right',
         };
     },
 };

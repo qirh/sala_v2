@@ -39,11 +39,12 @@ export default {
                 document.body.classList.remove('nps-font');
                 document.body.classList.add('regular-font');
             }
-        },
+        }
     },
     created() {
         this.applyTheme();
         this.applyNPS();
+        this.$i18n.locale = store.state.currentLang;
         store.watch(() => {
             this.applyTheme();
             this.applyNPS();

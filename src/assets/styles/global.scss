@@ -38,7 +38,7 @@ p {
 a {
     text-decoration: none;
 }
-.home-header {
+.home-title {
     font-weight: bold;
     font-size: 1.6em;
 }
@@ -58,29 +58,8 @@ a {
     height: 100%;
     margin-left: -15px;
     margin-right: -15px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 0;
-    flex-shrink: 0;
     align-items: normal;
-    justify-content: flex-start;
     position: relative;
-}
-.main {
-    flex: 0 0 100%;
-    max-width: 100%;
-    @media screen and (min-width: $break-large) {
-        flex: 0 0 75%;
-        max-width: 75%;
-    }
-}
-.links {
-    flex: 0 0 100%;
-    max-width: 50%;
-    @media screen and (min-width: $break-large) {
-        flex: 0 0 25%;
-        max-width: 25%;
-    }
 }
 .column {
     box-sizing: border-box;

@@ -7,12 +7,14 @@
 </template>
 
 <script>
+import store from '@/store';
+
 export default {
-    name: 'themeToggler',
-    data: function() {
+    name: 'ThemeToggler',
+    data: () => {
         return {
             textTooltip: 'tooltip',
-            placement: this.$store.state.direction == 'ltr' ? 'left' : 'right',
+            placement: store.state.direction == 'ltr' ? 'left' : 'right',
         };
     },
 };

@@ -18,12 +18,14 @@
 </template>
 
 <script>
+import store from '@/store';
+
 export default {
-    name: 'corner',
-    data: function() {
+    name: 'Corner',
+    data: () => {
         return {
             textTooltip: 'tooltip',
-            placement: this.$store.state.direction == 'ltr' ? 'left' : 'right',
+            placement: store.state.direction == 'ltr' ? 'left' : 'right',
         };
     },
 };

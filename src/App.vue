@@ -8,15 +8,12 @@
         }"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
-        <TransitionPage>
-            <Home></Home>
-        </TransitionPage>
+        <Home></Home>
     </div>
 </template>
 
 <script>
 // import NavHeader from '@/components/NavHeader';
-import TransitionPage from '@/components/TransitionPage';
 import Home from '@/components/Home';
 import store from '@/store';
 
@@ -24,7 +21,6 @@ export default {
     name: 'App',
     components: {
         // NavHeader,
-        TransitionPage,
         Home,
     },
     methods: {

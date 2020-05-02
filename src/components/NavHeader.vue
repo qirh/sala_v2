@@ -1,18 +1,5 @@
 <template>
     <div class="nav-header">
-        <!-- <div class="nav-items" v-if="langs.length">
-            <div v-for="lang in langs" v-bind:key="lang.code">
-                <div
-                    v-if="!lang.selected"
-                    v-on:click="$store.commit('changeLang', lang.code)"
-                    :title="lang.code"
-                    class="langCode"
-                >
-                    {{ lang.name }}
-                </div>
-            </div>
-        </div> -->
-
         <div class="icons">
             <a
                 href="https://t.me/salghusson"
@@ -58,7 +45,7 @@
 import store from '@/store';
 
 export default {
-    name: 'navheader',
+    name: 'Navheader',
     data: () => {
         return {
             reading: 'reading',

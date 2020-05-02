@@ -48,7 +48,7 @@ export default new Vuex.Store({
             state.flip = !state.flip;
         },
         changeLang(state, langCode) {
-            //console.log(langCode);
+            // console.log(langCode);
             langCode == 'a';
         },
     },

@@ -5,13 +5,7 @@ personal website v2. il y en a beaucoup comme ça, mais lui, c'est le mien.
 
 work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old website ([saleh.alghusson.com](https://saleh.alghusson.com)).
 
-## project setup
-```
-npm run serve
-npm run build
-```
-
-## technologies used (maybe the wording here?)
+## credit
 * [fort awesome](https://fortawesome.com)
 * [vi18n](https://github.com/kazupon/vue-i18n)
 * [theme change button](https://codepen.io/moso/pen/MxLwbE)

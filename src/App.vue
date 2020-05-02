@@ -8,10 +8,9 @@
         }"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
-        <TransitionPage class="main">
+        <TransitionPage>
             <Home></Home>
         </TransitionPage>
-        <Corner></Corner>
     </div>
 </template>
 
@@ -19,7 +18,6 @@
 // import NavHeader from '@/components/NavHeader';
 import TransitionPage from '@/components/TransitionPage';
 import Home from '@/components/Home';
-import Corner from '@/components/Corner';
 import store from '@/store';
 
 export default {
@@ -27,7 +25,6 @@ export default {
     components: {
         // NavHeader,
         TransitionPage,
-        Corner,
         Home,
     },
     methods: {
@@ -76,5 +73,7 @@ export default {
 
 <style lang="scss">
 @import 'assets/styles/global.scss';
+@import 'assets/styles/fonts.scss';
 @import 'assets/styles/themes.scss';
+@import 'assets/styles/bidi.scss';
 </style>

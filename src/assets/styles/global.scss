@@ -15,7 +15,6 @@ html.color-theme-in-transition *:after {
   transition-delay: 0;
 
 }
-
 html,
 body {
     height: 100%;
@@ -38,10 +37,7 @@ p {
 a {
     text-decoration: none;
 }
-.home-title {
-    font-weight: bold;
-    font-size: 1.6em;
-}
+
 .flip-prep {
     overflow: hidden;
     transition-property: transform;

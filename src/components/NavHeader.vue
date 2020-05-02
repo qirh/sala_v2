@@ -1,6 +1,6 @@
 <template>
     <div class="nav-header">
-        <div class="nav-items" v-if="langs.length">
+        <!-- <div class="nav-items" v-if="langs.length">
             <div v-for="lang in langs" v-bind:key="lang.code">
                 <div
                     v-if="!lang.selected"
@@ -11,7 +11,7 @@
                     {{ lang.name }}
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="icons">
             <a
@@ -51,14 +51,6 @@
                 <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
             </a>
         </div>
-        <br />
-        <div class="icons">
-            <div class="theme-toggle" v-on:click="$store.commit('toggleTheme')">
-                <div class="toggle">
-                    <div id="subtoggle" type="checkbox"></div>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -78,7 +70,4 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../assets/styles/navHeader.scss';
-//@import '../assets/themes.scss';  delete this?
-@import '../assets/styles/bidi.scss';
-@import '../assets/styles/toggleTheme.scss';
 </style>

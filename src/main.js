@@ -1,6 +1,5 @@
 import App from './App.vue';
 import Vue from 'vue';
-import router from './router';
 import store from './store';
 
 import VTooltip from 'v-tooltip';
@@ -46,7 +45,6 @@ const i18n = new VueI18n({
 });
 
 new Vue({
-    router,
     store,
     i18n,
     render: (h) => h(App),

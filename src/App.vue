@@ -7,26 +7,28 @@
             'flip-actually': $store.state.flip,
         }"
     >
-        <NavHeader class="links column"></NavHeader>
-        <TransitionPage class="content column">
-            <router-view></router-view>
+        <!-- <NavHeader class="links column"></NavHeader> -->
+        <TransitionPage class="main">
+            <Home></Home>
         </TransitionPage>
         <Corner></Corner>
     </div>
 </template>
 
 <script>
-import NavHeader from '@/components/NavHeader';
+// import NavHeader from '@/components/NavHeader';
 import TransitionPage from '@/components/TransitionPage';
+import Home from '@/components/Home';
 import Corner from '@/components/Corner';
 import store from '@/store';
 
 export default {
     name: 'App',
     components: {
-        NavHeader,
+        // NavHeader,
         TransitionPage,
         Corner,
+        Home,
     },
     methods: {
         applyTheme: () => {

@@ -39,7 +39,7 @@ export default {
                 document.body.classList.remove('nps-font');
                 document.body.classList.add('regular-font');
             }
-        }
+        },
     },
     created() {
         this.applyTheme();

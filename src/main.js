@@ -7,6 +7,7 @@ import './registerServiceWorker';
 
 import VueI18n from 'vue-i18n';
 import en from './locales/en.json';
+import es from './locales/es.json';
 import ar from './locales/ar.json';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
@@ -37,6 +38,7 @@ Vue.use(VueI18n);
 const defaultLocale = 'en';
 const languages = {
     en: en,
+    es: es,
     ar: ar,
 };
 const i18n = new VueI18n({

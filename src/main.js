@@ -5,10 +5,7 @@ import store from './store';
 import VTooltip from 'v-tooltip';
 import './registerServiceWorker';
 
-import VueI18n from 'vue-i18n';
-import en from './locales/en.json';
-import es from './locales/es.json';
-import ar from './locales/ar.json';
+import {i18n} from './i18n.js';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -33,18 +30,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 Vue.use(VTooltip);
-Vue.use(VueI18n);
-
-const defaultLocale = 'en';
-const languages = {
-    en: en,
-    es: es,
-    ar: ar,
-};
-const i18n = new VueI18n({
-    locale: defaultLocale,
-    messages: languages,
-});
 
 new Vue({
     store,

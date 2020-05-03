@@ -25,7 +25,9 @@ export default {
     name: 'Corner',
     computed: {
         placement() {
-            return store.state.langs.filter(lang => lang.code == store.state.currentLang).placement;
+            return store.state.langs.filter(
+                (lang) => lang.code == store.state.currentLang,
+            ).placement;
         },
     },
     data: () => {

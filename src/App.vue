@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import {langs} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
 
@@ -45,7 +46,7 @@ export default {
                 for (let i = 0; i < navigator.languages.length; i++) {
                     const lang = navigator.languages[i];
                     let twoLetterChar = lang.substring(0, 2);
-                    let supportedLang = store.state.langs.find(
+                    let supportedLang = langs.find(
                         (l) => l.code === twoLetterChar,
                     );
                     if (supportedLang) {

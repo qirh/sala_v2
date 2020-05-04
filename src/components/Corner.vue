@@ -19,13 +19,14 @@
 </template>
 
 <script>
+import {langs} from '@/consts';
 import store from '@/store';
 
 export default {
     name: 'Corner',
     computed: {
         placement() {
-            return store.state.langs.find(
+            return langs.find(
                 (lang) => lang.code == store.state.currentLang,
             ).placement;
         },

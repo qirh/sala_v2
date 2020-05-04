@@ -15,26 +15,6 @@ export default new Vuex.Store({
         flip: false,
         npsFont: false,
         currentLang: '',
-        langs: [
-            {
-                code: 'en',
-                name: 'English',
-                placement: 'left',
-                direction: 'ltr',
-            },
-            {
-                code: 'es',
-                name: 'Español',
-                placement: 'left',
-                direction: 'ltr',
-            },
-            {
-                code: 'ar',
-                name: 'عربي',
-                placement: 'right',
-                direction: 'rtl',
-            },
-        ],
     },
     mutations: {
         toggleTheme(state) {

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import {langs} from '@/consts';
 import store from '@/store';
 
 export default {
@@ -24,7 +25,7 @@ export default {
             return store.state.currentLang;
         },
         langs() {
-            return store.state.langs;
+            return langs;
         },
     },
     methods: {

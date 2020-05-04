@@ -50,7 +50,6 @@ export default {
         return {
             reading: 'reading',
             writing: 'writing',
-            langs: store.state.langs,
         };
     },
 };

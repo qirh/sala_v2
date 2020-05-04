@@ -1,3 +1,7 @@
 module.exports = {
-  pluginOptions: {},
+  pluginOptions: {
+    i18n: {
+      enableInSFC: true
+    },
+  },
 }

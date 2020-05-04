@@ -25,7 +25,7 @@ export default {
     name: 'Corner',
     computed: {
         placement() {
-            return store.state.langs.filter(
+            return store.state.langs.find(
                 (lang) => lang.code == store.state.currentLang,
             ).placement;
         },

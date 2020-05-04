@@ -58,7 +58,6 @@ export default {
         setCurrentLang: function() {
             if (!store.state.currentLang) {
                 let browserLang = this.getBrowserLang();
-                console.log('browserLang', browserLang);
                 if (!browserLang) {
                     browserLang = 'en';
                 }

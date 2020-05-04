@@ -3,7 +3,7 @@
         <div v-for="lang in langs" v-bind:key="lang.code">
             <div
                 v-if="lang.code != currentLang"
-                v-on:click="changeLanguage(lang.code)"
+                v-on:click="changeLang(lang.code)"
                 :title="lang.code"
                 class="lang-item"
             >
@@ -28,7 +28,7 @@ export default {
         },
     },
     methods: {
-        changeLanguage(langCode) {
+        changeLang(langCode) {
             store.commit('changeLang', langCode);
             this.$i18n.locale = langCode;
         },

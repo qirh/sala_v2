@@ -40,10 +40,32 @@ export default {
                 document.body.classList.add('regular-font');
             }
         },
+        getBrowserLang: function() {
+            if (navigator.languages) {
+                for (let i = 0; i < navigator.languages.length; i++) {
+                    const lang = navigator.languages[i];
+                    let twoLetterChar = lang.substring(0, 2);
+                    let supportedLang = store.state.langs.find(
+                        (l) => l.code === twoLetterChar,
+                    );
+                    if (supportedLang) {
+                        return twoLetterChar;
+                    }
+                }
+            }
+            return null;
+        },
+        setCurrentLang: function() {
+            let browserLang = this.getBrowserLang();
+            if (browserLang) {
+                store.commit('changeLang', browserLang);
+            }
+        },
     },
     created() {
         this.applyTheme();
         this.applyNPS();
+        this.setCurrentLang();
         this.$i18n.locale = store.state.currentLang;
         store.watch(() => {
             this.applyTheme();

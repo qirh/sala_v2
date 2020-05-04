@@ -60,7 +60,7 @@ export default {
             if (!store.state.currentLang) {
                 let browserLang = this.getBrowserLang();
                 if (!browserLang) {
-                    browserLang = 'en';
+                    browserLang = 'en'; //default language
                 }
                 store.commit('changeLang', browserLang);
             }

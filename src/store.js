@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
+import {langs} from '@/consts';
 
 Vue.use(Vuex);
 
@@ -15,6 +16,8 @@ export default new Vuex.Store({
         flip: false,
         npsFont: false,
         currentLang: '',
+        currentPlacement: '',
+        currentDirection: '',
     },
     mutations: {
         toggleTheme(state) {
@@ -31,7 +34,10 @@ export default new Vuex.Store({
             state.flip = !state.flip;
         },
         changeLang(state, langCode) {
-            state.currentLang = langCode;
+            const langObject = langs.find((lang) => lang.code === langCode);
+            state.currentLang = langObject.code;
+            state.currentPlacement = langObject.placement;
+            state.currentDirection = langObject.direction;
         },
     },
     plugins: [vuexPersist.plugin],

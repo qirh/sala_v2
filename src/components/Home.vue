@@ -7,7 +7,7 @@
         <div class="home-settings">
             <Corner></Corner>
             <ThemeToggler></ThemeToggler>
-            <LanguageSwitcher></LanguageSwitcher>
+            <LangSwitcher></LangSwitcher>
         </div>
     </div>
 </template>
@@ -15,14 +15,14 @@
 <script>
 import Corner from '@/components/Corner';
 import ThemeToggler from '@/components/ThemeToggler';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+import LangSwitcher from '@/components/LangSwitcher';
 
 export default {
     name: 'Home',
     components: {
         Corner,
         ThemeToggler,
-        LanguageSwitcher,
+        LangSwitcher,
     },
     data: () => {
         return {

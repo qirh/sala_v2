@@ -17,7 +17,7 @@
 import store from '@/store';
 
 export default {
-    name: 'LanguageSwitcher',
+    name: 'LangSwitcher',
 
     computed: {
         currentLang() {
@@ -36,5 +36,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/styles/LanguageSwitcher.scss';
+@import '../assets/styles/LangSwitcher.scss';
 </style>

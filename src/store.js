@@ -14,7 +14,7 @@ export default new Vuex.Store({
         theme: 'light',
         flip: false,
         npsFont: false,
-        currentLang: 'en',
+        currentLang: '',
         langs: [
             {
                 code: 'en',

@@ -56,8 +56,8 @@ export default {
             return null;
         },
         setCurrentLang: function() {
-            let browserLang = this.getBrowserLang();
-            if (browserLang) {
+            if (!store.state.currentLang) {
+                let browserLang = this.getBrowserLang();
                 store.commit('changeLang', browserLang);
             }
         },

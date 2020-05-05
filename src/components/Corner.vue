@@ -30,7 +30,7 @@ export default {
         },
     },
     watch: {
-        placement(newPlacement, oldPlacement) {
+        placement() {
             this.index++;
         },
     },

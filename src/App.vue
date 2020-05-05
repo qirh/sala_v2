@@ -70,9 +70,14 @@ export default {
         updateLangStuff: function(langCode) {
             store.commit('changeLang', langCode);
             this.$i18n.locale = store.state.currentLang;
-            document.documentElement.setAttribute('lang', store.state.currentLang);
-            document.documentElement.setAttribute('dir', store.state.currentDirection);
-
+            document.documentElement.setAttribute(
+                'lang',
+                store.state.currentLang,
+            );
+            document.documentElement.setAttribute(
+                'dir',
+                store.state.currentDirection,
+            );
         },
     },
     created() {

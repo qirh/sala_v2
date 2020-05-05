@@ -7,7 +7,9 @@
         <div class="home-settings">
             <Corner></Corner>
             <ThemeToggler></ThemeToggler>
-            <LangSwitcher @updateLangFromSwitcher="updateLangFromHome"></LangSwitcher>
+            <LangSwitcher
+                @updateLangFromSwitcher="updateLangFromHome"
+            ></LangSwitcher>
         </div>
     </div>
 </template>

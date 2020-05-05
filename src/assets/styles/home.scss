@@ -3,11 +3,21 @@
 }
 .home-settings {
     float: right;
+
     padding-top: 1vw;
-    text-align: center;
+    border: solid 1px black;
 }
 
 .home-title {
     font-weight: bold;
     font-size: 1.6em;
+}
+
+.right-to-left {
+    .home-text {
+        float: right;
+    }
+    .home-settings {
+        float: left;
+    }
 }

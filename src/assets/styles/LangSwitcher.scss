@@ -1,19 +1,19 @@
 .lang-item {
-  opacity: 0.6;
-  cursor: pointer;
-  list-style-type: none;
-  height: 30px;
-  &:hover {
-      opacity: 0.8;
-  }
+	opacity: 0.6;
+	cursor: pointer;
+	list-style-type: none;
+	height: 30px;
+	&:hover {
+		opacity: 0.8;
+	}
 }
 .selected-lang {
-  cursor: default;
-  opacity: 0.8;
-  text-decoration: underline;
+	cursor: default;
+	opacity: 0.8;
+	text-decoration: underline;
 }
 
 .langs-list {
-  margin-top: 15px;
-  flex-wrap: nowrap;
+	margin-top: 15px;
+	flex-wrap: nowrap;
 }

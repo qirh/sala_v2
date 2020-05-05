@@ -1,11 +1,12 @@
 <template>
     <div
+        :key="index"
         class="corner"
         v-tooltip="{
             content: $t(textTooltip),
             classes: ['tooltip', 'info'],
-            placement: placement,
-            offset: 20,
+            placement,
+            offset: 10,
             delay: {
                 show: 500,
                 hide: 300,
@@ -28,8 +29,14 @@ export default {
             return store.state.currentPlacement;
         },
     },
+    watch: {
+        placement(newPlacement, oldPlacement) {
+            this.index++;
+        },
+    },
     data: () => {
         return {
+            index: 1,
             textTooltip: 'tooltip',
         };
     },

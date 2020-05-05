@@ -57,14 +57,17 @@ a {
     align-items: normal;
     position: relative;
 }
-.column {
-    box-sizing: border-box;
-    position: relative;
-    padding-left: 25px;
-    padding-right: 25px;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: 0%;
-    right: auto;
-    left: auto;
+.right-to-left {
+    direction: rtl;
 }
+// .column {
+//     box-sizing: border-box;
+//     position: relative;
+//     padding-left: 25px;
+//     padding-right: 25px;
+//     width: 100%;
+//     margin-left: 0%;
+//     margin-right: 0%;
+//     right: auto;
+//     left: auto;
+// }

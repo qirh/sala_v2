@@ -1,6 +1,6 @@
 <template>
     <div v-if="langs.length" class="langs-list">
-        <div v-for="lang in langs" v-bind:key="lang.code">
+        <div v-for="lang in langs" :key="lang.code">
             <div
                 v-on:click="changeLang(lang.code)"
                 :title="lang.code"

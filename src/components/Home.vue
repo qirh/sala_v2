@@ -7,7 +7,7 @@
         <div class="home-settings">
             <Corner></Corner>
             <ThemeToggler></ThemeToggler>
-            <LangSwitcher></LangSwitcher>
+            <LangSwitcher @updateLangFromSwitcher="updateLangFromHome"></LangSwitcher>
         </div>
     </div>
 </template>
@@ -29,6 +29,11 @@ export default {
             homeTitle: 'homeTitle',
             homeSubtitle: 'homeSubtitle',
         };
+    },
+    methods: {
+        updateLangFromHome(langCode) {
+            this.$emit('updateLangFromHome', langCode);
+        },
     },
 };
 </script>

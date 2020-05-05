@@ -30,8 +30,7 @@ export default {
     },
     methods: {
         changeLang(langCode) {
-            store.commit('changeLang', langCode);
-            this.$i18n.locale = langCode;
+            this.$emit('updateLangFromSwitcher', langCode);
         },
     },
 };

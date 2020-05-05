@@ -8,7 +8,7 @@
         }"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
-        <Home></Home>
+        <Home @updateLangFromHome="updateLangStuff"></Home>
     </div>
 </template>
 
@@ -56,21 +56,27 @@ export default {
             }
             return null;
         },
-        setCurrentLang: function() {
+        getLangOnInit: function() {
             if (!store.state.currentLang) {
                 let browserLang = this.getBrowserLang();
                 if (!browserLang) {
                     browserLang = 'en'; //default language
                 }
-                store.commit('changeLang', browserLang);
+                return browserLang;
             }
+            return store.state.currentLang;
+        },
+        updateLangStuff: function(langCode) {
+            store.commit('changeLang', langCode);
+            this.$i18n.locale = langCode;
+            document.documentElement.setAttribute('lang', langCode);
         },
     },
     created() {
         this.applyTheme();
         this.applyNPS();
-        this.setCurrentLang();
-        this.$i18n.locale = store.state.currentLang;
+        const currentLang = this.getLangOnInit();
+        this.updateLangStuff(currentLang);
         store.watch(() => {
             this.applyTheme();
             this.applyNPS();

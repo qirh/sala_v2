@@ -8,9 +8,11 @@
             :disabled="$store.state.currentLang === lang.code"
             class="lang-item"
             :class="{
-                    'selected-lang': $store.state.currentLang === lang.code,
-                }"
-        >{{lang.name}}</div>
+                'selected-lang': $store.state.currentLang === lang.code,
+            }"
+        >
+            {{ lang.name }}
+        </div>
     </div>
 </template>
 

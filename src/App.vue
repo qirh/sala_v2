@@ -5,6 +5,7 @@
         class="flip-prep cuerpo"
         :class="{
             'flip-actually': $store.state.flip,
+            'right-to-left': $store.state.currentDirection === 'rtl',
         }"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
@@ -68,8 +69,10 @@ export default {
         },
         updateLangStuff: function(langCode) {
             store.commit('changeLang', langCode);
-            this.$i18n.locale = langCode;
-            document.documentElement.setAttribute('lang', langCode);
+            this.$i18n.locale = store.state.currentLang;
+            document.documentElement.setAttribute('lang', store.state.currentLang);
+            document.documentElement.setAttribute('dir', store.state.currentDirection);
+
         },
     },
     created() {

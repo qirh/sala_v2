@@ -69,7 +69,11 @@ export default {
         },
         updateLangStuff: function(langCode) {
             store.commit('changeLang', langCode);
+
+            //change locale
             this.$i18n.locale = store.state.currentLang;
+
+            //change html lang and dir
             document.documentElement.setAttribute(
                 'lang',
                 store.state.currentLang,
@@ -78,6 +82,26 @@ export default {
                 'dir',
                 store.state.currentDirection,
             );
+
+            //change html title
+            document.title = store.state.currentTitle;
+
+            //change html icons
+            let apple_link = document.querySelector(
+                "link[rel*='apple-touch-icon']",
+            );
+            apple_link.href = `/assets/${
+                store.state.currentLang
+            }/icon-180x180.png`;
+            document.getElementsByTagName('head')[0].appendChild(apple_link);
+            let shortcut_link = document.querySelector(
+                "link[rel*='shortcut icon']",
+            );
+            shortcut_link.href = `/assets/${
+                store.state.currentLang
+            }/icon-192x192.png`;
+
+            document.getElementsByTagName('head')[0].appendChild(shortcut_link);
         },
     },
     created() {

@@ -18,6 +18,7 @@ export default new Vuex.Store({
         currentLang: '',
         currentPlacement: '',
         currentDirection: '',
+        currentTitle: '',
     },
     mutations: {
         toggleTheme(state) {
@@ -38,6 +39,7 @@ export default new Vuex.Store({
             state.currentLang = langObject.code;
             state.currentPlacement = langObject.placement;
             state.currentDirection = langObject.direction;
+            state.currentTitle = langObject.title;
         },
     },
     plugins: [vuexPersist.plugin],

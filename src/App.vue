@@ -93,15 +93,13 @@ export default {
             apple_link.href = `/assets/${
                 store.state.currentLang
             }/icon-180x180.png`;
-            document.getElementsByTagName('head')[0].appendChild(apple_link);
+
             let shortcut_link = document.querySelector(
                 "link[rel*='shortcut icon']",
             );
             shortcut_link.href = `/assets/${
                 store.state.currentLang
             }/icon-192x192.png`;
-
-            document.getElementsByTagName('head')[0].appendChild(shortcut_link);
         },
     },
     created() {

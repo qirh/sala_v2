@@ -1,9 +1,10 @@
 {
-  "name": "sala",
-  "short_name": "sala",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
+
+  "name": "sala",
+  "short_name": "sala",
   "icons": [
     {
      "src": "./assets/icon_en/icon-192x192",

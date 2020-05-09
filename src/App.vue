@@ -5,7 +5,7 @@
         class="flip-prep cuerpo"
         :class="{
             'flip-actually': $store.state.flip,
-            'right-to-left': $store.state.currentDirection === 'rtl',
+            'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {langs} from '@/consts';
+import {langs, defaultLangCode} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
 
@@ -57,56 +57,66 @@ export default {
             }
             return null;
         },
-        getLangOnInit: function() {
-            if (!store.state.currentLang) {
-                let browserLang = this.getBrowserLang();
-                if (!browserLang) {
-                    browserLang = 'en'; //default language
-                }
-                return browserLang;
+        getLangObjectFromList(langCode) {
+            console.log('getLangObjectFromList', langCode)
+            const langObject = langs.find((lang) => lang.code === langCode);
+            if (langObject) {
+                console.log('langObject', langObject)
+                return langObject;
             }
-            return store.state.currentLang;
+            return this.getLangObjectFromList(defaultLangCode);
         },
-        updateLangStuff: function(langCode) {
-            store.commit('changeLang', langCode);
+        getLangCodeOnInit: function() {
+            console.log('000', store.state.currentLang);
+            if (!store.state.currentLang) {
+                console.log('111', this.getBrowserLang());
+                return this.getBrowserLang();
+            }
+            return store.state.currentLang.code;
+        },
+        updateLangStuff: function(langCode = null) {
+            if (!langCode) {
+                langCode = this.getLangCodeOnInit();
+            }
+            const langObject = this.getLangObjectFromList(langCode);
+            store.commit('changeLang', langObject);
 
             //change locale
-            this.$i18n.locale = store.state.currentLang;
+            this.$i18n.locale = store.state.currentLang.code;
 
             //change html lang and dir
             document.documentElement.setAttribute(
                 'lang',
-                store.state.currentLang,
+                store.state.currentLang.code,
             );
             document.documentElement.setAttribute(
                 'dir',
-                store.state.currentDirection,
+                store.state.currentLang.direction,
             );
 
             //change html title
-            document.title = store.state.currentTitle;
+            document.title = store.state.currentLang.title;
 
             //change html icons
             let apple_link = document.querySelector(
                 "link[rel*='apple-touch-icon']",
             );
             apple_link.href = `/assets/${
-                store.state.currentLang
+                store.state.currentLang.code
             }/icon-180x180.png`;
 
             let shortcut_link = document.querySelector(
                 "link[rel*='shortcut icon']",
             );
             shortcut_link.href = `/assets/${
-                store.state.currentLang
+                store.state.currentLang.code
             }/icon-192x192.png`;
         },
     },
     created() {
         this.applyTheme();
         this.applyNPS();
-        const currentLang = this.getLangOnInit();
-        this.updateLangStuff(currentLang);
+        this.updateLangStuff();
         store.watch(() => {
             this.applyTheme();
             this.applyNPS();

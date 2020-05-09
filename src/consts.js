@@ -1,4 +1,4 @@
-export const langs = [
+const langs = [
     {
         code: 'en',
         name: 'English',
@@ -21,3 +21,7 @@ export const langs = [
         title: 'صاله',
     },
 ];
+
+const defaultLangCode = 'en';
+
+export {langs, defaultLangCode};

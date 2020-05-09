@@ -26,7 +26,7 @@ export default {
     name: 'Corner',
     computed: {
         placement() {
-            return store.state.currentPlacement;
+            return store.state.currentLang.placement;
         },
     },
     watch: {

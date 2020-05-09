@@ -5,10 +5,10 @@
             :key="lang.code"
             v-on:click="changeLang(lang.code)"
             :title="lang.code"
-            :disabled="$store.state.currentLang === lang.code"
+            :disabled="$store.state.currentLang.code === lang.code"
             class="lang-item"
             :class="{
-                'selected-lang': $store.state.currentLang === lang.code,
+                'selected-lang': $store.state.currentLang.code === lang.code,
             }"
         >
             {{ lang.name }}
@@ -18,15 +18,11 @@
 
 <script>
 import {langs} from '@/consts';
-import store from '@/store';
 
 export default {
     name: 'LangSwitcher',
 
     computed: {
-        currentLang() {
-            return store.state.currentLang;
-        },
         langs() {
             return langs;
         },

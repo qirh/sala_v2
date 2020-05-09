@@ -83,6 +83,9 @@ export default {
             const oldLangObject = store.state.currentLang;
             const newLangObject = this.getLangObjectFromList(langCode);
 
+            if (oldLangObject != newLangObject) {
+                store.commit('changeLang', newLangObject);
+            }
             //change locale
             this.$i18n.locale = newLangObject.code;
 
@@ -114,16 +117,13 @@ export default {
                 store.state.currentLang.code
             }/icon-192x192.png`;
 
-            // if new lang
-            if (oldLangObject.code === newLangObject.code) {
-                return;
+            // nothing in storage or new lang
+            if (!oldLangObject || oldLangObject.code != newLangObject.code) {
+                //change fonts
+                const oldIndex = store.state.fontIndex;
+                store.commit('changeFontIndex', 0);
+                this.applyNewFont(oldLangObject, oldIndex);
             }
-            const oldIndex = store.state.fontIndex;
-            store.commit('changeLang', newLangObject);
-
-            //change fonts
-            store.commit('changeFontIndex', 0);
-            this.applyNewFont(oldLangObject, oldIndex);
         },
     },
     created() {

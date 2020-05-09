@@ -5,6 +5,8 @@ const langs = [
         placement: 'left',
         direction: 'ltr',
         title: 'sala',
+        font: 'latin-font',
+        specialFont: 'nps-font',
     },
     {
         code: 'es',
@@ -12,6 +14,8 @@ const langs = [
         placement: 'left',
         direction: 'ltr',
         title: 'sàla',
+        font: 'latin-font',
+        specialFont: 'nps-font',
     },
     {
         code: 'ar',
@@ -19,6 +23,7 @@ const langs = [
         placement: 'right',
         direction: 'rtl',
         title: 'صاله',
+        font: 'arabic-font',
     },
 ];
 

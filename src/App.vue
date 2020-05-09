@@ -33,13 +33,22 @@ export default {
                 document.body.classList.add('light-theme');
             }
         },
-        applyNPS: () => {
-            if (store.state.npsFont) {
-                document.body.classList.add('nps-font');
-                document.body.classList.remove('regular-font');
+        applySpecialFont: () => {
+            console.log('applySpecialFont0', store.state.currentLang.specialFont);
+            if (!store.state.currentLang.specialFont) {
+                return;
+            }
+            console.log('applySpecialFont1', store.state.specialFontOn);
+            if (store.state.specialFontOn) {
+                document.body.classList.add(
+                    store.state.currentLang.specialFont,
+                );
+                document.body.classList.remove(store.state.currentLang.font);
             } else {
-                document.body.classList.remove('nps-font');
-                document.body.classList.add('regular-font');
+                document.body.classList.remove(
+                    store.state.currentLang.specialFont,
+                );
+                document.body.classList.add(store.state.currentLang.font);
             }
         },
         getBrowserLang: function() {
@@ -93,6 +102,9 @@ export default {
             //change html title
             document.title = store.state.currentLang.title;
 
+            //change fonts
+            store.commit('toggleSpecialFont', false);
+
             //change html icons
             let apple_link = document.querySelector(
                 "link[rel*='apple-touch-icon']",
@@ -111,11 +123,11 @@ export default {
     },
     created() {
         this.applyTheme();
-        this.applyNPS();
+        this.applySpecialFont();
         this.updateLangStuff();
         store.watch(() => {
             this.applyTheme();
-            this.applyNPS();
+            this.applySpecialFont();
         });
         // eslint-disable-next-line
         cheet('f', () => {
@@ -128,7 +140,7 @@ export default {
         });
         // eslint-disable-next-line
         cheet('n', () => {
-            store.commit('toggleNPS');
+            store.commit('toggleSpecialFont');
         });
     },
 };

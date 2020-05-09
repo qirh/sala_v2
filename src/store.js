@@ -13,7 +13,7 @@ export default new Vuex.Store({
     state: {
         theme: 'light',
         flip: false,
-        npsFont: false,
+        specialFontOn: false,
         currentLang: null,
     },
     mutations: {
@@ -24,8 +24,12 @@ export default new Vuex.Store({
                 state.theme = 'light';
             }
         },
-        toggleNPS(state) {
-            state.npsFont = !state.npsFont;
+        toggleSpecialFont(state, newSpecialFontState) {
+            if (newSpecialFontState === undefined) {
+                state.specialFontOn = !state.specialFontOn;
+            } else {
+                state.specialFontOn = newSpecialFontState;
+            }
         },
         toggleFlip(state) {
             state.flip = !state.flip;

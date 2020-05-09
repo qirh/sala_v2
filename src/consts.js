@@ -5,7 +5,7 @@ const langs = [
         placement: 'left',
         direction: 'ltr',
         title: 'sala',
-        fonts: ['latin-font', 'nps-font', 'nps-heavy-font'],
+        fonts: ['font-rubik', 'font-inconsolata', 'font-nps'],
     },
     {
         code: 'es',
@@ -13,7 +13,7 @@ const langs = [
         placement: 'left',
         direction: 'ltr',
         title: 'sàla',
-        fonts: ['latin-font', 'nps-font', 'nps-heavy-font'],
+        fonts: ['font-rubik', 'font-inconsolata', 'font-nps'],
     },
     {
         code: 'ar',
@@ -21,7 +21,7 @@ const langs = [
         placement: 'right',
         direction: 'rtl',
         title: 'صاله',
-        fonts: ['amiri-font', 'kfgqpc-font', 'geeza-font'],
+        fonts: ['font-amiri', 'font-kfgqpc', 'font-geeza', 'font-nps'],
     },
 ];
 

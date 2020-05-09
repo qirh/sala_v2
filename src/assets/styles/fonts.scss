@@ -1,8 +1,6 @@
 @font-face {
     font-family: 'inconsolata';
     src: url('/assets/fonts/inconsolata.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
 }
 @font-face {
     font-family: 'rubik';
@@ -40,21 +38,21 @@
     font-weight: normal;
     font-style: normal;
 }
-.amiri-font {
+.font-amiri {
     font-family: 'amiri', sans-serif;
 }
-.kfgqpc-font {
+.font-kfgqpc {
     font-family: 'kfgqpc', sans-serif;
 }
-.geeza-font {
+.font-geeza {
     font-family: 'geeza', sans-serif;
 }
-.latin-font {
-    font-family: 'inconsolata', 'rubik', -apple-system, sans-serif;
+.font-rubik {
+    font-family: 'rubik', -apple-system, sans-serif;
 }
-.nps-font {
-    font-family: 'nps', 'Rubik', -apple-system, sans-serif;
+.font-inconsolata {
+    font-family: 'inconsolata', -apple-system, sans-serif;
 }
-.nps-heavy-font {
-    font-family: 'nps-heavy', 'Rubik', -apple-system, sans-serif;
+.font-nps {
+    font-family: 'nps', -apple-system, sans-serif;
 }

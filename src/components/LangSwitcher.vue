@@ -7,9 +7,13 @@
             :title="lang.code"
             :disabled="$store.state.currentLang.code === lang.code"
             class="lang-item"
-            :class="{
-                'selected-lang': $store.state.currentLang.code === lang.code,
-            }"
+            :class="[
+                `${lang.fonts[0]}`,
+                {
+                    'selected-lang':
+                        $store.state.currentLang.code === lang.code,
+                },
+            ]"
         >
             {{ lang.name }}
         </div>

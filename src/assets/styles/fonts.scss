@@ -5,7 +5,7 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'nps';
+    font-family: 'nps-heavy';
     src: url('/assets/fonts/nps_heavy.otf') format('opentype');
     font-weight: bold;
     font-style: bold;
@@ -28,12 +28,21 @@
     font-weight: normal;
     font-style: normal;
 }
-.arabic-font {
-    font-family: 'kfgqpc', 'geeza', 'amiri', sans-serif;
+.amiri-font {
+    font-family: 'amiri', sans-serif;
+}
+.kfgqpc-font {
+    font-family: 'kfgqpc', sans-serif;
+}
+.geeza-font {
+    font-family: 'geeza', sans-serif;
 }
 .latin-font {
     font-family: 'Inconsolata', 'Rubik', -apple-system, sans-serif;
 }
 .nps-font {
-    font-family: 'nps';
+    font-family: 'nps', 'Rubik', -apple-system, sans-serif;
+}
+.nps-heavy-font {
+    font-family: 'nps-heavy', 'Rubik', -apple-system, sans-serif;
 }

@@ -33,29 +33,20 @@ export default {
                 document.body.classList.add('light-theme');
             }
         },
-        applySpecialFont: () => {
-            if (!store.state.currentLang.specialFont) {
+        applyNewFont: (oldLangObject = undefined, oldIndex = undefined) => {
+            if (!store.state.currentLang) {
                 return;
             }
-            if (store.state.specialFontOn) {
-                document.body.classList.add(
-                    store.state.currentLang.specialFont,
-                );
-                document.body.classList.remove(store.state.currentLang.font);
-            } else {
+            if (oldLangObject!=undefined && oldIndex!=undefined) {
+                document.body.classList.remove(oldLangObject.fonts[oldIndex]);
+            } else if (oldLangObject==undefined && oldIndex!=undefined) {
                 document.body.classList.remove(
-                    store.state.currentLang.specialFont,
+                    store.state.currentLang.fonts[oldIndex],
                 );
-                document.body.classList.add(store.state.currentLang.font);
             }
-        },
-        changeFontToNewLanguage: (oldLangObject) => {
-            if (store.state.specialFontOn) {
-                document.body.classList.remove(oldLangObject.specialFont);
-            } else {
-                document.body.classList.remove(oldLangObject.font);
-            }
-            document.body.classList.add(store.state.currentLang.font);
+            document.body.classList.add(
+                store.state.currentLang.fonts[store.state.fontIndex],
+            );
         },
         getBrowserLang: function() {
             if (navigator.languages) {
@@ -70,7 +61,7 @@ export default {
                     }
                 }
             }
-            return null;
+            return undefined;
         },
         getLangObjectFromList(langCode) {
             const langObject = langs.find((lang) => lang.code === langCode);
@@ -85,16 +76,15 @@ export default {
             }
             return store.state.currentLang.code;
         },
-        updateLangStuff: function(langCode = null) {
+        updateLangStuff: function(langCode = undefined) {
             if (!langCode) {
                 langCode = this.getLangCodeOnInit();
             }
             const oldLangObject = store.state.currentLang;
             const newLangObject = this.getLangObjectFromList(langCode);
-            store.commit('changeLang', newLangObject);
 
             //change locale
-            this.$i18n.locale = store.state.currentLang.code;
+            this.$i18n.locale = newLangObject.code;
 
             //change html lang and dir
             document.documentElement.setAttribute(
@@ -108,10 +98,6 @@ export default {
 
             //change html title
             document.title = store.state.currentLang.title;
-
-            //change fonts
-            this.changeFontToNewLanguage(oldLangObject);
-            store.commit('toggleSpecialFont', false);
 
             //change html icons
             let apple_link = document.querySelector(
@@ -127,16 +113,42 @@ export default {
             shortcut_link.href = `/assets/${
                 store.state.currentLang.code
             }/icon-192x192.png`;
+
+            // if new lang
+            if (oldLangObject.code === newLangObject.code) {
+                return;
+            }
+            const oldIndex = store.state.fontIndex;
+            store.commit('changeLang', newLangObject);
+
+            //change fonts
+            store.commit('changeFontIndex', 0);
+            this.applyNewFont(oldLangObject, oldIndex);
         },
     },
     created() {
         this.applyTheme();
-        this.applySpecialFont();
+        this.applyNewFont();
         this.updateLangStuff();
-        store.watch(() => {
-            this.applyTheme();
-            this.applySpecialFont();
-        });
+
+        store.watch(
+            () => {
+                return this.$store.state.theme; // could also put a Getter here
+            },
+            () => {
+                this.applyTheme();
+            },
+        );
+
+        store.watch(
+            () => {
+                return this.$store.state.fontIndex; // could also put a Getter here
+            },
+            (newValue, oldValue) => {
+                this.applyNewFont(undefined, oldValue);
+            },
+        );
+
         // eslint-disable-next-line
         cheet('f', () => {
             store.commit('toggleFlip');
@@ -148,7 +160,10 @@ export default {
         });
         // eslint-disable-next-line
         cheet('n', () => {
-            store.commit('toggleSpecialFont');
+            const newFontIndex =
+                (store.state.fontIndex + 1) %
+                store.state.currentLang.fonts.length;
+            store.commit('changeFontIndex', newFontIndex);
         });
     },
 };

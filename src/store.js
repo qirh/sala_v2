@@ -13,7 +13,7 @@ export default new Vuex.Store({
     state: {
         theme: 'light',
         flip: false,
-        specialFontOn: false,
+        fontIndex: 0,
         currentLang: null,
     },
     mutations: {
@@ -24,18 +24,14 @@ export default new Vuex.Store({
                 state.theme = 'light';
             }
         },
-        toggleSpecialFont(state, newSpecialFontState) {
-            if (newSpecialFontState === undefined) {
-                state.specialFontOn = !state.specialFontOn;
-            } else {
-                state.specialFontOn = newSpecialFontState;
-            }
-        },
         toggleFlip(state) {
             state.flip = !state.flip;
         },
         changeLang(state, langObject) {
             state.currentLang = langObject;
+        },
+        changeFontIndex(state, newFontIndex) {
+            state.fontIndex = newFontIndex;
         },
     },
     plugins: [vuexPersist.plugin],

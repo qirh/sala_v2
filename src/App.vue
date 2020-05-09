@@ -37,9 +37,9 @@ export default {
             if (!store.state.currentLang) {
                 return;
             }
-            if (oldLangObject!=undefined && oldIndex!=undefined) {
+            if (oldLangObject != undefined && oldIndex != undefined) {
                 document.body.classList.remove(oldLangObject.fonts[oldIndex]);
-            } else if (oldLangObject==undefined && oldIndex!=undefined) {
+            } else if (oldLangObject == undefined && oldIndex != undefined) {
                 document.body.classList.remove(
                     store.state.currentLang.fonts[oldIndex],
                 );

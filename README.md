@@ -11,7 +11,11 @@ work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old we
 * [theme change button](https://codepen.io/moso/pen/MxLwbE)
 * [theme transition](https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a) & [another source](https://codepen.io/jaredpdesigns/pen/dXkBJZ)
 * [favicon generator](https://ionos.com/tools/favicon-generator)
-* [national park font](https://nationalparktypeface.com)
+
+### fonts
+* [google fonts](https://fonts.google.com/)
+* [arabic fonts](https://arabicfonts.net)
+* [national park ](https://nationalparktypeface.com)
 
 
 licensed with [WTFPL](http://www.wtfpl.net).

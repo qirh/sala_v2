@@ -34,11 +34,9 @@ export default {
             }
         },
         applySpecialFont: () => {
-            console.log('applySpecialFont0', store.state.currentLang.specialFont);
             if (!store.state.currentLang.specialFont) {
                 return;
             }
-            console.log('applySpecialFont1', store.state.specialFontOn);
             if (store.state.specialFontOn) {
                 document.body.classList.add(
                     store.state.currentLang.specialFont,
@@ -50,6 +48,14 @@ export default {
                 );
                 document.body.classList.add(store.state.currentLang.font);
             }
+        },
+        changeFontToNewLanguage: (oldLangObject) => {
+            if (store.state.specialFontOn) {
+                document.body.classList.remove(oldLangObject.specialFont);
+            } else {
+                document.body.classList.remove(oldLangObject.font);
+            }
+            document.body.classList.add(store.state.currentLang.font);
         },
         getBrowserLang: function() {
             if (navigator.languages) {
@@ -83,8 +89,9 @@ export default {
             if (!langCode) {
                 langCode = this.getLangCodeOnInit();
             }
-            const langObject = this.getLangObjectFromList(langCode);
-            store.commit('changeLang', langObject);
+            const oldLangObject = store.state.currentLang;
+            const newLangObject = this.getLangObjectFromList(langCode);
+            store.commit('changeLang', newLangObject);
 
             //change locale
             this.$i18n.locale = store.state.currentLang.code;
@@ -103,6 +110,7 @@ export default {
             document.title = store.state.currentLang.title;
 
             //change fonts
+            this.changeFontToNewLanguage(oldLangObject);
             store.commit('toggleSpecialFont', false);
 
             //change html icons

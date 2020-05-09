@@ -10,9 +10,30 @@
     font-weight: bold;
     font-style: bold;
 }
-.regular-font {
-    font-family: "Inconsolata", "Rubik", -apple-system, sans-serif;
+@font-face {
+    font-family: 'amiri';
+    src: url('/assets/fonts/amiri-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'kfgqpc';
+    src: url('/assets/fonts/kfgqpc.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'geeza';
+    src: url('/assets/fonts/geeza.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.arabic-font {
+    font-family: 'kfgqpc', 'geeza', 'amiri', sans-serif;
+}
+.latin-font {
+    font-family: 'Inconsolata', 'Rubik', -apple-system, sans-serif;
 }
 .nps-font {
-    font-family: "nps";
+    font-family: 'nps';
 }

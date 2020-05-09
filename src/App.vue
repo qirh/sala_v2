@@ -58,18 +58,14 @@ export default {
             return null;
         },
         getLangObjectFromList(langCode) {
-            console.log('getLangObjectFromList', langCode)
             const langObject = langs.find((lang) => lang.code === langCode);
             if (langObject) {
-                console.log('langObject', langObject)
                 return langObject;
             }
             return this.getLangObjectFromList(defaultLangCode);
         },
         getLangCodeOnInit: function() {
-            console.log('000', store.state.currentLang);
             if (!store.state.currentLang) {
-                console.log('111', this.getBrowserLang());
                 return this.getBrowserLang();
             }
             return store.state.currentLang.code;

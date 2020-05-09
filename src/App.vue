@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik|Inconsolata')
-
 <template>
     <div
         class="flip-prep cuerpo"

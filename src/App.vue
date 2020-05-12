@@ -126,7 +126,8 @@ export default {
     },
     created() {
         // eslint-disable-next-line
-        console.log(`-${GIT_DESCRIBE.hash}-`);
+        console.dir(GIT_DESCRIBE);
+        console.log(`${this.buildTime}`)
 
         this.applyTheme();
         this.applyNewFont();
@@ -166,6 +167,13 @@ export default {
                 store.state.currentLang.fonts.length;
             store.commit('changeFontIndex', newFontIndex);
         });
+    },
+    computed: {
+        buildTime: {
+            get: function() {
+                return document.documentElement.dataset.buildTimestampUtc;
+            },
+        },
     },
 };
 </script>

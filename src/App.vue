@@ -125,6 +125,9 @@ export default {
         },
     },
     created() {
+        // eslint-disable-next-line
+        console.log(`-${GIT_DESCRIBE.hash}-`);
+
         this.applyTheme();
         this.applyNewFont();
         this.updateLangStuff();

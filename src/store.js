@@ -27,11 +27,10 @@ export default new Vuex.Store({
         },
         toggleFlip(state, changeDirection) {
             state.flip = !state.flip;
-            if (changeDirection){
+            if (changeDirection) {
                 state.flipDirection =
-                state.flipDirection === 'right' ? 'left' : 'right';
+                    state.flipDirection === 'right' ? 'left' : 'right';
             }
-
         },
         changeLang(state, langObject) {
             state.currentLang = langObject;

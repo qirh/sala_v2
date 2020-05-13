@@ -10,10 +10,9 @@ html.color-theme-in-transition,
 html.color-theme-in-transition *,
 html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
-  transition: all 0.375s ease-in;
-  transition: background-color 0.375s ease-in;
-  transition-delay: 0;
-
+    transition: all 0.375s ease-in;
+    transition: background-color 0.375s ease-in;
+    transition-delay: 0;
 }
 html,
 body {
@@ -43,9 +42,15 @@ a {
     transition-property: transform;
 }
 .flip-actually {
-    transition: all 750ms linear !important;
+    transition: all 1000ms ease-in-out !important;
+}
+.flip-right {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
+}
+.flip-left {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
 }
 .cuerpo {
     width: 100%;
@@ -67,3 +72,39 @@ a {
 //     right: auto;
 //     left: auto;
 // }
+
+.section-anim-ltr,
+.section-anim-rtl {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+.section-anim-ltr {
+    animation-name: sectionAnimLTR;
+}
+
+.section-anim-rtl {
+    animation-name: sectionAnimRTL;
+}
+
+@keyframes sectionAnimLTR {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes sectionAnimRTL {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

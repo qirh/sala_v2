@@ -13,6 +13,7 @@ export default new Vuex.Store({
     state: {
         theme: 'light',
         flip: false,
+        flipDirection: 'right',
         fontIndex: 0,
         currentLang: null,
     },
@@ -24,8 +25,13 @@ export default new Vuex.Store({
                 state.theme = 'light';
             }
         },
-        toggleFlip(state) {
+        toggleFlip(state, changeDirection) {
             state.flip = !state.flip;
+            if (changeDirection){
+                state.flipDirection =
+                state.flipDirection === 'right' ? 'left' : 'right';
+            }
+
         },
         changeLang(state, langObject) {
             state.currentLang = langObject;

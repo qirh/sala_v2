@@ -2,7 +2,9 @@
     <div
         class="flip-prep cuerpo"
         :class="{
-            'flip-actually': $store.state.flip,
+            'flip-actually': !$store.state.flip,
+            'flip-left': $store.state.flipDirection === 'left',
+            'flip-right': $store.state.flipDirection === 'right',
             'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
     >
@@ -116,18 +118,34 @@ export default {
             }/icon-192x192.png`;
 
             // nothing in storage or new lang
-            if (!oldLangObject || oldLangObject.code != newLangObject.code) {
+            if (!oldLangObject || oldLangObject.code !== newLangObject.code) {
                 //change fonts
                 const oldIndex = store.state.fontIndex;
                 store.commit('changeFontIndex', 0);
                 this.applyNewFont(oldLangObject, oldIndex);
+
+                //transition animation
+                if (oldLangObject.direction !== newLangObject.direction) {
+                    let className = null;
+                    if (newLangObject.direction === 'ltr') {
+                        className = 'section-anim-ltr';
+                    } else {
+                        className = 'section-anim-rtl';
+                    }
+                    document.body.classList.add(className);
+                    setTimeout(
+                        () => document.body.classList.remove(className),
+                        500,
+                    );
+                }
             }
         },
     },
     created() {
         // eslint-disable-next-line
         console.dir(GIT_DESCRIBE);
-        console.log(`${this.buildTime}`)
+        // eslint-disable-next-line
+        console.log(`${this.buildTime}`);
 
         this.applyTheme();
         this.applyNewFont();
@@ -153,8 +171,8 @@ export default {
 
         // eslint-disable-next-line
         cheet('f', () => {
-            store.commit('toggleFlip');
-            setTimeout(() => store.commit('toggleFlip'), 750);
+            store.commit('toggleFlip', true);
+            setTimeout(() => store.commit('toggleFlip', false), 1000);
         });
         // eslint-disable-next-line
         cheet('t', () => {

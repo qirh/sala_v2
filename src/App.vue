@@ -137,8 +137,11 @@ export default {
                 store.commit('changeFontIndex', 0);
                 this.applyNewFont(oldLangObject, oldIndex);
 
-                //transition animation
-                if (oldLangObject.direction !== newLangObject.direction) {
+                // if lang is changed && direction is chnaged --> transition animation
+                if (
+                    oldLangObject &&
+                    oldLangObject.direction !== newLangObject.direction
+                ) {
                     let className = null;
                     if (newLangObject.direction === 'ltr') {
                         className = 'section-anim-ltr';

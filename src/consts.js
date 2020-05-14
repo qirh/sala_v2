@@ -27,4 +27,8 @@ const langs = [
 
 const defaultLangCode = 'en';
 
-export {langs, defaultLangCode};
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
+
+export {langs, defaultLangCode, mod};

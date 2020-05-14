@@ -2,11 +2,12 @@
     <div
         class="flip-prep cuerpo"
         :class="{
-            'flip-actually': !$store.state.flip,
+            'flip-actually': $store.state.flip,
             'flip-left': $store.state.flipDirection === 'left',
             'flip-right': $store.state.flipDirection === 'right',
             'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
+        :style="style"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
         <Home @updateLangFromHome="updateLangStuff"></Home>
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-import {langs, defaultLangCode} from '@/consts';
+import {langs, defaultLangCode, mod} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
 
@@ -70,20 +71,17 @@ export default {
             }
             return this.getLangObjectFromCode(defaultLangCode);
         },
-        mod(n, m) {
-            return ((n % m) + m) % m;
-        },
         getNextLang() {
             const langObjectFromList = (lang) =>
                 lang.code === store.state.currentLang.code;
             const index = langs.findIndex(langObjectFromList);
-            return langs[this.mod(index+1, langs.length)];
+            return langs[mod(index + 1, langs.length)];
         },
         getPrevLang() {
             const langObjectFromList = (lang) =>
                 lang.code === store.state.currentLang.code;
             const index = langs.findIndex(langObjectFromList);
-            return langs[this.mod(index-1, langs.length)];
+            return langs[mod(index - 1, langs.length)];
         },
         getLangCodeOnInit: function() {
             if (!store.state.currentLang) {
@@ -210,11 +208,25 @@ export default {
             const lang = this.getNextLang();
             this.updateLangStuff(lang.code);
         });
+        // eslint-disable-next-line
+        cheet('→', () => {
+            console.log('rigth')
+            store.commit('rotateRight');
+        });
+        // eslint-disable-next-line
+        cheet('←', () => {
+            store.commit('rotateLeft');
+        });
     },
     computed: {
         buildTime: {
             get: function() {
                 return document.documentElement.dataset.buildTimestampUtc;
+            },
+        },
+        style: {
+            get: function() {
+                return `transform: rotate(${store.state.currentRotate}deg)`;
             },
         },
     },

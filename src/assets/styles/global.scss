@@ -46,11 +46,9 @@ a {
 }
 .flip-right {
     transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
 }
 .flip-left {
     transform: rotate(-360deg);
-    -webkit-transform: rotate(-360deg);
 }
 .cuerpo {
     width: 100%;

@@ -63,12 +63,27 @@ export default {
             }
             return undefined;
         },
-        getLangObjectFromList(langCode) {
+        getLangObjectFromCode(langCode) {
             const langObject = langs.find((lang) => lang.code === langCode);
             if (langObject) {
                 return langObject;
             }
-            return this.getLangObjectFromList(defaultLangCode);
+            return this.getLangObjectFromCode(defaultLangCode);
+        },
+        mod(n, m) {
+            return ((n % m) + m) % m;
+        },
+        getNextLang() {
+            const langObjectFromList = (lang) =>
+                lang.code === store.state.currentLang.code;
+            const index = langs.findIndex(langObjectFromList);
+            return langs[this.mod(index+1, langs.length)];
+        },
+        getPrevLang() {
+            const langObjectFromList = (lang) =>
+                lang.code === store.state.currentLang.code;
+            const index = langs.findIndex(langObjectFromList);
+            return langs[this.mod(index-1, langs.length)];
         },
         getLangCodeOnInit: function() {
             if (!store.state.currentLang) {
@@ -81,7 +96,7 @@ export default {
                 langCode = this.getLangCodeOnInit();
             }
             const oldLangObject = store.state.currentLang;
-            const newLangObject = this.getLangObjectFromList(langCode);
+            const newLangObject = this.getLangObjectFromCode(langCode);
 
             if (oldLangObject != newLangObject) {
                 store.commit('changeLang', newLangObject);
@@ -184,6 +199,16 @@ export default {
                 (store.state.fontIndex + 1) %
                 store.state.currentLang.fonts.length;
             store.commit('changeFontIndex', newFontIndex);
+        });
+        // eslint-disable-next-line
+        cheet('↑', () => {
+            const lang = this.getPrevLang();
+            this.updateLangStuff(lang.code);
+        });
+        // eslint-disable-next-line
+        cheet('↓', () => {
+            const lang = this.getNextLang();
+            this.updateLangStuff(lang.code);
         });
     },
     computed: {

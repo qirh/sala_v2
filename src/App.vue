@@ -7,7 +7,6 @@
             'flip-right': $store.state.flipDirection === 'right',
             'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
-        :style="style"
     >
         <!-- <NavHeader class="links column"></NavHeader> -->
         <Home @updateLangFromHome="updateLangStuff"></Home>
@@ -24,7 +23,30 @@ export default {
     components: {
         Home,
     },
+    mounted() {
+        document.addEventListener('keydown', this.handleKeyPress);
+    },
     methods: {
+        handleKeyPress() {
+            if (event.keyCode === 70) { // f
+                store.commit('toggleFlip', true);
+                setTimeout(() => store.commit('toggleFlip', false), 1000);
+            } else if (event.keyCode === 84) { // t
+                store.commit('toggleTheme');
+            } else if (event.keyCode === 78) { // n
+
+                const newFontIndex =
+                    (store.state.fontIndex + 1) %
+                    store.state.currentLang.fonts.length;
+                store.commit('changeFontIndex', newFontIndex);
+            } else if (event.keyCode === 38) { // up
+                const lang = this.getPrevLang();
+                this.updateLangStuff(lang.code);
+            } else if (event.keyCode === 40) { // down
+                const lang = this.getNextLang();
+                this.updateLangStuff(lang.code);
+            }
+        },
         applyTheme: () => {
             if (store.state.theme == 'dark') {
                 document.body.classList.add('dark-theme');
@@ -130,7 +152,7 @@ export default {
                 store.state.currentLang.code
             }/icon-192x192.png`;
 
-            // nothing in storage or new lang
+            // if nothing in storage (new app) || lang is changed
             if (!oldLangObject || oldLangObject.code !== newLangObject.code) {
                 //change fonts
                 const oldIndex = store.state.fontIndex;
@@ -184,42 +206,13 @@ export default {
                 this.applyNewFont(undefined, oldValue);
             },
         );
-
-        // eslint-disable-next-line
-        cheet('f', () => {
-            store.commit('toggleFlip', true);
-            setTimeout(() => store.commit('toggleFlip', false), 1000);
-        });
-        // eslint-disable-next-line
-        cheet('t', () => {
-            store.commit('toggleTheme');
-        });
-        // eslint-disable-next-line
-        cheet('n', () => {
-            const newFontIndex =
-                (store.state.fontIndex + 1) %
-                store.state.currentLang.fonts.length;
-            store.commit('changeFontIndex', newFontIndex);
-        });
-        // eslint-disable-next-line
-        cheet('↑', () => {
-            const lang = this.getPrevLang();
-            this.updateLangStuff(lang.code);
-        });
-        // eslint-disable-next-line
-        cheet('↓', () => {
-            const lang = this.getNextLang();
-            this.updateLangStuff(lang.code);
-        });
-        // eslint-disable-next-line
-        cheet('→', () => {
-            console.log('rigth')
-            store.commit('rotateRight');
-        });
-        // eslint-disable-next-line
-        cheet('←', () => {
-            store.commit('rotateLeft');
-        });
+        // cheet('→', () => {
+        //     console.log('rigth')
+        //     store.commit('rotateRight');
+        // });
+        // cheet('←', () => {
+        //     store.commit('rotateLeft');
+        // });
     },
     computed: {
         buildTime: {

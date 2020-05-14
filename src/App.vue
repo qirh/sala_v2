@@ -1,6 +1,7 @@
 <template>
     <div
-        class="flip-prep cuerpo"
+        id="cuerpo"
+        class="flip-prep"
         :class="{
             'flip-actually': $store.state.flip,
             'flip-left': $store.state.flipDirection === 'left',
@@ -24,25 +25,49 @@ export default {
         Home,
     },
     mounted() {
-        document.addEventListener('keydown', this.handleKeyPress);
+        document.addEventListener('keydown', this.handleKeyDown);
+        document.addEventListener('keyup', this.handleKeyUp);
     },
     methods: {
-        handleKeyPress() {
-            if (event.keyCode === 70) { // f
+        handleKeyUp() {
+            document.getElementById('cuerpo').classList.remove('keydown');
+            document.body.classList.remove('keydown');
+            document
+                .getElementById('cuerpo')
+                .classList.remove(`_${event.keyCode}`);
+        },
+        handleKeyDown() {
+            const keys_wo_animation = [38, 40, 70, 78, 83, 84, 87];
+
+            if (!keys_wo_animation.includes(event.keyCode)) {
+                document.getElementById('cuerpo').classList.add('keydown');
+                document.body.classList.add('keydown');
+
+                document
+                    .getElementById('cuerpo')
+                    .classList.add(`_${event.keyCode}`);
+                return;
+            }
+
+            if (event.keyCode === 70) {
+                // f
                 store.commit('toggleFlip', true);
                 setTimeout(() => store.commit('toggleFlip', false), 1000);
-            } else if (event.keyCode === 84) { // t
+            } else if (event.keyCode === 84) {
+                // t
                 store.commit('toggleTheme');
-            } else if (event.keyCode === 78) { // n
-
+            } else if (event.keyCode === 78) {
+                // n
                 const newFontIndex =
                     (store.state.fontIndex + 1) %
                     store.state.currentLang.fonts.length;
                 store.commit('changeFontIndex', newFontIndex);
-            } else if (event.keyCode === 38) { // up
+            } else if (event.keyCode === 38 || event.keyCode === 87) {
+                // up
                 const lang = this.getPrevLang();
                 this.updateLangStuff(lang.code);
-            } else if (event.keyCode === 40) { // down
+            } else if (event.keyCode === 40 || event.keyCode === 83) {
+                // down
                 const lang = this.getNextLang();
                 this.updateLangStuff(lang.code);
             }
@@ -181,7 +206,7 @@ export default {
     },
     created() {
         // eslint-disable-next-line
-        console.dir(GIT_DESCRIBE);
+        console.dir(GIT_DESCRIBE.hash);
         // eslint-disable-next-line
         console.log(`${this.buildTime}`);
 
@@ -206,23 +231,11 @@ export default {
                 this.applyNewFont(undefined, oldValue);
             },
         );
-        // cheet('→', () => {
-        //     console.log('rigth')
-        //     store.commit('rotateRight');
-        // });
-        // cheet('←', () => {
-        //     store.commit('rotateLeft');
-        // });
     },
     computed: {
         buildTime: {
             get: function() {
                 return document.documentElement.dataset.buildTimestampUtc;
-            },
-        },
-        style: {
-            get: function() {
-                return `transform: rotate(${store.state.currentRotate}deg)`;
             },
         },
     },

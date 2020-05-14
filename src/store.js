@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
-import {mod} from '@/consts';
 
 Vue.use(Vuex);
 
@@ -17,7 +16,6 @@ export default new Vuex.Store({
         flipDirection: 'right',
         fontIndex: 0,
         currentLang: null,
-        currentRotate: 0,
     },
     mutations: {
         toggleTheme(state) {
@@ -39,12 +37,6 @@ export default new Vuex.Store({
         },
         changeFontIndex(state, newFontIndex) {
             state.fontIndex = newFontIndex;
-        },
-        rotateRight(state) {
-            state.currentRotate = mod(state.currentRotate + 90, 360);
-        },
-        rotateLeft(state) {
-            state.currentRotate = mod(state.currentRotate + 90, 360);
         },
     },
     plugins: [vuexPersist.plugin],

@@ -33,7 +33,7 @@
     border: 3px solid transparent;
 
     overflow: hidden;
-    transition: transform .5s ease;
+    transition: transform 500ms ease;
 
     #subtoggle {
       position: relative;
@@ -50,7 +50,7 @@
         height: 100%;
         left: 50%;
         float: left;
-        transition: border-radius .5s ease, width .5s ease, height .5s ease, left .5s ease, transform .5s ease;
+        transition: border-radius 500ms ease, width 500ms ease, height 500ms ease, left 500ms ease, transform 500ms ease;
       }
     }
   }

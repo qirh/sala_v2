@@ -10,9 +10,7 @@ html.color-theme-in-transition,
 html.color-theme-in-transition *,
 html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
-    transition: all 0.375s ease-in;
-    transition: background-color 0.375s ease-in;
-    transition-delay: 0;
+    transition: background-color 375ms ease-in-out;
 }
 html,
 body {
@@ -23,15 +21,17 @@ body {
     display: flex;
     justify-content: center;
     padding: 5vh 10vw;
+
+    &.keydown {
+        perspective: 500px;
+        transform-style: preserve-3d;
+    }
 }
 p {
     font-size: 1.3em;
     font-weight: 300;
     line-height: 1.4;
     max-width: 26em;
-    &:first-child {
-        transition: color 0.375s ease-in;
-    }
 }
 a {
     text-decoration: none;
@@ -50,12 +50,25 @@ a {
 .flip-left {
     transform: rotate(-360deg);
 }
-.cuerpo {
+#cuerpo {
     width: 100%;
     max-width: 970px;
     padding: 5vh 5vw;
     height: 100%;
+    backface-visibility: hidden;
+    &.keydown {
+        transform: translateZ(-50px);
+    }
+    &.keydown._37,
+    &.keydown._65 {
+        transform: rotateY(-10deg);
+    }
+    &.keydown._39,
+    &.keydown._68 {
+        transform: rotateY(10deg);
+    }
 }
+
 .right-to-left {
     direction: rtl;
 }

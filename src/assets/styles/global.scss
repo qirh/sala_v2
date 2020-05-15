@@ -69,11 +69,11 @@ a {
     }
     &.keydown._38 {
         //up
-        transform: rotateX(10deg);
+        transform: rotateX(15deg);
     }
     &.keydown._40 {
         //down
-        transform: rotateX(-10deg);
+        transform: rotateX(-15deg);
     }
 }
 

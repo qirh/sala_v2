@@ -1,8 +1,9 @@
 <template>
     <div>
         <div class="home-text">
-            <p class="home-title">{{ $t(homeTitle) }}</p>
-            <p>{{ $t(homeSubtitle) }}</p>
+            <p class="home-title">{{ $t('homeTitle') }}</p>
+            <p>{{ $t('homeSubOne') }}</p>
+            <p>{{ $t('homeSubTwo') }}</p>
         </div>
         <div class="home-settings">
             <Corner></Corner>
@@ -25,12 +26,6 @@ export default {
         Corner,
         ThemeToggler,
         LangSwitcher,
-    },
-    data: () => {
-        return {
-            homeTitle: 'homeTitle',
-            homeSubtitle: 'homeSubtitle',
-        };
     },
     methods: {
         updateLangFromHome(langCode) {

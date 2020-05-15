@@ -37,7 +37,7 @@ export default {
     data: () => {
         return {
             index: 1,
-            textTooltip: 'tooltip',
+            textTooltip: 'cornerTooltip',
         };
     },
 };

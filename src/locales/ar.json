@@ -1,7 +1,8 @@
 {
   "homeTitle": "مرحباً، أنا صالح",
-  "homeSubtitle": "عربي عربي عربي",
-  "tooltip": "تول تيب",
-  "reading": "ريدنق",
-  "writing": "رايتنق"
+  "homeSubOne": "واحد واحد واحد",
+  "homeSubTwo": "اثنين اثنين اثنين",
+  "cornerTooltip": "تول تيب",
+  "reading": "القراءة",
+  "writing": "الكتابة"
 }

@@ -1,7 +1,8 @@
 {
   "homeTitle": "Hola, soy Saleh",
-  "homeSubtitle": "Español homeSubtitle",
-  "tooltip": "Español tooltip",
-  "reading": "Español reading",
-  "writing": "Español writing"
+  "homeSubOne": "Español homeSubOne",
+  "homeSubTwo": "Español homeSubTwo",
+  "cornerTooltip": "Español tooltip",
+  "reading": "leer",
+  "writing": "escribir"
 }

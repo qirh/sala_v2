@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="home-text">
-            <p class="home-title">{{ $t('homeTitle') }}</p>
+            <p class="home-title" v-html="$t('homeTitle')"></p>
             <p>{{ $t('homeSubOne') }}</p>
             <p>{{ $t('homeSubTwo') }}</p>
         </div>

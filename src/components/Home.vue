@@ -1,9 +1,11 @@
 <template>
     <div>
         <div class="home-text">
-            <p class="home-title" v-html="$t('homeTitle')"></p>
-            <p>{{ $t('homeSubOne') }}</p>
-            <p>{{ $t('homeSubTwo') }}</p>
+            <p class="home-greet">{{ $t('homeGreet') }}</p>
+            <p class="home-title" v-html="$t('homeTitleOne')"></p>
+            <p class="home-title" v-html="$t('homeTitleTwo')"></p>
+            <p v-html="$t('homeSubOne')"></p>
+            <p v-html="$t('homeSubTwo')"></p>
         </div>
         <div class="home-settings">
             <Corner></Corner>

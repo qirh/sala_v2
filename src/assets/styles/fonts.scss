@@ -1,51 +1,45 @@
 @font-face {
     font-family: 'inconsolata';
-    src: url('/assets/fonts/inconsolata.ttf') format('truetype');
+    src: url('/assets/fonts/inconsolata.woff2') format('woff2');
 }
 @font-face {
     font-family: 'rubik';
-    src: url('/assets/fonts/rubik.ttf') format('truetype');
+    src: url('/assets/fonts/rubik.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'nps';
-    src: url('/assets/fonts/nps.otf') format('opentype');
+    src: url('/assets/fonts/nps.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
-    font-family: 'nps-heavy';
-    src: url('/assets/fonts/nps_heavy.otf') format('opentype');
-    font-weight: bold;
-    font-style: bold;
-}
-@font-face {
     font-family: 'amiri';
-    src: url('/assets/fonts/amiri.ttf') format('truetype');
+    src: url('/assets/fonts/amiri.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'kfgqpc';
-    src: url('/assets/fonts/kfgqpc.ttf') format('truetype');
+    src: url('/assets/fonts/kfgqpc.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'geeza';
-    src: url('/assets/fonts/geeza.ttf') format('truetype');
+    src: url('/assets/fonts/woff2.ttf') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 .font-amiri {
-    font-family: 'amiri', sans-serif;
+    font-family: 'amiri', -apple-system, sans-serif;
 }
 .font-kfgqpc {
-    font-family: 'kfgqpc', sans-serif;
+    font-family: 'kfgqpc', -apple-system, sans-serif;
 }
 .font-geeza {
-    font-family: 'geeza', sans-serif;
+    font-family: 'geeza', -apple-system, sans-serif;
 }
 .font-rubik {
     font-family: 'rubik', -apple-system, sans-serif;

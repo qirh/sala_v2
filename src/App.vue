@@ -31,18 +31,15 @@ export default {
     methods: {
         handleKeyUp() {
             document.getElementById('cuerpo').classList.remove('keydown');
-            document.body.classList.remove('keydown');
             document
                 .getElementById('cuerpo')
                 .classList.remove(`_${event.keyCode}`);
         },
         handleKeyDown() {
-            const keys_wo_animation = [38, 40, 70, 78, 83, 84, 87];
+            const keys_wo_animation = [70, 78, 83, 84, 87];
 
             if (!keys_wo_animation.includes(event.keyCode)) {
                 document.getElementById('cuerpo').classList.add('keydown');
-                document.body.classList.add('keydown');
-
                 document
                     .getElementById('cuerpo')
                     .classList.add(`_${event.keyCode}`);
@@ -62,11 +59,11 @@ export default {
                     (store.state.fontIndex + 1) %
                     store.state.currentLang.fonts.length;
                 store.commit('changeFontIndex', newFontIndex);
-            } else if (event.keyCode === 38 || event.keyCode === 87) {
+            } else if (event.keyCode === 87) {
                 // up
                 const lang = this.getPrevLang();
                 this.updateLangStuff(lang.code);
-            } else if (event.keyCode === 40 || event.keyCode === 83) {
+            } else if (event.keyCode === 83) {
                 // down
                 const lang = this.getNextLang();
                 this.updateLangStuff(lang.code);

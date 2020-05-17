@@ -21,7 +21,7 @@ const langs = [
         placement: 'right',
         direction: 'rtl',
         title: 'صاله',
-        fonts: ['font-amiri', 'font-kfgqpc', 'font-geeza'],
+        fonts: ['font-kfgqpc', 'font-aref-ruqaa', 'font-reem-kufi'],
     },
 ];
 

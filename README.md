@@ -14,9 +14,11 @@ work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old we
 * [favicon generator](https://ionos.com/tools/favicon-generator)
 
 ### fonts
-* [google fonts](https://fonts.google.com/)
+* [google fonts](https://fonts.google.com)
+* [national park](https://nationalparktypeface.com)
+* [classic fonts](https://int10h.org/oldschool-pc-fonts)
 * [arabic fonts](https://arabicfonts.net)
-* [national park ](https://nationalparktypeface.com)
+* [alif-type](https://github.com/alif-type)
 
 
 licensed with [WTFPL](http://www.wtfpl.net).

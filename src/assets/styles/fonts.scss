@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'inconsolata';
-    src: url('/assets/fonts/inconsolata.woff2') format('woff2');
-}
+// latin
 @font-face {
     font-family: 'rubik';
     src: url('/assets/fonts/rubik.woff2') format('woff2');
@@ -14,6 +11,15 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'ibm';
+    src: url('/assets/fonts/ibm.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+// arabic
 @font-face {
     font-family: 'amiri';
     src: url('/assets/fonts/amiri.woff2') format('woff2');
@@ -32,6 +38,20 @@
     font-weight: normal;
     font-style: normal;
 }
+
+// latin
+.font-rubik {
+    font-family: 'rubik', -apple-system, sans-serif;
+}
+.font-nps-heavy {
+    font-family: 'nps-heavy', -apple-system, sans-serif;
+}
+.font-ibm {
+    font-family: 'ibm', -apple-system, sans-serif;
+}
+
+
+// arabic
 .font-amiri {
     font-family: 'amiri', -apple-system, sans-serif;
 }
@@ -41,12 +61,4 @@
 .font-geeza {
     font-family: 'geeza', -apple-system, sans-serif;
 }
-.font-rubik {
-    font-family: 'rubik', -apple-system, sans-serif;
-}
-.font-inconsolata {
-    font-family: 'inconsolata', -apple-system, sans-serif;
-}
-.font-nps-heavy {
-    font-family: 'nps-heavy', -apple-system, sans-serif;
-}
+

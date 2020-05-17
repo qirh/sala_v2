@@ -67,11 +67,13 @@ a {
         //right
         transform: rotateY(10deg);
     }
-    &.keydown._38 {
+    &.keydown._38,
+    &.keydown._87 {
         //up
         transform: rotateX(15deg);
     }
-    &.keydown._40 {
+    &.keydown._40,
+    &.keydown._83 {
         //down
         transform: rotateX(-15deg);
     }

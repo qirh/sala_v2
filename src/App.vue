@@ -59,15 +59,16 @@ export default {
                     (store.state.fontIndex + 1) %
                     store.state.currentLang.fonts.length;
                 store.commit('changeFontIndex', newFontIndex);
-            } else if (event.keyCode === 87) {
-                // w
-                const lang = this.getPrevLang();
-                this.updateLangStuff(lang.code);
-            } else if (event.keyCode === 83) {
-                // s
-                const lang = this.getNextLang();
-                this.updateLangStuff(lang.code);
             }
+            // else if (event.keyCode === 87) {
+            //     // w
+            //     const lang = this.getPrevLang();
+            //     this.updateLangStuff(lang.code);
+            // } else if (event.keyCode === 83) {
+            //     // s
+            //     const lang = this.getNextLang();
+            //     this.updateLangStuff(lang.code);
+            // }
         },
         applyTheme: () => {
             if (store.state.theme == 'dark') {

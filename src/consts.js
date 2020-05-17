@@ -5,7 +5,7 @@ const langs = [
         placement: 'left',
         direction: 'ltr',
         title: 'sala',
-        fonts: ['font-rubik', 'font-inconsolata', 'font-nps'],
+        fonts: ['font-rubik', 'font-nps-heavy'],
     },
     {
         code: 'es',
@@ -13,7 +13,7 @@ const langs = [
         placement: 'left',
         direction: 'ltr',
         title: 'sàla',
-        fonts: ['font-rubik', 'font-inconsolata', 'font-nps'],
+        fonts: ['font-rubik', 'font-nps-heavy'],
     },
     {
         code: 'ar',

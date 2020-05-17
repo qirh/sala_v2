@@ -9,8 +9,8 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'nps';
-    src: url('/assets/fonts/nps.woff2') format('woff2');
+    font-family: 'nps-heavy';
+    src: url('/assets/fonts/nps_heavy.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -47,6 +47,6 @@
 .font-inconsolata {
     font-family: 'inconsolata', -apple-system, sans-serif;
 }
-.font-nps {
-    font-family: 'nps', -apple-system, sans-serif;
+.font-nps-heavy {
+    font-family: 'nps-heavy', -apple-system, sans-serif;
 }

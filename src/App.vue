@@ -36,7 +36,7 @@ export default {
                 .classList.remove(`_${event.keyCode}`);
         },
         handleKeyDown() {
-            const keysAssigned = [70, 78, 83, 84, 87];
+            const keysAssigned = [70, 78, 84];
 
             if (!keysAssigned.includes(event.keyCode)) {
                 document.getElementById('cuerpo').classList.add('keydown');

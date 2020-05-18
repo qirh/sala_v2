@@ -164,6 +164,7 @@ export default {
             let apple_link = document.querySelector(
                 "link[rel*='apple-touch-icon']",
             );
+            console.log(apple_link);
             apple_link.href = `/assets/${
                 store.state.currentLang.code
             }/icon-180x180.png`;

@@ -161,13 +161,14 @@ export default {
             document.title = store.state.currentLang.title;
 
             //change html icons
-            let apple_link = document.querySelector(
-                "link[rel*='apple-touch-icon']",
+            let appleLinks = document.querySelectorAll(
+                "link[rel='apple-touch-icon'][sizes]",
             );
-            console.log(apple_link);
-            apple_link.href = `/assets/${
-                store.state.currentLang.code
-            }/icon-180x180.png`;
+            appleLinks.forEach((appleLink) => {
+                appleLink.href = `/assets/
+                    ${store.state.currentLang.code}
+                    /icon-${appleLink.sizes.value}.png`;
+            });
 
             let shortcut_link = document.querySelector(
                 "link[rel*='shortcut icon']",

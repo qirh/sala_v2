@@ -9,7 +9,6 @@
             'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
     >
-        <!-- <NavHeader class="links column"></NavHeader> -->
         <Home @updateLangFromHome="updateLangStuff"></Home>
     </div>
 </template>

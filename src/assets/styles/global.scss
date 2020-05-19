@@ -52,6 +52,8 @@ a {
     max-width: 970px;
     padding: 5vh 5vw;
     height: 100%;
+
+    //transition stuff
     backface-visibility: hidden;
     transition: 700ms;
     &.keydown {

@@ -1,6 +1,6 @@
 <template>
-    <div class="nav-header">
-        <div class="icons">
+    <div>
+        <div>
             <a
                 href="https://t.me/salghusson"
                 target="_blank"
@@ -42,10 +42,8 @@
 </template>
 
 <script>
-import store from '@/store';
-
 export default {
-    name: 'Navheader',
+    name: 'Icons',
     data: () => {
         return {
             reading: 'reading',
@@ -55,5 +53,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/styles/navHeader.scss';
+@import '../assets/styles/icons.scss';
 </style>

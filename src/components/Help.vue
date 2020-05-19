@@ -1,7 +1,7 @@
 <template>
     <div
         :key="index"
-        class="corner"
+        class="help"
         v-tooltip="{
             content: $t(textTooltip),
             classes: ['tooltip', 'info'],
@@ -23,7 +23,7 @@
 import store from '@/store';
 
 export default {
-    name: 'Corner',
+    name: 'Help',
     computed: {
         placement() {
             return store.state.currentLang.placement;
@@ -37,11 +37,11 @@ export default {
     data: () => {
         return {
             index: 1,
-            textTooltip: 'cornerTooltip',
+            textTooltip: 'helpTooltip',
         };
     },
 };
 </script>
 <style lang="scss">
-@import '../assets/styles/corner.scss';
+@import '../assets/styles/help.scss';
 </style>

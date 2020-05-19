@@ -48,14 +48,11 @@
     .icons {
         @include lightColors;
     }
-    .corner {
+    .help {
         @include lightColors;
     }
     .toggle {
         @include lightColors;
-    }
-    hr {
-        background-color: $botticelli;
     }
     .tooltip-inner {
         color: $white;
@@ -66,7 +63,7 @@
     .nav-header {
         @include lightColorsAlt;
     }
-    .corner {
+    .help {
         @include lightColorsAlt;
     }
     .toggle {
@@ -79,14 +76,11 @@
     .nav-header {
         @include darkColors;
     }
-    .corner {
+    .help {
         @include darkColors;
     }
     .toggle {
         @include darkColors;
-    }
-    hr {
-        background-color: $botticelli;
     }
     .tooltip-inner {
         color: $botticelli;
@@ -97,7 +91,7 @@
     .nav-header {
         @include darkColorsAlt;
     }
-    .corner {
+    .help {
         @include darkColorsAlt;
     }
     .toggle {

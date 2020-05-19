@@ -45,7 +45,7 @@
 @mixin lightTheme {
     color: $gray;
     background-color: $white;
-    .nav-header {
+    .icons {
         @include lightColors;
     }
     .corner {

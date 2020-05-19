@@ -1,25 +1,43 @@
-.home-text {
-    float: left;
-}
-.home-settings {
-    float: right;
-    padding-top: 1vw;
-}
+// .home-main {
+//     float: left;
+// }
+// .home-settings {
+//     float: right;
+//     padding-top: 1vw;
+// }
 
-.home-greet {
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1px 1px;
+    grid-template-areas: "grid-langs grid-langs grid-theme grid-theme grid-icons grid-icons" "grid-main grid-main grid-main grid-picture grid-picture grid-picture" "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer";
+}
+.grid-langs { grid-area: grid-langs; }
+.grid-theme { grid-area: grid-theme; }
+.grid-icons { grid-area: grid-icons; }
+.grid-main { grid-area: grid-main; }
+.grid-picture { grid-area: grid-picture; }
+.grid-footer { grid-area: grid-footer; }
+
+.main-greet {
     font-weight: 800;
     font-size: 3em;
 }
-.home-title {
+.main-title {
     font-weight: 300;
     font-size: 2em;
 }
-
-.right-to-left {
-    .home-text {
-        float: right;
-    }
-    .home-settings {
-        float: left;
-    }
+.picture {
+    width: 100%;
+    height: auto;
 }
+
+// .right-to-left {
+//     .grid-main {
+//         float: right;
+//     }
+//     // .home-settings {
+//     //     float: left;
+//     // }
+// }

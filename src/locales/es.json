@@ -1,8 +1,11 @@
 {
-  "homeTitle": "Hola, soy Saleh",
-  "homeSubOne": "Español homeSubOne",
-  "homeSubTwo": "Español homeSubTwo",
+  "mainGreet": "Hola!",
+  "mainTitleOne": "Mi nombre es <span style=\"font-weight:900\">Saleh Alghusson</span>.",
+  "mainTitleTwo": "Soy muy padre",
+  "mainSubOne": "Español homeSubOne",
+  "mainSubTwo": "Español homeSubTwo",
   "helpTooltip": "Español tooltip",
   "reading": "leer",
-  "writing": "escribir"
+  "writing": "escribir",
+  "footerLastUpdated": "Última actualización:"
 }

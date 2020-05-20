@@ -13,17 +13,23 @@
             <Icons></Icons>
         </div>
         <div class="grid-main">
-            <p class="main-greet">{{ $t('homeGreet') }}</p>
-            <p class="main-title" v-html="$t('homeTitleOne')"></p>
-            <p class="main-title" v-html="$t('homeTitleTwo')"></p>
-            <p v-html="$t('homeSubOne')"></p>
-            <p v-html="$t('homeSubTwo')"></p>
+            <p class="main-greet" v-html="$t('mainGreet')"></p>
+            <p class="main-title" v-html="$t('mainTitleOne')"></p>
+            <p class="main-title" v-html="$t('mainTitleTwo')"></p>
+            <p v-html="$t('mainSubOne')"></p>
+            <p v-html="$t('mainSubTwo')"></p>
         </div>
         <div class="grid-picture">
             <img class="picture" src="/assets/moi.jpg" />
         </div>
         <div class="grid-footer">
-            <p>FOOOOTER</p>
+            <!-- eslint-disable -->
+            <p>
+                {{ $t('footerLastUpdated') }} <a :href="gitLink">{{
+                    $d(new Date(this.buildTime), 'short')
+                }}</a>
+            </p>
+            <!-- eslint-enable -->
         </div>
     </div>
 </template>
@@ -36,6 +42,13 @@ import LangSwitcher from '@/components/LangSwitcher';
 
 export default {
     name: 'Home',
+    props: ['buildTime', 'gitHash'],
+
+    data: function() {
+        return {
+            gitLink: 'https://github.com/qirh/sala_v2/commit/' + this.gitHash,
+        };
+    },
     components: {
         Help,
         Icons,

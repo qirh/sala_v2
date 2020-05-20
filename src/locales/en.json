@@ -1,10 +1,11 @@
 {
-  "homeGreet": "Hello!",
-  "homeTitleOne": "My name is <span style=\"font-weight:900\">Saleh Alghusson</span>.",
-  "homeTitleTwo": "I build things for the <span style=\"font-weight:900\">web</span>.",
-  "homeSubOne": "Besides computers, I climb trees, I travel and read a whole bunch. I live happily in <span style=\"font-weight:900\">NYC</span> and I enjoy meeting and learning from new people, if somehow you stumbled upon this page and are in the area, let's grab coffee :)",
-  "homeSubTwo": "",
+  "mainGreet": "Hello!",
+  "mainTitleOne": "My name is <span style=\"font-weight:900\">Saleh Alghusson</span>.",
+  "mainTitleTwo": "I build things for the <span style=\"font-weight:900\">web</span>.",
+  "mainSubOne": "Besides computers, I climb trees, I travel and read a whole bunch. I live happily in <span style=\"font-weight:900\">NYC</span> and I enjoy meeting and learning from new people, if somehow you stumbled upon this page and are in the area, let's grab coffee :)",
+  "mainSubTwo": "",
   "helpTooltip": "🤫\n<b>t</b> toggle theme\n<b>n</b> toggle fonts\n<b>f</b> dᴉlɟ\n<b>w/s</b> switch language",
   "reading": "reading",
-  "writing": "writing"
+  "writing": "writing",
+  "footerLastUpdated": "Last updated:"
 }

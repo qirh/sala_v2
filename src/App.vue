@@ -9,7 +9,11 @@
             'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
     >
-        <Home @updateLangFromHome="updateLangStuff"></Home>
+        <Home
+            :buildTime="buildTime"
+            :gitHash="gitHash"
+            @updateLangFromHome="updateLangStuff"
+        ></Home>
     </div>
 </template>
 
@@ -203,19 +207,19 @@ export default {
             }
         },
     },
+    data: () => {
+        return {
+            gitHash: GIT_DESCRIBE.hash,
+        };
+    },
     created() {
-        // eslint-disable-next-line
-        console.dir(GIT_DESCRIBE.hash);
-        // eslint-disable-next-line
-        console.log(`${this.buildTime}`);
-
         this.applyTheme();
         this.applyNewFont();
         this.updateLangStuff();
 
         store.watch(
             () => {
-                return this.$store.state.theme; // could also put a Getter here
+                return this.$store.state.theme;
             },
             () => {
                 this.applyTheme();
@@ -224,7 +228,7 @@ export default {
 
         store.watch(
             () => {
-                return this.$store.state.fontIndex; // could also put a Getter here
+                return this.$store.state.fontIndex;
             },
             (newValue, oldValue) => {
                 this.applyNewFont(undefined, oldValue);

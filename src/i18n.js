@@ -24,6 +24,9 @@ const dateTimeFormats = {
     en: {
         short: {year: 'numeric', month: 'short'},
     },
+    es: {
+        short: {year: 'numeric', month: 'short'},
+    },
     ar: {
         short: {year: 'numeric', month: 'long'},
     },

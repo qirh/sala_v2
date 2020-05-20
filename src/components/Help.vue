@@ -3,7 +3,7 @@
         :key="index"
         class="help"
         v-tooltip="{
-            content: $t(textTooltip),
+            content: $t('helpTooltip'),
             classes: ['tooltip', 'info'],
             placement,
             offset: 10,
@@ -37,7 +37,6 @@ export default {
     data: () => {
         return {
             index: 1,
-            textTooltip: 'helpTooltip',
         };
     },
 };

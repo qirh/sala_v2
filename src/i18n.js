@@ -20,19 +20,6 @@ function loadLocaleMessages() {
     return messages;
 }
 
-const dateTimeFormats = {
-    en: {
-        short: {year: 'numeric', month: 'short'},
-    },
-    es: {
-        short: {year: 'numeric', month: 'short'},
-    },
-    ar: {
-        short: {year: 'numeric', month: 'long'},
-    },
-};
-
 export const i18n = new VueI18n({
     messages: loadLocaleMessages(),
-    dateTimeFormats,
 });

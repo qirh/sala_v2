@@ -25,10 +25,9 @@
         <div class="grid-footer">
             <!-- eslint-disable -->
             <p>
-                {{ $t('footerLastUpdated') }} <a :href="gitLink">{{
-                    $d(new Date(this.buildTime), 'short')
-                }}</a>
+                {{ $t('footerLastUpdated') }} <a :href="gitLink">{{this.date}}<span v-if="this.dateSpecial">~~{{this.dateSpecial}}</span></a>
             </p>
+
             <!-- eslint-enable -->
         </div>
     </div>
@@ -43,11 +42,27 @@ import LangSwitcher from '@/components/LangSwitcher';
 export default {
     name: 'Home',
     props: ['buildTime', 'gitHash'],
-
     data: function() {
         return {
             gitLink: 'https://github.com/qirh/sala_v2/commit/' + this.gitHash,
         };
+    },
+    computed: {
+        date() {
+            let locale = this.$i18n.locale;
+            if (locale === 'ar') {
+                locale = 'ar-EG';
+            }
+            return this.getDate(locale);
+        },
+        dateSpecial() {
+            // get hijri date if arabic
+            if (this.$i18n.locale !== 'ar') {
+                return null;
+            }
+            let locale = 'ar-SA';
+            return this.getDate(locale);
+        },
     },
     components: {
         Help,
@@ -58,6 +73,12 @@ export default {
     methods: {
         updateLangFromHome(langCode) {
             this.$emit('updateLangFromHome', langCode);
+        },
+        getDate(locale) {
+            return new Intl.DateTimeFormat(locale, {
+                month: 'long',
+                year: 'numeric',
+            }).format(new Date(this.buildTime));
         },
     },
 };

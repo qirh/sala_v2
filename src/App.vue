@@ -39,9 +39,22 @@ export default {
                 .classList.remove(`_${event.keyCode}`);
         },
         handleKeyDown() {
-            const keysAssigned = [70, 78, 84];
-
-            if (!keysAssigned.includes(event.keyCode)) {
+            const keysAssigned = ['f', 'F', 't', 'T', 'n', 'N'];
+            const keysSpecial = [
+                'Tab',
+                'CapsLock',
+                'Shift',
+                'Control',
+                'Alt',
+                'Meta',
+                ' ',
+                'Backspace',
+                'Enter',
+            ]; // these keys don't have animations
+            if (
+                !keysAssigned.includes(event.key) &&
+                !keysSpecial.includes(event.key)
+            ) {
                 document.getElementById('cuerpo').classList.add('keydown');
                 document
                     .getElementById('cuerpo')
@@ -49,29 +62,21 @@ export default {
                 return;
             }
 
-            if (event.keyCode === 70) {
-                // f
+            if (event.key === 'f' || event.key === 'F') {
                 store.commit('toggleFlip', true);
                 setTimeout(() => store.commit('toggleFlip', false), 1000);
-            } else if (event.keyCode === 84) {
-                // t
+            } else if (event.key === 't' || event.key === 'T') {
                 store.commit('toggleTheme');
-            } else if (event.keyCode === 78) {
-                // n
+            } else if (event.key === 'n' || event.key === 'N') {
                 const newFontIndex =
                     (store.state.fontIndex + 1) %
                     store.state.currentLang.fonts.length;
                 store.commit('changeFontIndex', newFontIndex);
+            } else if (event.key === ' ') {
+                event.preventDefault();
+                const nextLang = this.getNextLang();
+                this.updateLangStuff(nextLang.code);
             }
-            // else if (event.keyCode === 87) {
-            //     // w
-            //     const lang = this.getPrevLang();
-            //     this.updateLangStuff(lang.code);
-            // } else if (event.keyCode === 83) {
-            //     // s
-            //     const lang = this.getNextLang();
-            //     this.updateLangStuff(lang.code);
-            // }
         },
         applyTheme: () => {
             if (store.state.theme == 'dark') {

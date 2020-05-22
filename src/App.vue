@@ -3,9 +3,6 @@
         id="cuerpo"
         class="flip-prep"
         :class="{
-            'flip-actually': $store.state.flip,
-            'flip-left': $store.state.flipDirection === 'left',
-            'flip-right': $store.state.flipDirection === 'right',
             'right-to-left': $store.state.currentLang.direction === 'rtl',
         }"
     >
@@ -55,20 +52,27 @@ export default {
                 'Backspace',
                 'Enter',
             ]; // these keys don't produce animations
+            const cuerpo = document.getElementById('cuerpo');
             if (
                 !keysAssigned.includes(event.key) &&
                 !keysSpecial.includes(event.key)
             ) {
-                document.getElementById('cuerpo').classList.add('keydown');
-                document
-                    .getElementById('cuerpo')
-                    .classList.add(`_${event.key}`);
+                cuerpo.classList.add('keydown');
+                cuerpo.classList.add(`_${event.key}`);
                 return;
             }
 
             if (event.key === 'f' || event.key === 'F') {
-                store.commit('toggleFlip', true);
-                setTimeout(() => store.commit('toggleFlip', false), 1000);
+                if (store.state.flipDirection) {
+                    cuerpo.classList.add('flip-right');
+                } else {
+                    cuerpo.classList.add('flip-left');
+                }
+                setTimeout(() => {
+                    cuerpo.classList.remove('flip-right');
+                    cuerpo.classList.remove('flip-left');
+                    store.commit('switchFlipDirection');
+                }, 2000);
             } else if (event.key === 't' || event.key === 'T') {
                 store.commit('toggleTheme');
             } else if (event.key === 'n' || event.key === 'N') {
@@ -184,6 +188,7 @@ export default {
             let shortcut_link = document.querySelector(
                 "link[rel*='shortcut icon']",
             );
+            // eslint-disable-next-line
             shortcut_link.href = `/assets/${store.state.currentLang.code}/icon-192x192.png`;
 
             // if nothing in storage (new app) || lang is changed

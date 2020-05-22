@@ -60,7 +60,7 @@
     }
 }
 @mixin lightThemeAlt {
-    .nav-header {
+    .icons {
         @include lightColorsAlt;
     }
     .help {
@@ -73,7 +73,7 @@
 @mixin darkTheme {
     color: $botticelli;
     background-color: $blackpearl;
-    .nav-header {
+    .icons {
         @include darkColors;
     }
     .help {
@@ -88,7 +88,7 @@
     }
 }
 @mixin darkThemeAlt {
-    .nav-header {
+    .icons {
         @include darkColorsAlt;
     }
     .help {

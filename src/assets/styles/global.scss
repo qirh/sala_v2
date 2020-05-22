@@ -70,7 +70,6 @@ a {
     backface-visibility: hidden;
     transition: 200ms;
     &.keydown {
-        transform: rotate(0deg);
         transform: translateZ(-50px);
     }
     &.keydown._ArrowDown,

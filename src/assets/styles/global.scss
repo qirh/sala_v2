@@ -55,30 +55,31 @@ a {
 
     //transition stuff
     backface-visibility: hidden;
-    transition: 700ms;
+    transition: 200ms;
     &.keydown {
         transform: translateZ(-50px);
     }
-    &.keydown._37,
-    &.keydown._65 {
-        //left
-        transform: rotateY(-10deg);
-    }
-    &.keydown._39,
-    &.keydown._68 {
-        //right
-        transform: rotateY(10deg);
-    }
-    &.keydown._38,
-    &.keydown._87 {
-        //up
-        transform: rotateX(15deg);
-    }
-    &.keydown._40,
-    &.keydown._83 {
-        //down
+    &.keydown._ArrowDown,
+    &.keydown._s,
+    &.keydown._S {
         transform: rotateX(-15deg);
     }
+    &.keydown._ArrowLeft,
+    &.keydown._a,
+    &.keydown._A {
+        transform: rotateY(-10deg);
+    }
+    &.keydown._ArrowRight,
+    &.keydown._d,
+    &.keydown._D {
+        transform: rotateY(10deg);
+    }
+    &.keydown._ArrowUp,
+    &.keydown._w,
+    &.keydown._W {
+        transform: rotateX(15deg);
+    }
+
 }
 
 .right-to-left {

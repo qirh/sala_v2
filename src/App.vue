@@ -36,7 +36,7 @@ export default {
             document.getElementById('cuerpo').classList.remove('keydown');
             document
                 .getElementById('cuerpo')
-                .classList.remove(`_${event.keyCode}`);
+                .classList.remove(`_${event.key}`);
         },
         handleKeyDown() {
             const keysAssigned = ['f', 'F', 't', 'T', 'n', 'N'];
@@ -50,7 +50,7 @@ export default {
                 ' ',
                 'Backspace',
                 'Enter',
-            ]; // these keys don't have animations
+            ]; // these keys don't produce animations
             if (
                 !keysAssigned.includes(event.key) &&
                 !keysSpecial.includes(event.key)
@@ -58,7 +58,7 @@ export default {
                 document.getElementById('cuerpo').classList.add('keydown');
                 document
                     .getElementById('cuerpo')
-                    .classList.add(`_${event.keyCode}`);
+                    .classList.add(`_${event.key}`);
                 return;
             }
 

@@ -33,10 +33,14 @@ export default {
     },
     methods: {
         handleKeyUp() {
-            document.getElementById('cuerpo').classList.remove('keydown');
-            document
-                .getElementById('cuerpo')
-                .classList.remove(`_${event.key}`);
+            try {
+                document.getElementById('cuerpo').classList.remove('keydown');
+                document
+                    .getElementById('cuerpo')
+                    .classList.remove(`_${event.key}`);
+            } catch (error) {
+                return;
+            }
         },
         handleKeyDown() {
             const keysAssigned = ['f', 'F', 't', 'T', 'n', 'N'];
@@ -173,17 +177,14 @@ export default {
                 "link[rel='apple-touch-icon'][sizes]",
             );
             appleLinks.forEach((appleLink) => {
-                appleLink.href = `/assets/
-                    ${store.state.currentLang.code}
-                    /icon-${appleLink.sizes.value}.png`;
+                // eslint-disable-next-line
+                appleLink.href = `/assets/${store.state.currentLang.code}/icon-${appleLink.sizes.value}.png`;
             });
 
             let shortcut_link = document.querySelector(
                 "link[rel*='shortcut icon']",
             );
-            shortcut_link.href = `/assets/${
-                store.state.currentLang.code
-            }/icon-192x192.png`;
+            shortcut_link.href = `/assets/${store.state.currentLang.code}/icon-192x192.png`;
 
             // if nothing in storage (new app) || lang is changed
             if (!oldLangObject || oldLangObject.code !== newLangObject.code) {

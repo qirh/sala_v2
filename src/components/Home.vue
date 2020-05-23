@@ -21,11 +21,19 @@
                 <p v-html="$t('mainSubTwo')"></p>
             </div>
             <div class="grid-picture">
-                <img
-                    class="picture"
-                    alt="picture of saleh"
-                    src="/assets/moi.jpg"
-                />
+                <picture>
+                    <source
+                        class="picture"
+                        alt="picture of saleh"
+                        srcset="/assets/moi.webp"
+                        type="image/webp"
+                    />
+                    <img
+                        class="picture"
+                        alt="picture of saleh"
+                        src="/assets/moi.jpg"
+                    />
+                </picture>
             </div>
         </div>
         <div class="grid-footer">

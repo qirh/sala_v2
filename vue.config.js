@@ -1,12 +1,8 @@
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 
 module.exports = {
     configureWebpack: {
-        plugins: [
-            new ImageminPlugin({
-                disable: process.env.NODE_ENV !== 'production',
-            }),
-        ],
+        plugins: [new ImageminWebpWebpackPlugin()],
     },
     pluginOptions: {
         i18n: {

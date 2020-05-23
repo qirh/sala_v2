@@ -34,7 +34,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
     "git-describe": "^4.0.4",
-    "imagemin-webpack-plugin": "^2.4.2",
+    "imagemin-webp-webpack-plugin": "^3.3.1",
     "node-sass": "^4.14.0",
     "sass-loader": "^7.3.1",
     "vue-cli-plugin-git-describe": "^1.0.0",

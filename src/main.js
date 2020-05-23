@@ -9,20 +9,19 @@ import {i18n} from './i18n.js';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBlog} from '@fortawesome/free-solid-svg-icons';
+import {faBlog, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {faQuestionCircle} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,
     faGithub,
-    faTelegram,
     faGoodreads,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
     faVuejs,
     faGithub,
-    faTelegram,
     faGoodreads,
+    faEnvelope,
     faBlog,
     faQuestionCircle,
 );

@@ -2,9 +2,17 @@
     <div class="icons">
         <Help class="icon"></Help>
         <a
+            href="mailto:saleh@alghusson.com"
+            title="saleh@alghusson.com"
+            class="icon"
+        >
+            <font-awesome-icon :icon="['fa', 'envelope']"></font-awesome-icon>
+        </a>
+        <a
             href="https://github.com/qirh"
             target="_blank"
             rel="noopener noreferrer"
+            title="qirh"
             class="icon"
         >
             <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>

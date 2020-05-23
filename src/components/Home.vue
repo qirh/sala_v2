@@ -33,7 +33,6 @@
             <p>
                 {{ $t('footerLastUpdated') }} <a :href="gitLink">{{this.date}}<span v-if="this.dateSpecial">~~{{this.dateSpecial}}</span></a>
             </p>
-
             <!-- eslint-enable -->
         </div>
     </div>

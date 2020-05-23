@@ -58,6 +58,11 @@
         color: $white;
         background-color: $gray;
     }
+    .grid-footer {
+        a {
+            color: $blue;
+        }
+    }
 }
 @mixin lightThemeAlt {
     .icon {
@@ -68,6 +73,15 @@
     }
     .toggle {
         @include lightColorsAlt;
+    }
+    .tooltip-inner {
+        // color: $white;
+        // background-color: $gray;
+    }
+    .grid-footer {
+        a {
+            color: $red;
+        }
     }
 }
 @mixin darkTheme {
@@ -86,6 +100,11 @@
         color: $botticelli;
         background-color: $gray-dark;
     }
+    .grid-footer {
+        a {
+            color: $purple;
+        }
+    }
 }
 @mixin darkThemeAlt {
     .icon {
@@ -96,6 +115,15 @@
     }
     .toggle {
         @include darkColorsAlt;
+    }
+    .tooltip-inner {
+        // color: $botticelli;
+        // background-color: $gray-dark;
+    }
+    .grid-footer {
+        a {
+            color: $yellow;
+        }
     }
 }
 

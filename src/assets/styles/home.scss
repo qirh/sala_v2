@@ -1,11 +1,3 @@
-// .home-main {
-//     float: left;
-// }
-// .home-settings {
-//     float: right;
-//     padding-top: 1vw;
-// }
-
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -29,11 +21,23 @@
 .grid-langs { grid-area: grid-langs; }
 .grid-theme { grid-area: grid-theme; }
 .grid-icons { grid-area: grid-icons; }
-.grid-footer { grid-area: grid-footer; }
+.grid-footer {
+    grid-area: grid-footer;
+    justify-self: center;
+    a {
+        opacity: .75;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
 .grid-dev { grid-area: grid-dev; }
 
 .grid-text { grid-area: grid-text; }
-.grid-picture { grid-area: grid-picture; }
+.grid-picture {
+    grid-area: grid-picture;
+    align-self: center;
+}
 
 .main-greet {
     font-weight: 800;

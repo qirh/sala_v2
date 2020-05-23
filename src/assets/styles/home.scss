@@ -13,17 +13,27 @@
     gap: 1px 1px;
     grid-template-areas:
         "grid-langs grid-langs grid-theme grid-theme grid-icons grid-icons"
-        "grid-main grid-main grid-main grid-main grid-picture grid-picture"
+        "grid-main grid-main grid-main grid-main grid-main grid-main"
         "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer"
         "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
+}
+#grid-main {
+    grid-area: grid-main;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1px 1px;
+    grid-template-areas:
+        "grid-text grid-text grid-text grid-text grid-picture grid-picture";
 }
 .grid-langs { grid-area: grid-langs; }
 .grid-theme { grid-area: grid-theme; }
 .grid-icons { grid-area: grid-icons; }
-.grid-main { grid-area: grid-main; }
-.grid-picture { grid-area: grid-picture; }
 .grid-footer { grid-area: grid-footer; }
 .grid-dev { grid-area: grid-dev; }
+
+.grid-text { grid-area: grid-text; }
+.grid-picture { grid-area: grid-picture; }
 
 .main-greet {
     font-weight: 800;

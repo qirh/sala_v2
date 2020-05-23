@@ -1,11 +1,5 @@
 <template>
-    <div
-        id="cuerpo"
-        class="flip-prep"
-        :class="{
-            'right-to-left': $store.state.currentLang.direction === 'rtl',
-        }"
-    >
+    <div id="cuerpo" class="flip-prep">
         <Home
             :buildTime="buildTime"
             :gitHash="gitHash"
@@ -159,23 +153,19 @@ export default {
             if (oldLangObject != newLangObject) {
                 store.commit('changeLang', newLangObject);
             }
-            //change locale
+            // change locale
             this.$i18n.locale = newLangObject.code;
 
-            //change html lang and dir
+            // change html lang
             document.documentElement.setAttribute(
                 'lang',
                 store.state.currentLang.code,
             );
-            document.documentElement.setAttribute(
-                'dir',
-                store.state.currentLang.direction,
-            );
 
-            //change html title
+            // change html title
             document.title = store.state.currentLang.title;
 
-            //change html icons
+            // change html icons
             let appleLinks = document.querySelectorAll(
                 "link[rel='apple-touch-icon'][sizes]",
             );
@@ -197,20 +187,23 @@ export default {
                 store.commit('changeFontIndex', 0);
                 this.applyNewFont(oldLangObject, oldIndex);
 
-                // if lang is changed && direction is chnaged --> transition animation
+                // change dir and animation if necessary
                 if (
                     oldLangObject &&
                     oldLangObject.direction !== newLangObject.direction
                 ) {
-                    let className = null;
+                    const gridMain = document.getElementById('grid-main');
+                    let animationClass = null;
                     if (newLangObject.direction === 'ltr') {
-                        className = 'section-anim-ltr';
+                        animationClass = 'section-anim-ltr';
+                        gridMain.classList.remove('right-to-left');
                     } else {
-                        className = 'section-anim-rtl';
+                        animationClass = 'section-anim-rtl';
+                        gridMain.classList.add('right-to-left');
                     }
-                    document.body.classList.add(className);
+                    gridMain.classList.add(animationClass);
                     setTimeout(
-                        () => document.body.classList.remove(className),
+                        () => gridMain.classList.remove(animationClass),
                         500,
                     );
                 }

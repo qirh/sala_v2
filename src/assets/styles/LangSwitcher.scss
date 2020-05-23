@@ -1,16 +1,16 @@
 .lang-item {
 	white-space: normal;
-	opacity: 0.6;
+	opacity: .75;
 	cursor: pointer;
 	list-style-type: none;
 	margin-right: 7px;
 	&:hover {
-		opacity: 0.8;
+		opacity: 1;
 	}
 }
 .selected-lang {
 	cursor: default;
-	opacity: 0.8;
+	opacity: 1;
 	text-decoration: underline;
 }
 ul {

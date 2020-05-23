@@ -3,7 +3,7 @@
         <div
             v-for="lang in langs"
             :key="lang.code"
-            v-on:click="changeLang(lang.code)"
+            @click="changeLang(lang.code)"
             :title="lang.code"
             :disabled="$store.state.currentLang.code === lang.code"
             class="lang-item"

@@ -39,25 +39,20 @@ a {
     transition-property: transform;
 }
 .flip-right {
-    animation: rotation-right 2s 1 ease-in-out alternate;
+    animation: rotation-right 1s 1 ease-in-out;
 }
 .flip-left {
-    animation: rotation-left 2s 1 ease-in-out alternate;
+    animation: rotation-left 1s 1 ease-in-out;
 }
 @keyframes rotation-right {
-    50% {
-        transform: rotate(360deg);
-    }
+    // 50% {n
     100% {
-        transform: rotate(0deg);
+        transform: rotate(360deg);
     }
 }
 @keyframes rotation-left {
-    50% {
-        transform: rotate(-360deg);
-    }
     100% {
-        transform: rotate(0deg);
+        transform: rotate(-360deg);
     }
 }
 #cuerpo {

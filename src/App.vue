@@ -61,7 +61,6 @@ export default {
                 cuerpo.classList.add(`_${event.key}`);
                 return;
             }
-
             if (event.key === 'f' || event.key === 'F') {
                 if (store.state.flipDirection) {
                     cuerpo.classList.add('flip-right');
@@ -72,7 +71,7 @@ export default {
                     cuerpo.classList.remove('flip-right');
                     cuerpo.classList.remove('flip-left');
                     store.commit('switchFlipDirection');
-                }, 2000);
+                }, 1000);
             } else if (event.key === 't' || event.key === 'T') {
                 store.commit('toggleTheme');
             } else if (event.key === 'n' || event.key === 'N') {

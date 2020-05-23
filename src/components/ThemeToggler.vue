@@ -1,5 +1,5 @@
 <template>
-    <div class="theme-toggle" v-on:click="$store.commit('toggleTheme')">
+    <div class="theme-toggle" @click="$store.commit('toggleTheme')">
         <div class="toggle">
             <div id="subtoggle" type="checkbox"></div>
         </div>

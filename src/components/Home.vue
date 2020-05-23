@@ -20,7 +20,7 @@
             <p v-html="$t('mainSubTwo')"></p>
         </div>
         <div class="grid-picture">
-            <img class="picture" src="/assets/moi.jpg" />
+            <img class="picture" alt="picture of saleh" src="/assets/moi.jpg" />
         </div>
         <div class="grid-footer">
             <!-- eslint-disable -->

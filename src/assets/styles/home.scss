@@ -11,7 +11,11 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto auto;
     gap: 1px 1px;
-    grid-template-areas: "grid-langs grid-langs grid-theme grid-theme grid-icons grid-icons" "grid-main grid-main grid-main grid-picture grid-picture grid-picture" "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer" "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
+    grid-template-areas:
+        "grid-langs grid-langs grid-theme grid-theme grid-icons grid-icons"
+        "grid-main grid-main grid-main grid-main grid-picture grid-picture"
+        "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer"
+        "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
 }
 .grid-langs { grid-area: grid-langs; }
 .grid-theme { grid-area: grid-theme; }

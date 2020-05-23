@@ -1,16 +1,11 @@
 <template>
     <div class="icons">
-        <a
-            href="https://t.me/salghusson"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <font-awesome-icon :icon="['fab', 'telegram']"></font-awesome-icon>
-        </a>
+        <Help class="icon"></Help>
         <a
             href="https://github.com/qirh"
             target="_blank"
             rel="noopener noreferrer"
+            class="icon"
         >
             <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
         </a>
@@ -18,6 +13,7 @@
             href="https://www.goodreads.com/sal7"
             target="_blank"
             rel="noopener noreferrer"
+            class="icon"
             :title="$t('reading')"
         >
             <font-awesome-icon :icon="['fab', 'goodreads']"></font-awesome-icon>
@@ -26,6 +22,7 @@
             href="https://saleh.soy"
             target="_blank"
             rel="noopener noreferrer"
+            class="icon"
             :title="$t('writing')"
         >
             <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
@@ -34,8 +31,13 @@
 </template>
 
 <script>
+import Help from '@/components/Help';
+
 export default {
     name: 'Icons',
+    components: {
+        Help,
+    },
     data: () => {
         return {
             reading: 'reading',

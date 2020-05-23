@@ -4,7 +4,7 @@
         class="help"
         v-tooltip="{
             content: $t('helpTooltip'),
-            classes: ['tooltip', 'info'],
+            classes: ['help-tooltip', 'info'],
             placement,
             offset: 10,
             delay: {
@@ -15,6 +15,7 @@
     >
         <font-awesome-icon
             :icon="['far', 'question-circle']"
+            class="help-icon"
         ></font-awesome-icon>
     </div>
 </template>

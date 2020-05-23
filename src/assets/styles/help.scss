@@ -1,12 +1,16 @@
 @import "variables";
 
 .help {
-    display: none;
+    display: inline;
+    visibility: hidden;
     @media screen and (min-width: $break-large) {
-        display: block;
+        visibility: visible;
     }
 }
-.tooltip {
+.help-icon {
+    cursor: default;
+}
+.help-tooltip {
     display: block !important;
     z-index: 5;
 

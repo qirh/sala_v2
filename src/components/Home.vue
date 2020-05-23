@@ -9,7 +9,7 @@
             <ThemeToggler></ThemeToggler>
         </div>
         <div class="grid-icons">
-            <Help></Help>
+            <!-- <Help></Help> -->
             <Icons></Icons>
         </div>
         <div class="grid-main">
@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import Help from '@/components/Help';
 import Icons from '@/components/Icons';
 import ThemeToggler from '@/components/ThemeToggler';
 import LangSwitcher from '@/components/LangSwitcher';
@@ -65,7 +64,6 @@ export default {
         },
     },
     components: {
-        Help,
         Icons,
         ThemeToggler,
         LangSwitcher,

@@ -45,10 +45,10 @@
 @mixin lightTheme {
     color: $gray;
     background-color: $white;
-    .icons {
+    .icon {
         @include lightColors;
     }
-    .help {
+    .langs-list {
         @include lightColors;
     }
     .toggle {
@@ -60,10 +60,10 @@
     }
 }
 @mixin lightThemeAlt {
-    .icons {
+    .icon {
         @include lightColorsAlt;
     }
-    .help {
+    .langs-list {
         @include lightColorsAlt;
     }
     .toggle {
@@ -73,10 +73,10 @@
 @mixin darkTheme {
     color: $botticelli;
     background-color: $blackpearl;
-    .icons {
+    .icon {
         @include darkColors;
     }
-    .help {
+    .langs-list {
         @include darkColors;
     }
     .toggle {
@@ -88,10 +88,10 @@
     }
 }
 @mixin darkThemeAlt {
-    .icons {
+    .icon {
         @include darkColorsAlt;
     }
-    .help {
+    .langs-list {
         @include darkColorsAlt;
     }
     .toggle {

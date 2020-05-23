@@ -19,8 +19,8 @@
     "register-service-worker": "^1.7.1",
     "v-tooltip": "^2.0.3",
     "vue": "^2.6.11",
-    "vue-i18n": "^8.17.4",
-    "vuex": "^3.3.0",
+    "vue-i18n": "^8.17.7",
+    "vuex": "^3.4.0",
     "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "eslint-plugin-vue": "^5.2.3",
     "git-describe": "^4.0.4",
     "imagemin-webp-webpack-plugin": "^3.3.1",
-    "node-sass": "^4.14.0",
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
     "vue-cli-plugin-git-describe": "^1.0.0",
     "vue-cli-plugin-i18n": "^0.6.1",

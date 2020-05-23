@@ -1,6 +1,6 @@
 <template>
-    <div v-if="langs.length" class="langs-list">
-        <div
+    <ul v-if="langs.length" class="langs-list">
+        <li
             v-for="lang in langs"
             :key="lang.code"
             @click="changeLang(lang.code)"
@@ -16,8 +16,8 @@
             ]"
         >
             {{ lang.name }}
-        </div>
-    </div>
+        </li>
+    </ul>
 </template>
 
 <script>

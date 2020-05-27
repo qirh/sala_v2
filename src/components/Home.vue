@@ -9,7 +9,6 @@
             <ThemeToggler></ThemeToggler>
         </div>
         <div class="grid-icons">
-            <!-- <Help></Help> -->
             <Icons></Icons>
         </div>
         <div id="grid-main">

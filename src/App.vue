@@ -18,10 +18,6 @@ export default {
     components: {
         Home,
     },
-    mounted() {
-        document.addEventListener('keydown', this.handleKeyDown);
-        document.addEventListener('keyup', this.handleKeyUp);
-    },
     methods: {
         handleKeyUp() {
             try {
@@ -214,6 +210,10 @@ export default {
         return {
             gitHash: GIT_DESCRIBE.hash,
         };
+    },
+    mounted() {
+        document.addEventListener('keydown', this.handleKeyDown);
+        document.addEventListener('keyup', this.handleKeyUp);
     },
     created() {
         this.applyTheme();

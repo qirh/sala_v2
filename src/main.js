@@ -33,5 +33,6 @@ Vue.use(VTooltip);
 new Vue({
     store,
     i18n,
+    comments: true,
     render: (h) => h(App),
 }).$mount('#app');

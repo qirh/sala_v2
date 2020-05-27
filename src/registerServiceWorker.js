@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'production') {
                 'App is being served from cache by a service worker.\n' +
                     'For more details, visit https://goo.gl/AFskqB',
             );
+            console.log(process.env.BASE_URL);
         },
         registered() {
             console.log('Service worker has been registered.');

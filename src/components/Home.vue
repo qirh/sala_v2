@@ -25,13 +25,13 @@
                     <source
                         class="picture"
                         alt="picture of saleh"
-                        srcset="/assets/moi_fun.webp"
+                        srcset="/assets/moi.webp"
                         type="image/webp"
                     />
                     <img
                         class="picture"
                         alt="picture of saleh"
-                        src="/assets/moi_fun.jpg"
+                        src="/assets/moi.jpg"
                     />
                 </picture>
             </div>

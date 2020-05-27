@@ -19,3 +19,17 @@ package = "netlify-plugin-a11y"
 
 [[plugins]]
 package = "netlify-build-plugin-speedcurve"
+
+[[plugins]]
+package = "netlify-plugin-debug-cache"
+
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+  [plugins.inputs]
+  entryPoints = [
+    "*.html",
+  ]
+  recursive = true
+  pretty = true

@@ -1,17 +1,13 @@
-
 //https://medium.com/js-dojo/vuejs-pwa-cache-busting-8d09edd22a31
 workbox.core.setCacheNameDetails({prefix: 'sala'});
 const LATEST_VERSION = '0.3';
 
-self.addEventListener('activate', (event) => {
-    console.log(`%c ${LATEST_VERSION} `);
+self.addEventListener('activate', () => {
     if (caches) {
         caches.keys().then((arr) => {
             arr.forEach((key) => {
                 if (key.indexOf('sala-precache') < -1) {
-                    caches
-                        .delete(key)
-                        .then(() => console.log(`%c Cleared ${key}`));
+                    caches.delete(key);
                 } else {
                     caches.open(key).then((cache) => {
                         cache.match('version').then((res) => {
@@ -24,17 +20,8 @@ self.addEventListener('activate', (event) => {
                                     }),
                                 );
                             } else if (res.statusText !== LATEST_VERSION) {
-                                caches
-                                    .delete(key)
-                                    .then(() =>
-                                        console.log(
-                                            `%c Cleared Cache ${LATEST_VERSION}`,
-                                        ),
-                                    );
-                            } else
-                                console.log(
-                                    `%c Great you have the latest version ${LATEST_VERSION}`,
-                                );
+                                caches.delete(key);
+                            }
                         });
                     });
                 }

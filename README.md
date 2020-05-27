@@ -5,6 +5,11 @@ personal website v2. il y en a beaucoup comme ça, mais lui, c'est le mien.
 
 work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old website ([saleh.alghusson.com](https://saleh.alghusson.com)).
 
+### caveats
+* there's 2 places to update `versions` very un-dry.
+    1. `store.js` to store the state
+    2. `service-worker.js` to update the app when there's a newer version deployed.
+
 ## credit
 * [fort awesome](https://fortawesome.com)
 * [vi18n](https://github.com/kazupon/vue-i18n)

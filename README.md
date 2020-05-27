@@ -12,9 +12,9 @@ work in progress. [saleh.sh](https://saleh.sh) currently redirects to the old we
 * [theme transition](https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a) & [another source](https://codepen.io/jaredpdesigns/pen/dXkBJZ)
 * [language transition](https://codepen.io/rayjackson/pen/VJRPdP)
 * [favicon generator](https://ionos.com/tools/favicon-generator)
+* [ASCII Art](http://patorjk.com/software/taag/)
 
 ### fonts
-* [google fonts](https://fonts.google.com)
 * [national park](https://nationalparktypeface.com)
 * [classic fonts](https://int10h.org/oldschool-pc-fonts)
 * [arabic fonts](https://arabicfonts.net)

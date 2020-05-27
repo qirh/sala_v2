@@ -17,8 +17,9 @@
 [[plugins]]
 package = "netlify-plugin-a11y"
 
-[[plugins]]
-package = "netlify-build-plugin-speedcurve"
+# I think I hit the rate limit
+# [[plugins]]
+# package = "netlify-build-plugin-speedcurve"
 
 [[plugins]]
 package = "netlify-plugin-debug-cache"

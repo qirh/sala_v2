@@ -1,9 +1,3 @@
-importScripts(
-    'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js',
-);
-
-importScripts('/precache-manifest.3c1428b3e95139c16cbc9fec4f44bf01.js');
-
 workbox.core.setCacheNameDetails({prefix: 'sala'});
 const LATEST_VERSION = '0.3';
 

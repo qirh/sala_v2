@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
             // console.log('App is running in offline mode.');
         },
         error(error) {
-            console.log(f`~~\n${error}`);
+            console.log(`~~\n${error}`);
         },
     });
 }

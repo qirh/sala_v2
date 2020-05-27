@@ -8,3 +8,6 @@ npm-debug.log*
 
 # vscode
 .vscode
+
+# Local Netlify folder
+.netlify

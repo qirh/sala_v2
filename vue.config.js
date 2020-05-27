@@ -12,4 +12,13 @@ module.exports = {
             variableName: 'GIT_DESCRIBE',
         },
     },
+    pwa: {
+        iconPaths: {
+            favicon32: null,
+            favicon16: null,
+            appleTouchIcon: null,
+            maskIcon: null,
+            msTileImage: null,
+        },
+    },
 };

@@ -5,7 +5,7 @@ import {register} from 'register-service-worker';
 if (process.env.NODE_ENV === 'production') {
     register(`${process.env.BASE_URL}service-worker.js`, {
         ready() {
-            console.log('App loaded from a service worker.');
+            console.log('~~loaded from a service worker');
         },
         registered() {
             // console.log('Service worker has been registered.');

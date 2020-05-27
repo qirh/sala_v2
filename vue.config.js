@@ -13,6 +13,10 @@ module.exports = {
         },
     },
     pwa: {
+        workboxPluginMode: 'InjectManifest',
+        workboxOptions: {
+            swSrc: 'service-worker.js',
+        },
         iconPaths: {
             favicon32: null,
             favicon16: null,

@@ -9,8 +9,6 @@
 
   "name": "sala",
   "short_name": "sala",
-  "version": "0.3",
-
   "icons": [
     {
       "src": "./assets/en/icon-152x152.png",

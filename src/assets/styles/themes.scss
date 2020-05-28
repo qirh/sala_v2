@@ -1,31 +1,16 @@
 @mixin lightColors() {
     color: $blue;
-    .selected-lang {
-        text-decoration-color: darken($blue, 15%);
-    }
-    #subtoggle {
-        &:before {
-            background-color: $blue;
-        }
-    }
 }
 @mixin lightColorsAlt() {
     color: $red;
 }
 @mixin darkColors() {
     color: $purple;
-    .selected-lang {
-        text-decoration-color: darken($purple, 15%);
-    }
-    #subtoggle {
-        &:before {
-            background-color: $purple;
-        }
-    }
 }
 @mixin darkColorsAlt() {
         color: $yellow;
 }
+
 @mixin lightTheme {
     color: $gray;
     background-color: $white;
@@ -45,6 +30,14 @@
     .grid-footer {
         a {
             color: $blue;
+        }
+    }
+    .selected-lang {
+        text-decoration-color: darken($blue, 15%);
+    }
+    #subtoggle {
+        &:before {
+            background-color: $blue;
         }
     }
 }
@@ -74,6 +67,14 @@
     .grid-footer {
         a {
             color: $purple;
+        }
+    }
+    .selected-lang {
+        text-decoration-color: darken($purple, 15%);
+    }
+    #subtoggle {
+        &:before {
+            background-color: $purple;
         }
     }
 }

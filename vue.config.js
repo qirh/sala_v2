@@ -1,9 +1,9 @@
-const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
+// const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 
 module.exports = {
-    configureWebpack: {
-        plugins: [new ImageminWebpWebpackPlugin()],
-    },
+    // configureWebpack: {
+    //     plugins: [new ImageminWebpWebpackPlugin()],
+    // },
     pluginOptions: {
         i18n: {
             enableInSFC: true,

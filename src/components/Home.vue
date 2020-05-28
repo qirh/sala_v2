@@ -20,7 +20,7 @@
                 <p v-html="$t('mainSubTwo')"></p>
             </div>
             <div class="grid-picture">
-                <picture>
+                <!-- <picture>
                     <source
                         class="picture"
                         alt="picture of saleh"
@@ -32,7 +32,12 @@
                         alt="picture of saleh"
                         src="/assets/moi.jpg"
                     />
-                </picture>
+                </picture> -->
+                <img
+                        class="picture"
+                        alt="picture of saleh"
+                        src="/assets/moi.jpg"
+                    />
             </div>
         </div>
         <div class="grid-footer">

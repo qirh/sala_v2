@@ -34,10 +34,10 @@
                     />
                 </picture> -->
                 <img
-                        class="picture"
-                        alt="picture of saleh"
-                        src="/assets/moi.jpg"
-                    />
+                    class="picture"
+                    alt="picture of saleh"
+                    src="/assets/moi.jpg"
+                />
             </div>
         </div>
         <div class="grid-footer">

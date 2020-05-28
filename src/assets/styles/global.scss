@@ -10,7 +10,7 @@ html.color-theme-in-transition,
 html.color-theme-in-transition *,
 html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
-    transition: background-color 375ms ease-in-out;
+    transition: background-color 375ms linear;
 }
 html,
 body {
@@ -23,6 +23,7 @@ body {
     padding: 5vh 10vw;
     perspective: 500px;
     transform-style: preserve-3d;
+    -webkit-font-smoothing: antialiased;
 }
 p {
     font-size: 1.3em;
@@ -39,10 +40,10 @@ a {
     transition-property: transform;
 }
 .flip-right {
-    animation: rotation-right 1s 1 ease-in-out;
+    animation: rotation-right 0.75s 1 linear;
 }
 .flip-left {
-    animation: rotation-left 1s 1 ease-in-out;
+    animation: rotation-left 0.75s 1 linear;
 }
 @keyframes rotation-right {
     // 50% {n

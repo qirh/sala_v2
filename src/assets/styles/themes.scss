@@ -1,7 +1,7 @@
 @mixin lightColors() {
     color: $blue;
-    a {
-        color: $blue;
+    .selected-lang {
+        text-decoration-color: darken($blue, 15%);
     }
     #subtoggle {
         &:before {
@@ -11,19 +11,11 @@
 }
 @mixin lightColorsAlt() {
     color: $red;
-    a {
-        color: $red;
-    }
-    #subtoggle {
-        &:before {
-            background-color: $red;
-        }
-    }
 }
 @mixin darkColors() {
     color: $purple;
-    a {
-        color: $purple;
+    .selected-lang {
+        text-decoration-color: darken($purple, 15%);
     }
     #subtoggle {
         &:before {
@@ -33,14 +25,6 @@
 }
 @mixin darkColorsAlt() {
         color: $yellow;
-        a {
-            color: $yellow;
-        }
-        #subtoggle {
-            &:before {
-              background-color: $yellow;
-            }
-        }
 }
 @mixin lightTheme {
     color: $gray;
@@ -65,19 +49,6 @@
     }
 }
 @mixin lightThemeAlt {
-    .icon {
-        @include lightColorsAlt;
-    }
-    .langs-list {
-        @include lightColorsAlt;
-    }
-    .toggle {
-        @include lightColorsAlt;
-    }
-    .tooltip-inner {
-        // color: $white;
-        // background-color: $gray;
-    }
     .grid-footer {
         a {
             color: $red;
@@ -107,19 +78,6 @@
     }
 }
 @mixin darkThemeAlt {
-    .icon {
-        @include darkColorsAlt;
-    }
-    .langs-list {
-        @include darkColorsAlt;
-    }
-    .toggle {
-        @include darkColorsAlt;
-    }
-    .tooltip-inner {
-        // color: $botticelli;
-        // background-color: $gray-dark;
-    }
     .grid-footer {
         a {
             color: $yellow;

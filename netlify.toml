@@ -1,36 +1,52 @@
 # https://docs.netlify.com/configure-builds/file-based-configuration/#sample-file
 [build]
-  base = "/"
-  publish = "dist/"
-  command = "npm run build"
+base = "/"
+publish = "dist/"
+command = "npm run build"
 
 [[redirects]]
-  from = "/*"
-  to = "/"
-  status = 200
+from = "/*"
+to = "/"
+status = 200
 
 [[headers]]
-  for = "/service-worker.js"
+for = "/service-worker.js"
   [headers.values]
-    cache-control = "max-age=0,no-cache,no-store,must-revalidate"
+  cache-control = "max-age=0,no-cache,no-store,must-revalidate"
+
+[[plugins]]
+package = "netlify-plugin-is-website-vulnerable"
 
 [[plugins]]
 package = "netlify-plugin-a11y"
 
-# I think I hit the rate limit
-# [[plugins]]
-# package = "netlify-build-plugin-speedcurve"
-
 [[plugins]]
 package = "netlify-plugin-debug-cache"
 
+[[plugins]]
+package = "netlify-plugin-subfont"
+  [plugins.inputs]
+  entryPoints = ["*.html"]
+  recursive = true
+
+[[plugins]]
+package = "netlify-plugin-no-more-404"
+  [plugins.inputs]
+  on404 = "error"
+  debugMode = false
+
+[[plugins]]
+package = "netlify-plugin-minify-html"
+  [plugins.inputs]
+  contexts = ['production', 'branch-deploy', 'deploy-preview']
 
 [[plugins]]
 package = "netlify-plugin-checklinks"
-
   [plugins.inputs]
-  entryPoints = [
-    "*.html",
-  ]
+  entryPoints = ["*.html"]
   recursive = true
   pretty = true
+
+# I think I hit the rate limit
+# [[plugins]]
+# package = "netlify-build-plugin-speedcurve"

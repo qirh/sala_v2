@@ -47,6 +47,9 @@ package = "netlify-plugin-checklinks"
   recursive = true
   pretty = true
 
+[[plugins]]
+package = "netlify-plugin-inline-critical-css"
+
 # I think I hit the rate limit
 # [[plugins]]
 # package = "netlify-build-plugin-speedcurve"

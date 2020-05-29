@@ -33,6 +33,19 @@ export default {
     methods: {
         toggleHelp() {
             store.commit('toggleShowHelp');
+            if (store.state.showHelp) {
+                // eslint-disable-next-line
+                console.log(
+                    '%chello there! you can also try ' +
+                        '%cdev' +
+                        '%c & ' +
+                        '%cthe konami code',
+                    'background: #222; color: #bada55',
+                    'background: #333; color: #1954b8',
+                    'background: #222; color: #bada55',
+                    'background: #333; color: #1954b8',
+                );
+            }
         },
     },
 };

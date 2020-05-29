@@ -15,6 +15,7 @@ export default new Vuex.Store({
         flipDirection: true,
         fontIndex: 0,
         currentLang: null,
+        showHelp: false,
     },
     mutations: {
         toggleTheme(state) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
         },
         switchFlipDirection(state) {
             state.flipDirection = !state.flipDirection;
+        },
+        toggleShowHelp(state) {
+            state.showHelp = !state.showHelp;
         },
     },
     plugins: [vuexPersist.plugin],

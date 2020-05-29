@@ -1,11 +1,13 @@
 <template>
     <div
-        :key="index"
         class="help"
+        :class="{
+            shown: $store.state.showHelp,
+        }"
         v-tooltip="{
             content: $t('helpTooltip'),
             classes: ['help-tooltip', 'info'],
-            placement,
+            placement: 'left',
             offset: 10,
             delay: {
                 show: 500,
@@ -25,20 +27,13 @@ import store from '@/store';
 
 export default {
     name: 'Help',
-    computed: {
-        placement() {
-            return store.state.currentLang.placement;
-        },
+    mounted() {
+        this.$mousetrap.bind('h e l p', this.toggleHelp);
     },
-    watch: {
-        placement() {
-            this.index++;
+    methods: {
+        toggleHelp() {
+            store.commit('toggleShowHelp');
         },
-    },
-    data: () => {
-        return {
-            index: 1,
-        };
     },
 };
 </script>

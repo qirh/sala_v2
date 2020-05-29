@@ -3,8 +3,20 @@
 .help {
     display: inline;
     visibility: hidden;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+  }
+.shown {
     @media screen and (min-width: $break-large) {
-        visibility: visible;
+        animation: 1s fadeIn;
+        animation-fill-mode: forwards;
     }
 }
 .help-icon {
@@ -24,15 +36,6 @@
     }
     .tooltip-arrow {
         display: none;
-    }
-    &[x-placement^="top"] {
-        margin-bottom: 5px;
-    }
-    &[x-placement^="bottom"] {
-        margin-top: 5px;
-    }
-    &[x-placement^="right"] {
-         margin-left: 5px;
     }
     &[x-placement^="left"] {
         margin-right: 5px;

@@ -19,6 +19,30 @@ export default {
         Home,
     },
     methods: {
+        flip() {
+            const cuerpo = document.getElementById('cuerpo');
+            if (store.state.flipDirection) {
+                cuerpo.classList.add('flip-right');
+            } else {
+                cuerpo.classList.add('flip-left');
+            }
+            setTimeout(() => {
+                cuerpo.classList.remove('flip-right');
+                cuerpo.classList.remove('flip-left');
+                store.commit('switchFlipDirection');
+            }, 750);
+            return false;
+        },
+        changeFont() {
+            const newFontIndex =
+                (store.state.fontIndex + 1) %
+                store.state.currentLang.fonts.length;
+            store.commit('changeFontIndex', newFontIndex);
+        },
+        changeTheme() {
+            store.commit('toggleTheme');
+        },
+
         handleKeyUp() {
             try {
                 document.getElementById('cuerpo').classList.remove('keydown');
@@ -30,7 +54,6 @@ export default {
             }
         },
         handleKeyDown() {
-            const keysAssigned = ['f', 'F', 't', 'T', 'n', 'N'];
             const keysSpecial = [
                 'Tab',
                 'CapsLock',
@@ -43,33 +66,12 @@ export default {
                 'Enter',
             ]; // these keys don't produce animations
             const cuerpo = document.getElementById('cuerpo');
-            if (
-                !keysAssigned.includes(event.key) &&
-                !keysSpecial.includes(event.key)
-            ) {
+            if (!keysSpecial.includes(event.key)) {
                 cuerpo.classList.add('keydown');
                 cuerpo.classList.add(`_${event.key}`);
                 return;
             }
-            if (event.key === 'f' || event.key === 'F') {
-                if (store.state.flipDirection) {
-                    cuerpo.classList.add('flip-right');
-                } else {
-                    cuerpo.classList.add('flip-left');
-                }
-                setTimeout(() => {
-                    cuerpo.classList.remove('flip-right');
-                    cuerpo.classList.remove('flip-left');
-                    store.commit('switchFlipDirection');
-                }, 750);
-            } else if (event.key === 't' || event.key === 'T') {
-                store.commit('toggleTheme');
-            } else if (event.key === 'n' || event.key === 'N') {
-                const newFontIndex =
-                    (store.state.fontIndex + 1) %
-                    store.state.currentLang.fonts.length;
-                store.commit('changeFontIndex', newFontIndex);
-            } else if (event.key === ' ') {
+            if (event.key === ' ') {
                 event.preventDefault();
                 const nextLang = this.getNextLang();
                 this.updateLangStuff(nextLang.code);
@@ -214,6 +216,12 @@ export default {
     mounted() {
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
+        this.$mousetrap.bind('f o n t', this.changeFont);
+        this.$mousetrap.bind('t h e m e', this.changeTheme);
+        this.$mousetrap.bind(
+            ['up up down down left right left right b a', 'i d d q d'],
+            this.flip,
+        );
     },
     created() {
         this.applyTheme();

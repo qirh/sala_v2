@@ -14,14 +14,20 @@ for = "/service-worker.js"
   [headers.values]
   cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
-# [[plugins]]
-# package = "netlify-plugin-is-website-vulnerable"
+[[plugins]]
+package = "netlify-plugin-is-website-vulnerable"
 
-# [[plugins]]
-# package = "netlify-plugin-a11y"
+[[plugins]]
+package = "netlify-plugin-a11y"
 
-# [[plugins]]
-# package = "netlify-plugin-debug-cache"
+[[plugins]]
+package = "netlify-plugin-debug-cache"
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+[[plugins]]
+package = "netlify-plugin-no-more-404"
 
 # [[plugins]]
 # package = "netlify-plugin-subfont"
@@ -29,23 +35,12 @@ for = "/service-worker.js"
 #   entryPoints = ["*.html"]
 #   recursive = true
 
-# [[plugins]]
-# package = "netlify-plugin-no-more-404"
-#   [plugins.inputs]
-#   on404 = "error"
-#   debugMode = false
 
 # [[plugins]]
 # package = "netlify-plugin-minify-html"
 #   [plugins.inputs]
 #   contexts = ['production', 'branch-deploy', 'deploy-preview']
 
-# [[plugins]]
-# package = "netlify-plugin-checklinks"
-#   [plugins.inputs]
-#   entryPoints = ["*.html"]
-#   recursive = true
-#   pretty = true
 
 # [[plugins]]
 # package = "netlify-plugin-inline-critical-css"

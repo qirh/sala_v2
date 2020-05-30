@@ -36,12 +36,13 @@ export default {
     methods: {
         toggleHelp() {
             store.commit('toggleShowHelp');
+            this.logHelpMessage();
         },
         logHelpMessage() {
             if (store.state.showHelp) {
                 // eslint-disable-next-line
                 console.log(
-                    '%chello there! you can also try ' +
+                    '%cyou can also type ' +
                         '%cdev' +
                         '%c & ' +
                         '%cthe konami code',
@@ -51,7 +52,7 @@ export default {
                     'background: #333; color: #1954b8',
                 );
             }
-        }
+        },
     },
 };
 </script>

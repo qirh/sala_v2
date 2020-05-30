@@ -207,6 +207,16 @@ export default {
                 }
             }
         },
+        logHelpMessage() {
+            if (!store.state.showHelp) {
+                // eslint-disable-next-line
+                console.log(
+                    '%chello there! you can type ' + '%chelp',
+                    'background: #222; color: #bada55',
+                    'background: #333; color: #1954b8',
+                );
+            }
+        },
     },
     data: () => {
         return {
@@ -224,6 +234,7 @@ export default {
         );
     },
     created() {
+        this.logHelpMessage();
         this.applyTheme();
         this.applyNewFont();
         this.updateLangStuff();

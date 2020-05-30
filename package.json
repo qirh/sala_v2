@@ -9,7 +9,7 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
+    "@babel/polyfill": "^7.10.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
@@ -19,9 +19,7 @@
     "netlify-build-plugin-speedcurve": "^1.0.5",
     "netlify-plugin-a11y": "0.0.12",
     "netlify-plugin-is-website-vulnerable": "^1.0.8",
-    "netlify-plugin-minify-html": "^0.2.2",
     "netlify-plugin-no-more-404": "0.0.15",
-    "netlify-plugin-subfont": "^5.0.2",
     "register-service-worker": "^1.7.1",
     "v-tooltip": "^2.0.3",
     "vue": "^2.6.11",
@@ -42,7 +40,6 @@
     "eslint-plugin-vue": "^5.2.3",
     "git-describe": "^4.0.4",
     "imagemin-webp-webpack-plugin": "^3.3.1",
-    "netlify-plugin-inline-critical-css": "^1.1.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-git-describe": "^1.0.0",

@@ -30,9 +30,14 @@ export default {
     mounted() {
         this.$mousetrap.bind('h e l p', this.toggleHelp);
     },
+    created() {
+        this.logHelpMessage();
+    },
     methods: {
         toggleHelp() {
             store.commit('toggleShowHelp');
+        },
+        logHelpMessage() {
             if (store.state.showHelp) {
                 // eslint-disable-next-line
                 console.log(
@@ -46,7 +51,7 @@ export default {
                     'background: #333; color: #1954b8',
                 );
             }
-        },
+        }
     },
 };
 </script>

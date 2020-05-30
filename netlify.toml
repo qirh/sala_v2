@@ -29,22 +29,6 @@ package = "netlify-plugin-checklinks"
 [[plugins]]
 package = "netlify-plugin-no-more-404"
 
-# [[plugins]]
-# package = "netlify-plugin-subfont"
-#   [plugins.inputs]
-#   entryPoints = ["*.html"]
-#   recursive = true
-
-
-# [[plugins]]
-# package = "netlify-plugin-minify-html"
-#   [plugins.inputs]
-#   contexts = ['production', 'branch-deploy', 'deploy-preview']
-
-
-# [[plugins]]
-# package = "netlify-plugin-inline-critical-css"
-
 # I think I hit the rate limit
 # [[plugins]]
 # package = "netlify-build-plugin-speedcurve"

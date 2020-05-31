@@ -7,15 +7,6 @@ if (process.env.NODE_ENV === 'production') {
         ready() {
             console.log('~~successfully loaded from sw');
         },
-        registered() {
-            // console.log('Service worker has been registered.');
-        },
-        cached() {
-            // console.log('Content has been cached for offline use.');
-        },
-        updatefound() {
-            // console.log('New content is downloading.');
-        },
         updated() {
             console.log('~~new content available, refreshing');
             setTimeout(() => {
@@ -24,7 +15,6 @@ if (process.env.NODE_ENV === 'production') {
         },
         offline() {
             console.log('~~running in offline mode');
-            // console.log('App is running in offline mode.');
         },
         error(error) {
             console.log(`~~\n${error}`);

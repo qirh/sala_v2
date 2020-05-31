@@ -1,9 +1,7 @@
 <template>
     <div class="grid">
         <div class="grid-langs">
-            <LangSwitcher
-                @updateLangFromSwitcher="updateLangFromHome"
-            ></LangSwitcher>
+            <LangSwitcher></LangSwitcher>
         </div>
         <div class="grid-theme">
             <ThemeToggler></ThemeToggler>
@@ -41,6 +39,7 @@
 import Icons from '@/components/Icons';
 import ThemeToggler from '@/components/ThemeToggler';
 import LangSwitcher from '@/components/LangSwitcher';
+import store from '@/store';
 
 export default {
     name: 'Home',
@@ -73,15 +72,36 @@ export default {
         LangSwitcher,
     },
     methods: {
-        updateLangFromHome(langCode) {
-            this.$emit('updateLangFromHome', langCode);
-        },
         getDate(locale) {
             return new Intl.DateTimeFormat(locale, {
                 month: 'long',
                 year: 'numeric',
             }).format(new Date(this.buildTime));
         },
+        updateLangUI() {
+            // change direction
+            const gridMain = document.getElementById('grid-main');
+            let animationClass = null;
+            if (store.state.currentLang.direction === 'ltr') {
+                animationClass = 'section-anim-ltr';
+                gridMain.classList.remove('right-to-left');
+            } else {
+                animationClass = 'section-anim-rtl';
+                gridMain.classList.add('right-to-left');
+            }
+            gridMain.classList.add(animationClass);
+            setTimeout(() => gridMain.classList.remove(animationClass), 500);
+        },
+    },
+    created() {
+        store.watch(
+            () => {
+                return this.$store.state.currentLang;
+            },
+            (newValue, oldValue) => {
+                this.updateLangUI(oldValue);
+            },
+        );
     },
 };
 </script>

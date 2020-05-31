@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import {langs} from '@/consts';
+import {langs, getLangObjectFromCode} from '@/consts';
+import store from '@/store';
 
 export default {
     name: 'LangSwitcher',
@@ -33,7 +34,8 @@ export default {
     },
     methods: {
         changeLang(langCode) {
-            this.$emit('updateLangFromSwitcher', langCode);
+            const LangObject = getLangObjectFromCode(langCode);
+            store.commit('changeLang', LangObject);
         },
     },
 };

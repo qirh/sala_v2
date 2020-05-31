@@ -1,15 +1,11 @@
 <template>
     <div id="cuerpo" class="flip-prep">
-        <Home
-            :buildTime="buildTime"
-            :gitHash="gitHash"
-            @updateLangFromHome="updateLangStuff"
-        ></Home>
+        <Home :buildTime="buildTime" :gitHash="gitHash"></Home>
     </div>
 </template>
 
 <script>
-import {langs, defaultLangCode, mod} from '@/consts';
+import {langs, getLangObjectFromCode, getNextLang} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
 
@@ -34,16 +30,17 @@ export default {
             return false;
         },
         changeFont() {
-            const newFontIndex =
-                (store.state.fontIndex + 1) %
-                store.state.currentLang.fonts.length;
-            store.commit('changeFontIndex', newFontIndex);
+            store.commit('toggleFont');
         },
         changeTheme() {
             store.commit('toggleTheme');
         },
 
         handleKeyUp() {
+            if (event.key === ' ') {
+                const nextLang = getNextLang(store.state.currentLang.code);
+                store.commit('changeLang', nextLang);
+            }
             try {
                 document.getElementById('cuerpo').classList.remove('keydown');
                 document
@@ -73,8 +70,6 @@ export default {
             }
             if (event.key === ' ') {
                 event.preventDefault();
-                const nextLang = this.getNextLang();
-                this.updateLangStuff(nextLang.code);
             }
         },
         applyTheme: () => {
@@ -86,19 +81,30 @@ export default {
                 document.body.classList.add('light-theme');
             }
         },
-        applyNewFont: (oldLangObject = undefined, oldIndex = undefined) => {
+        applyFont: (oldLangObject = undefined) => {
             if (!store.state.currentLang) {
                 return;
             }
-            if (oldLangObject != undefined && oldIndex != undefined) {
-                document.body.classList.remove(oldLangObject.fonts[oldIndex]);
-            } else if (oldLangObject == undefined && oldIndex != undefined) {
+            const langObject = oldLangObject ? oldLangObject : store.state.currentLang;
+            // if new language --> remove old language font
+            if (oldLangObject != undefined) {
                 document.body.classList.remove(
-                    store.state.currentLang.fonts[oldIndex],
+                    store.state.funFont
+                        ? langObject.fonts[1]
+                        : langObject.fonts[0],
+                );
+            } // if same language --> remove previous font
+            else if (oldLangObject == undefined) {
+                document.body.classList.remove(
+                    store.state.funFont
+                        ? langObject.fonts[0]
+                        : langObject.fonts[1],
                 );
             }
             document.body.classList.add(
-                store.state.currentLang.fonts[store.state.fontIndex],
+                store.state.funFont
+                    ? store.state.currentLang.fonts[1]
+                    : store.state.currentLang.fonts[0],
             );
         },
         getBrowserLang: function() {
@@ -116,43 +122,15 @@ export default {
             }
             return undefined;
         },
-        getLangObjectFromCode(langCode) {
-            const langObject = langs.find((lang) => lang.code === langCode);
-            if (langObject) {
-                return langObject;
-            }
-            return this.getLangObjectFromCode(defaultLangCode);
-        },
-        getNextLang() {
-            const langObjectFromList = (lang) =>
-                lang.code === store.state.currentLang.code;
-            const index = langs.findIndex(langObjectFromList);
-            return langs[mod(index + 1, langs.length)];
-        },
-        getPrevLang() {
-            const langObjectFromList = (lang) =>
-                lang.code === store.state.currentLang.code;
-            const index = langs.findIndex(langObjectFromList);
-            return langs[mod(index - 1, langs.length)];
-        },
         getLangCodeOnInit: function() {
             if (!store.state.currentLang) {
                 return this.getBrowserLang();
             }
             return store.state.currentLang.code;
         },
-        updateLangStuff: function(langCode = undefined) {
-            if (!langCode) {
-                langCode = this.getLangCodeOnInit();
-            }
-            const oldLangObject = store.state.currentLang;
-            const newLangObject = this.getLangObjectFromCode(langCode);
-
-            if (oldLangObject != newLangObject) {
-                store.commit('changeLang', newLangObject);
-            }
+        updateLangUI: function() {
             // change locale
-            this.$i18n.locale = newLangObject.code;
+            this.$i18n.locale = store.state.currentLang.code;
 
             // change html lang
             document.documentElement.setAttribute(
@@ -177,35 +155,6 @@ export default {
             );
             // eslint-disable-next-line
             shortcut_link.href = `/assets/${store.state.currentLang.code}/icon-192x192.png`;
-
-            // if nothing in storage (new app) || lang is changed
-            if (!oldLangObject || oldLangObject.code !== newLangObject.code) {
-                //change fonts
-                const oldIndex = store.state.fontIndex;
-                store.commit('changeFontIndex', 0);
-                this.applyNewFont(oldLangObject, oldIndex);
-
-                // change dir and animation if necessary
-                if (
-                    oldLangObject &&
-                    oldLangObject.direction !== newLangObject.direction
-                ) {
-                    const gridMain = document.getElementById('grid-main');
-                    let animationClass = null;
-                    if (newLangObject.direction === 'ltr') {
-                        animationClass = 'section-anim-ltr';
-                        gridMain.classList.remove('right-to-left');
-                    } else {
-                        animationClass = 'section-anim-rtl';
-                        gridMain.classList.add('right-to-left');
-                    }
-                    gridMain.classList.add(animationClass);
-                    setTimeout(
-                        () => gridMain.classList.remove(animationClass),
-                        500,
-                    );
-                }
-            }
         },
         logHelpMessage() {
             if (!store.state.showHelp) {
@@ -227,18 +176,30 @@ export default {
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
         this.$mousetrap.bind('f o n t', this.changeFont);
+        this.$mousetrap.bind('خ ط', this.changeFont);
         this.$mousetrap.bind('t h e m e', this.changeTheme);
+        this.$mousetrap.bind('ل و ن', this.changeTheme);
         this.$mousetrap.bind(
-            ['up up down down left right left right b a', 'i d d q d'],
+            [
+                'up up down down left right left right b a',
+                'i d d q d',
+                'up up down down left right left right ز ش',
+            ],
             this.flip,
         );
-    },
-    created() {
         this.logHelpMessage();
         this.applyTheme();
-        this.applyNewFont();
-        this.updateLangStuff();
+        this.applyFont();
 
+        const langCode = this.getLangCodeOnInit();
+        const LangObject = getLangObjectFromCode(langCode);
+        if (this.$store.state.currentLang != LangObject) {
+            store.commit('changeLang', LangObject);
+        } else {
+            this.updateLangUI();
+        }
+    },
+    created() {
         store.watch(
             () => {
                 return this.$store.state.theme;
@@ -247,13 +208,21 @@ export default {
                 this.applyTheme();
             },
         );
-
         store.watch(
             () => {
-                return this.$store.state.fontIndex;
+                return this.$store.state.funFont;
+            },
+            () => {
+                this.applyFont();
+            },
+        );
+        store.watch(
+            () => {
+                return this.$store.state.currentLang;
             },
             (newValue, oldValue) => {
-                this.applyNewFont(undefined, oldValue);
+                this.updateLangUI(oldValue);
+                this.applyFont(oldValue);
             },
         );
     },

@@ -6,12 +6,6 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'nps-heavy';
-    src: url('/assets/fonts/nps-heavy.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
     font-family: 'ibm';
     src: url('/assets/fonts/ibm.woff2') format('woff2');
     font-weight: normal;
@@ -32,19 +26,10 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'reem-kufi';
-    src: url('/assets/fonts/reem-kufi.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 // latin
 .font-rubik {
     font-family: 'rubik', -apple-system, sans-serif;
-}
-.font-nps-heavy {
-    font-family: 'nps-heavy', -apple-system, sans-serif;
 }
 .font-ibm {
     font-family: 'ibm', -apple-system, sans-serif;
@@ -58,7 +43,3 @@
 .font-aref-ruqaa {
     font-family: 'aref-ruqaa', -apple-system, sans-serif;
 }
-.font-reem-kufi {
-    font-family: 'reem-kufi', -apple-system, sans-serif;
-}
-

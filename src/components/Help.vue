@@ -43,12 +43,12 @@ export default {
                 // eslint-disable-next-line
                 console.log(
                     '%cyou can also type ' +
-                        '%cdev' +
-                        '%c & ' +
+                        // '%cdev' +
+                        // '%c & ' +
                         '%cthe konami code',
                     'background: #222; color: #bada55',
-                    'background: #333; color: #1954b8',
-                    'background: #222; color: #bada55',
+                    // 'background: #333; color: #1954b8',
+                    // 'background: #222; color: #bada55',
                     'background: #333; color: #1954b8',
                 );
             }

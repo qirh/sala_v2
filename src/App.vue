@@ -85,20 +85,19 @@ export default {
             if (!store.state.currentLang) {
                 return;
             }
-            const langObject = oldLangObject ? oldLangObject : store.state.currentLang;
             // if new language --> remove old language font
             if (oldLangObject != undefined) {
                 document.body.classList.remove(
                     store.state.funFont
-                        ? langObject.fonts[1]
-                        : langObject.fonts[0],
+                        ? oldLangObject.fonts[1]
+                        : oldLangObject.fonts[0],
                 );
             } // if same language --> remove previous font
             else if (oldLangObject == undefined) {
                 document.body.classList.remove(
                     store.state.funFont
-                        ? langObject.fonts[0]
-                        : langObject.fonts[1],
+                        ? store.state.currentLang.fonts[0]
+                        : store.state.currentLang.fonts[1],
                 );
             }
             document.body.classList.add(

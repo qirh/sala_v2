@@ -72,6 +72,7 @@ export default {
     methods: {
         getDate(locale) {
             return new Intl.DateTimeFormat(locale, {
+                hour: 'numeric', minute: 'numeric', second: 'numeric',
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',

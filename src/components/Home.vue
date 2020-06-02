@@ -3,9 +3,6 @@
         <div class="grid-langs">
             <LangSwitcher></LangSwitcher>
         </div>
-        <!-- <div class="grid-empty">
-            <ThemeToggler></ThemeToggler>
-        </div> -->
         <div class="grid-settings">
             <Icons></Icons>
             <ThemeToggler></ThemeToggler>

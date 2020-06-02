@@ -9,7 +9,7 @@
         </div>
         <div id="grid-main">
             <div class="grid-text">
-                <p class="main-greet" v-html="$t('mainGreet')"></p>
+                <!-- <p class="main-greet" v-html="$t('mainGreet')"></p> -->
                 <p class="main-title" v-html="$t('mainTitleOne')"></p>
                 <p v-html="$t('mainSubOne')"></p>
                 <p v-html="$t('mainSubTwo')"></p>

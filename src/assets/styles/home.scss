@@ -41,7 +41,10 @@
 }
 .grid-dev { grid-area: grid-dev; }
 
-.grid-text { grid-area: grid-text; }
+.grid-text {
+    grid-area: grid-text;
+    margin-right: 3em;
+}
 .grid-picture {
     grid-area: grid-picture;
     align-self: center;

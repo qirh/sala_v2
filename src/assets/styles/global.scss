@@ -64,7 +64,7 @@ a {
 
     //transition stuff
     backface-visibility: hidden;
-    transition: 200ms;
+    transition: 100ms;
     &.keydown {
         transform: translateZ(-50px);
     }

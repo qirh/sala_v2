@@ -1,6 +1,5 @@
 <template>
     <div class="icons">
-        <Help class="icon"></Help>
         <a
             href="mailto:saleh@alghusson.com"
             title="saleh@alghusson.com"
@@ -35,6 +34,7 @@
         >
             <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
         </a>
+        <Help class="icon"></Help>
     </div>
 </template>
 

@@ -2,9 +2,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto auto;
-    gap: 1px 1px;
     grid-template-areas:
-        "grid-langs grid-langs grid-theme grid-theme grid-icons grid-icons"
+        "grid-langs grid-langs grid-empty grid-empty grid-settings grid-settings"
         "grid-main grid-main grid-main grid-main grid-main grid-main"
         "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer"
         "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
@@ -12,17 +11,26 @@
 #grid-main {
     grid-area: grid-main;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 3em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    gap: 1px 1px;
     grid-template-areas:
-        "grid-text grid-text grid-text grid-text grid-picture grid-picture";
+        "grid-text grid-text grid-text grid-text grid-text grid-picture grid-picture grid-picture grid-picture";
 }
 .grid-langs { grid-area: grid-langs; }
-.grid-theme { grid-area: grid-theme; }
-.grid-icons { grid-area: grid-icons; }
+.grid-empty { grid-area: grid-empty; }
+.grid-settings {
+    grid-area: grid-settings;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "grid-icons"
+        "grid-theme";
+ }
 .grid-footer {
     grid-area: grid-footer;
+    margin-top: 3em;
     justify-self: center;
     a {
         opacity: .75;

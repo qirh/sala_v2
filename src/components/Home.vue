@@ -3,11 +3,12 @@
         <div class="grid-langs">
             <LangSwitcher></LangSwitcher>
         </div>
-        <div class="grid-theme">
+        <!-- <div class="grid-empty">
             <ThemeToggler></ThemeToggler>
-        </div>
-        <div class="grid-icons">
+        </div> -->
+        <div class="grid-settings">
             <Icons></Icons>
+            <ThemeToggler></ThemeToggler>
         </div>
         <div id="grid-main">
             <div class="grid-text">

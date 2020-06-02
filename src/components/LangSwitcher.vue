@@ -5,13 +5,12 @@
             :key="lang.code"
             @click="changeLang(lang.code)"
             :title="lang.code"
-            :disabled="$store.state.currentLang.code === lang.code"
+            :disabled="currentLangCode === lang.code"
             class="lang-item"
             :class="[
                 `${lang.fonts[0]}`,
                 {
-                    'selected-lang':
-                        $store.state.currentLang.code === lang.code,
+                    'selected-lang': currentLangCode === lang.code,
                 },
             ]"
         >
@@ -30,6 +29,9 @@ export default {
     computed: {
         langs() {
             return langs;
+        },
+        currentLangCode() {
+            return store.state.currentLang ? store.state.currentLang.code : '';
         },
     },
     methods: {

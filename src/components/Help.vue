@@ -29,6 +29,7 @@ export default {
     name: 'Help',
     mounted() {
         this.$mousetrap.bind('h e l p', this.toggleHelp);
+        this.$mousetrap.bind(['م س ا ع د ه', 'م س ا ع د ة'], this.toggleHelp);
     },
     created() {
         this.logHelpMessage();

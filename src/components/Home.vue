@@ -3,11 +3,9 @@
         <div class="grid-langs">
             <LangSwitcher></LangSwitcher>
         </div>
-        <div class="grid-theme">
-            <ThemeToggler></ThemeToggler>
-        </div>
-        <div class="grid-icons">
+        <div class="grid-settings">
             <Icons></Icons>
+            <ThemeToggler></ThemeToggler>
         </div>
         <div id="grid-main">
             <div class="grid-text">
@@ -74,6 +72,7 @@ export default {
     methods: {
         getDate(locale) {
             return new Intl.DateTimeFormat(locale, {
+                day: 'numeric',
                 month: 'long',
                 year: 'numeric',
             }).format(new Date(this.buildTime));

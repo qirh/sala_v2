@@ -29,7 +29,7 @@ p {
     font-size: 1.3em;
     font-weight: 300;
     line-height: 1.4;
-    max-width: 26em;
+    max-width: 34em;
 }
 a {
     text-decoration: none;
@@ -58,13 +58,13 @@ a {
 }
 #cuerpo {
     width: 100%;
-    max-width: 970px;
-    padding: 5vh 5vw;
+    // max-width: 970px;
+    // padding: 5vh 5vw;
     height: 100%;
 
     //transition stuff
     backface-visibility: hidden;
-    transition: 200ms;
+    transition: 100ms;
     &.keydown {
         transform: translateZ(-50px);
     }

@@ -9,9 +9,10 @@
         </div>
         <div id="grid-main">
             <div class="grid-text">
-                <p class="main-title" v-html="$t('mainTitleOne')"></p>
-                <p v-html="$t('mainSubOne')"></p>
-                <p v-html="$t('mainSubTwo')"></p>
+                <p class="main-title" v-html="$t('mainTitle')"></p>
+                <p v-html="$t('mainP1')"></p>
+                <p v-html="$t('mainP2')"></p>
+                <p v-html="$t('mainP3')"></p>
             </div>
             <div class="grid-picture">
                 <img

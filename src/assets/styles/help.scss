@@ -14,10 +14,9 @@
     }
   }
 .shown {
-    @media screen and (min-width: $break-large) {
-        animation: 1s fadeIn;
-        animation-fill-mode: forwards;
-    }
+    animation: 1s fadeIn;
+    animation-fill-mode: forwards;
+
 }
 .help-icon {
     cursor: default;

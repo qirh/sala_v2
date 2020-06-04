@@ -25,15 +25,6 @@
         >
             <font-awesome-icon :icon="['fab', 'goodreads']"></font-awesome-icon>
         </a>
-        <a
-            href="https://saleh.soy"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="icon"
-            :title="$t('writing')"
-        >
-            <font-awesome-icon :icon="['fa', 'blog']"></font-awesome-icon>
-        </a>
         <Help class="icon"></Help>
     </div>
 </template>

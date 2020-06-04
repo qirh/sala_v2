@@ -1,33 +1,24 @@
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, auto);
     grid-template-areas:
-        "grid-langs grid-langs grid-empty grid-empty grid-settings grid-settings"
-        "grid-main grid-main grid-main grid-main grid-main grid-main"
-        "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer"
-        "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
+        "grid-langs-theme grid-langs-theme empty empty grid-icons grid-icons grid-icons"
+        "grid-main grid-main grid-main grid-main grid-main grid-main grid-main"
+        "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer"
+        "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
 }
 #grid-main {
     grid-area: grid-main;
     display: grid;
-    margin-top: 3em;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 1em;
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "grid-text grid-text grid-text grid-text grid-text grid-picture grid-picture grid-picture grid-picture";
+        "grid-text grid-text grid-text grid-text grid-picture grid-picture grid-picture";
 }
-.grid-langs { grid-area: grid-langs; }
-.grid-empty { grid-area: grid-empty; }
-.grid-settings {
-    grid-area: grid-settings;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-        "grid-icons"
-        "grid-theme";
- }
+.empty { grid-area: empty; }
+.grid-icons { grid-area: grid-icons; }
 .grid-footer {
     grid-area: grid-footer;
     margin-top: 3em;
@@ -39,8 +30,6 @@
         }
     }
 }
-.grid-dev { grid-area: grid-dev; }
-
 .grid-text {
     grid-area: grid-text;
     margin-right: 3em;
@@ -49,6 +38,22 @@
     grid-area: grid-picture;
     align-self: center;
 }
+.grid-langs-theme {
+    grid-area: grid-langs-theme;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: "grid-langs grid-theme empty";
+}
+.grid-langs {
+    grid-area: grid-langs;
+    align-self: center
+}
+.grid-theme {
+    grid-area: grid-theme;
+    align-self: center
+}
+.grid-dev { grid-area: grid-dev; }
 
 .main-greet {
     font-weight: 800;
@@ -62,12 +67,3 @@
     width: 100%;
     height: auto;
 }
-
-// .right-to-left {
-//     .grid-main {
-//         float: right;
-//     }
-//     // .home-settings {
-//     //     float: left;
-//     // }
-// }

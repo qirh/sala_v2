@@ -1,15 +1,14 @@
 <template>
     <div class="grid">
-        <div class="grid-langs">
-            <LangSwitcher></LangSwitcher>
+        <div class="grid-langs-theme">
+            <LangSwitcher class="grid-langs"></LangSwitcher>
+            <ThemeToggler class="grid-theme"></ThemeToggler>
         </div>
-        <div class="grid-settings">
+        <div class="grid-icons">
             <Icons></Icons>
-            <ThemeToggler></ThemeToggler>
         </div>
         <div id="grid-main">
             <div class="grid-text">
-                <!-- <p class="main-greet" v-html="$t('mainGreet')"></p> -->
                 <p class="main-title" v-html="$t('mainTitleOne')"></p>
                 <p v-html="$t('mainSubOne')"></p>
                 <p v-html="$t('mainSubTwo')"></p>
@@ -71,8 +70,6 @@ export default {
     methods: {
         getDate(locale) {
             return new Intl.DateTimeFormat(locale, {
-                hour: 'numeric', minute: 'numeric', second: 'numeric',
-                day: 'numeric',
                 month: 'long',
                 year: 'numeric',
             }).format(new Date(this.buildTime));

@@ -7,13 +7,6 @@ const langs = [
         fonts: ['font-rubik', 'font-ibm'],
     },
     {
-        code: 'es',
-        name: 'Español',
-        direction: 'ltr',
-        title: 'sàla',
-        fonts: ['font-rubik', 'font-ibm'],
-    },
-    {
         code: 'ar',
         name: 'عربي',
         direction: 'rtl',

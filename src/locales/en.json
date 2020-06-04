@@ -1,6 +1,5 @@
 {
-  "mainGreet": "Hello!",
-  "mainTitleOne": "<span style=\"font-weight:900\">Hello!</span> I'm <span style=\"font-weight:900\">Saleh</span>. I build things for the <span style=\"font-weight:900\">web</span>.",
+  "mainTitleOne": "<span style=\"font-weight:900\">Aloha!</span> I'm <span style=\"font-weight:900\">Saleh</span>. I build things for the <span style=\"font-weight:900\">web</span>.",
   "mainSubOne": "My name might be hard to pronounce, but most people get it right, and no worries if you don't it's all good :)",
   "mainSubTwo": "When I'm not on my computer, I like to travel and I read a whole bunch, also I climb trees. I live in <span style=\"font-weight:900\">NYC</span> and I enjoy meeting and learning from new people, if somehow you stumbled upon this page and are in the area, let's grab coffee!",
   "helpTooltip": "hint, type these out 🤫\n<b>theme</b>\n<b>font</b>\n<b>space bar</b>",

@@ -7,7 +7,7 @@
         v-tooltip="{
             content: $t('helpTooltip'),
             classes: ['help-tooltip', 'info'],
-            placement: 'left',
+            placement: 'right',
             offset: 10,
             delay: {
                 show: 500,

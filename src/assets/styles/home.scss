@@ -33,6 +33,7 @@
 .grid-text {
     grid-area: grid-text;
     margin-right: 3em;
+    align-self: center;
 }
 .grid-picture {
     grid-area: grid-picture;
@@ -63,6 +64,6 @@
     font-size: 2em;
 }
 .picture {
-    width: 100%;
+    width: 80%;
     height: auto;
 }

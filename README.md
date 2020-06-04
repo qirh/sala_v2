@@ -1,5 +1,5 @@
 # sala_v2
-![Build](https://github.com/sashaverma/corona-courier/workflows/Build/badge.svg)  [![Netlify Status](https://api.netlify.com/api/v1/badges/29595778-1307-4507-8c47-2d05b733ee43/deploy-status)](https://app.netlify.com/sites/musing-rosalind-eedabd/deploys)
+![Build](https://github.com/qirh/sala_v2/workflows/Build/badge.svg)  [![Netlify Status](https://api.netlify.com/api/v1/badges/29595778-1307-4507-8c47-2d05b733ee43/deploy-status)](https://app.netlify.com/sites/musing-rosalind-eedabd/deploys)
 
 personal website v2. il y en a beaucoup comme ça, mais lui, c'est le mien.
 

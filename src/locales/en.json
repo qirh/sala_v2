@@ -1,8 +1,9 @@
 {
-  "mainTitle": "<span style=\"font-weight:900\">Aloha!</span> I'm <span style=\"font-weight:900\">Saleh</span>. I build things for the <span style=\"font-weight:900\">web</span>.",
-  "mainP1": "My name might be hard to pronounce, but most people get it right, and no worries if you don't it's all good :)",
-  "mainP2": "I currently live in 🗽<span style=\"font-weight:900\">NYC</span>🗽 and I enjoy meeting and learning from new people :)",
-  "mainP3": "lorem ipsum ipsum",
+  "title1": "<span style=\"font-weight:900\">Aloha 👋</span>",
+  "title2": "I'm <span style=\"font-weight:900\">Saleh</span>. I build things for the <span style=\"font-weight:900\">web</span>.",
+  "p1": "My name might be hard to pronounce, but most people get it right, and no worries if you don't it's all good :)",
+  "p2": "I currently live in 🗽<span style=\"font-weight:900\">NYC</span>🗽 and I enjoy meeting and learning from new people :)",
+  "p3": "lorem ipsum ipsum",
   "helpTooltip": "hint, type these out 🤫\n<b>theme</b>\n<b>font</b>\n<b>space bar</b>",
   "reading": "reading",
   "writing": "writing",

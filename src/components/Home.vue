@@ -12,13 +12,27 @@
                 <p class="main-title" v-html="$t('title1')"></p>
                 <p class="main-title" v-html="$t('title2')"></p>
                 <p v-html="$t('p1')"></p>
-                <p v-html="$t('p2')"></p>
-                <p v-html="$t('p3')"></p>
+                <p>
+                    {{ $t('p2') }}
+                    <font-awesome-icon
+                        v-if="currentLangCode === 'ar'"
+                        :icon="['fa', 'mountain']"
+                        class="help-icon"
+                    ></font-awesome-icon>
+                </p>
+                <p>
+                    {{ $t('p3') }}
+                    <font-awesome-icon
+                        :icon="['far', 'smile']"
+                        class="help-icon"
+                    ></font-awesome-icon>
+                </p>
             </div>
             <div class="grid-picture">
                 <img
                     class="picture"
                     alt="picture of saleh"
+                    :title="$t('covidHair')"
                     src="/assets/moi.jpg"
                 />
             </div>
@@ -62,6 +76,9 @@ export default {
             }
             let locale = 'ar-SA';
             return this.getDate(locale);
+        },
+        currentLangCode() {
+            return store.state.currentLang ? store.state.currentLang.code : '';
         },
     },
     components: {

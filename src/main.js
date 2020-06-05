@@ -10,7 +10,11 @@ import {i18n} from './i18n.js';
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBlog, faEnvelope, faMountain} from '@fortawesome/free-solid-svg-icons';
+import {
+    faBlog,
+    faEnvelope,
+    faMountain,
+} from '@fortawesome/free-solid-svg-icons';
 import {faQuestionCircle, faSmile} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,

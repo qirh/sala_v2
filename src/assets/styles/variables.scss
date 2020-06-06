@@ -19,4 +19,8 @@ $gray-dark: rgb(39, 39, 39);
 // not used
 $outer-space: rgb(43, 61, 69);
 
-$break-large: 768px;
+$screen-desktop-min: 1365px;
+//$screen-tablet-max: 1364px;
+$screen-tablet-min: 767.01px;
+$screen-phone-max: 767px;
+

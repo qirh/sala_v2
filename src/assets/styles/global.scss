@@ -25,6 +25,13 @@ body {
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
 }
+// phone
+@media (max-width: $screen-phone-max) {
+    body {
+        padding: 1.5vh 5vw;
+    }
+}
+
 p {
     font-size: 1.3em;
     font-weight: 300;

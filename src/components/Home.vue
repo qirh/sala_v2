@@ -8,9 +8,11 @@
             <Icons></Icons>
         </div>
         <div id="grid-main">
-            <div class="grid-text">
+            <div class="grid-title">
                 <p class="main-title" v-html="$t('title1')"></p>
                 <p class="main-title" v-html="$t('title2')"></p>
+            </div>
+            <div class="grid-paragraphs">
                 <p v-html="$t('p1')"></p>
                 <p>
                     {{ $t('p2') }}

@@ -1,3 +1,5 @@
+@import "variables";
+
 .grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -15,10 +17,14 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "grid-text grid-text grid-text grid-text grid-picture grid-picture grid-picture";
+        "grid-title grid-title grid-title grid-title grid-picture grid-picture grid-picture"
+        "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
 }
 .empty { grid-area: empty; }
-.grid-icons { grid-area: grid-icons; }
+.grid-icons {
+    grid-area: grid-icons;
+    align-self: center;
+}
 .grid-footer {
     grid-area: grid-footer;
     margin-top: 1em;
@@ -30,8 +36,13 @@
         }
     }
 }
-.grid-text {
-    grid-area: grid-text;
+.grid-title {
+    grid-area: grid-title;
+    margin-right: 3em;
+    align-self: start;
+}
+.grid-paragraphs {
+    grid-area: grid-paragraphs;
     margin-right: 3em;
     align-self: start;
 }
@@ -48,11 +59,11 @@
 }
 .grid-langs {
     grid-area: grid-langs;
-    align-self: center
+    align-self: center;
 }
 .grid-theme {
     grid-area: grid-theme;
-    align-self: center
+    align-self: center;
 }
 
 .main-title {
@@ -63,4 +74,50 @@
 .picture {
     width: 85%;
     height: auto;
+}
+
+// tablet
+@media (min-width: $screen-tablet-min) {
+    #grid-main {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas:
+            "grid-title grid-title"
+            "grid-paragraphs grid-picture";
+    }
+    .picture {
+        width: 100%;
+    }
+}
+// phone
+@media (max-width: $screen-phone-max) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+            "grid-langs-theme grid-langs-theme grid-icons grid-icons"
+            "grid-main grid-main grid-main grid-main"
+            "grid-footer grid-footer grid-footer grid-footer";
+    }
+    #grid-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+            "grid-picture"
+            "grid-title"
+            "grid-paragraphs";
+    }
+    .grid-icons {
+        justify-self: end;
+    }
+    .picture {
+        width: 100%;
+    }
+    .grid-title, .grid-paragraphs {
+        margin: 0 !important;
+    }
+    .grid-footer {
+        margin-top: 0;
+    }
 }

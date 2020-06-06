@@ -77,7 +77,7 @@
 }
 
 // tablet
-@media (min-width: $screen-tablet-min) {
+@media (min-width: $screen-tablet-min) and (max-width: $screen-desktop-min) {
     #grid-main {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, auto);

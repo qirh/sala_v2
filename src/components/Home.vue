@@ -29,6 +29,7 @@
                         class="help-icon"
                     ></font-awesome-icon>
                 </p>
+                <p v-html="$t('p4')"></p>
             </div>
             <div class="grid-picture">
                 <img

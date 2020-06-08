@@ -5,14 +5,21 @@ publish = "dist/"
 command = "npm run build"
 
 [[redirects]]
+from = "/cv"
+to = "https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing"
+status = 200
+force = true
+
+[[redirects]]
 from = "/*"
 to = "/"
 status = 200
 
 [[headers]]
 for = "/service-worker.js"
-  [headers.values]
-  cache-control = "max-age=0,no-cache,no-store,must-revalidate"
+
+[headers.values]
+cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[plugins]]
 package = "netlify-plugin-is-website-vulnerable"
@@ -28,7 +35,6 @@ package = "netlify-plugin-checklinks"
 
 [[plugins]]
 package = "netlify-plugin-no-more-404"
-
 # I think I hit the rate limit
 # [[plugins]]
 # package = "netlify-build-plugin-speedcurve"

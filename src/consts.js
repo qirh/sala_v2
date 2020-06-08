@@ -3,14 +3,14 @@ const langs = [
         code: 'en',
         name: 'English',
         direction: 'ltr',
-        title: 'sala',
+        title: '~~saleh~~',
         fonts: ['font-rubik', 'font-ibm'],
     },
     {
         code: 'ar',
         name: 'عربي',
         direction: 'rtl',
-        title: 'صاله',
+        title: '~~صالح~~',
         fonts: ['font-kfgqpc', 'font-aref-ruqaa'],
     },
 ];

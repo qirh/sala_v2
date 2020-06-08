@@ -5,7 +5,7 @@ import VuexPersist from 'vuex-persist';
 Vue.use(Vuex);
 
 const vuexPersist = new VuexPersist({
-    key: 'sala-0.9',
+    key: '~~saleh~~-1.0',
     storage: localStorage,
 });
 

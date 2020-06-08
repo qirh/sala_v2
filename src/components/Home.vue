@@ -14,19 +14,16 @@
             </div>
             <div class="grid-paragraphs">
                 <p v-html="$t('p1')"></p>
-                <p>
-                    {{ $t('p2') }}
+                <!-- eslint-disable -->
+                <p>{{ $t('p2') }}
                     <font-awesome-icon
                         v-if="currentLangCode === 'ar'"
                         :icon="['fa', 'mountain']"
-                        class="help-icon"
                     ></font-awesome-icon>
                 </p>
-                <p>
-                    {{ $t('p3') }}
+                <p>{{ $t('p3') }}
                     <font-awesome-icon
                         :icon="['far', 'smile']"
-                        class="help-icon"
                     ></font-awesome-icon>
                 </p>
                 <p v-html="$t('p4')"></p>
@@ -41,9 +38,7 @@
             </div>
         </div>
         <div class="grid-footer">
-            <!-- eslint-disable -->
-            <p>
-                {{ $t('footerLastUpdated') }} <a :href="gitLink">{{this.date}}<span v-if="this.dateSpecial">~~{{this.dateSpecial}}</span></a>
+            <p>{{ $t('footerLastUpdated') }} <a :href="gitLink">{{this.date}}<span v-if="this.dateSpecial">~~{{this.dateSpecial}}</span></a>
             </p>
             <!-- eslint-enable -->
         </div>

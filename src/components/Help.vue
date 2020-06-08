@@ -43,13 +43,8 @@ export default {
             if (store.state.showHelp) {
                 // eslint-disable-next-line
                 console.log(
-                    '%cyou can also type ' +
-                        // '%cdev' +
-                        // '%c & ' +
-                        '%cthe konami code',
+                    '%cyou can also type ' + '%cthe konami code',
                     'background: #222; color: #bada55',
-                    // 'background: #333; color: #1954b8',
-                    // 'background: #222; color: #bada55',
                     'background: #333; color: #1954b8',
                 );
             }

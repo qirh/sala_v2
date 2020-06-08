@@ -1,12 +1,12 @@
 //https://medium.com/js-dojo/vuejs-pwa-cache-busting-8d09edd22a31
-workbox.core.setCacheNameDetails({prefix: 'sala'});
-const LATEST_VERSION = '0.9';
+workbox.core.setCacheNameDetails({prefix: '~~saleh~~'});
+const LATEST_VERSION = '1.0';
 
 self.addEventListener('activate', () => {
     if (caches) {
         caches.keys().then((arr) => {
             arr.forEach((key) => {
-                if (key.indexOf('sala-precache') < -1) {
+                if (key.indexOf('~~saleh~~-precache') < -1) {
                     caches.delete(key);
                 } else {
                     caches.open(key).then((cache) => {

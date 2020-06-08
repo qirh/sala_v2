@@ -88,6 +88,14 @@
     .picture {
         width: 100%;
     }
+    .grid-paragraphs {
+        margin-right: 2em;
+    }
+    .right-to-left {
+        .grid-paragraphs {
+            margin-left: 2em;
+        }
+    }
 }
 // phone
 @media (max-width: $screen-phone-max) {

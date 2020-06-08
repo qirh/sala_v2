@@ -12,23 +12,27 @@ html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
     transition: background-color 375ms linear;
 }
-html,
-body {
-    max-height: 100%;
+html {
+    height: 100%;
 }
 body {
     margin: 0px;
     display: flex;
     justify-content: center;
-    padding: 5vh 10vw;
+    padding: 0 10vw;
+    min-height: 100%;
     perspective: 500px;
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
 }
 // phone
 @media (max-width: $screen-phone-max) {
+    html {
+        height: 96%;
+    }
     body {
-        padding: 1.5vh 5vw;
+        min-height: 96vh;
+        padding: 2vh 5vw;
     }
 }
 
@@ -64,8 +68,6 @@ a {
     }
 }
 #cuerpo {
-    width: 100%;
-    height: 100%;
 
     //transition stuff
     backface-visibility: hidden;

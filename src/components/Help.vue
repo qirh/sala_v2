@@ -10,7 +10,7 @@
             placement: 'right',
             offset: 10,
             delay: {
-                show: 500,
+                show: 200,
                 hide: 300,
             },
         }"

@@ -2,23 +2,22 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
     grid-template-areas:
-        "grid-langs-theme grid-langs-theme empty empty grid-icons grid-icons grid-icons"
-        "grid-main grid-main grid-main grid-main grid-main grid-main grid-main"
-        "grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer grid-footer"
-        "grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev grid-dev";
+        "grid-langs-theme grid-icons"
+        " grid-main grid-main"
+        "grid-footer grid-footer";
 }
 #grid-main {
     grid-area: grid-main;
     display: grid;
     margin-top: 1em;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "grid-title grid-title grid-title grid-title grid-picture grid-picture grid-picture"
-        "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
+        "grid-title grid-picture"
+        "grid-paragraphs grid-picture ";
 }
 .empty { grid-area: empty; }
 .grid-icons {
@@ -67,20 +66,19 @@
 }
 
 .main-title {
-    font-weight: 300;
-    font-size: 2.5em;
+    font-size: calc(1.2vw +  1rem);
     margin: 0;
 }
 .dev {
     color: red;
 }
 .picture {
-    width: 75%;
+    width: 85%;
     height: auto;
 }
 
 // tablet
-@media (min-width: $screen-tablet-min) and (max-width: $screen-desktop-min) {
+@media (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
     #grid-main {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, auto);
@@ -89,7 +87,7 @@
             "grid-paragraphs grid-picture";
     }
     .picture {
-        width: 100%;
+        width: 80%;
     }
     .grid-paragraphs {
         margin-right: 2em;
@@ -99,17 +97,29 @@
             margin-left: 2em;
         }
     }
+    .grid-paragraphs {
+        align-self: center;
+    }
+    .grid-picture {
+        justify-self: center;
+    }
+    .grid-icons {
+        justify-self: center;
+    }
+    .main-title {
+        text-align: center;
+    }
 }
 // phone
 @media (max-width: $screen-phone-max) {
     .grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, auto);
         grid-template-areas:
-            "grid-langs-theme grid-langs-theme grid-icons grid-icons"
-            "grid-main grid-main grid-main grid-main"
-            "grid-footer grid-footer grid-footer grid-footer";
+            "grid-langs-theme grid-icons"
+            "grid-main grid-main"
+            "grid-footer grid-footer";
     }
     #grid-main {
         grid-template-columns: 1fr;

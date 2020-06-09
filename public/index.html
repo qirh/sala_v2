@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="color-theme-in-transition" data-build-timestamp-utc="<%= new Date().toISOString() %>">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -9,14 +10,25 @@
 
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/en/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/en/icon-180x180.png">
-    <link rel="shortcut icon" type="image/png" sizes="192x192"  href="/assets/en/icon-192x192.png">
+    <link rel="shortcut icon" type="image/png" sizes="192x192" href="/assets/en/icon-192x192.png">
     <link rel="stylesheet" href="/assets/normalize.css">
+    <link rel="stylesheet" href="/assets/noscript.css">
 
-  </head>
-  <body>
+</head>
+
+<body>
     <noscript>
-      <strong>I need js to display</strong>
+        <div class="noscript">
+            <div class='top'>
+                <h1 class='heading'>Saleh</h1>
+            </div>
+            <section class="introduction-section">
+                <p>hot & good at computing.</p>
+                <p>email: saleh@alghusson.com</p>
+            </section>
+        </div>
     </noscript>
     <div id="app"></div>
-  </body>
+</body>
+
 </html>

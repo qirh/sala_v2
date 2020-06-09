@@ -15,7 +15,7 @@ il y en a beaucoup comme ça, mais lui, c'est le mien.
 * [theme transition](https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a) & [another source](https://codepen.io/jaredpdesigns/pen/dXkBJZ)
 * [language transition](https://codepen.io/rayjackson/pen/VJRPdP)
 * [favicon generator](https://ionos.com/tools/favicon-generator)
-* [ASCII Art](http://patorjk.com/software/taag/)
+* [noscript page](https://codepen.io/nsieber/pen/vOVQgg)
 
 ### fonts
 * [national park](https://nationalparktypeface.com)

@@ -159,7 +159,7 @@ export default {
             if (!store.state.showHelp) {
                 // eslint-disable-next-line
                 console.log(
-                    '%chello there! you can type ' + '%chelp',
+                    '%chello there! the page listens to ' + '%chelp',
                     'background: #222; color: #bada55',
                     'background: #333; color: #1954b8',
                 );

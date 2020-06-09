@@ -4,12 +4,11 @@
     border-bottom: solid 2vh #ffcf33;
     height: 96vh;
     width: 100vw;
+    padding: 0;
 }
 
 .top {
     padding: 6em 0;
-    /* border-top: solid 1em #ffcf33;
-    border-bottom: 0; */
 }
 
 .heading {
@@ -28,9 +27,12 @@
     margin-right: auto;
     text-align: center;
     margin-top: 1.75em;
-    font-weight: 350;
-    font-size: 2rem;
+    font-weight: 300;
     letter-spacing: 0.05em;
+    font-size: 2rem;
+}
+.section-main-p {
+    margin: 3vh;
 }
 
 @media only screen and (max-width: 500px) {

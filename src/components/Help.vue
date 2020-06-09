@@ -10,7 +10,7 @@
             placement: 'right',
             offset: 10,
             delay: {
-                show: 500,
+                show: 200,
                 hide: 300,
             },
         }"
@@ -43,7 +43,20 @@ export default {
             if (store.state.showHelp) {
                 // eslint-disable-next-line
                 console.log(
-                    '%cyou can also type ' + '%cthe konami code',
+                    '%calso~~ ' +
+                        '%ckonami code' +
+                        '%c || ' +
+                        '%ctheme' +
+                        '%c || ' +
+                        '%cfont' +
+                        '%c || ' +
+                        '%cspace bar',
+                    'background: #222; color: #bada55',
+                    'background: #333; color: #1954b8',
+                    'background: #222; color: #bada55',
+                    'background: #333; color: #1954b8',
+                    'background: #222; color: #bada55',
+                    'background: #333; color: #1954b8',
                     'background: #222; color: #bada55',
                     'background: #333; color: #1954b8',
                 );

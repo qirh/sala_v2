@@ -25,18 +25,12 @@
         >
             <font-awesome-icon :icon="['fab', 'goodreads']"></font-awesome-icon>
         </a>
-        <Help class="icon"></Help>
     </div>
 </template>
 
 <script>
-import Help from '@/components/Help';
-
 export default {
     name: 'Icons',
-    components: {
-        Help,
-    },
     data: () => {
         return {
             reading: 'reading',

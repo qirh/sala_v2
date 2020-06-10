@@ -5,7 +5,7 @@ import VuexPersist from 'vuex-persist';
 Vue.use(Vuex);
 
 const vuexPersist = new VuexPersist({
-    key: '~~saleh~~-1.0',
+    key: '~~saleh~~-1.1',
     storage: localStorage,
 });
 
@@ -15,7 +15,6 @@ export default new Vuex.Store({
         flipDirection: true,
         funFont: false,
         currentLang: null,
-        showHelp: false,
     },
     mutations: {
         toggleTheme(state) {
@@ -33,9 +32,6 @@ export default new Vuex.Store({
         },
         switchFlipDirection(state) {
             state.flipDirection = !state.flipDirection;
-        },
-        toggleShowHelp(state) {
-            state.showHelp = !state.showHelp;
         },
     },
     plugins: [vuexPersist.plugin],

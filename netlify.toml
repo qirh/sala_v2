@@ -32,9 +32,3 @@ package = "netlify-plugin-debug-cache"
 
 [[plugins]]
 package = "netlify-plugin-checklinks"
-
-[[plugins]]
-package = "netlify-plugin-no-more-404"
-# I think I hit the rate limit
-# [[plugins]]
-# package = "netlify-build-plugin-speedcurve"

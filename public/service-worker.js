@@ -1,6 +1,6 @@
 //https://medium.com/js-dojo/vuejs-pwa-cache-busting-8d09edd22a31
 workbox.core.setCacheNameDetails({prefix: '~~saleh~~'});
-const LATEST_VERSION = '1.0';
+const LATEST_VERSION = '1.1';
 
 self.addEventListener('activate', () => {
     if (caches) {

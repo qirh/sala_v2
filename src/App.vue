@@ -155,15 +155,34 @@ export default {
             // eslint-disable-next-line
             shortcut_link.href = `/assets/${store.state.currentLang.code}/icon-192x192.png`;
         },
-        logHelpMessage() {
-            if (!store.state.showHelp) {
-                // eslint-disable-next-line
-                console.log(
-                    '%chello there! the website reacts to ' + '%chelp',
-                    'background: #222; color: #bada55',
-                    'background: #333; color: #1954b8',
-                );
-            }
+        firstHelpMessage() {
+            // eslint-disable-next-line
+            console.log(
+                '%chello there! the website reacts to ' + '%chelp',
+                'background: #222; color: #bada55',
+                'color: #1569cf',
+            );
+        },
+        secondHelpMessage() {
+            // eslint-disable-next-line
+            console.log(
+                '%calso~~ ' +
+                    '%ckonami code' +
+                    '%c || ' +
+                    '%ctheme' +
+                    '%c || ' +
+                    '%cfont' +
+                    '%c || ' +
+                    '%cspace bar',
+                'background: #222; color: #bada55',
+                'color: #831376',
+                'background: #222; color: #bada55',
+                'color: #88e49a',
+                'background: #222; color: #bada55',
+                'color: #e02988',
+                'background: #222; color: #bada55',
+                'color: #2ab30f',
+            );
         },
     },
     data: () => {
@@ -174,6 +193,11 @@ export default {
     mounted() {
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
+        this.$mousetrap.bind('h e l p', this.secondHelpMessage);
+        this.$mousetrap.bind(
+            ['م س ا ع د ه', 'م س ا ع د ة'],
+            this.secondHelpMessage,
+        );
         this.$mousetrap.bind('f o n t', this.changeFont);
         this.$mousetrap.bind('خ ط', this.changeFont);
         this.$mousetrap.bind('t h e m e', this.changeTheme);
@@ -186,7 +210,7 @@ export default {
             ],
             this.flip,
         );
-        this.logHelpMessage();
+        this.firstHelpMessage();
         this.applyTheme();
         this.applyFont();
 

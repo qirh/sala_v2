@@ -194,7 +194,10 @@ export default {
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
         this.$mousetrap.bind('h e l p', this.secondHelpMessage);
-        this.$mousetrap.bind(['م س ا ع د ه', 'م س ا ع د ة'], this.secondHelpMessage);
+        this.$mousetrap.bind(
+            ['م س ا ع د ه', 'م س ا ع د ة'],
+            this.secondHelpMessage,
+        );
         this.$mousetrap.bind('f o n t', this.changeFont);
         this.$mousetrap.bind('خ ط', this.changeFont);
         this.$mousetrap.bind('t h e m e', this.changeTheme);

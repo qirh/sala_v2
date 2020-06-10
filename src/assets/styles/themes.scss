@@ -1,14 +1,8 @@
 @mixin lightColors() {
     color: $blue;
 }
-@mixin lightColorsAlt() {
-    color: $red;
-}
 @mixin darkColors() {
     color: $purple;
-}
-@mixin darkColorsAlt() {
-        color: $yellow;
 }
 
 @mixin lightTheme {
@@ -22,10 +16,6 @@
     }
     .toggle {
         @include lightColors;
-    }
-    .tooltip-inner {
-        color: $white;
-        background-color: $gray;
     }
     .grid-footer {
         a {
@@ -41,13 +31,7 @@
         }
     }
 }
-@mixin lightThemeAlt {
-    .grid-footer {
-        a {
-            color: $red;
-        }
-    }
-}
+
 @mixin darkTheme {
     color: $botticelli;
     background-color: $blackpearl;
@@ -59,10 +43,6 @@
     }
     .toggle {
         @include darkColors;
-    }
-    .tooltip-inner {
-        color: $botticelli;
-        background-color: $gray-dark;
     }
     .grid-footer {
         a {
@@ -78,13 +58,6 @@
         }
     }
 }
-@mixin darkThemeAlt {
-    .grid-footer {
-        a {
-            color: $yellow;
-        }
-    }
-}
 
 @media (prefers-color-scheme: light) {
     @include lightTheme;
@@ -92,16 +65,10 @@
 .light-theme {
     @include lightTheme;
 }
-.light-theme.alt-colors {
-    @include lightThemeAlt;
-}
 
 @media (prefers-color-scheme: dark) {
     @include darkTheme;
 }
 .dark-theme {
     @include darkTheme;
-}
-.dark-theme.alt-colors {
-    @include darkThemeAlt;
 }

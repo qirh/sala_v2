@@ -2,7 +2,6 @@ import App from './App.vue';
 import Vue from 'vue';
 import store from './store';
 
-import VTooltip from 'v-tooltip';
 import VueMousetrap from 'vue-mousetrap';
 import './registerServiceWorker';
 
@@ -35,7 +34,6 @@ library.add(
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
-Vue.use(VTooltip);
 Vue.use(VueMousetrap);
 
 new Vue({

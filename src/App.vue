@@ -160,7 +160,7 @@ export default {
             console.log(
                 '%chello there! the website reacts to ' + '%chelp',
                 'background: #222; color: #bada55',
-                'background: #333; color: #1954b8',
+                'color: #1569cf',
             );
         },
         secondHelpMessage() {
@@ -175,13 +175,13 @@ export default {
                     '%c || ' +
                     '%cspace bar',
                 'background: #222; color: #bada55',
-                'background: #333; color: #1954b8',
+                'color: #831376',
                 'background: #222; color: #bada55',
-                'background: #333; color: #1954b8',
+                'color: #88e49a',
                 'background: #222; color: #bada55',
-                'background: #333; color: #1954b8',
+                'color: #e02988',
                 'background: #222; color: #bada55',
-                'background: #333; color: #1954b8',
+                'color: #2ab30f',
             );
         },
     },

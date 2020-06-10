@@ -8,8 +8,8 @@ import './registerServiceWorker';
 
 import {i18n} from './i18n.js';
 
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {
     faBlog,
     faEnvelope,

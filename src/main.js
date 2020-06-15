@@ -37,6 +37,7 @@ Vue.config.productionTip = false;
 LogRocket.init('hrwrkh/sala');
 
 Vue.use(VueMousetrap);
+Vue.use(LogRocket);
 
 new Vue({
     store,

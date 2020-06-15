@@ -3,7 +3,6 @@ import Vue from 'vue';
 import store from './store';
 
 import VueMousetrap from 'vue-mousetrap';
-import LogRocket from 'logrocket';
 import './registerServiceWorker';
 
 import {i18n} from './i18n.js';
@@ -34,10 +33,8 @@ library.add(
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
-LogRocket.init('hrwrkh/sala');
 
 Vue.use(VueMousetrap);
-Vue.use(LogRocket);
 
 new Vue({
     store,

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import LogRocket from 'logrocket';
 import {langs, getLangObjectFromCode, getNextLang} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
@@ -191,6 +192,7 @@ export default {
         };
     },
     mounted() {
+        LogRocket.init('hrwrkh/sala');
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
         this.$mousetrap.bind('h e l p', this.secondHelpMessage);

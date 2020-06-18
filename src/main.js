@@ -9,10 +9,7 @@ import {i18n} from './i18n.js';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
-import {
-    faBlog,
-    faEnvelope,
-} from '@fortawesome/free-solid-svg-icons';
+import {faBlog, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {faQuestionCircle, faSmile} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,

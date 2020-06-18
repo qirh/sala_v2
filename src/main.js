@@ -12,7 +12,6 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {
     faBlog,
     faEnvelope,
-    faMountain,
 } from '@fortawesome/free-solid-svg-icons';
 import {faQuestionCircle, faSmile} from '@fortawesome/free-regular-svg-icons';
 import {
@@ -29,7 +28,6 @@ library.add(
     faBlog,
     faQuestionCircle,
     faSmile,
-    faMountain,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;

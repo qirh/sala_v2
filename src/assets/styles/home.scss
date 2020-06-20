@@ -6,7 +6,7 @@
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
         "grid-langs-theme grid-icons"
-        " grid-main grid-main"
+        "grid-main grid-main"
         "grid-footer grid-footer";
 }
 #grid-main {
@@ -54,15 +54,17 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 1fr;
-    grid-template-areas: "grid-langs grid-theme empty";
+    grid-template-areas: "empty grid-langs grid-theme";
 }
 .grid-langs {
     grid-area: grid-langs;
     align-self: center;
+    justify-self: center;
 }
 .grid-theme {
     grid-area: grid-theme;
     align-self: center;
+    justify-self: center;
 }
 
 .main-title {
@@ -85,6 +87,13 @@
 
 // tablet
 @media (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas:
+            "grid-langs-theme empty grid-icons grid-icons grid-icons"
+            "grid-main grid-main grid-main grid-main grid-main"
+            "grid-footer grid-footer grid-footer grid-footer grid-footer";
+    }
     #grid-main {
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, auto);
@@ -97,7 +106,7 @@
     }
     .grid-title {
         margin: 0 !important;
-        padding-bottom: 1vh;
+        padding-bottom: 2.5vh;
     }
     .grid-paragraphs {
         margin-right: 2vw;
@@ -111,9 +120,6 @@
         align-self: center;
     }
     .grid-picture {
-        justify-self: center;
-    }
-    .grid-icons {
         justify-self: center;
     }
     .main-title {

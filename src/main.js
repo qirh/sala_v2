@@ -51,8 +51,8 @@ const router = new VueRouter({
                     'https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing';
             },
         },
-        {path: '/*', component: App},
         {path: '/', component: App},
+        {path: '*', redirect: '/'},
     ],
 });
 
@@ -60,5 +60,5 @@ new Vue({
     router,
     store,
     i18n,
-    // render: (h) => h(App),
+    render: (h) => h(App),
 }).$mount('#app');

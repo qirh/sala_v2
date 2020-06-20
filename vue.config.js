@@ -4,6 +4,7 @@ module.exports = {
     // configureWebpack: {
     //     plugins: [new ImageminWebpWebpackPlugin()],
     // },
+    runtimeCompiler: true,
     pluginOptions: {
         i18n: {
             enableInSFC: true,

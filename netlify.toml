@@ -5,12 +5,6 @@ publish = "dist/"
 command = "npm run build"
 
 [[redirects]]
-from = "/cv"
-to = "https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing"
-status = 200
-force = true
-
-[[redirects]]
 from = "/*"
 to = "/"
 status = 200

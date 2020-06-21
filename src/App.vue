@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import LogRocket from 'logrocket';
 import {langs, getLangObjectFromCode, getNextLang} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
@@ -29,6 +28,9 @@ export default {
                 store.commit('switchFlipDirection');
             }, 750);
             return false;
+        },
+        goToResume() {
+            this.$router.push('cv');
         },
         changeFont() {
             store.commit('toggleFont');
@@ -192,18 +194,18 @@ export default {
         };
     },
     mounted() {
-        LogRocket.init('hrwrkh/sala');
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
-        this.$mousetrap.bind('h e l p', this.secondHelpMessage);
         this.$mousetrap.bind(
-            ['م س ا ع د ه', 'م س ا ع د ة'],
+            ['h e l p', 'م س ا ع د ه', 'م س ا ع د ة'],
             this.secondHelpMessage,
         );
-        this.$mousetrap.bind('f o n t', this.changeFont);
-        this.$mousetrap.bind('خ ط', this.changeFont);
-        this.$mousetrap.bind('t h e m e', this.changeTheme);
-        this.$mousetrap.bind('ل و ن', this.changeTheme);
+        this.$mousetrap.bind(
+            ['c v', 'r e s u m e', 'س ي ر ه', 'س ي ر ة'],
+            this.goToResume,
+        );
+        this.$mousetrap.bind(['f o n t', 'خ ط'], this.changeFont);
+        this.$mousetrap.bind(['t h e m e', 'ل و ن'], this.changeTheme);
         this.$mousetrap.bind(
             [
                 'up up down down left right left right b a',

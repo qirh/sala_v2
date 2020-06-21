@@ -1,9 +1,4 @@
-// const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
-
 module.exports = {
-    // configureWebpack: {
-    //     plugins: [new ImageminWebpWebpackPlugin()],
-    // },
     pluginOptions: {
         i18n: {
             enableInSFC: true,
@@ -13,10 +8,7 @@ module.exports = {
         },
     },
     pwa: {
-        workboxPluginMode: 'InjectManifest',
-        workboxOptions: {
-            swSrc: 'service-worker.js',
-        },
+        workboxPluginMode: 'GenerateSW',
         iconPaths: {
             favicon32: null,
             favicon16: null,

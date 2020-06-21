@@ -4,11 +4,10 @@ base = "/"
 publish = "dist/"
 command = "npm run build"
 
-[[redirects]]
-from = "/cv"
-to = "https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing"
-status = 200
-force = true
+# let's test this
+# [build.processing]
+# bundle = true
+# minify = true
 
 [[redirects]]
 from = "/*"

@@ -9,8 +9,9 @@
         </div>
         <div id="grid-main">
             <div class="grid-title">
-                <p class="main-title" v-html="$t('title1')"></p>
-                <p class="main-title" v-html="$t('title2')"></p>
+                <p class="main-title non-tablet" v-html="$t('title1')"></p>
+                <p class="main-title non-tablet" v-html="$t('title2')"></p>
+                <p class="main-title tablet" v-html="$t('title3')"></p>
             </div>
             <div class="grid-paragraphs">
                 <p>{{ $t('p1') }}</p>

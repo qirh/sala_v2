@@ -1,4 +1,3 @@
-
 module.exports = {
     pluginOptions: {
         i18n: {
@@ -10,9 +9,6 @@ module.exports = {
     },
     pwa: {
         workboxPluginMode: 'GenerateSW',
-        // workboxOptions: {
-        //     swSrc: 'service-worker.js',
-        // },
         iconPaths: {
             favicon32: null,
             favicon16: null,

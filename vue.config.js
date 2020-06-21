@@ -9,7 +9,7 @@ module.exports = {
         },
     },
     pwa: {
-        // workboxPluginMode: 'InjectManifest',
+        workboxPluginMode: 'GenerateSW',
         // workboxOptions: {
         //     swSrc: 'service-worker.js',
         // },

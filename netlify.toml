@@ -4,9 +4,10 @@ base = "/"
 publish = "dist/"
 command = "npm run build"
 
-[build.processing]
-bundle = true
-minify = true
+# let's test this
+# [build.processing]
+# bundle = true
+# minify = true
 
 [[redirects]]
 from = "/*"

@@ -90,7 +90,7 @@
     .grid {
         grid-template-columns: repeat(5, 1fr);
         grid-template-areas:
-            "grid-langs-theme empty grid-icons grid-icons grid-icons"
+            "grid-langs-theme grid-langs-theme empty grid-icons grid-icons"
             "grid-main grid-main grid-main grid-main grid-main"
             "grid-footer grid-footer grid-footer grid-footer grid-footer";
     }
@@ -102,7 +102,7 @@
             "grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
     }
     .picture {
-        width: 100%;
+        width: 80%;
     }
     .grid-title {
         margin: 0 !important;
@@ -132,7 +132,7 @@
         display: block;
     }
     p {
-        font-size: calc(0.85vw +  0.9rem);
+        // font-size: calc(0.85vw +  0.9rem);
     }
 }
 // phone

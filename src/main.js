@@ -10,8 +10,16 @@ import {i18n} from './i18n.js';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
-import {faBlog, faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import {faQuestionCircle, faSmile} from '@fortawesome/free-regular-svg-icons';
+import {
+    faBlog,
+    faEnvelope,
+    faFistRaised,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+    faQuestionCircle,
+    faSmile,
+    faLaughSquint,
+} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,
     faGithub,
@@ -26,6 +34,8 @@ library.add(
     faBlog,
     faQuestionCircle,
     faSmile,
+    faLaughSquint,
+    faFistRaised,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;

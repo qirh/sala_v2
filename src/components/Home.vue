@@ -14,10 +14,18 @@
                 <p class="main-title tablet" v-html="$t('title3')"></p>
             </div>
             <div class="grid-paragraphs">
-                <p>{{ $t('p1') }}</p>
-                <p>{{ $t('p2') }}</p>
-                <p>{{ $t('p3') }}</p>
                 <!-- eslint-disable -->
+                <p>{{ $t('p1') }}
+                    <font-awesome-icon v-if="this.currentLangCode == 'en'"
+                        :icon="['far', 'laugh-squint']"
+                    ></font-awesome-icon>
+                </p>
+                <p>{{ $t('p2') }}
+                    <font-awesome-icon v-if="this.currentLangCode == 'en'"
+                        :icon="['fas', 'fist-raised']"
+                    ></font-awesome-icon>
+                </p>
+                <p>{{ $t('p3') }}</p>
                 <p>{{ $t('p4') }}
                     <font-awesome-icon
                         :icon="['far', 'smile']"

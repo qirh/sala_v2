@@ -27,10 +27,14 @@
                 </p>
                 <p>{{ $t('p3') }}</p>
                 <p>{{ $t('p4') }}
-                    <font-awesome-icon
+                    <font-awesome-icon v-if="this.currentLangCode == 'en'"
                         :icon="['far', 'smile']"
                     ></font-awesome-icon>
+                    <font-awesome-icon v-if="this.currentLangCode == 'ar'"
+                        :icon="['far', 'laugh-squint']"
+                    ></font-awesome-icon>
                 </p>
+                <p>{{ $t('p5') }}</p>
             </div>
             <div class="grid-picture">
                 <img

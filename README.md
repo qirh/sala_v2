@@ -3,10 +3,7 @@
 
 il y en a beaucoup comme ça, mais lui, c'est le mien.
 
-### caveats
-* there's 2 places to update `versions` very un-dry.
-    1. `store.js` to store the state. Changing the version here will init a new state with default values.
-    2. `service-worker.js` new version deployed. Changing the version here will cause the app to refresh the page and load the new version.
+don't forget to update the version in `store.js` if there are breaking changes to invalidate cache
 
 ## credit
 * [fort awesome](https://fortawesome.com)

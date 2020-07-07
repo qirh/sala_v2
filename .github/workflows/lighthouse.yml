@@ -17,5 +17,4 @@ jobs:
         with:
           urls: |
             ${{ steps.netlify.outputs.url }}
-            ${{ steps.netlify.outputs.url }}/products/
           uploadArtifacts: true

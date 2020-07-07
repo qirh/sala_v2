@@ -27,9 +27,6 @@
 }
 
 @media only screen and (max-width: 500px) {
-    /* .top {
-        padding: 3em 0;
-    } */
     .section-main-p {
         margin: 0;
     }

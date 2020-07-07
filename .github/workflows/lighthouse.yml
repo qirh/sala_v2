@@ -1,0 +1,26 @@
+name: Lighthouse CI
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Wait for the Netlify Preview
+        uses: jakepartusch/wait-for-netlify-action@v1
+        id: netlify
+        with:
+          site_name: 'musing-rosalind-eedabd'
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            ${{ steps.netlify.outputs.url }}
+          budgetPath: ./budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 3
+

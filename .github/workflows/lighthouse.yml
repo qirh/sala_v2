@@ -4,6 +4,7 @@ on: pull_request
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -18,3 +19,6 @@ jobs:
           urls: |
             ${{ steps.netlify.outputs.url }}
           uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 3
+

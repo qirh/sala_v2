@@ -1,0 +1,20 @@
+name: Accessibility Audits
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Wait for the Netlify Preview
+        uses: jakepartusch/wait-for-netlify-action@v1
+        id: netlify
+        with:
+          site_name: 'musing-rosalind-eedabd'
+      - name: Accessibility Audits
+        run: |
+          npm install -g @jakepartusch/lumberjack
+          xvfb-run --auto-servernum lumberjack --url https://google.com

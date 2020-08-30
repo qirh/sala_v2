@@ -8,11 +8,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Wait for the Netlify Preview
-        uses: jakepartusch/wait-for-netlify-action@v1
-        id: netlify
+      - name: Install required Linux packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install libgbm-dev
+          sudo apt-get install xvfb
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
         with:
-          site_name: 'musing-rosalind-eedabd'
+          node-version: 12.x
+      - name: Install npm packages
+        run: npm ci
       - name: Accessibility Audits
         run: |
           npm install -g @jakepartusch/lumberjack

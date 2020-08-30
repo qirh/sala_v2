@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="gitLink">{{gitHash}}</a>
+        <a :href="gitLink">{{ gitHash }}</a>
     </div>
 </template>
 
@@ -10,7 +10,8 @@ export default {
     data: () => {
         return {
             gitHash: GIT_DESCRIBE.hash,
-            gitLink: 'https://github.com/qirh/sala_v2/commit/' + GIT_DESCRIBE.hash,
+            gitLink:
+                'https://github.com/qirh/sala_v2/commit/' + GIT_DESCRIBE.hash,
         };
     },
 };

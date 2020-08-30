@@ -1,6 +1,8 @@
 <template>
     <div>
-        <a :href="gitLink">{{ gitHash }}</a>
+        <h1>
+            commit: <a :href="gitLink">{{ gitHash }}</a>
+        </h1>
     </div>
 </template>
 

@@ -32,6 +32,9 @@ export default {
         goToResume() {
             this.$router.push('cv');
         },
+        goToAbout() {
+            this.$router.push('about');
+        },
         changeFont() {
             store.commit('toggleFont');
         },
@@ -204,6 +207,7 @@ export default {
             ['c v', 'r e s u m e', 'س ي ر ه', 'س ي ر ة'],
             this.goToResume,
         );
+        this.$mousetrap.bind(['a b o u t'], this.goToAbout);
         this.$mousetrap.bind(['f o n t', 'خ ط'], this.changeFont);
         this.$mousetrap.bind(['t h e m e', 'ل و ن'], this.changeTheme);
         this.$mousetrap.bind(

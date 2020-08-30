@@ -95,21 +95,24 @@
             "grid-footer grid-footer grid-footer grid-footer grid-footer";
     }
     #grid-main {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(2, auto);
         grid-template-areas:
-            "grid-title grid-title grid-title grid-title grid-title"
-            "grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
+            "grid-title grid-title grid-title grid-title grid-title grid-title grid-title"
+            "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
     }
     .picture {
-        width: 80%;
+        width: 100%;
+        display: block;
+        margin-right: 0;
+        margin-left: auto;
     }
     .grid-title {
         margin: 0 !important;
         padding-bottom: 2.5vh;
     }
     .grid-paragraphs {
-        margin-right: 2vw;
+        margin-right: 0;
     }
     .right-to-left {
         .grid-paragraphs {

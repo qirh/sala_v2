@@ -29,6 +29,12 @@ body {
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
 }
+// tablet
+@media (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
+    body {
+        padding: 0vh 4vw;
+    }
+}
 // phone
 @media (max-width: $screen-phone-max) {
     html {

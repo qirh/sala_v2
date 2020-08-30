@@ -1,4 +1,5 @@
 import App from './App.vue';
+import About from './components/About.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
@@ -61,6 +62,7 @@ const router = new VueRouter({
                     'https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing';
             },
         },
+        {path: '/about', component: About},
         {path: '/', component: App},
         {path: '*', redirect: '/'},
     ],
@@ -70,5 +72,4 @@ new Vue({
     router,
     store,
     i18n,
-    render: (h) => h(App),
 }).$mount('#app');

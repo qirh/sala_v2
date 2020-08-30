@@ -3,11 +3,10 @@ on: pull_request
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
       - name: Install required Linux packages
         run: |
           sudo apt-get update
@@ -18,7 +17,11 @@ jobs:
         with:
           node-version: 12.x
       - name: Install npm packages
-        run: npm ci
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          npm run build
       - name: Accessibility Audits
         run: |
           npm install -g @jakepartusch/lumberjack

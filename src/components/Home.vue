@@ -15,11 +15,7 @@
             </div>
             <div class="grid-paragraphs">
                 <!-- eslint-disable -->
-                <p>{{ $t('p1') }}
-                    <font-awesome-icon v-if="this.currentLangCode == 'en'"
-                        :icon="['far', 'laugh-squint']"
-                    ></font-awesome-icon>
-                </p>
+                <p>{{ $t('p1') }}</p>
                 <p>{{ $t('p2') }}
                     <font-awesome-icon v-if="this.currentLangCode == 'en'"
                         :icon="['fas', 'fist-raised']"

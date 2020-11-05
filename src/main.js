@@ -16,11 +16,7 @@ import {
     faEnvelope,
     faFistRaised,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-    faQuestionCircle,
-    faSmile,
-    faLaughSquint,
-} from '@fortawesome/free-regular-svg-icons';
+import {faQuestionCircle, faSmile} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,
     faGithub,
@@ -35,7 +31,6 @@ library.add(
     faBlog,
     faQuestionCircle,
     faSmile,
-    faLaughSquint,
     faFistRaised,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);

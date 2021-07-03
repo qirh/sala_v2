@@ -68,7 +68,7 @@
 }
 
 .main-title {
-    font-size: calc(1.2vw +  1rem);
+    font-size: calc(1vw +  1rem);
     margin: 0;
 }
 .dev {
@@ -77,12 +77,6 @@
 .picture {
     width: 90%;
     height: auto;
-}
-.non-tablet {
-    display: block;
-}
-.tablet {
-    display: none;
 }
 
 // tablet
@@ -128,12 +122,6 @@
     .main-title {
         text-align: center;
     }
-    .non-tablet {
-        display: none;
-    }
-    .tablet {
-        display: block;
-    }
     p {
         // font-size: calc(0.85vw +  0.9rem);
     }
@@ -172,7 +160,7 @@
     }
     .main-title {
         text-align: center;
-        font-size: calc(1.2vw +  1.3rem);
+        font-size: calc(1vw +  1.3rem);
     }
     p {
         font-size: calc(0.8vw +  0.9rem);

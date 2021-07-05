@@ -23,13 +23,7 @@
                         ></font-awesome-icon>
                     </template>
                 </i18n>
-                <i18n path="p2" tag="p">
-                    <template v-if="this.currentLangCode == 'en'" v-slot:smile>
-                        <font-awesome-icon
-                            :icon="['far', 'smile']"
-                        ></font-awesome-icon>
-                    </template>
-                </i18n>
+                <p>{{ $t('p2') }}</p>
                 <p>{{ $t('p3') }}</p>
                 <i18n path="p4" tag="p">
                     <template v-if="this.currentLangCode == 'en'" v-slot:smile>
@@ -73,7 +67,7 @@ import store from '@/store';
 export default {
     name: 'Home',
     props: ['buildTime', 'gitHash'],
-    data: function () {
+    data: function() {
         return {
             gitLink: 'https://github.com/qirh/sala_v2/commit/' + this.gitHash,
         };

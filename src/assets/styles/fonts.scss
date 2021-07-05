@@ -15,10 +15,10 @@
 
 // arabic
 @font-face {
-    font-family: 'kfgqpc';
-    src: url('/assets/fonts/kfgqpc.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'amiri';
+  src: url('/assets/fonts/amiri.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
     font-family: 'aref-ruqaa';
@@ -37,8 +37,8 @@
 
 
 // arabic
-.font-kfgqpc {
-    font-family: 'kfgqpc', -apple-system, sans-serif;
+.font-amiri {
+  font-family: 'amiri', -apple-system, sans-serif;
 }
 .font-aref-ruqaa {
     font-family: 'aref-ruqaa', -apple-system, sans-serif;

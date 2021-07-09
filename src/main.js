@@ -17,7 +17,11 @@ import {
     faFistRaised,
     faMountain,
 } from '@fortawesome/free-solid-svg-icons';
-import {faQuestionCircle, faSmile} from '@fortawesome/free-regular-svg-icons';
+import {
+    faQuestionCircle,
+    faSmile,
+    faSmileWink,
+} from '@fortawesome/free-regular-svg-icons';
 import {
     faVuejs,
     faGithub,
@@ -34,6 +38,7 @@ library.add(
     faSmile,
     faFistRaised,
     faMountain,
+    faSmileWink,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;

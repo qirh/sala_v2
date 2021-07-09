@@ -25,14 +25,19 @@
                 </i18n>
                 <p>{{ $t('p2') }}</p>
                 <i18n path="p3" tag="p">
-                    <template v-if="this.currentLangCode == 'en'" v-slot:wink>
+                  <template v-slot:mountain>
                         <font-awesome-icon
-                            :icon="['fa', 'wink']"
+                            :icon="['fas', 'mountain']"
+                        ></font-awesome-icon>
+                    </template>
+                    <template v-slot:wink>
+                        <font-awesome-icon
+                            :icon="['far', 'smile-wink']"
                         ></font-awesome-icon>
                     </template>
                 </i18n>
                 <i18n path="p4" tag="p">
-                    <template v-if="this.currentLangCode == 'en'" v-slot:smile>
+                    <template v-slot:smile>
                         <font-awesome-icon
                             :icon="['far', 'smile']"
                         ></font-awesome-icon>

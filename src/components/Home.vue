@@ -44,7 +44,6 @@
                     </template>
                     
                 </i18n>
-                <p>{{ $t('p5') }}</p>
             </div>
             <div class="grid-picture">
                 <img

@@ -17,15 +17,25 @@
                     <template v-slot:shopifyLink>
                         <a href="https://shopify.com">{{ $t('shopify') }}</a>
                     </template>
+                </i18n>
+                <i18n path="p2" tag="p">
+                    <template v-slot:smile>
+                        <font-awesome-icon
+                            :icon="['far', 'smile']"
+                        ></font-awesome-icon>
+                    </template>
+                    
+                </i18n>
+                <i18n path="p3" tag="p">
+                  
                     <template v-slot:fist>
                         <font-awesome-icon
                             :icon="['fas', 'fist-raised']"
                         ></font-awesome-icon>
                     </template>
                 </i18n>
-                <p>{{ $t('p2') }}</p>
-                <i18n path="p3" tag="p">
-                  <template v-slot:mountain>
+                <i18n path="p4" tag="p">
+                    <template v-slot:mountain>
                         <font-awesome-icon
                             :icon="['fas', 'mountain']"
                         ></font-awesome-icon>
@@ -35,15 +45,9 @@
                             :icon="['far', 'smile-wink']"
                         ></font-awesome-icon>
                     </template>
-                </i18n>
-                <i18n path="p4" tag="p">
-                    <template v-slot:smile>
-                        <font-awesome-icon
-                            :icon="['far', 'smile']"
-                        ></font-awesome-icon>
-                    </template>
                     
                 </i18n>
+                <i18n path="p5" tag="p"/>
             </div>
             <div class="grid-picture">
                 <img

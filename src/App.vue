@@ -175,9 +175,9 @@ export default {
                 '%calso~~ ' +
                     '%ckonami code' +
                     '%c || ' +
-                    '%ctheme' +
+                    '%ct' +
                     '%c || ' +
-                    '%cfont' +
+                    '%cf' +
                     '%c || ' +
                     '%cspace bar',
                 'background: #222; color: #bada55',

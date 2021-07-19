@@ -29,6 +29,23 @@ body {
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
 }
+.toolTip {
+  position: relative;
+  display: inline
+}
+
+// computer
+@media (min-width: $screen-tablet-max) {
+  .toolTip:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 70%;
+    left: -0.1em;
+    right: -0.1em;
+    bottom: 0;
+  }
+}
 // tablet
 @media (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
     body {

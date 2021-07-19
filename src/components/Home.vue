@@ -19,6 +19,9 @@
                     </template>
                 </i18n>
                 <i18n path="p2" tag="p">
+                    <template v-slot:laugh>
+                        <p class="toolTip" :title="$t('laughToolTip')" v-html="$t('laugh')"></p>
+                    </template>
                     <template v-slot:smile>
                         <font-awesome-icon
                             :icon="['far', 'smile']"

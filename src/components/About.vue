@@ -1,7 +1,11 @@
 <template>
     <div>
-        <a style="position: absolute;top: 8px;left: 16px;" href="javascript:history.back()">&lt;-back</a>
-        <br>
+        <a
+            style="position: absolute;top: 8px;left: 16px;"
+            href="javascript:history.back()"
+        >
+            &lt;-back
+        </a>
         commit: <a :href="gitLink">{{ gitHash }}</a>
     </div>
 </template>

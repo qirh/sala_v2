@@ -25,11 +25,18 @@
     .selected-lang {
         text-decoration-color: darken($blue, 15%);
     }
+    a {
+      color: darken($blue, 15%);
+    }
     #subtoggle {
         &:before {
             background-color: $blue;
         }
     }
+    .toolTip:after {
+      background-color: $blue-highlight;
+    }
+    
 }
 
 @mixin darkTheme {
@@ -49,13 +56,19 @@
             color: $purple;
         }
     }
-    .selected-lang {
+    .selected-lang, a {
         text-decoration-color: darken($purple, 15%);
+    }
+    a {
+      color: darken($purple, 15%);
     }
     #subtoggle {
         &:before {
             background-color: $purple;
         }
+    }
+    .toolTip:after {
+      background-color: $purple-highlight;
     }
 }
 

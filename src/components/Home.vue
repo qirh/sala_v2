@@ -30,7 +30,6 @@
                     
                 </i18n>
                 <i18n path="p3" tag="p">
-                  
                     <template v-slot:fist>
                         <font-awesome-icon
                             :icon="['fas', 'fist-raised']"
@@ -38,6 +37,12 @@
                     </template>
                 </i18n>
                 <i18n path="p4" tag="p">
+                  <template v-slot:hobbies>
+                        <p class="toolTip" :title="$t('hobbiesToolTip')" v-html="$t('hobbies')"></p>
+                    </template>
+                    <template v-slot:camping>
+                        <p class="toolTip" :title="$t('campingToolTip')" v-html="$t('camping')"></p>
+                    </template>
                     <template v-slot:mountain>
                         <font-awesome-icon
                             :icon="['fas', 'mountain']"

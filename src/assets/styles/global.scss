@@ -35,7 +35,7 @@ body {
 }
 
 // computer
-@media (min-width: $screen-tablet-max) {
+@media (min-width: $screen-highlights) {
   .toolTip:after {
     content: '';
     position: absolute;

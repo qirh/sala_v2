@@ -27,7 +27,6 @@
                             :icon="['far', 'smile']"
                         ></font-awesome-icon>
                     </template>
-                    
                 </i18n>
                 <i18n path="p3" tag="p">
                     <template v-slot:fist>
@@ -53,9 +52,12 @@
                             :icon="['far', 'smile-wink']"
                         ></font-awesome-icon>
                     </template>
-                    
                 </i18n>
-                <i18n path="p5" tag="p"/>
+                <i18n path="p5" tag="p">
+                    <template v-slot:email>
+                        <a href="mailto:saleh@alghusson.com">{{ $t('email') }}</a>
+                    </template>
+                </i18n>
             </div>
             <div class="grid-picture">
                 <img

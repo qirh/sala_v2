@@ -63,6 +63,7 @@
                 <img
                     class="picture"
                     alt="picture of saleh"
+                    rel="preload"
                     :title="$t('covidHair')"
                     src="/assets/moi.jpg"
                 />

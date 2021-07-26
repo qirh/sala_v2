@@ -9,40 +9,75 @@
         </div>
         <div id="grid-main">
             <div class="grid-title">
-                <p class="main-title non-tablet" v-html="$t('title1')"></p>
-                <p class="main-title non-tablet" v-html="$t('title2')"></p>
-                <p class="main-title tablet" v-html="$t('title3')"></p>
+                <p class="main-title" v-html="$t('title')"></p>
             </div>
             <div class="grid-paragraphs">
                 <!-- eslint-disable -->
-                <p>{{ $t('p1') }}</p>
-                <p>{{ $t('p2') }}
-                    <font-awesome-icon v-if="this.currentLangCode == 'en'"
-                        :icon="['fas', 'fist-raised']"
-                    ></font-awesome-icon>
-                </p>
-                <p>{{ $t('p3') }}</p>
-                <p>{{ $t('p4') }}
-                    <font-awesome-icon v-if="this.currentLangCode == 'en'"
-                        :icon="['far', 'smile']"
-                    ></font-awesome-icon>
-                    <font-awesome-icon v-if="this.currentLangCode == 'ar'"
-                        :icon="['far', 'laugh-squint']"
-                    ></font-awesome-icon>
-                </p>
-                <p>{{ $t('p5') }}</p>
+                <i18n path="p1" tag="p">
+                    <template v-slot:shopifyLink>
+                        <a href="https://shopify.com">{{ $t('shopify') }}</a>
+                    </template>
+                </i18n>
+                <i18n path="p2" tag="p">
+                    <template v-slot:laugh>
+                        <p class="toolTip" :title="$t('laughToolTip')" v-html="$t('laugh')"></p>
+                    </template>
+                    <template v-slot:smile>
+                        <font-awesome-icon
+                            :icon="['far', 'smile']"
+                        ></font-awesome-icon>
+                    </template>
+                </i18n>
+                <i18n path="p3" tag="p">
+                    <template v-slot:fist>
+                        <font-awesome-icon
+                            :icon="['fas', 'fist-raised']"
+                        ></font-awesome-icon>
+                    </template>
+                </i18n>
+                <i18n path="p4" tag="p">
+                  <template v-slot:hobbies>
+                        <p class="toolTip" :title="$t('hobbiesToolTip')" v-html="$t('hobbies')"></p>
+                    </template>
+                    <template v-slot:camping>
+                        <p class="toolTip" :title="$t('campingToolTip')" v-html="$t('camping')"></p>
+                    </template>
+                    <template v-slot:mountain>
+                        <font-awesome-icon
+                            :icon="['fas', 'mountain']"
+                        ></font-awesome-icon>
+                    </template>
+                    <template v-slot:wink>
+                        <font-awesome-icon
+                            :icon="['far', 'smile-wink']"
+                        ></font-awesome-icon>
+                    </template>
+                </i18n>
+                <i18n path="p5" tag="p">
+                    <template v-slot:email>
+                        <a href="mailto:saleh@alghusson.com">{{ $t('email') }}</a>
+                    </template>
+                </i18n>
             </div>
             <div class="grid-picture">
                 <img
                     class="picture"
                     alt="picture of saleh"
+                    rel="preload"
                     :title="$t('covidHair')"
                     src="/assets/moi.jpg"
                 />
             </div>
         </div>
         <div class="grid-footer">
-            <p>{{ $t('footerLastUpdated') }} <a :href="gitLink">{{this.date}}<span v-if="this.dateSpecial">~~{{this.dateSpecial}}</span></a>
+            <p>
+                {{ $t('footerLastUpdated') }}
+                <a :href="gitLink"
+                    >{{ this.date
+                    }}<span v-if="this.dateSpecial"
+                        >~~{{ this.dateSpecial }}</span
+                    ></a
+                >
             </p>
             <!-- eslint-enable -->
         </div>

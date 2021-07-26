@@ -21,13 +21,30 @@ body {
     margin: 0px;
     display: flex;
     justify-content: center;
-    padding: 0 8vw;
+    padding: 0 7vw;
     height: 100vh;
     display: table-cell;
     vertical-align: middle;
     perspective: 500px;
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
+}
+.toolTip {
+  position: relative;
+  display: inline
+}
+
+// computer
+@media (min-width: $screen-highlights) {
+  .toolTip:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 70%;
+    left: -0.1em;
+    right: -0.1em;
+    bottom: 0;
+  }
 }
 // tablet
 @media (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
@@ -50,7 +67,7 @@ body {
 }
 
 p {
-    font-size: calc(0.72vw +  0.6rem);
+    font-size: calc(0.68vw +  0.6rem);
     font-weight: 300;
     line-height: 1.4;
     max-width: 34em;

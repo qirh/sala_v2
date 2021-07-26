@@ -175,9 +175,9 @@ export default {
                 '%calso~~ ' +
                     '%ckonami code' +
                     '%c || ' +
-                    '%ctheme' +
+                    '%ct' +
                     '%c || ' +
-                    '%cfont' +
+                    '%cf' +
                     '%c || ' +
                     '%cspace bar',
                 'background: #222; color: #bada55',
@@ -208,8 +208,8 @@ export default {
             this.goToResume,
         );
         this.$mousetrap.bind(['a b o u t'], this.goToAbout);
-        this.$mousetrap.bind(['f o n t', 'خ ط'], this.changeFont);
-        this.$mousetrap.bind(['t h e m e', 'ل و ن'], this.changeTheme);
+        this.$mousetrap.bind(['f', 'خ'], this.changeFont);
+        this.$mousetrap.bind(['t', 'ل'], this.changeTheme);
         this.$mousetrap.bind(
             [
                 'up up down down left right left right b a',

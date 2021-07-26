@@ -11,7 +11,7 @@ const langs = [
         name: 'عربي',
         direction: 'rtl',
         title: 'صالح الغصون',
-        fonts: ['font-kfgqpc', 'font-aref-ruqaa'],
+        fonts: ['font-amiri', 'font-aref-ruqaa'],
     },
 ];
 

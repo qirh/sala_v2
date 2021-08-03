@@ -21,9 +21,6 @@ for = "/service-worker.js"
 cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[plugins]]
-package = "netlify-plugin-is-website-vulnerable"
-
-[[plugins]]
 package = "netlify-plugin-a11y"
 
 [[plugins]]

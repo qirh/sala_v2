@@ -19,7 +19,7 @@
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.12",
     "vue-i18n": "^8.26.7",
-    "vue-mousetrap": "^1.0.3",
+    "vue-mousetrap": "1.0.2",
     "vue-router": "^3.5.3",
     "vuex": "^3.6.0",
     "vuex-persist": "^2.3.0"
@@ -28,7 +28,6 @@
     "@kazupon/vue-i18n-loader": "^0.3.0",
     "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-plugin-pwa": "^4.5.15",
     "@vue/cli-service": "^4.5.15",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.1.0",

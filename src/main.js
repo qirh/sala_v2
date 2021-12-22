@@ -5,7 +5,6 @@ import VueRouter from 'vue-router';
 import store from './store';
 
 import VueMousetrap from 'vue-mousetrap';
-import './registerServiceWorker';
 
 import {i18n} from './i18n.js';
 

@@ -3,6 +3,8 @@
 
 il y en a beaucoup comme ça, mais lui, c'est le mien.
 
+Vue 2.0 webstie. Hosted on Netlify.
+
 don't forget to update the version in `store.js` if there are breaking changes to invalidate cache
 
 ## credit

@@ -18,11 +18,10 @@
 
         <br />
         Welcome to birthday festivities expectacular. The plan is to bike
-        <b>30</b>! loops around prospect park (the big loop not the small one).
+        <b>30</b> loops around prospect park (the big loop not the small one).
         <br />
-        Feel free to join the misery by doing part or all of it. Also feel free
-        to bring me foods and other nourishment items or just show up. 0
-        pressure.
+        Feel free to join the misery by doing part or all of it. Or just come to
+        picnic in the park and I can take a break and join you (0 pressure).
 
         <h4>
             Where?

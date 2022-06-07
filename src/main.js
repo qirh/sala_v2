@@ -1,5 +1,7 @@
 import App from './App.vue';
 import About from './components/About.vue';
+import Thirty from './components/Thirty.vue';
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
@@ -64,6 +66,7 @@ const router = new VueRouter({
             },
         },
         {path: '/about', component: About},
+        {path: '/30', component: Thirty},
         {path: '/', component: App},
         {path: '*', redirect: '/'},
     ],

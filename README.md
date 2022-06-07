@@ -7,6 +7,8 @@ Vue 2.0 webstie. Hosted on Netlify.
 
 don't forget to update the version in `store.js` if there are breaking changes to invalidate cache
 
+note: `node-sass` is broken with node >= 16. so you have to use node <= 14.
+
 ## credit
 * [fort awesome](https://fortawesome.com)
 * [vi18n](https://github.com/kazupon/vue-i18n)

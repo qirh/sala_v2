@@ -6,6 +6,7 @@
         >
             &lt;-back
         </a>
+        <br />
         <h4>Soft invite (weather and mood pending)</h4>
         <img
             class="rotate"

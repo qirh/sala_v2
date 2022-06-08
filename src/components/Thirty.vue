@@ -36,6 +36,8 @@
         june 26 2022
         <h4>Why?</h4>
         1992 + (-2022) = 30
+        <h4>30??? surely you won't finish?!</h4>
+        i don't care, finishing is not the point, but i def will give it a shot
         <h4>More info?</h4>
         text me a few days before
     </div>

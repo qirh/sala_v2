@@ -1,12 +1,5 @@
 <template>
     <div>
-        <a
-            style="position: absolute; top: 8px; left: 16px"
-            href="javascript:history.back()"
-        >
-            &lt;-back
-        </a>
-        <br />
         <h4>Soft invite (weather and mood pending)</h4>
         <img
             class="rotate"

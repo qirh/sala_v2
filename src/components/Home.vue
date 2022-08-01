@@ -13,11 +13,7 @@
             </div>
             <div class="grid-paragraphs">
                 <!-- eslint-disable -->
-                <i18n path="p1" tag="p">
-                    <template v-slot:shopifyLink>
-                        <a href="https://shopify.com">{{ $t('shopify') }}</a>
-                    </template>
-                </i18n>
+                <i18n path="p1" tag="p"></i18n>
                 <i18n path="p2" tag="p">
                     <template v-slot:laugh>
                         <p class="toolTip" :title="$t('laughToolTip')" v-html="$t('laugh')"></p>

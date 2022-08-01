@@ -55,14 +55,14 @@ const router = new VueRouter({
             path: '/cv',
             beforeEnter() {
                 window.location =
-                    'https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing';
+                    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
             },
         },
         {
             path: '/resume',
             beforeEnter() {
                 window.location =
-                    'https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing';
+                    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
             },
         },
         {path: '/about', component: About},

@@ -17,6 +17,7 @@ import {
     faEnvelope,
     faFistRaised,
     faMountain,
+    faFileAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faQuestionCircle,
@@ -40,6 +41,7 @@ library.add(
     faFistRaised,
     faMountain,
     faSmileWink,
+    faFileAlt,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
@@ -55,14 +57,14 @@ const router = new VueRouter({
             path: '/cv',
             beforeEnter() {
                 window.location =
-                    'https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing';
+                    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
             },
         },
         {
             path: '/resume',
             beforeEnter() {
                 window.location =
-                    'https://drive.google.com/file/d/1qwZzVOZ4PbAedrvirdGsIDDWAoAwFOoJ/view?usp=sharing';
+                    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
             },
         },
         {path: '/about', component: About},

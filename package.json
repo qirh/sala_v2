@@ -73,5 +73,9 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 10"
-  ]
+  ],
+  "engines": {
+    "npm": "8.0.0",
+    "node": "14.19.3"
+  }
 }

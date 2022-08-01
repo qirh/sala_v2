@@ -11,10 +11,19 @@
             href="https://github.com/qirh"
             target="_blank"
             rel="noopener noreferrer"
-            title="qirh"
             class="icon"
+            :title="$t('github')"
         >
             <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
+        </a>
+        <a
+            href="https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="icon"
+            :title="$t('resume')"
+        >
+            <font-awesome-icon :icon="['fa', 'file-alt']"></font-awesome-icon>
         </a>
         <a
             href="https://www.goodreads.com/sal7"

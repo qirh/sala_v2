@@ -115,7 +115,7 @@ export default {
                     : store.state.currentLang.fonts[0],
             );
         },
-        getBrowserLang: function() {
+        getBrowserLang: function () {
             if (navigator.languages) {
                 for (let i = 0; i < navigator.languages.length; i++) {
                     const lang = navigator.languages[i];
@@ -130,13 +130,13 @@ export default {
             }
             return undefined;
         },
-        getLangCodeOnInit: function() {
+        getLangCodeOnInit: function () {
             if (!store.state.currentLang) {
                 return this.getBrowserLang();
             }
             return store.state.currentLang.code;
         },
-        updateLangUI: function() {
+        updateLangUI: function () {
             // change locale
             this.$i18n.locale = store.state.currentLang.code;
 
@@ -263,7 +263,7 @@ export default {
     },
     computed: {
         buildTime: {
-            get: function() {
+            get: function () {
                 return document.documentElement.dataset.buildTimestampUtc;
             },
         },

@@ -74,8 +74,8 @@
     "last 2 versions",
     "not ie <= 10"
   ],
-  "engines" : { 
-    "npm" : "8.0.0",
-    "node" : "4.19.3"
+  "engines": {
+    "npm": "8.0.0",
+    "node": "4.19.3"
   }
 }

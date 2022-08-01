@@ -55,7 +55,19 @@
                 </i18n>
                 <i18n path="p5" tag="p">
                     <template v-slot:email>
-                        <a href="mailto:saleh@alghusson.com">{{ $t('email') }}</a>
+                        <a  
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="mailto:saleh@alghusson.com"
+                            title="saleh@alghusson.com"
+                        >{{ $t('email') }}</a>
+                    </template>
+                    <template v-slot:resume>
+                        <a 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing"
+                        >{{ $t('resume') }}</a>
                     </template>
                 </i18n>
             </div>
@@ -93,7 +105,7 @@ import store from '@/store';
 export default {
     name: 'Home',
     props: ['buildTime', 'gitHash'],
-    data: function() {
+    data: function () {
         return {
             gitLink: 'https://github.com/qirh/sala_v2/commit/' + this.gitHash,
         };

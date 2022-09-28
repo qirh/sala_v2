@@ -27,12 +27,14 @@ import {
 import {
     faVuejs,
     faGithub,
+    faLinkedin,
     faGoodreads,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
     faVuejs,
     faGithub,
+    faLinkedin,
     faGoodreads,
     faEnvelope,
     faBlog,

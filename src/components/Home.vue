@@ -49,23 +49,6 @@
                         ></font-awesome-icon>
                     </template>
                 </i18n>
-                <i18n path="p5" tag="p">
-                    <template v-slot:email>
-                        <a  
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="mailto:saleh@alghusson.com"
-                            title="saleh@alghusson.com"
-                        >{{ $t('email') }}</a>
-                    </template>
-                    <template v-slot:resume>
-                        <a 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing"
-                        >{{ $t('resume') }}</a>
-                    </template>
-                </i18n>
             </div>
             <div class="grid-picture">
                 <img

@@ -9,7 +9,6 @@
         </a>
         <a
             href="https://github.com/qirh"
-            target="_blank"
             rel="noopener noreferrer"
             class="icon"
             :title="$t('github')"
@@ -17,8 +16,15 @@
             <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
         </a>
         <a
+            href="https://linkedin.com/in/qirh"
+            rel="noopener noreferrer"
+            class="icon"
+            :title="$t('linkedin')"
+        >
+            <font-awesome-icon :icon="['fab', 'linkedin']"></font-awesome-icon>
+        </a>
+        <a
             href="https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing"
-            target="_blank"
             rel="noopener noreferrer"
             class="icon"
             :title="$t('resume')"
@@ -27,7 +33,6 @@
         </a>
         <a
             href="https://www.goodreads.com/sal7"
-            target="_blank"
             rel="noopener noreferrer"
             class="icon"
             :title="$t('reading')"

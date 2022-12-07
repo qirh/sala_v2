@@ -43,6 +43,7 @@
             href="https://noiseless-flame-9a6.notion.site/Knowledge-Bar-58e31b613bf4493fa3ba3539e66ff8f2"
             rel="noopener noreferrer"
             class="icon"
+            target="_blank"
             :title="$t('notion')"
         >
             <img class="notion svg-inline--fa fa-w-16" src="/assets/notion_light.svg">

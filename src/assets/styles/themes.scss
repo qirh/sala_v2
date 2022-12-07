@@ -36,7 +36,9 @@
     .toolTip:after {
       background-color: $blue-highlight;
     }
-    
+    .notion {
+        content:url(/assets/notion_light.svg);
+    }
 }
 
 @mixin darkTheme {
@@ -69,6 +71,9 @@
     }
     .toolTip:after {
       background-color: $purple-highlight;
+    }
+    .notion {
+        content:url(/assets/notion_dark.svg);
     }
 }
 

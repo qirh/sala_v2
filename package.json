@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-service": "^4.5.15",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
@@ -35,7 +35,7 @@
     "git-describe": "^4.1.0",
     "netlify-plugin-a11y": "0.0.12",
     "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^13.2.0",
     "vue-cli-plugin-git-describe": "^1.0.0",
     "vue-cli-plugin-i18n": "^1.0.1",
     "vue-template-compiler": "^2.6.12"

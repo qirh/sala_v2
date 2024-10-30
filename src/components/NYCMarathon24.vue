@@ -46,11 +46,11 @@
         <br />
         <br />
         <h3>Best place to meet</h3>
-        For your consideration, I made a chart of my expected mood levels.
+        For your consideration, I made a chart of my expected mood levels. <a href="https://prodsitecore.blob.core.windows.net/nyrrsitecoreblob/nyrr/pdf/race-course-maps/tcsnycm24_map_course_081324_m_ol.pdf">Course map</a>.
         <br />
         <br />
         <img
-            width="500px"
+            width="800px"
             height="auto"
             rel="preload"
             src="/assets/mood_per_mile.png"

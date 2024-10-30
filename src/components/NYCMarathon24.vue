@@ -36,7 +36,7 @@
         Figuring out logistics of where to meet someone during NYC marathon is tough work. I assume that I will not have access to my phone most of the race (it will be in my fanny pack).
         <br />
         <br />
-        The marathon is on Nov 3, 2024. My wave start is at 10:30am. My bib number is <b>35052</b>. You can track me (and other runners) on the <a href="https://apps.apple.com/us/app/6680190121">Ios</a> or <a href="https://play.google.com/store/apps/details?id=com.tcs.mobility.nyrr">Android</a> apps.
+        The marathon is on Nov 3, 2024. My wave start is at 10:30am. My bib number is <b>35052</b>. You can track me (and other runners) on the NYRR <a href="https://apps.apple.com/us/app/6680190121">ios</a> or <a href="https://play.google.com/store/apps/details?id=com.tcs.mobility.nyrr">Android</a> apps. They also have live tracking on the <a href="https://liveresults.nyrr.org/e/NY2024#/dash/R2K8WMH3">web app</a> though it is usually not that accurate.
         <br />
         <br />
         Here is a <a href="https://www.nytimes.com/article/track-runners-nyc-marathon.html?unlocked_article_code=1.WE4.TOwy.6634HYtHIu0s&smid=url-share">NY Times article about how to track runners.</a>

@@ -74,4 +74,3 @@ img, .container {
   height: auto;
 }
 </style>
-

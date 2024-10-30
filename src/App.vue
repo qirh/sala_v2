@@ -215,7 +215,10 @@ export default {
         );
         this.$mousetrap.bind(['a b o u t'], this.goToAbout);
         this.$mousetrap.bind(['3 0', 't h i r t y'], this.goToThirty);
-        this.$mousetrap.bind(['2 4', 'm a r a t h o n'], this.goToNYCMarathon24);
+        this.$mousetrap.bind(
+            ['2 4', 'm a r a t h o n'],
+            this.goToNYCMarathon24,
+        );
         this.$mousetrap.bind(['f', 'خ'], this.changeFont);
         this.$mousetrap.bind(['t', 'ل'], this.changeTheme);
         this.$mousetrap.bind(

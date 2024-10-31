@@ -22,8 +22,8 @@
         <br />
         <br />
         As you might know, I made a decision 2 years ago to work on getting a
-        bib for the NYC Marathon. I did a lot of work and made many sacrifices to get a guaranteed
-        entry. It took a while, but I made it.
+        bib for the NYC Marathon. I did a lot of work and made many sacrifices
+        to get a guaranteed entry. It took a while, but I made it.
         <br />
         <br />
         Back then I categorized this decision as a "later" problem, the marathon
@@ -37,13 +37,14 @@
         <br />
         It will be a day (hopefully I finish within 24 hours) of pure pain and
         misery, and I will probably take a very long time to finish, but
-        inshallah.
+        inshallah I will finish!
         <br />
         <br />
         <h3>Logistics (in case you want to come support me, and you should)</h3>
         Figuring out logistics of where to meet someone during NYC marathon is
         tough work. I assume that I will not have access to my phone most of the
-        race (it will be in my fanny pack).
+        race (it will be in my fanny pack). But I will try to wear my headphones
+        most of the time. So call me if you want to communicate.
         <br />
         <br />
         The marathon is on Nov 3, 2024. My wave start is at 10:30am. My bib
@@ -51,13 +52,12 @@
         <a href="https://apps.apple.com/us/app/6680190121">ios</a> or
         <a
             href="https://play.google.com/store/apps/details?id=com.tcs.mobility.nyrr"
-            >Android</a
+            >android</a
         >
         apps. They also have live tracking on the
         <a href="https://liveresults.nyrr.org/e/NY2024#/dash/R2K8WMH3"
             >web app</a
-        >
-        though it is usually not that accurate.
+        >. Keep in mind that these tracking solutions are not that accurate.
         <br />
         <br />
         Here is a
@@ -72,7 +72,8 @@
         <br />
         <br />
         <h3>Best place to meet</h3>
-        For your consideration, I made a chart of my expected mood levels.
+        For your consideration, I made a chart of my expected mood levels. Also,
+        here is a
         <a
             href="https://prodsitecore.blob.core.windows.net/nyrrsitecoreblob/nyrr/pdf/race-course-maps/tcsnycm24_map_course_081324_m_ol.pdf"
             >Course map</a

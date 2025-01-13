@@ -53,7 +53,7 @@
             <div class="grid-picture">
                 <img
                     class="picture"
-                    alt="picture of saleh"
+                    alt="picture of me"
                     rel="preload"
                     :title="$t('covidHair')"
                     src="/assets/moi.jpg"

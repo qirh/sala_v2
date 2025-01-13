@@ -1,5 +1,5 @@
 {
-  "name": "sala",
+  "name": "sala_v2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,7 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "core-js": "^3.19.1",
-    "vue": "^2.6.12",
+    "vue": "^2.7.16",
     "vue-i18n": "^8.26.7",
     "vue-mousetrap": "1.0.2",
     "vue-router": "^3.5.3",

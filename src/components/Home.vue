@@ -25,11 +25,6 @@
                     </template>
                 </i18n>
                 <i18n path="p3" tag="p">
-                    <template v-slot:fist>
-                        <font-awesome-icon
-                            :icon="['fas', 'fist-raised']"
-                        ></font-awesome-icon>
-                    </template>
                 </i18n>
                 <i18n path="p4" tag="p">
                   <template v-slot:hobbies>
@@ -55,7 +50,7 @@
                     class="picture"
                     alt="picture of me"
                     rel="preload"
-                    :title="$t('covidHair')"
+                    :title="$t('pictureTitle')"
                     src="/assets/moi.jpg"
                 />
             </div>

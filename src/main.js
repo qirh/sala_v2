@@ -9,19 +9,12 @@ import store from './store';
 
 import VueMousetrap from 'vue-mousetrap';
 
-import { i18n } from './i18n.js';
+import {i18n} from './i18n.js';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-    faBlog,
-    faEnvelope,
-    faFileAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-    faSmile,
-    faSmileWink,
-} from '@fortawesome/free-regular-svg-icons';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {faBlog, faEnvelope, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import {faSmile, faSmileWink} from '@fortawesome/free-regular-svg-icons';
 import {
     faGithub,
     faLinkedin,
@@ -62,11 +55,11 @@ const router = new VueRouter({
                     'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
             },
         },
-        { path: '/about', component: About },
-        { path: '/30', component: Thirty },
-        { path: '/nycmarathon24', component: NYCMarathon24 },
-        { path: '/', component: App },
-        { path: '*', redirect: '/' },
+        {path: '/about', component: About},
+        {path: '/30', component: Thirty},
+        {path: '/nycmarathon24', component: NYCMarathon24},
+        {path: '/', component: App},
+        {path: '*', redirect: '/'},
     ],
 });
 

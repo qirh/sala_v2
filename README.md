@@ -1,13 +1,13 @@
 # sala_v2
 ![Build](https://github.com/qirh/sala_v2/workflows/Build/badge.svg)  [![Netlify Status](https://api.netlify.com/api/v1/badges/29595778-1307-4507-8c47-2d05b733ee43/deploy-status)](https://app.netlify.com/sites/musing-rosalind-eedabd/deploys)
 
-il y en a beaucoup comme ça, mais lui, c'est le mien.
-
-Vue 2.0 webstie. Hosted on Netlify.
+Vue webstie. Hosted on Netlify.
 
 don't forget to update the version in `store.js` if there are breaking changes to invalidate cache
 
-note: `node-sass` is broken with node >= 16. so you have to use node <= 14. latest npm version that works in `14.9.3`
+note:
+* This is a deprecated website built with Vue 2.0. I'll replace it with a new one hopefully soon.
+* `node-sass` is broken with node >= 16. so you have to use node <= 14. latest npm version that works in `14.9.3`. Netlify still supports node 14, but Vercel does not.
 
 ## credit
 * [fort awesome](https://fortawesome.com)

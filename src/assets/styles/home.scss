@@ -110,7 +110,7 @@
         grid-template-rows: repeat(2, auto);
         grid-template-areas:
             "grid-title grid-title grid-title grid-title grid-title grid-title grid-title"
-            "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
+            "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture";
     }
 
     .picture {
@@ -126,7 +126,7 @@
     }
 
     .grid-paragraphs {
-        margin-right: 0;
+        margin-right: 3em;
     }
 
     .right-to-left {
@@ -178,7 +178,9 @@
     }
 
     .picture {
-        width: 100%;
+        width: 50%;
+        margin: 0 auto;
+        display: block;
     }
 
     .grid-title,

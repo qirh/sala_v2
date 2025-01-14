@@ -48,6 +48,10 @@
         >
             <img class="notion svg-inline--fa fa-w-16" src="/assets/notion_light.svg">
         </a>
+        <a class="icon" href='https://webring.recurse.com'>
+            <img class="recurse svg-inline--fa" src="/assets/notion_light.svg"/>
+        </a>
+
     </div>
 </template>
 

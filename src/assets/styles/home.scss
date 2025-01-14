@@ -154,9 +154,10 @@
     .grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-template-areas:
-            "grid-langs-theme grid-icons"
+            "grid-icons grid-icons"
+            "grid-langs-theme grid-langs-theme"
             "grid-main grid-main"
             "grid-footer grid-footer";
     }

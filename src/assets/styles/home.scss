@@ -171,8 +171,11 @@
             "grid-paragraphs";
     }
 
-    .grid-icons {
-        justify-self: end;
+    .icons {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+        margin: 0 auto;
     }
 
     .picture {
@@ -189,6 +192,10 @@
 
     .grid-footer {
         margin-top: 0;
+    }
+
+    .grid-langs-theme {
+        grid-template-areas: "grid-langs grid-theme";
     }
 
     .main-title {

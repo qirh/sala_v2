@@ -13,37 +13,21 @@ import {i18n} from './i18n.js';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {faBlog, faEnvelope, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import {faSmile} from '@fortawesome/free-regular-svg-icons';
 import {
-    faBlog,
-    faEnvelope,
-    faFistRaised,
-    faMountain,
-    faFileAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-    faQuestionCircle,
-    faSmile,
-    faSmileWink,
-} from '@fortawesome/free-regular-svg-icons';
-import {
-    faVuejs,
     faGithub,
     faLinkedin,
     faGoodreads,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
-    faVuejs,
     faGithub,
     faLinkedin,
     faGoodreads,
     faEnvelope,
     faBlog,
-    faQuestionCircle,
     faSmile,
-    faFistRaised,
-    faMountain,
-    faSmileWink,
     faFileAlt,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);

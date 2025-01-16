@@ -1,6 +1,7 @@
 @mixin lightColors() {
     color: $blue;
 }
+
 @mixin darkColors() {
     color: $purple;
 }
@@ -8,78 +9,106 @@
 @mixin lightTheme {
     color: $gray;
     background-color: $white;
+
     .icon {
         @include lightColors;
     }
+
     .langs-list {
         @include lightColors;
     }
+
     .toggle {
         @include lightColors;
     }
+
     .grid-footer {
         a {
             color: $blue;
         }
     }
+
     .selected-lang {
         text-decoration-color: darken($blue, 15%);
     }
+
     a {
-      color: darken($blue, 15%);
+        color: darken($blue, 15%);
     }
+
     #subtoggle {
         &:before {
             background-color: $blue;
         }
     }
+
     .toolTip:after {
-      background-color: $blue-highlight;
+        background-color: $blue-highlight;
     }
+
     .notion {
-        content:url(/assets/notion_light.svg);
+        content: url(/assets/notion_light.svg);
+    }
+
+    .recurse {
+        content: url(/assets/recurse_light.svg);
     }
 }
 
 @mixin darkTheme {
     color: $botticelli;
     background-color: $blackpearl;
+
     .icon {
         @include darkColors;
     }
+
     .langs-list {
         @include darkColors;
     }
+
     .toggle {
         @include darkColors;
     }
+
     .grid-footer {
         a {
             color: $purple;
         }
     }
-    .selected-lang, a {
+
+    .selected-lang,
+    a {
         text-decoration-color: darken($purple, 15%);
     }
+
     a {
-      color: darken($purple, 15%);
+        color: darken($purple, 15%);
     }
+
     #subtoggle {
         &:before {
             background-color: $purple;
         }
     }
+
     .toolTip:after {
-      background-color: $purple-highlight;
+        background-color: $purple-highlight;
     }
+
     .notion {
-        content:url(/assets/notion_dark.svg);
+        content: url(/assets/notion_dark.svg);
+    }
+
+    .recurse {
+        content: url(/assets/recurse_dark.svg);
     }
 }
 
 @media (prefers-color-scheme: light) {
     @include lightTheme;
 }
+
 .light-theme {
     @include lightTheme;
 }
@@ -87,6 +116,7 @@
 @media (prefers-color-scheme: dark) {
     @include darkTheme;
 }
+
 .dark-theme {
     @include darkTheme;
 }

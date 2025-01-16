@@ -9,46 +9,58 @@
         "grid-main grid-main"
         "grid-footer grid-footer";
 }
+
 #grid-main {
     grid-area: grid-main;
     display: grid;
     margin-top: 1em;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
         "grid-title grid-picture"
         "grid-paragraphs grid-picture ";
 }
-.empty { grid-area: empty; }
+
+.empty {
+    grid-area: empty;
+}
+
 .grid-icons {
     grid-area: grid-icons;
     align-self: center;
 }
+
 .grid-footer {
     grid-area: grid-footer;
     margin-top: 1em;
     justify-self: center;
+
     a {
         opacity: .75;
+
         &:hover {
             opacity: 1;
         }
     }
 }
+
 .grid-title {
     grid-area: grid-title;
     margin-right: 3em;
     align-self: start;
 }
+
 .grid-paragraphs {
     grid-area: grid-paragraphs;
-    margin-right: 3em;
+    margin-right: 4em;
     align-self: start;
 }
+
 .grid-picture {
     grid-area: grid-picture;
     align-self: center;
 }
+
 .grid-langs-theme {
     grid-area: grid-langs-theme;
     display: grid;
@@ -56,11 +68,13 @@
     grid-template-rows: 1fr;
     grid-template-areas: "empty grid-langs grid-theme";
 }
+
 .grid-langs {
     grid-area: grid-langs;
     align-self: center;
     justify-self: center;
 }
+
 .grid-theme {
     grid-area: grid-theme;
     align-self: center;
@@ -68,12 +82,14 @@
 }
 
 .main-title {
-    font-size: calc(1vw +  1rem);
+    font-size: calc(1vw + 1rem);
     margin: 0;
 }
+
 .dev {
     color: red;
 }
+
 .picture {
     width: 90%;
     height: auto;
@@ -88,55 +104,64 @@
             "grid-main grid-main grid-main grid-main grid-main"
             "grid-footer grid-footer grid-footer grid-footer grid-footer";
     }
+
     #grid-main {
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(2, auto);
         grid-template-areas:
             "grid-title grid-title grid-title grid-title grid-title grid-title grid-title"
-            "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture grid-picture";
+            "grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-paragraphs grid-picture grid-picture";
     }
+
     .picture {
         width: 100%;
         display: block;
         margin-right: 0;
         margin-left: auto;
     }
+
     .grid-title {
         margin: 0 !important;
         padding-bottom: 2.5vh;
     }
+
     .grid-paragraphs {
-        margin-right: 0;
+        margin-right: 3em;
     }
+
     .right-to-left {
         .grid-paragraphs {
             margin-left: 2em;
         }
     }
+
     .grid-paragraphs {
         align-self: center;
     }
+
     .grid-picture {
         justify-self: center;
     }
+
     .main-title {
         text-align: center;
     }
-    p {
-        // font-size: calc(0.85vw +  0.9rem);
-    }
+
 }
+
 // phone
 @media (max-width: $screen-phone-max) {
     .grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-template-areas:
-            "grid-langs-theme grid-icons"
+            "grid-icons grid-icons"
+            "grid-langs-theme grid-langs-theme"
             "grid-main grid-main"
             "grid-footer grid-footer";
     }
+
     #grid-main {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, auto);
@@ -145,24 +170,33 @@
             "grid-title"
             "grid-paragraphs";
     }
+
     .grid-icons {
         justify-self: end;
     }
+
     .picture {
-        width: 100%;
+        width: 50%;
+        margin: 0 auto;
+        display: block;
     }
-    .grid-title, .grid-paragraphs {
+
+    .grid-title,
+    .grid-paragraphs {
         margin: 0 !important;
         padding-top: 1vh;
     }
+
     .grid-footer {
         margin-top: 0;
     }
+
     .main-title {
         text-align: center;
-        font-size: calc(1vw +  1.3rem);
+        font-size: calc(1vw + 1.3rem);
     }
+
     p {
-        font-size: calc(0.8vw +  0.9rem);
+        font-size: calc(0.8vw + 0.9rem);
     }
 }

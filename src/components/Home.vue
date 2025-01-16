@@ -15,47 +15,22 @@
                 <!-- eslint-disable -->
                 <i18n path="p1" tag="p"></i18n>
                 <i18n path="p2" tag="p">
-                    <template v-slot:laugh>
-                        <p class="toolTip" :title="$t('laughToolTip')" v-html="$t('laugh')"></p>
-                    </template>
                     <template v-slot:smile>
                         <font-awesome-icon
                             :icon="['far', 'smile']"
                         ></font-awesome-icon>
                     </template>
                 </i18n>
-                <i18n path="p3" tag="p">
-                    <template v-slot:fist>
-                        <font-awesome-icon
-                            :icon="['fas', 'fist-raised']"
-                        ></font-awesome-icon>
-                    </template>
-                </i18n>
-                <i18n path="p4" tag="p">
-                  <template v-slot:hobbies>
-                        <p class="toolTip" :title="$t('hobbiesToolTip')" v-html="$t('hobbies')"></p>
-                    </template>
-                    <template v-slot:camping>
-                        <p class="toolTip" :title="$t('campingToolTip')" v-html="$t('camping')"></p>
-                    </template>
-                    <template v-slot:mountain>
-                        <font-awesome-icon
-                            :icon="['fas', 'mountain']"
-                        ></font-awesome-icon>
-                    </template>
-                    <template v-slot:wink>
-                        <font-awesome-icon
-                            :icon="['far', 'smile-wink']"
-                        ></font-awesome-icon>
-                    </template>
-                </i18n>
+                <i18n path="p3" tag="p"></i18n>
+                <i18n path="p4" tag="p"></i18n>
+                <i18n path="p5" tag="p"></i18n>
             </div>
             <div class="grid-picture">
                 <img
                     class="picture"
-                    alt="picture of saleh"
+                    alt="picture of me"
                     rel="preload"
-                    :title="$t('covidHair')"
+                    :title="$t('pictureTitle')"
                     src="/assets/moi.jpg"
                 />
             </div>

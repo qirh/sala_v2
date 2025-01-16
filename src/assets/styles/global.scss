@@ -5,6 +5,7 @@
     white-space: pre-wrap;
     text-decoration: none;
 }
+
 //https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a
 html.color-theme-in-transition,
 html.color-theme-in-transition *,
@@ -12,11 +13,13 @@ html.color-theme-in-transition *:before,
 html.color-theme-in-transition *:after {
     transition: background-color 375ms linear;
 }
+
 html {
     height: 100vh;
     display: table;
     margin: auto;
 }
+
 body {
     margin: 0px;
     display: flex;
@@ -29,49 +32,55 @@ body {
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
 }
+
 .toolTip {
-  position: relative;
-  display: inline
+    position: relative;
+    display: inline
 }
 
 // computer
 @media (min-width: $screen-highlights) {
-  .toolTip:after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 70%;
-    left: -0.1em;
-    right: -0.1em;
-    bottom: 0;
-  }
+    .toolTip:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 70%;
+        left: -0.1em;
+        right: -0.1em;
+        bottom: 0;
+    }
 }
+
 // tablet
 @media (min-width: $screen-tablet-min) and (max-width: $screen-tablet-max) {
     body {
         padding: 0vh 4vw;
     }
 }
+
 // phone
 @media (max-width: $screen-phone-max) {
     html {
         height: 96vh;
     }
+
     body {
         min-height: 96vh;
         padding: 0vh 5vw;
     }
+
     #cuerpo {
         padding-top: 2vh;
     }
 }
 
 p {
-    font-size: calc(0.68vw +  0.6rem);
+    font-size: calc(0.68vw + 0.6rem);
     font-weight: 300;
     line-height: 1.4;
-    max-width: 34em;
+    text-align: justify;
 }
+
 a {
     text-decoration: none;
 }
@@ -80,46 +89,57 @@ a {
     overflow: hidden;
     transition-property: transform;
 }
+
 .flip-right {
     animation: rotation-right 0.75s 1 linear;
 }
+
 .flip-left {
     animation: rotation-left 0.75s 1 linear;
 }
+
 @keyframes rotation-right {
+
     // 50% {n
     100% {
         transform: rotate(360deg);
     }
 }
+
 @keyframes rotation-left {
     100% {
         transform: rotate(-360deg);
     }
 }
+
 #cuerpo {
 
     //transition stuff
     backface-visibility: hidden;
     transition: 100ms;
+
     &.keydown {
         transform: translateZ(-50px);
     }
+
     &.keydown._ArrowDown,
     &.keydown._s,
     &.keydown._S {
         transform: rotateX(-15deg);
     }
+
     &.keydown._ArrowLeft,
     &.keydown._a,
     &.keydown._A {
         transform: rotateY(-10deg);
     }
+
     &.keydown._ArrowRight,
     &.keydown._d,
     &.keydown._D {
         transform: rotateY(10deg);
     }
+
     &.keydown._ArrowUp,
     &.keydown._w,
     &.keydown._W {
@@ -150,6 +170,7 @@ a {
         opacity: 0;
         transform: translateX(-30px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -161,6 +182,7 @@ a {
         opacity: 0;
         transform: translateX(30px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);

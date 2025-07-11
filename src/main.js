@@ -2,6 +2,7 @@ import App from './App.vue';
 import About from './components/About.vue';
 import Thirty from './components/Thirty.vue';
 import NYCMarathon24 from './components/NYCMarathon24.vue';
+import Bday25 from './components/Bday25.vue';
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -57,6 +58,7 @@ const router = new VueRouter({
         {path: '/about', component: About},
         {path: '/30', component: Thirty},
         {path: '/nycmarathon24', component: NYCMarathon24},
+        {path: '/bday25', component: Bday25},
         {path: '/', component: App},
         {path: '*', redirect: '/'},
     ],

@@ -23,7 +23,7 @@
         As you might know, I was born around this general time of year many years ago. And I want to participate in the festivities that people usually partake in when this time of year comes
         <br />
         <br />
-        So, I thought why not celebrate like them. And so ... I'm gonna celebrate by running from NJ to CT. A tri-state run
+        So, I thought why not celebrate like them. And so ... I'm gonna celebrate by running from NJ (thru NY) to CT. A tri-state run
         <br />
         <br />
         

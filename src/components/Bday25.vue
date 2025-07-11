@@ -2,7 +2,7 @@
     <div>
         <a
             style="position: absolute; top: 8px; left: 16px"
-            href="javascript:history.back()"
+            href="https://saleh.sh"
         >
             &lt;-back
         </a>

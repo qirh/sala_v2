@@ -54,7 +54,9 @@
         > but please keep it to 5 songs or less, I'll be running for a day not a week haha
         <br />
         <br />
-        And if you want to follow me I will post a link here on Saturday night for my live Google Maps location (since I am on Android now, find my friends doesn't work)
+        And if you want to follow me (live) I will post a link here on Saturday night for my live Google Maps location (since I am on Android now, find my friends doesn't work)
+        <br/>
+        You can also follow me on <a href="https://www.strava.com/athletes/52586093">Strava</a>
         <br />
         <br />
         Ultimately, you are seeing this page because you are very (very) near and dear to my heart and I want to thank you for your beautiful presence in my life ❤️

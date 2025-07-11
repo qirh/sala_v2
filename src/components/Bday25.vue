@@ -59,7 +59,7 @@
         <br />
         Ultimately, you are seeing this page because you are very (very) near and dear to my heart and I want to thank you for your beautiful presence in my life ❤️
         <br />
-        And in case I haven't told you lately, I love you and I don't know where I would be without you in my life.
+        And in case I haven't told you lately, I love you and I honestly don't know where I would be without you in my life.
         <br />
         <br />
     </div>

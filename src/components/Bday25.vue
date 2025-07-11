@@ -51,7 +51,7 @@
         Well ... I think this will be a very miserable experience. But if you want to join me (in spirit), you can add songs to this <a
             href="https://open.spotify.com/playlist/2WFFJGE3XG2rp29MqHM9wr?si=ee8573c051864aec&pt=5a1b2e5e37a94e77b1b3eb0885052cca"
             >Spotify playlist.</a
-        > but please keep it ~5 songs or less, if you don't have Spotify, send me the song(s) and I can add it to the playlist
+        > but please keep it ~5 songs, if you don't have Spotify, send me the song(s) and I can add it to the playlist
         <br />
         <br />
         If you want to join me (in person), you can also do so, but I just want you to imagine the level or pain and misery it will be before you commit haha

@@ -53,8 +53,9 @@
             >Spotify playlist.</a
         > but please keep it to 5 songs or less, I'll be running for a day not a week haha
         <br />
+        If you want to join me (in person), you can also do so, but I just want you to imagine the level or pain and misery it will be before you commit haha
         <br />
-        And if you want to follow me (live) I will post a link here on Saturday night for my live Google Maps location (since I am on Android now, find my friends doesn't work)
+        I will post a link here on Saturday night for my live Google Maps location (since I am on Android now, find my friends doesn't work)
         <br/>
         You can also follow me on <a href="https://www.strava.com/athletes/52586093">Strava</a>
         <br />

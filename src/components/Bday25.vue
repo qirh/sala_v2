@@ -35,7 +35,7 @@
         />
         <br />
         <br />
-        I'm not sure what the total mileage will be, but I think it should be close to ~26-28 miles 😨
+        I'm not sure what the total mileage will be, but I think it should be close to ~24-28 miles 😨
         <br />
         <br />
         The general route is Fort Lee, NJ -> (thru GWB) Manhattan -> Then roughly follow the East Coast Greenway from The Bronx -> Westchester -> Greenwich, CT
@@ -54,10 +54,11 @@
         > but please keep it to 5 songs or less, I'll be running for a day not a week haha
         <br />
         <br />
-        And if you want to follow me I will post a link here on Saturday night for my live Google Maps location (since I an on Android now, find my friends doesn't work)
+        And if you want to follow me I will post a link here on Saturday night for my live Google Maps location (since I am on Android now, find my friends doesn't work)
         <br />
         <br />
         Ultimately, you are seeing this page because you are very (very) near and dear to my heart and I want to thank you for your beautiful presence in my life ❤️
+        <br />
         And in case I haven't told you lately, I love you and I don't know where I would be without you.
     </div>
 </template>

@@ -56,9 +56,7 @@
         <br />
         If you want to join me (in person), you can also do so, but I just want you to imagine the level or pain and misery it will be before you commit haha
         <br />
-        Here is the rough route <a href="https://maps.app.goo.gl/7YhiKzpPc5CiBUE67">https://maps.app.goo.gl/7YhiKzpPc5CiBUE67</a>
-
-        An you can track my location on Sunday: <a href="https://maps.app.goo.gl/6Jti8XnBFj5UG79e9">https://maps.app.goo.gl/6Jti8XnBFj5UG79e9</a> 
+        You can follow my Whatsapp channel for updates: <a href="https://whatsapp.com/channel/0029Vb5vbXGDp2Q1XkxBi50p">https://whatsapp.com/channel/0029Vb5vbXGDp2Q1XkxBi50p</a> 
         <br/>
         You can also follow me on <a href="https://www.strava.com/athletes/52586093">Strava</a>
         <br />

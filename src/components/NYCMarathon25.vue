@@ -89,6 +89,8 @@
         <br/>
         <br/>
         This letter is loosely inspired by: https://www.aboutamazon.com/news/company-news/2020-letter-to-shareholders
+        <br/>
+        <br/>
     </div>
 </template>
 

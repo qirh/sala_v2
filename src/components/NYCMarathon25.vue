@@ -7,20 +7,24 @@
             &lt;-back
         </a>
         <br />
-        <h2>2nd annual Invitation to see me suffer the NYC marathon</h2>
+        <h1>Letter to Shareholders re: 2nd annual Invitation to see me run the NYC marathon</h1>
 
         <br />
         <br />
-        Hello and welcome to my NYC marathon 2025 edition fan page.
+        <b>Written by Saleh Alghusson. Oct 30, 2025. 5 min read.</b>
+        <br />
+        <h3>To our dear shareowners:</h3>
+        <br />
+        Thanks for buying Saleh inc shares.
         <br />
         <br />
-        2025 <i>was</i> a very tough year for many people, me included.
-        I had planned to be intentional and thoughtful about solving these problems, but instead I decided to run away from them and now all these problems are in the backmirror so far away but they can always catch up and so I gotta keeep running running and so I am doing the NYC marathon on Nov 2, 2025.
+        In last years letter to shareholders (that I forgot to send), my first, I talked about my hope to reinvent what it means to run a <i>fast</i> Marathon. I noted that I have grown from not being able to walk 33 years ago to hoping to finish my first marathon. I wrote that this was just the beginning for Saleh inc.
         <br />
         <br />
-
-        I know it may be hard to believe for some of you, but I did put effort and trained extensively for this one. I followed a very intense and rigrous 12 week training plan:
+        We’ve come a long way since then, and we are working harder than ever to serve and delight customers. Last year, we ran a very slow marathon due to lack of training and preparedness.
         <br />
+        <br />
+        HOWEVER! This year, we will run a VERY fast marathon, because we have followed a very rigorous 12 week training plan:  
         <br />
         <h3>Week 1 -- personal record for that session</h3>
         <img
@@ -30,15 +34,15 @@
             src="/assets/training_1.jpeg"
         />
 
-        <h3>Week 2</h3>
+        <h3>a quick highlight of Weeks 2-9</h3>
         <img
             width="300px"
             height="auto"
             rel="preload"
-            src="/assets/training_2.jpeg"
+            src="/assets/training_2.jpg"
         />
 
-        <h3>Week 3</h3>
+        <h3>Week 10 -- it was hard to get out of bed and train that day, but with persistence and strength, i made it</h3>
         <img
             width="300px"
             height="auto"
@@ -46,7 +50,7 @@
             src="/assets/training_3.jpeg"
         />
 
-        <h3>Week 4</h3>
+        <h3>Week 12 -- ❤️❤️❤️ absolutely the best ❤️❤️❤️❤️</h3>
         <img
             width="300px"
             height="auto"
@@ -54,38 +58,7 @@
             src="/assets/training_4.jpeg"
         />
 
-        <h3>Week 5</h3>
-        <img
-            width="300px"
-            height="auto"
-            rel="preload"
-            src="/assets/training_5.jpeg"
-        />
-
-        <h3>Week 6 -- this was pretty rough training, i worked out so much my neck hurt</h3>
-        <img
-            width="300px"
-            height="auto"
-            rel="preload"
-            src="/assets/training_6.jpeg"
-        />
-
-        <h3>Week 7 -- it was hard to get out of bed and train that day, but with persistance and strength, i made it</h3>
-        <img
-            width="300px"
-            height="auto"
-            rel="preload"
-            src="/assets/training_7.jpeg"
-        />
-
-        <h3>Weeks 7-11 -- i trained a lot but no one documented it</h3>
-        <h3>Week 12 -- ❤️❤️❤️ absolutley the best ❤️❤️❤️❤️</h3>
-        <img
-            width="300px"
-            height="auto"
-            rel="preload"
-            src="/assets/training_8.jpeg"
-        />
+        
 
         <h1>Logistics: how to track me</h1>
         <ul>
@@ -97,7 +70,7 @@
                 </ul>
             </li>
             <li>I am part of wave 3, which starts at 10:20am. My goal is an 8 min/mile pace, but realisticly, it will be closer to 8:30 min/mile with me getting slower the further I am in the race, you know nobody is perfect.</li>
-            <li>For your conveince, I have attached a very accurate represntation of my expected performance on that day:</li>
+            <li>For your convenience, see attached a best-effort estimate of my expected marathon performance</li>
             
         </ul>
         <br/>
@@ -107,6 +80,15 @@
                 rel="preload"
                 src="/assets/nyc_marathon_25_expected_times.png"
             />
+        <br/>
+        <br/>
+        Thank you for reading this letter, and being part of this journey, all of us at Saleh inc appreciate your business.
+        <br/>
+        <br/>
+        We have always wanted to be Earth’s Most Customer-Centric Company. We won’t change that. It’s what got us here. But I am committing us to an addition. We are going to be Earth’s Best Employer and Earth’s Safest Place to Work.
+        <br/>
+        <br/>
+        This letter is loosely inspired by: https://www.aboutamazon.com/news/company-news/2020-letter-to-shareholders
     </div>
 </template>
 

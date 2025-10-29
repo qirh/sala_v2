@@ -12,16 +12,16 @@
         <br />
         <h3>To our dear shareowners:</h3>
         <br />
-        Thanks for buying Saleh inc shares.
+        Thanks for being part of the Saleh Inc. journey. It's been exciting so far.
         <br />
         <br />
-        In last years letter to shareholders (that I forgot to send), my first, I talked about my hope to reinvent what it means to run a <i>fast</i> Marathon. I noted that I have grown from not being able to walk 33 years ago to hoping to finish my first marathon. I wrote that this was just the beginning for Saleh inc.
+        In last years letter to shareholders (that I forgot to send). I talked about my hope to reinvent what it means to run a <i>fast</i> Marathon. I noted that I have grown from not being able to walk 33 years ago to hoping to finish my first marathon. I wrote that this was just the beginning for Saleh Inc.
         <br />
         <br />
-        We’ve come a long way since then, and we are working harder than ever to serve and delight customers. Last year, we ran a very slow marathon due to lack of training and preparedness.
+        We’ve come a long way since then, and we are working harder than ever to serve and delight CUSTOMERS. Last year, we ran a very <i>slow</i> marathon due to lack of training and preparedness.
         <br />
         <br />
-        HOWEVER! This year, we will run a VERY fast marathon, because we have followed a very rigorous 12 week training plan:  
+        HOWEVER! Past marathon performance is not indicative of future results. This year, we will run a <b>VERY</b> <i>fast</i> marathon, because we have followed a very rigorous 12 week training plan:  
         <br />
         <h3>Week 1 -- personal record for that session</h3>
         <img
@@ -39,7 +39,7 @@
             src="/assets/training_2.jpg"
         />
 
-        <h3>Week 10 -- it was hard to get out of bed and train that day, but with persistence and strength, i made it</h3>
+        <h3>Week 10 -- despite challenging market conditions, we made it out of bed that day</h3>
         <img
             width="300px"
             height="auto"
@@ -47,7 +47,7 @@
             src="/assets/training_3.jpeg"
         />
 
-        <h3>Week 12 -- ❤️❤️❤️ absolutely the best ❤️❤️❤️❤️</h3>
+        <h3>Week 12 -- strategic partnership with emotional support personnel ❤️❤️❤️❤️</h3>
         <img
             width="300px"
             height="auto"
@@ -59,6 +59,7 @@
 
         <h1>Logistics: how to track me</h1>
         <ul>
+            <li>For maximum stakeholder visibility and transparency, you can see me in person actually run the marathon.</li>
             <li>Here is the <a href="https://webassets.nyrr.org/nyrrwebsiteassets/TCSNYCM25_Map_Course_080625_M_OL.pdf" target="_blank">course map</a></li>
             <li>My bib number is <b>27769</b>.
                 <ul>
@@ -66,11 +67,11 @@
                     <li>Or through the tracking app from the race organizers <a href="https://www.nyrr.org/tcsnycmarathon/race-day/mobile-app" target="_blank">link</a>.</li>
                 </ul>
             </li>
-            <li>I am part of wave 3, which starts at 10:20am. My goal is an 8 min/mile pace, but realisticly, it will be closer to 8:30 min/mile with me getting slower the further I am in the race, you know nobody is perfect.</li>
-            <li>For your convenience, see attached a best-effort estimate of my expected marathon performance</li>
-            
+            <li>I am part of wave 3, which starts at 10:20am. My goal is an 8 min/mile pace, but realisticly, it will be closer to 8:30 min/mile with me getting slower the further I am in the race, you know what they say, no company is perfect.</li>
+            <li>For your convenience, see Q4 Performance Metrics. i.e. a best-effort estimate of expected marathon performance</li>
         </ul>
         <br/>
+        <i>This document contains forward-looking statements regarding athletic performance. Actual results may vary.</i>
         <img
                 width="500px"
                 height="auto"
@@ -79,13 +80,13 @@
             />
         <br/>
         <br/>
-        Thank you for reading this letter, and being part of this journey, all of us at Saleh inc appreciate your business.
+        Thank you for reading this letter, and being part of this journey, all of us at Saleh Inc appreciate your business.
         <br/>
         <br/>
         We have always wanted to be Earth’s Most Customer-Centric Company. We won’t change that. It’s what got us here. But I am committing us to an addition. We are going to be Earth’s Best Employer and Earth’s Safest Place to Work.
         <br/>
         <br/>
-        This letter is loosely inspired by: https://www.aboutamazon.com/news/company-news/2020-letter-to-shareholders
+        Sincerely, Saleh, Chief Running Officer
         <br/>
         <br/>
     </div>

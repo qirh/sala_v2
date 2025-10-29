@@ -34,7 +34,7 @@
     "eslint-plugin-vue": "^5.2.3",
     "git-describe": "^4.1.0",
     "netlify-plugin-a11y": "0.0.12",
-    "node-sass": "^4.14.1",
+    "sass": "^1.93.2",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-git-describe": "^1.0.0",
     "vue-cli-plugin-i18n": "^1.0.1",
@@ -77,5 +77,9 @@
   "engines": {
     "npm": "8.0.0",
     "node": "14.19.3"
+  },
+  "overrides": {
+    "fsevents": "^2.3.3",
+    "chokidar": "^3.6.0"
   }
 }

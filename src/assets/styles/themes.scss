@@ -106,17 +106,21 @@
 }
 
 @media (prefers-color-scheme: light) {
-    @include lightTheme;
+    body {
+        @include lightTheme;
+    }
 }
 
-.light-theme {
+body.light-theme {
     @include lightTheme;
 }
 
 @media (prefers-color-scheme: dark) {
-    @include darkTheme;
+    body {
+        @include darkTheme;
+    }
 }
 
-.dark-theme {
+body.dark-theme {
     @include darkTheme;
 }

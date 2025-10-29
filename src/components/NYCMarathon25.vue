@@ -83,7 +83,7 @@
         Thank you for reading this letter, and being part of this journey, all of us at Saleh Inc appreciate your business.
         <br/>
         <br/>
-        We have always wanted to be Earth’s Most Customer-Centric Company. We won’t change that. It’s what got us here. But I am committing us to an addition. We are going to be Earth’s Best Employer and Earth’s Safest Place to Work. Let's go.
+        We have always wanted to be Earth’s Most Customer-Centric Company. We won’t change that. It’s what got us here. But I am committing us to an addition. We are going to be Earth’s Best Employer and Earth’s Safest Place to Work.
         <br/>
         <br/>
         Sincerely, Saleh, Chief Running Officer

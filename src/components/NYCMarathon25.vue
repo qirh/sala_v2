@@ -8,9 +8,6 @@
         </a>
         <br />
         <h1>Letter to Shareholders re: 2nd annual Invitation to see me run the NYC marathon</h1>
-
-        <br />
-        <br />
         <b>Written by Saleh Alghusson. Oct 30, 2025. 5 min read.</b>
         <br />
         <h3>To our dear shareowners:</h3>

@@ -18,10 +18,10 @@
         In last years letter to shareholders (that I forgot to send). I talked about my hope to reinvent what it means to run a <i>fast</i> Marathon. I noted that I have grown from not being able to walk 33 years ago to hoping to finish my first marathon. I wrote that this was just the beginning for Saleh Inc.
         <br />
         <br />
-        We’ve come a long way since then, and we are working harder than ever to serve and delight CUSTOMERS. Last year, we ran a very <i>slow</i> marathon due to lack of training and preparedness.
+        We’ve come a long way since then, and we are working harder than ever to serve and delight CUSTOMERS. Last year, we ran a <b>VERY</b> <i>slow</i> marathon due to lack of training and preparedness.
         <br />
         <br />
-        HOWEVER! Past marathon performance is not indicative of future results. This year, we will run a <b>VERY</b> <i>fast</i> marathon, because we have followed a very rigorous 12 week training plan:  
+        HOWEVER! Past marathon performance is not indicative of future results. This year, we will run a <b>VERY</b> <i>fast</i> marathon, because we have followed a <b>VERY</b> rigorous 12 week training plan:  
         <br />
         <h3>Week 1 -- personal record for that session</h3>
         <img
@@ -33,7 +33,7 @@
 
         <h3>a quick highlight of Weeks 2-9</h3>
         <img
-            width="300px"
+            width="500px"
             height="auto"
             rel="preload"
             src="/assets/training_2.jpg"
@@ -72,6 +72,7 @@
         </ul>
         <br/>
         <i>This document contains forward-looking statements regarding athletic performance. Actual results may vary.</i>
+        <br/>
         <img
                 width="500px"
                 height="auto"

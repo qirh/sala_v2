@@ -72,6 +72,7 @@
         </ul>
         <br/>
         <i>This document contains forward-looking statements regarding athletic performance. Actual results may vary.</i>
+        <br/>
         <img
                 width="500px"
                 height="auto"

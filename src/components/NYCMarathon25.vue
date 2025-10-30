@@ -33,7 +33,7 @@
 
         <h3>a quick highlight of Weeks 2-9</h3>
         <img
-            width="300px"
+            width="500px"
             height="auto"
             rel="preload"
             src="/assets/training_2.jpg"
@@ -41,7 +41,7 @@
 
         <h3>Week 10 -- despite challenging market conditions, we made it out of bed that day</h3>
         <img
-            width="500px"
+            width="300px"
             height="auto"
             rel="preload"
             src="/assets/training_3.jpeg"

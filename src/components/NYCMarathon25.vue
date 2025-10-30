@@ -33,7 +33,7 @@
 
         <h3>a quick highlight of Weeks 2-9</h3>
         <img
-            width="500px"
+            width="600px"
             height="auto"
             rel="preload"
             src="/assets/training_2.jpg"

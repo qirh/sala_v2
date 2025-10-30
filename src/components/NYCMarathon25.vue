@@ -60,6 +60,7 @@
         <h1>Logistics: how to track me</h1>
         <ul>
             <li>For maximum stakeholder visibility and transparency, you can see me in person actually run the marathon.</li>
+            <li>The marathon is this Sunday. <b>Nov 2, 2025</b>.</li>
             <li>Here is the <a href="https://webassets.nyrr.org/nyrrwebsiteassets/TCSNYCM25_Map_Course_080625_M_OL.pdf" target="_blank">course map</a></li>
             <li>My bib number is <b>27769</b>.
                 <ul>

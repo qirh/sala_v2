@@ -21,7 +21,7 @@
         We’ve come a long way since then, and we are working harder than ever to serve and delight CUSTOMERS. Last year, we ran a <b>VERY</b> <i>slow</i> marathon due to lack of training and preparedness.
         <br />
         <br />
-        HOWEVER! Past marathon performance is not indicative of future results. This year, we will run a <b>VERY</b> <i>fast</i> marathon, because we have followed a <b>VERY</b> rigorous 12 week training plan:  
+        HOWEVER! Past marathon performance is not indicative of future results. This year, we will run a <b>VERY</b> <i>fast</i> marathon, because we have followed a <b>VERY</b> intense (HIIT) 12 week training plan:  
         <br />
         <h3>Week 1 -- personal record for that session</h3>
         <img

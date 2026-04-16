@@ -1,8 +1,5 @@
 module.exports = {
     pluginOptions: {
-        i18n: {
-            enableInSFC: false,
-        },
         gitDescribe: {
             variableName: 'GIT_DESCRIBE',
         },

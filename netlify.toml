@@ -16,6 +16,3 @@ NODE_VERSION = "20"
 from = "/*"
 to = "/"
 status = 200
-
-[[plugins]]
-package = "netlify-plugin-debug-cache"

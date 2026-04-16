@@ -44,8 +44,16 @@ test('t toggles theme on sub-pages (regression: shortcuts must be global)', asyn
         await page.keyboard.press(k);
     }
     await expect(page).toHaveURL('/about');
+    // toggle theme and assert it flips from whatever state it's in
+    const before = await page.evaluate(() =>
+        document.body.classList.contains('dark-theme') ? 'dark' : 'light',
+    );
+    await page.keyboard.press('y');
     await page.keyboard.press('t');
-    await expect(page.locator('body')).toHaveClass(/dark-theme/);
+    await page.waitForFunction((before) => {
+        const isDark = document.body.classList.contains('dark-theme');
+        return (before === 'light' && isDark) || (before === 'dark' && !isDark);
+    }, before);
 });
 
 test('f toggles font on home', async ({page}) => {

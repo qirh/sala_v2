@@ -11,6 +11,8 @@ import store from './store';
 
 import {i18n} from './i18n.js';
 import {Translation as I18nT} from 'vue-i18n';
+import {installShortcuts} from './shortcuts';
+import {installEffects} from './effects';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
@@ -67,4 +69,6 @@ app.component('i18n-t', I18nT);
 app.use(router);
 app.use(store);
 app.use(i18n);
+installEffects(i18n);
+installShortcuts(router);
 app.mount('#app');

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Mousetrap from 'mousetrap';
 import {langs, getLangObjectFromCode, getNextLang} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
@@ -208,23 +209,20 @@ export default {
     mounted() {
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
-        this.$mousetrap.bind(
+        Mousetrap.bind(
             ['h e l p', 'م س ا ع د ه', 'م س ا ع د ة'],
             this.secondHelpMessage,
         );
-        this.$mousetrap.bind(
+        Mousetrap.bind(
             ['c v', 'r e s u m e', 'س ي ر ه', 'س ي ر ة'],
             this.goToResume,
         );
-        this.$mousetrap.bind(['a b o u t'], this.goToAbout);
-        this.$mousetrap.bind(['3 0', 't h i r t y'], this.goToThirty);
-        this.$mousetrap.bind(
-            ['2 5', 'm a r a t h o n'],
-            this.goToNYCMarathon25,
-        );
-        this.$mousetrap.bind(['f', 'خ'], this.changeFont);
-        this.$mousetrap.bind(['t', 'ل'], this.changeTheme);
-        this.$mousetrap.bind(
+        Mousetrap.bind(['a b o u t'], this.goToAbout);
+        Mousetrap.bind(['3 0', 't h i r t y'], this.goToThirty);
+        Mousetrap.bind(['2 5', 'm a r a t h o n'], this.goToNYCMarathon25);
+        Mousetrap.bind(['f', 'خ'], this.changeFont);
+        Mousetrap.bind(['t', 'ل'], this.changeTheme);
+        Mousetrap.bind(
             [
                 'up up down down left right left right b a',
                 'i d d q d',

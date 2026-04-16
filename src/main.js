@@ -1,3 +1,4 @@
+import {createApp, h} from 'vue';
 import App from './App.vue';
 import About from './components/About.vue';
 import Thirty from './components/Thirty.vue';
@@ -5,13 +6,11 @@ import NYCMarathon24 from './components/NYCMarathon24.vue';
 import NYCMarathon25 from './components/NYCMarathon25.vue';
 import Bday25 from './components/Bday25.vue';
 
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import {createRouter, createWebHistory, RouterView} from 'vue-router';
 import store from './store';
 
-import VueMousetrap from 'vue-mousetrap';
-
 import {i18n} from './i18n.js';
+import {Translation as I18nT} from 'vue-i18n';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
@@ -32,15 +31,9 @@ library.add(
     faSmile,
     faFileAlt,
 );
-Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.config.productionTip = false;
 
-Vue.use(VueMousetrap);
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-    mode: 'history',
-    base: __dirname,
+const router = createRouter({
+    history: createWebHistory(),
     routes: [
         {
             path: '/cv',
@@ -62,12 +55,16 @@ const router = new VueRouter({
         {path: '/nycmarathon25', component: NYCMarathon25},
         {path: '/bday25', component: Bday25},
         {path: '/', component: App},
-        {path: '*', redirect: '/'},
+        {path: '/:pathMatch(.*)*', redirect: '/'},
     ],
 });
 
-new Vue({
-    router,
-    store,
-    i18n,
-}).$mount('#app');
+const Root = {render: () => h(RouterView)};
+
+const app = createApp(Root);
+app.component('font-awesome-icon', FontAwesomeIcon);
+app.component('i18n-t', I18nT);
+app.use(router);
+app.use(store);
+app.use(i18n);
+app.mount('#app');

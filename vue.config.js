@@ -1,11 +1,20 @@
 module.exports = {
     pluginOptions: {
         i18n: {
-            enableInSFC: true,
+            enableInSFC: false,
         },
         gitDescribe: {
             variableName: 'GIT_DESCRIBE',
         },
     },
-    runtimeCompiler: true,
+    css: {
+        loaderOptions: {
+            css: {
+                url: false,
+            },
+        },
+    },
+    devServer: {
+        historyApiFallback: true,
+    },
 };

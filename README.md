@@ -6,11 +6,11 @@ Vue webstie. Hosted on Netlify.
 don't forget to update the version in `store.js` if there are breaking changes to invalidate cache
 
 note:
-* This is a deprecated website built with Vue 2.0. I'll replace it with a new one hopefully soon.
-* `node-sass` is broken with node >= 16. so you have to use node <= 14. latest npm version that works in `14.9.3`. Netlify still supports node 14, but Vercel does not.
+* Built with Vue 3.
 
 to run:
-* `nvm use 14.19.3`
+* `nvm use 20`
+* `npm install`
 * `npm run serve`
 
 ## credit

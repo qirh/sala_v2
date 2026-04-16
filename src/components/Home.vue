@@ -13,17 +13,17 @@
             </div>
             <div class="grid-paragraphs">
                 <!-- eslint-disable -->
-                <i18n path="p1" tag="p"></i18n>
-                <i18n path="p2" tag="p">
-                    <template v-slot:smile>
+                <i18n-t keypath="p1" tag="p"></i18n-t>
+                <i18n-t keypath="p2" tag="p">
+                    <template #smile>
                         <font-awesome-icon
                             :icon="['far', 'smile']"
                         ></font-awesome-icon>
                     </template>
-                </i18n>
-                <i18n path="p3" tag="p"></i18n>
-                <i18n path="p4" tag="p"></i18n>
-                <i18n path="p5" tag="p"></i18n>
+                </i18n-t>
+                <i18n-t keypath="p3" tag="p"></i18n-t>
+                <i18n-t keypath="p4" tag="p"></i18n-t>
+                <i18n-t keypath="p5" tag="p"></i18n-t>
             </div>
             <div class="grid-picture">
                 <img

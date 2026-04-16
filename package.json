@@ -9,36 +9,36 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/vue-fontawesome": "^0.1.10",
-    "core-js": "^3.19.1",
-    "vue": "^2.7.16",
-    "vue-i18n": "^8.26.7",
-    "vue-mousetrap": "1.0.2",
-    "vue-router": "^3.5.3",
-    "vuex": "^3.6.0",
-    "vuex-persist": "^2.3.0"
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "core-js": "^3.39.0",
+    "mousetrap": "^1.6.5",
+    "vue": "^3.5.13",
+    "vue-i18n": "^9.14.1",
+    "vue-router": "^4.5.0",
+    "vuex": "^4.1.0",
+    "vuex-persist": "^3.1.3"
   },
   "devDependencies": {
-    "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-service": "^4.5.19",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.3",
+    "@babel/eslint-parser": "^7.25.9",
+    "@intlify/vue-i18n-loader": "^5.0.0",
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-plugin-eslint": "~5.0.8",
+    "@vue/cli-service": "~5.0.8",
+    "@vue/compiler-sfc": "^3.5.13",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^9.32.0",
     "git-describe": "^4.1.0",
     "netlify-plugin-a11y": "0.0.12",
+    "prettier": "^3.4.2",
     "sass": "^1.93.2",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^13.3.3",
     "vue-cli-plugin-git-describe": "^1.0.0",
-    "vue-cli-plugin-i18n": "^1.0.1",
-    "vue-template-compiler": "^2.6.12"
+    "vue-cli-plugin-i18n": "~2.3.2"
   },
   "eslintConfig": {
     "root": true,
@@ -46,12 +46,15 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/vue3-essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    },
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile": false
     },
     "globals": {
       "GIT_DESCRIBE": "readonly"
@@ -75,11 +78,7 @@
     "not ie <= 10"
   ],
   "engines": {
-    "npm": "8.0.0",
-    "node": "14.19.3"
-  },
-  "overrides": {
-    "fsevents": "^2.3.3",
-    "chokidar": "^3.6.0"
+    "npm": ">=10.0.0",
+    "node": ">=20.0.0"
   }
 }

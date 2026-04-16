@@ -1,15 +1,12 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import {createStore} from 'vuex';
 import VuexPersist from 'vuex-persist';
 
-Vue.use(Vuex);
-
 const vuexPersist = new VuexPersist({
-    key: '~~saleh~~-1.6',
+    key: '~~saleh~~-2.0',
     storage: localStorage,
 });
 
-export default new Vuex.Store({
+export default createStore({
     state: {
         theme: 'light',
         flipDirection: true,

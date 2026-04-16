@@ -4,6 +4,9 @@ base = "/"
 publish = "dist/"
 command = "npm run build"
 
+[build.environment]
+NODE_VERSION = "20"
+
 # let's test this
 # [build.processing]
 # bundle = true

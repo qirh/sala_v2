@@ -101,6 +101,26 @@ test('Vuex persist: theme survives reload', async ({page}) => {
     await expect(page.locator('body')).toHaveClass(/dark-theme/);
 });
 
+test('lang change on sub-pages does not throw', async ({page}) => {
+    // Home.vue registers a store.watch in created() that manipulates
+    // #grid-main. Vue 3 auto-disposes watchers tied to a component's
+    // lifecycle, so after Home unmounts the watcher should not fire
+    // against a missing DOM node.
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    page.on('console', (m) => {
+        if (m.type() === 'error') errors.push(m.text());
+    });
+    await page.goto('/');
+    for (const k of ['a', 'b', 'o', 'u', 't']) {
+        await page.keyboard.press(k);
+    }
+    await expect(page).toHaveURL('/about');
+    await page.keyboard.press('Space');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
+    expect(errors).toEqual([]);
+});
+
 test('Vuex persist: language survives reload', async ({page}) => {
     await page.goto('/');
     await page.locator('.lang-item').filter({hasText: 'عربي'}).click();

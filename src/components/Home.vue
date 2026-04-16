@@ -7,7 +7,7 @@
         <div class="grid-icons">
             <Icons></Icons>
         </div>
-        <div id="grid-main">
+        <div id="grid-main" :class="{'right-to-left': isRTL}">
             <div class="grid-title">
                 <p class="main-title" v-html="$t('title')"></p>
             </div>
@@ -83,6 +83,9 @@ export default {
         currentLangCode() {
             return store.state.currentLang ? store.state.currentLang.code : '';
         },
+        isRTL() {
+            return store.state.currentLang?.direction === 'rtl';
+        },
     },
     components: {
         Icons,
@@ -96,17 +99,12 @@ export default {
                 year: 'numeric',
             }).format(new Date(this.buildTime));
         },
-        updateLangUI() {
-            // change direction
+        animateLangSwitch() {
             const gridMain = document.getElementById('grid-main');
-            let animationClass = null;
-            if (store.state.currentLang.direction === 'ltr') {
-                animationClass = 'section-anim-ltr';
-                gridMain.classList.remove('right-to-left');
-            } else {
-                animationClass = 'section-anim-rtl';
-                gridMain.classList.add('right-to-left');
-            }
+            const animationClass =
+                store.state.currentLang.direction === 'ltr'
+                    ? 'section-anim-ltr'
+                    : 'section-anim-rtl';
             gridMain.classList.add(animationClass);
             setTimeout(() => gridMain.classList.remove(animationClass), 500);
         },
@@ -116,8 +114,8 @@ export default {
             () => {
                 return this.$store.state.currentLang;
             },
-            (newValue, oldValue) => {
-                this.updateLangUI(oldValue);
+            () => {
+                this.animateLangSwitch();
             },
         );
     },

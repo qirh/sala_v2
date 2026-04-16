@@ -125,8 +125,11 @@ test('Vuex persist: language survives reload', async ({page}) => {
     await page.goto('/');
     await page.locator('.lang-item').filter({hasText: 'عربي'}).click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
+    await expect(page.locator('#grid-main')).toHaveClass(/right-to-left/);
 
     await page.reload();
     await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
     await expect(page).toHaveTitle('صالح الغصون');
+    await expect(page.locator('body')).toHaveClass(/font-amiri/);
+    await expect(page.locator('#grid-main')).toHaveClass(/right-to-left/);
 });

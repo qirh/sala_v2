@@ -10,6 +10,28 @@ import {langs, getLangObjectFromCode, getNextLang} from '@/consts';
 import Home from '@/components/Home';
 import store from '@/store';
 
+const CHORDS = [
+    'h e l p',
+    'م س ا ع د ه',
+    'م س ا ع د ة',
+    'c v',
+    'r e s u m e',
+    'س ي ر ه',
+    'س ي ر ة',
+    'a b o u t',
+    '3 0',
+    't h i r t y',
+    '2 5',
+    'm a r a t h o n',
+    'f',
+    'خ',
+    't',
+    'ل',
+    'up up down down left right left right b a',
+    'i d d q d',
+    'up up down down left right left right ز ش',
+];
+
 export default {
     name: 'App',
     components: {
@@ -241,6 +263,11 @@ export default {
         } else {
             this.updateLangUI();
         }
+    },
+    beforeUnmount() {
+        document.removeEventListener('keydown', this.handleKeyDown);
+        document.removeEventListener('keyup', this.handleKeyUp);
+        Mousetrap.unbind(CHORDS);
     },
     created() {
         store.watch(

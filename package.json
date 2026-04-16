@@ -33,7 +33,6 @@
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^9.32.0",
     "git-describe": "^4.1.0",
-    "netlify-plugin-a11y": "0.0.12",
     "prettier": "^3.4.2",
     "sass": "^1.93.2",
     "sass-loader": "^13.3.3",

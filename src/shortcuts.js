@@ -2,9 +2,6 @@ import Mousetrap from 'mousetrap';
 import store from './store';
 import {getNextLang} from './consts';
 
-const CV_URL =
-    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
-
 const NON_ANIMATED_KEYS = [
     'Tab',
     'CapsLock',
@@ -98,9 +95,9 @@ export function installShortcuts(router) {
         ['h e l p', 'م س ا ع د ه', 'م س ا ع د ة'],
         secondHelpMessage,
     );
-    Mousetrap.bind(['c v', 'r e s u m e', 'س ي ر ه', 'س ي ر ة'], () => {
-        window.location = CV_URL;
-    });
+    Mousetrap.bind(['c v', 'r e s u m e', 'س ي ر ه', 'س ي ر ة'], () =>
+        router.push('/cv'),
+    );
     Mousetrap.bind(['a b o u t'], () => router.push('/about'));
     Mousetrap.bind(['3 0', 't h i r t y'], () => router.push('/30'));
     Mousetrap.bind(['2 5', 'm a r a t h o n'], () =>

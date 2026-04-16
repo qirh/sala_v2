@@ -16,7 +16,7 @@ import {installEffects} from './effects';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
-import {faBlog, faEnvelope, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope, faFileAlt} from '@fortawesome/free-solid-svg-icons';
 import {faSmile} from '@fortawesome/free-regular-svg-icons';
 import {
     faGithub,
@@ -24,15 +24,7 @@ import {
     faGoodreads,
 } from '@fortawesome/free-brands-svg-icons';
 
-library.add(
-    faGithub,
-    faLinkedin,
-    faGoodreads,
-    faEnvelope,
-    faBlog,
-    faSmile,
-    faFileAlt,
-);
+library.add(faGithub, faLinkedin, faGoodreads, faEnvelope, faSmile, faFileAlt);
 
 const router = createRouter({
     history: createWebHistory(),

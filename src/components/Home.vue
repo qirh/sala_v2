@@ -7,7 +7,7 @@
         <div class="grid-icons">
             <Icons></Icons>
         </div>
-        <div id="grid-main" :class="{'right-to-left': isRTL}">
+        <div id="grid-main" :class="[{'right-to-left': isRTL}, animClass]">
             <div class="grid-title">
                 <p class="main-title" v-html="$t('title')"></p>
             </div>
@@ -62,6 +62,7 @@ export default {
     data: function () {
         return {
             gitLink: 'https://github.com/qirh/sala_v2/commit/' + this.gitHash,
+            animClass: '',
         };
     },
     computed: {
@@ -100,13 +101,13 @@ export default {
             }).format(new Date(this.buildTime));
         },
         animateLangSwitch() {
-            const gridMain = document.getElementById('grid-main');
-            const animationClass =
+            this.animClass =
                 store.state.currentLang.direction === 'ltr'
                     ? 'section-anim-ltr'
                     : 'section-anim-rtl';
-            gridMain.classList.add(animationClass);
-            setTimeout(() => gridMain.classList.remove(animationClass), 500);
+            setTimeout(() => {
+                this.animClass = '';
+            }, 500);
         },
     },
     created() {

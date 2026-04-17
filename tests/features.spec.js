@@ -16,6 +16,19 @@ test('language switcher: click AR flips to RTL + Arabic', async ({page}) => {
     );
 });
 
+test('language switch triggers slide animation on #grid-main', async ({
+    page,
+}) => {
+    await page.goto('/');
+    await page.locator('.lang-item').filter({hasText: 'عربي'}).click();
+    // animation class lives on #grid-main for ~500ms
+    await expect(page.locator('#grid-main')).toHaveClass(/section-anim-rtl/);
+    const animName = await page.evaluate(
+        () => getComputedStyle(document.getElementById('grid-main')).animationName,
+    );
+    expect(animName).toBe('sectionAnimRTL');
+});
+
 test('space bar cycles language', async ({page}) => {
     await page.goto('/');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');

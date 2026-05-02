@@ -52,6 +52,12 @@ status = 302
 force = true
 
 [[redirects]]
+from = "/posts"
+to = "https://saleh.soy/"
+status = 302
+force = true
+
+[[redirects]]
 from = "/*"
 to = "/"
 status = 200

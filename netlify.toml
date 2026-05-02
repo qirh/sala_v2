@@ -10,6 +10,42 @@ command = "npm run build"
 # minify = true
 
 [[redirects]]
+from = "/cv"
+to = "https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing"
+status = 302
+force = true
+
+[[redirects]]
+from = "/resume"
+to = "https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing"
+status = 302
+force = true
+
+[[redirects]]
+from = "/spiderman"
+to = "https://qirh.github.io/spider-man-game/"
+status = 302
+force = true
+
+[[redirects]]
+from = "/spider-man"
+to = "https://qirh.github.io/spider-man-game/"
+status = 302
+force = true
+
+[[redirects]]
+from = "/address"
+to = "https://qirh.github.io/address/"
+status = 302
+force = true
+
+[[redirects]]
+from = "/sunnyside"
+to = "https://sunnysideshines.org/events/sunnysiderestaurantweek2026/"
+status = 302
+force = true
+
+[[redirects]]
 from = "/*"
 to = "/"
 status = 200

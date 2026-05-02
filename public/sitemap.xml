@@ -5,29 +5,4 @@
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
-    <url>
-        <loc>https://saleh.sh/about</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://saleh.sh/30</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://saleh.sh/nycmarathon24</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://saleh.sh/nycmarathon25</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://saleh.sh/bday25</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
 </urlset>

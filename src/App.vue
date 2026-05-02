@@ -30,7 +30,7 @@ export default {
             return false;
         },
         goToResume() {
-            this.$router.push('cv');
+            window.location.href = '/cv';
         },
         goToAbout() {
             this.$router.push('about');

@@ -42,20 +42,6 @@ const router = new VueRouter({
     mode: 'history',
     base: __dirname,
     routes: [
-        {
-            path: '/cv',
-            beforeEnter() {
-                window.location =
-                    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
-            },
-        },
-        {
-            path: '/resume',
-            beforeEnter() {
-                window.location =
-                    'https://drive.google.com/file/d/1pGKRrs6UCesvZulALOYSpMilfb0njTHL/view?usp=sharing';
-            },
-        },
         {path: '/about', component: About},
         {path: '/30', component: Thirty},
         {path: '/nycmarathon24', component: NYCMarathon24},

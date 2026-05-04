@@ -281,7 +281,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 3. `svelte.config.js`: confirm `adapter-static` with `pages: 'build'`, `assets: 'build'`, **`fallback: '200.html'`** (matches Step 1; matches Netlify convention; matches the existing SPA-rewrite intent in `netlify.toml`), `precompress: false`.
 4. **Verify:**
    - `npm run build`.
-   - `cat build/200.html | grep data-build-timestamp-utc` shows a recent ISO 8601 timestamp (not a literal `%...%` placeholder).
+   - `cat build/200.html | grep data-build-timestamp-utc` shows a recent ISO 8601 timestamp. (If the env var is missing, SvelteKit substitutes an *empty string* — the attribute would be `data-build-timestamp-utc=""` — not a literal `%...%`. Verify a non-empty value.)
    - **Use `npm run preview`** (SvelteKit's preview server, which knows how to map `/about` → `build/about.html` under default `trailingSlash: 'never'`). Plain `python3 -m http.server` won't auto-extend `.html` and the verification will fail even on a valid build. Visit `http://localhost:4173/about` — the page shows a 7-character commit hash linked to GitHub. The hash should not contain any literal quote characters (a sign that Step 8.1's `define` was double-stringified).
 
 ### Step 9: cut over and delete the old code
@@ -298,7 +298,13 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    mv svelte/package.json svelte/package-lock.json svelte/svelte.config.js svelte/vite.config.js svelte/src svelte/static .
    rmdir svelte
    ```
-3. **Update `netlify.toml`:** change `[build]` to `command = "npm run build"`, `publish = "build/"`. **Leave `[[redirects]]` and `[[headers]]` blocks untouched.** Leave the `netlify-plugin-debug-cache` plugin block untouched.
+3. **Update `netlify.toml`:** change `[build]` to:
+   ```toml
+   [build]
+   command = "PUBLIC_BUILD_TIMESTAMP_UTC=$(date -u +%FT%TZ) npm run build"
+   publish = "build/"
+   ```
+   The env-var prefix is **required** — see Step 8.2. Without it, `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` resolves to an empty string and the footer "updated" date breaks silently. **Leave `[[redirects]]` and `[[headers]]` blocks untouched.** Leave the `netlify-plugin-debug-cache` plugin block untouched.
 4. **Verify:**
    ```sh
    npm install
@@ -316,7 +322,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    - [ ] **Every** sequence in Step 6's binding table works (test `c v`, `r e s u m e`, `a b o u t`, `3 0`, `2 5`, `f`, `t`, Konami code, etc.). Test the Arabic equivalents (e.g. `خ`, `ل`, `س ي ر ه`) by switching keyboard layouts.
    - [ ] Theme toggle persists across reload. `localStorage['~~saleh~~-1.6']` shows the composite object schema (single key with all four slots).
    - [ ] An existing visitor's preferences carry over: before deploy, in dev tools on production saleh.sh, copy `localStorage['~~saleh~~-1.6']`. After deploy, set the same value on the preview URL — theme/lang/font are honored.
-   - [ ] `view-source:<preview>/` shows `data-build-timestamp-utc="2026-...` (real ISO timestamp, not the literal `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` placeholder). The footer "updated" date is recent.
+   - [ ] `view-source:<preview>/` shows `data-build-timestamp-utc="2026-..."` with a real ISO timestamp. The attribute must be **non-empty**: an empty value (`data-build-timestamp-utc=""`) means the `PUBLIC_BUILD_TIMESTAMP_UTC` env var wasn't set during build — SvelteKit substitutes empty strings for unmatched `%sveltekit.env.*%` placeholders. Footer "updated" date is recent.
    - [ ] About page shows a 7-char git hash linked to `https://github.com/qirh/sala_v2/commit/...`.
    - [ ] `curl -I <preview>/cv` still returns 302 to Drive (Netlify redirect untouched).
    - [ ] `curl <preview>/sitemap.xml` returns the existing XML.
@@ -335,7 +341,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 | Vue mousetrap binds Konami-code-style sequences (`up up down down ...`); tinykeys' arrow-key handling differs. | Same custom-matcher fallback; or transcribe arrow-key bindings to `ArrowUp`/`ArrowDown` notation. |
 | `<i18n>` slot interpolation in `Home.vue` (`p2` with `{smile}`) doesn't have a 1:1 svelte-i18n equivalent. | Step 7 splits `p2` into `p2_before_smile` + `p2_after_smile` and renders the icon between them. The original `p2` key stays in JSON for rollback. |
 | `vue-cli-plugin-i18n` `enableInSFC: true` was active — losing it might drop translations defined inline as `<i18n>` SFC blocks. | Verified via `grep -rn '<i18n>' src/components`: zero SFC block matches. The `<i18n>` matches in `Home.vue` are the *component*, handled separately. No translations lost. |
-| `PUBLIC_BUILD_TIMESTAMP_UTC` env var not set during `npm run dev` → literal `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` shows in the rendered HTML. | Set the env var in `.env` for dev, or accept the placeholder showing in dev only. CI sets it via `netlify.toml`. |
+| `PUBLIC_BUILD_TIMESTAMP_UTC` env var not set during `npm run dev` → SvelteKit substitutes an empty string, so `data-build-timestamp-utc=""` and the footer "updated" date is empty in dev. | Set the env var in `.env` for dev, or accept the empty timestamp in dev only. CI sets it via `netlify.toml`. The **same failure mode applies in production** if Step 9.3's build command drops the env-var prefix — Step 10's QA checklist verifies the attribute is non-empty. |
 | Existing visitors' Vuex-persist state shape on disk has more or fewer slots than `defaults`. | Step 4's `persistedStore` merges `{ ...defaults, ...stored }`, so missing slots get defaults and extra slots are preserved. Step 5's helpers always overwrite cleanly. |
 
 ## Notes for the executing agent
@@ -343,6 +349,6 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 - Do **not** modify `netlify.toml`'s redirect or header blocks beyond the `[build]` section. They were carefully assembled across PRs #80, #81, #82.
 - Do **not** delete the `docs/` directory.
 - Do **not** create per-key Svelte stores. The persisted state is **one composite object** at `localStorage['~~saleh~~-1.6']`; splitting it would silently invalidate every existing visitor's saved preferences. (See Step 4–5.)
-- The dev loop is `npm run dev` (port 5173 by default). Build timestamp comes from the `PUBLIC_BUILD_TIMESTAMP_UTC` env var; if you don't set it in `.env`, expect the literal `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` placeholder to appear in dev. CI sets it via `netlify.toml`.
+- The dev loop is `npm run dev` (port 5173 by default). Build timestamp comes from the `PUBLIC_BUILD_TIMESTAMP_UTC` env var; if you don't set it in `.env`, SvelteKit substitutes an empty string and `data-build-timestamp-utc=""` in the rendered HTML. (It does *not* leave a literal `%...%` placeholder.) CI sets it via `netlify.toml`'s build command.
 - This work touches every source file. Expect a large diff. Splitting into multiple PRs (e.g. one PR for steps 1–8 on a parallel `svelte/` dir, second PR for step 9 cutover) is reasonable.
 - Existing Netlify project is `musing-rosalind-eedabd`. The `/cv`, `/resume`, `/spider-man`, `/spiderman`, `/address`, `/sunnyside`, `/blog`, `/posts` redirects must continue to work after deploy — they're enforced by `netlify.toml`, not by code.

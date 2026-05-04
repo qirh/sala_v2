@@ -132,8 +132,12 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 
 ### Step 2: port styles and static assets
 1. Copy `src/assets/styles/*.scss` → `svelte/src/assets/styles/`.
-2. Copy `public/*` → `svelte/static/` (everything: `index.html` is overwritten by SvelteKit's app.html, but the fonts, images, favicon, robots, sitemap, manifest, noscript.css, normalize.css must be copied).
-3. **Verify:** `ls svelte/static/assets | wc -l` matches `ls public/assets | wc -l`.
+2. Copy `public/*` → `svelte/static/` **with one exclusion**: do **not** copy `public/index.html`. SvelteKit's `static/` is served verbatim at the URL root and would conflict with the SvelteKit-generated root page. Instead, the contents of `public/index.html` (the `<html>` tag with `data-build-timestamp-utc`, the `<noscript>` block, the `<link rel="apple-touch-icon">` tags, etc.) become `src/app.html` (Step 8). Concrete copy:
+   ```sh
+   rsync -a --exclude='index.html' public/ svelte/static/
+   ```
+   Files that *should* land in `static/`: `manifest.json`, `robots.txt`, `sitemap.xml`, `assets/` (entire directory, including fonts and images), and any other top-level files except `index.html`.
+3. **Verify:** `[ ! -f svelte/static/index.html ]` (the file should not be present); `ls svelte/static/assets | wc -l` matches `ls public/assets | wc -l`.
 
 ### Step 3: port i18n and constants
 1. Copy `src/locales/en.json` and `src/locales/ar.json` → `svelte/src/locales/`.
@@ -171,12 +175,22 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    export const switchFlipDirection= () => state.update(s => ({ ...s, flipDirection: !s.flipDirection }));
    ```
 2. **Critical:** all four pieces of state share the **single** `~~saleh~~-1.6` key. Do **not** create separate stores per slot — that would diverge from the vuex-persist on-disk schema and silently reset every existing visitor's preferences.
-3. The Vue equivalents of `store.watch(() => state.theme, applyTheme)` are `$:` reactive blocks in `+layout.svelte`:
+3. The Vue equivalents of `store.watch(() => state.theme, applyTheme)` are `$:` reactive blocks in `+layout.svelte`. **Svelte's `$:` doesn't pass the previous value to the reactive callback**, so anywhere the Vue code used `oldValue` (e.g. `applyFont(oldLangObject)` to remove the previous language's font class), make `applyFont` defensive — strip *every* known font class from `<body>` before adding the current one:
+   ```js
+   const ALL_FONTS = ['font-rubik', 'font-ibm', 'font-amiri', 'font-aref-ruqaa']; // from consts.js
+   function applyFont(funFont, lang) {
+     if (!lang) return;
+     ALL_FONTS.forEach(c => document.body.classList.remove(c));
+     document.body.classList.add(funFont ? lang.fonts[1] : lang.fonts[0]);
+   }
+   ```
+   Then in `+layout.svelte`:
    ```svelte
    $: if ($state.theme) applyTheme($state.theme);
-   $: if ($state.currentLang) updateLangUI($state.currentLang, prevLang);
+   $: if ($state.currentLang) updateLangUI($state.currentLang); // also strips old lang classes inside
    $: applyFont($state.funFont, $state.currentLang);
    ```
+   `updateLangUI` similarly clears `<html dir>` / `<html lang>` and reapplies, never relying on a previous-value parameter.
 4. **Verify:** in `+layout.svelte`, subscribe to `$state` and toggle the theme via `toggleTheme()` from a button. Reload — theme persists. Inspect `localStorage['~~saleh~~-1.6']` — value is a single JSON object with all four slots.
 
 ### Step 6: port the layout (App.vue equivalent), keyboard bindings, and console messages
@@ -213,13 +227,20 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 4. **Verify:** visit each of `/`, `/about`, `/30`, `/nycmarathon24`, `/nycmarathon25`, `/bday25` in dev. Visually compare against current production in both `en` and `ar`. Diff list any visual gaps. The smile icon must render inline in `p2`.
 
 ### Step 8: port build-time concerns (git hash + build timestamp)
-1. **Git hash.** Add a `define` block to `vite.config.js`:
+1. **Git hash.** Add a `define` block to `vite.config.js`. Vite serializes `define` values with `JSON.stringify` automatically, so do **not** double-stringify. Either of these works:
    ```js
    import { execSync } from 'node:child_process';
    const gitHash = execSync('git rev-parse --short HEAD').toString().trim();
    // in defineConfig:
-   define: { GIT_DESCRIBE: { hash: JSON.stringify(gitHash) } }
+
+   // option A — dot-notation key, raw string value (recommended; explicit):
+   define: { 'GIT_DESCRIBE.hash': JSON.stringify(gitHash) }
+
+   // option B — object value, raw string property:
+   define: { GIT_DESCRIBE: { hash: gitHash } }
    ```
+   **Wrong:** `define: { GIT_DESCRIBE: { hash: JSON.stringify(gitHash) } }` — Vite serializes the outer object too, double-stringifying the hash and producing literal quote characters in the runtime value.
+
    Three consumers reference `GIT_DESCRIBE.hash` (`App.vue:205`, `Home.vue:64`, `About.vue:18-20`) — keep the same global name in the Svelte components.
 2. **Build timestamp.** Add a `transformIndexHtml` hook (or use the `vite-plugin-html` plugin):
    ```js
@@ -235,7 +256,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 4. **Verify:**
    - `npm run build`.
    - `cat build/200.html | grep data-build-timestamp-utc` shows a recent ISO 8601 timestamp (not a literal `%...%` placeholder).
-   - `python3 -m http.server -d build 8000` and visit `http://localhost:8000/about` — the page shows a 7-character commit hash linked to GitHub.
+   - **Use `npm run preview`** (SvelteKit's preview server, which knows how to map `/about` → `build/about.html` under default `trailingSlash: 'never'`). Plain `python3 -m http.server` won't auto-extend `.html` and the verification will fail even on a valid build. Visit `http://localhost:4173/about` — the page shows a 7-character commit hash linked to GitHub. The hash should not contain any literal quote characters (a sign that Step 8.1's `define` was double-stringified).
 
 ### Step 9: cut over and delete the old code
 **Order matters here** — `mv svelte/{...} .` collides with the existing `src/`, `package.json`, `package-lock.json`, etc. Delete the old layout first, then move.

@@ -50,7 +50,11 @@ Ship a SvelteKit replacement of the existing Vue 2 SPA at `https://saleh.sh`, wi
   faEnvelope, faBlog, faFileAlt        (solid)
   faSmile                              (regular)
   ```
-- **Build-time replacements:** replace both `vue-cli-plugin-git-describe` AND the `<%= new Date().toISOString() %>` EJS expression in `public/index.html`. Both are build-time string substitutions today; in SvelteKit, both go through Vite. Use `vite-plugin-html` (or a `transformIndexHtml` hook) to substitute `%BUILD_TIMESTAMP_UTC%` and `%GIT_DESCRIBE_HASH%` placeholders in `src/app.html` at build time. The existing consumer (`document.documentElement.dataset.buildTimestampUtc` in `App.vue:277`) and `GIT_DESCRIBE.hash` (in `App.vue:205`, `About.vue:18-20`, `Home.vue:64`) move to the new equivalents.
+- **Build-time replacements:** the two values to inject are the git short hash and the build timestamp. They use *different* mechanisms in SvelteKit:
+  - **Git hash** (`GIT_DESCRIBE.hash` in `App.vue:205`, `About.vue:18-20`, `Home.vue:64`): Vite `define`. See Step 8.
+  - **Build timestamp** (`<%= new Date().toISOString() %>` in `public/index.html`, consumed via `document.documentElement.dataset.buildTimestampUtc` in `App.vue:277`): use a SvelteKit-supported mechanism. **Do not use Vite's `transformIndexHtml`** — SvelteKit owns `app.html` rendering and that hook is unreliable here. Two supported options:
+    - **Recommended:** `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` placeholder in `src/app.html`, with the env var set at build time by an npm `prebuild` script: `"prebuild": "PUBLIC_BUILD_TIMESTAMP_UTC=$(date -u +%FT%TZ) >/dev/null"` — actually simpler in `netlify.toml`'s `[build.environment]` block, or inline in the build command.
+    - Alternative: a `handle` hook in `src/hooks.server.js` using `transformPageChunk` to substitute a custom placeholder. Works for prerendered routes (the substitution happens at prerender time).
 
 ## End-state file tree
 
@@ -58,10 +62,11 @@ Ship a SvelteKit replacement of the existing Vue 2 SPA at `https://saleh.sh`, wi
 sala_v2/
 ├── package.json                # svelte/sveltekit/vite/sass deps; scripts: dev/build/preview
 ├── svelte.config.js            # adapter-static (fallback: '200.html'), preprocess (sass)
-├── vite.config.js              # transformIndexHtml: %BUILD_TIMESTAMP_UTC%, %GIT_DESCRIBE_HASH%
-├── netlify.toml                # build = "npm run build", publish = "build/"
+├── vite.config.js              # define GIT_DESCRIBE.hash via execSync('git rev-parse')
+├── netlify.toml                # build = "npm run build", publish = "build/", env PUBLIC_BUILD_TIMESTAMP_UTC
 ├── src/
-│   ├── app.html                # base HTML shell (replaces public/index.html); uses %...% placeholders
+│   ├── app.html                # base HTML shell; uses %sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC% for timestamp
+│   ├── hooks.server.js         # OPTIONAL — only if using the handle/transformPageChunk path for timestamp instead of PUBLIC_ env var
 │   ├── lib/
 │   │   ├── stores/
 │   │   │   └── state.js        # single persisted composite store + toggleTheme / changeLang / toggleFont / switchFlipDirection helpers
@@ -113,9 +118,9 @@ sala_v2/
 | `src/i18n.js` | `src/lib/i18n.js` (svelte-i18n) | |
 | `src/consts.js` | `src/lib/consts.js` | Pure functions, copy verbatim. |
 | `src/locales/{en,ar}.json` | `src/locales/{en,ar}.json` | Copy verbatim. **But:** `Home.vue` consumes `p1`–`p5` via vue-i18n's `<i18n>` *component* with a slotted FontAwesome smile in `p2` (replacing `{smile}`). svelte-i18n has no slot-based interpolation. Translate by splitting `p2` around `{smile}` in `Home.svelte`: render `{$_('p2_before_smile')}` + `<Icon name="smile" />` + `{$_('p2_after_smile')}`. Add `p2_before_smile` and `p2_after_smile` to both locale JSON files (verbatim split of the existing `p2` value); leave the original `p2` in place for now to allow rollback. |
-| `vue.config.js` | `vite.config.js` + `svelte.config.js` | `runtimeCompiler: true` is Vue-specific — drop, no Svelte equivalent. The `vue-cli-plugin-i18n` `enableInSFC` option is for SFC `<i18n>` *blocks* — verified absent (`grep -rn '<i18n>' src/components` shows zero block matches; the matches that exist are `<i18n>` *components*, handled above). Build-time substitutions move to `vite.config.js` `transformIndexHtml` (see Target Stack). |
+| `vue.config.js` | `vite.config.js` + `svelte.config.js` | `runtimeCompiler: true` is Vue-specific — drop, no Svelte equivalent. The `vue-cli-plugin-i18n` `enableInSFC` option is for SFC `<i18n>` *blocks* — verified absent (`grep -rn '<i18n>' src/components` shows zero block matches; the matches that exist are `<i18n>` *components*, handled above). Git hash uses Vite `define`; build timestamp uses SvelteKit `%sveltekit.env.PUBLIC_*%` (see Target Stack and Step 8). |
 | `babel.config.js`, `budget.json` | (deleted) | Vue-cli artifacts; no Svelte equivalent needed. |
-| `public/index.html` (with EJS `<%= ... %>`) | `src/app.html` (with `%...%` placeholders, substituted by `transformIndexHtml`) | Preserve `data-build-timestamp-utc` and any other build-time substitutions. |
+| `public/index.html` (with EJS `<%= ... %>`) | `src/app.html` (with `%sveltekit.env.PUBLIC_*%` placeholders) | Preserve `data-build-timestamp-utc` via the SvelteKit env-var path; preserve favicons/meta tags as static `<head>` content. |
 | `public/*` (other files) | `static/*` | SvelteKit serves `static/` at the URL root. Move favicons, `/assets/*.jpg`, `sitemap.xml`, `robots.txt`, etc. to `static/`. |
 
 ## Execution order
@@ -175,7 +180,28 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    export const switchFlipDirection= () => state.update(s => ({ ...s, flipDirection: !s.flipDirection }));
    ```
 2. **Critical:** all four pieces of state share the **single** `~~saleh~~-1.6` key. Do **not** create separate stores per slot — that would diverge from the vuex-persist on-disk schema and silently reset every existing visitor's preferences.
-3. The Vue equivalents of `store.watch(() => state.theme, applyTheme)` are `$:` reactive blocks in `+layout.svelte`. **Svelte's `$:` doesn't pass the previous value to the reactive callback**, so anywhere the Vue code used `oldValue` (e.g. `applyFont(oldLangObject)` to remove the previous language's font class), make `applyFont` defensive — strip *every* known font class from `<body>` before adding the current one:
+3. **DOM-mutating effects must be client-only.** Svelte's `$:` reactive blocks run during SSR/prerender too — and `applyTheme` / `applyFont` / `updateLangUI` all touch `document.body` and `<html>`, which crash in Node. Don't put these in `$:` blocks at the layout's top level. Subscribe inside `onMount` instead (onMount only runs in the browser):
+   ```svelte
+   <script>
+     import { onMount } from 'svelte';
+     import { state } from '$lib/stores/state.js';
+     // applyTheme/applyFont/updateLangUI definitions...
+
+     onMount(() => state.subscribe((s) => {
+       applyTheme(s.theme);
+       if (s.currentLang) updateLangUI(s.currentLang);
+       applyFont(s.funFont, s.currentLang);
+     }));
+   </script>
+   ```
+   Equivalent guarded form using `$:` (also acceptable, slightly more verbose):
+   ```svelte
+   import { browser } from '$app/environment';
+   $: if (browser) applyTheme($state.theme);
+   $: if (browser && $state.currentLang) updateLangUI($state.currentLang);
+   $: if (browser) applyFont($state.funFont, $state.currentLang);
+   ```
+4. **Make the helpers idempotent.** Svelte's `$:` doesn't pass the previous value to the reactive callback, so anywhere the Vue code used `oldValue` (e.g. `applyFont(oldLangObject)` to remove the previous language's font class), make the helper defensive — strip *every* known font class from `<body>` before adding the current one:
    ```js
    const ALL_FONTS = ['font-rubik', 'font-ibm', 'font-amiri', 'font-aref-ruqaa']; // from consts.js
    function applyFont(funFont, lang) {
@@ -183,12 +209,6 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
      ALL_FONTS.forEach(c => document.body.classList.remove(c));
      document.body.classList.add(funFont ? lang.fonts[1] : lang.fonts[0]);
    }
-   ```
-   Then in `+layout.svelte`:
-   ```svelte
-   $: if ($state.theme) applyTheme($state.theme);
-   $: if ($state.currentLang) updateLangUI($state.currentLang); // also strips old lang classes inside
-   $: applyFont($state.funFont, $state.currentLang);
    ```
    `updateLangUI` similarly clears `<html dir>` / `<html lang>` and reapplies, never relying on a previous-value parameter.
 4. **Verify:** in `+layout.svelte`, subscribe to `$state` and toggle the theme via `toggleTheme()` from a button. Reload — theme persists. Inspect `localStorage['~~saleh~~-1.6']` — value is a single JSON object with all four slots.
@@ -242,16 +262,22 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    **Wrong:** `define: { GIT_DESCRIBE: { hash: JSON.stringify(gitHash) } }` — Vite serializes the outer object too, double-stringifying the hash and producing literal quote characters in the runtime value.
 
    Three consumers reference `GIT_DESCRIBE.hash` (`App.vue:205`, `Home.vue:64`, `About.vue:18-20`) — keep the same global name in the Svelte components.
-2. **Build timestamp.** Add a `transformIndexHtml` hook (or use the `vite-plugin-html` plugin):
-   ```js
-   {
-     name: 'inject-build-timestamp',
-     transformIndexHtml(html) {
-       return html.replace('%BUILD_TIMESTAMP_UTC%', new Date().toISOString());
-     }
-   }
-   ```
-   In `src/app.html`, the `<html>` opening tag is `<html lang="en" dir="ltr" class="color-theme-in-transition" data-build-timestamp-utc="%BUILD_TIMESTAMP_UTC%">`. The runtime consumer (`document.documentElement.dataset.buildTimestampUtc`) reads it as before.
+2. **Build timestamp.** Use SvelteKit's native `%sveltekit.env.PUBLIC_*%` interpolation, not Vite's `transformIndexHtml` (which is unreliable for `app.html`). Two-part change:
+   - In `src/app.html`, the `<html>` opening tag is `<html lang="en" dir="ltr" class="color-theme-in-transition" data-build-timestamp-utc="%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%">`. The runtime consumer (`document.documentElement.dataset.buildTimestampUtc`) reads it as before.
+   - Set `PUBLIC_BUILD_TIMESTAMP_UTC` at build time. Two ways to do this; either is fine:
+     - **In `netlify.toml`:** add `[build.environment]` block (or shell-set in `command`):
+       ```toml
+       [build]
+       command = "PUBLIC_BUILD_TIMESTAMP_UTC=$(date -u +%FT%TZ) npm run build"
+       ```
+     - **In `package.json`:** prefix `npm run build` with the env assignment (works only on POSIX shells; for cross-platform, use `cross-env`).
+   - Fallback path (use only if the above doesn't fit your CI): a `handle` hook in `src/hooks.server.js`:
+     ```js
+     export const handle = ({ event, resolve }) =>
+       resolve(event, { transformPageChunk: ({ html }) =>
+         html.replace('__BUILD_TIMESTAMP_UTC__', new Date().toISOString()) });
+     ```
+     With this approach, use `__BUILD_TIMESTAMP_UTC__` as the placeholder in `app.html` instead. `handle` runs at prerender time for static-adapter routes, so the value is captured at build.
 3. `svelte.config.js`: confirm `adapter-static` with `pages: 'build'`, `assets: 'build'`, **`fallback: '200.html'`** (matches Step 1; matches Netlify convention; matches the existing SPA-rewrite intent in `netlify.toml`), `precompress: false`.
 4. **Verify:**
    - `npm run build`.
@@ -290,7 +316,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    - [ ] **Every** sequence in Step 6's binding table works (test `c v`, `r e s u m e`, `a b o u t`, `3 0`, `2 5`, `f`, `t`, Konami code, etc.). Test the Arabic equivalents (e.g. `خ`, `ل`, `س ي ر ه`) by switching keyboard layouts.
    - [ ] Theme toggle persists across reload. `localStorage['~~saleh~~-1.6']` shows the composite object schema (single key with all four slots).
    - [ ] An existing visitor's preferences carry over: before deploy, in dev tools on production saleh.sh, copy `localStorage['~~saleh~~-1.6']`. After deploy, set the same value on the preview URL — theme/lang/font are honored.
-   - [ ] `view-source:<preview>/` shows `data-build-timestamp-utc="2026-...` (real ISO timestamp, not literal `%BUILD_TIMESTAMP_UTC%`). The footer "updated" date is recent.
+   - [ ] `view-source:<preview>/` shows `data-build-timestamp-utc="2026-...` (real ISO timestamp, not the literal `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` placeholder). The footer "updated" date is recent.
    - [ ] About page shows a 7-char git hash linked to `https://github.com/qirh/sala_v2/commit/...`.
    - [ ] `curl -I <preview>/cv` still returns 302 to Drive (Netlify redirect untouched).
    - [ ] `curl <preview>/sitemap.xml` returns the existing XML.
@@ -309,7 +335,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 | Vue mousetrap binds Konami-code-style sequences (`up up down down ...`); tinykeys' arrow-key handling differs. | Same custom-matcher fallback; or transcribe arrow-key bindings to `ArrowUp`/`ArrowDown` notation. |
 | `<i18n>` slot interpolation in `Home.vue` (`p2` with `{smile}`) doesn't have a 1:1 svelte-i18n equivalent. | Step 7 splits `p2` into `p2_before_smile` + `p2_after_smile` and renders the icon between them. The original `p2` key stays in JSON for rollback. |
 | `vue-cli-plugin-i18n` `enableInSFC: true` was active — losing it might drop translations defined inline as `<i18n>` SFC blocks. | Verified via `grep -rn '<i18n>' src/components`: zero SFC block matches. The `<i18n>` matches in `Home.vue` are the *component*, handled separately. No translations lost. |
-| `transformIndexHtml` runs only at build time; running `npm run dev` shows literal `%BUILD_TIMESTAMP_UTC%` in the rendered HTML. | Either also transform on dev requests (most transformIndexHtml plugins do this by default), or accept it as a dev-only quirk and verify only on `npm run build`. |
+| `PUBLIC_BUILD_TIMESTAMP_UTC` env var not set during `npm run dev` → literal `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` shows in the rendered HTML. | Set the env var in `.env` for dev, or accept the placeholder showing in dev only. CI sets it via `netlify.toml`. |
 | Existing visitors' Vuex-persist state shape on disk has more or fewer slots than `defaults`. | Step 4's `persistedStore` merges `{ ...defaults, ...stored }`, so missing slots get defaults and extra slots are preserved. Step 5's helpers always overwrite cleanly. |
 
 ## Notes for the executing agent
@@ -317,6 +343,6 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 - Do **not** modify `netlify.toml`'s redirect or header blocks beyond the `[build]` section. They were carefully assembled across PRs #80, #81, #82.
 - Do **not** delete the `docs/` directory.
 - Do **not** create per-key Svelte stores. The persisted state is **one composite object** at `localStorage['~~saleh~~-1.6']`; splitting it would silently invalidate every existing visitor's saved preferences. (See Step 4–5.)
-- The dev loop is `npm run dev` (port 5173 by default). Build timestamp is only injected at build time — in dev, expect the literal `%BUILD_TIMESTAMP_UTC%` placeholder to appear unless you wire transformIndexHtml for the dev server too.
+- The dev loop is `npm run dev` (port 5173 by default). Build timestamp comes from the `PUBLIC_BUILD_TIMESTAMP_UTC` env var; if you don't set it in `.env`, expect the literal `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` placeholder to appear in dev. CI sets it via `netlify.toml`.
 - This work touches every source file. Expect a large diff. Splitting into multiple PRs (e.g. one PR for steps 1–8 on a parallel `svelte/` dir, second PR for step 9 cutover) is reasonable.
 - Existing Netlify project is `musing-rosalind-eedabd`. The `/cv`, `/resume`, `/spider-man`, `/spiderman`, `/address`, `/sunnyside`, `/blog`, `/posts` redirects must continue to work after deploy — they're enforced by `netlify.toml`, not by code.

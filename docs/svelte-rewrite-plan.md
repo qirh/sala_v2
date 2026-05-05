@@ -6,12 +6,12 @@ This is **Phase 1A** of a three-phase project to unify saleh.sh and saleh.soy on
 
 - **Phase 1A** (this doc, this repo): rewrite `saleh.sh` from Vue 2 to SvelteKit. Same domain, same Netlify project. No blog work.
 - **Phase 1B** (a parallel doc in `qirh/blog`): rewrite `saleh.soy` from pandoc/Makefile to SvelteKit. Same domain, same Netlify project. No SPA work.
-- **Phase 2** (later, this repo): merge the blog source into this repo, route blog under `/blog/*`, retire the `qirh/blog` repo.
+- **Phase 2** (later, this repo): merge the blog source into this repo, route blog under `/blog/*`, retire the `qirh/blog` repo. **Phase 2 also removes the `/blog` and `/posts` 302 redirects from `netlify.toml`** (added in #82) — once `/blog` is a real path, the redirects are wrong.
 - **Phase 3** (later): point `saleh.soy` at the unified site via a 301 forwarder Netlify project.
 
 This document is the blueprint for **Phase 1A only**. An executing agent should not touch the blog or domain config.
 
-Background and rationale for the three-phase decomposition is in `docs/unify-blog-plan.md` (PR #83).
+`docs/unify-blog-plan.md` (PR #83) is **historical** — it scoped an alternative architecture (subdir build, no Svelte) that was not chosen. Read it for the trade-off discussion that led here, not as a live spec.
 
 ## Goal
 Ship a SvelteKit replacement of the existing Vue 2 SPA at `https://saleh.sh`, with full feature parity. Visitors should not be able to tell the rewrite happened.
@@ -34,7 +34,7 @@ Ship a SvelteKit replacement of the existing Vue 2 SPA at `https://saleh.sh`, wi
 ## Target stack
 
 - **SvelteKit** with the `@sveltejs/adapter-static` adapter (the site has no server-side rendering needs; this stays a static build).
-- **Svelte 5** (current). Use `runes` mode for state.
+- **Svelte 5** (current), **classic stores API** for state (not runes). Step 5's example uses `writable` + `state.update(...)` + `$state` auto-subscription. Stores work fine in Svelte 5 and are lower-risk for an executing agent than runes; if you'd rather use runes (`let state = $state({...})`, direct property writes), the rest of the plan still applies, but you'll need to translate Step 5's examples.
 - **TypeScript: no.** The current codebase is JS-only — keep it JS-only to minimize the diff and review surface.
 - **Styling: keep SCSS.** Reuse `src/assets/styles/*.scss` as-is via `svelte-preprocess` + `sass`.
 - **i18n:** [`svelte-i18n`](https://github.com/kaisermann/svelte-i18n). Keep the existing `src/locales/{en,ar}.json` files. **Caveat:** `Home.vue` uses vue-i18n's `<i18n>` *component* with a slotted icon (`{smile}` placeholder in `p2`); see Migration Mapping for handling.
@@ -96,7 +96,7 @@ sala_v2/
     └── svelte-rewrite-plan.md  # this file
 ```
 
-`docs/unify-blog-plan.md` stays. Old Vue files (`src/main.js`, `src/App.vue`, `src/components/*.vue`, `src/store.js`, `src/i18n.js`, `src/consts.js`, `vue.config.js`, `babel.config.js`, `budget.json`) are deleted in the same PR.
+`docs/unify-blog-plan.md` stays. Old Vue files (`src/main.js`, `src/App.vue`, `src/components/*.vue`, `src/store.js`, `src/i18n.js`, `src/consts.js`, `vue.config.js`, `babel.config.js`, `budget.json`) are deleted in Step 9's cutover commit.
 
 ## Migration mapping
 
@@ -117,7 +117,7 @@ sala_v2/
 | `src/store.js` (Vuex + vuex-persist) | `src/lib/stores/state.js` + `src/lib/persistedStore.js` | **Single composite store** keyed at `~~saleh~~-1.6`, schema unchanged. Vuex mutations (`toggleTheme`, `changeLang(lo)`, `toggleFont`, `switchFlipDirection`) become exported helper functions that `state.update(...)` a named slot. Vuex `store.watch(() => state.theme, applyTheme)` translates to a `state.subscribe(...)` call inside `onMount` in `+layout.svelte` — see Step 5.3. **Don't put DOM-mutating effects in top-level `$:` reactive blocks**: those run during SSR/prerender too, where `document` is undefined and they crash. |
 | `src/i18n.js` | `src/lib/i18n.js` (svelte-i18n) | |
 | `src/consts.js` | `src/lib/consts.js` | Pure functions, copy verbatim. |
-| `src/locales/{en,ar}.json` | `src/locales/{en,ar}.json` | Copy verbatim. **But:** `Home.vue` consumes `p1`–`p5` via vue-i18n's `<i18n>` *component* with a slotted FontAwesome smile in `p2` (replacing `{smile}`). svelte-i18n has no slot-based interpolation. Translate by splitting `p2` around `{smile}` in `Home.svelte`: render `{$_('p2_before_smile')}` + `<Icon name="smile" />` + `{$_('p2_after_smile')}`. Add `p2_before_smile` and `p2_after_smile` to both locale JSON files (verbatim split of the existing `p2` value); leave the original `p2` in place for now to allow rollback. |
+| `src/locales/{en,ar}.json` | `src/locales/{en,ar}.json` | Copy verbatim. **But:** `Home.vue` consumes `p1`–`p5` via vue-i18n's `<i18n>` *component* with a slotted FontAwesome smile in `p2` (replacing `{smile}`). svelte-i18n has no slot-based interpolation. Translate by splitting `p2` around `{smile}` in `Home.svelte`: render `{$_('p2_before_smile')}` + `<Icon icon="smile" />` + `{$_('p2_after_smile')}`. Add `p2_before_smile` and `p2_after_smile` to both locale JSON files (verbatim split of the existing `p2` value); leave the original `p2` in place for now to allow rollback. |
 | `vue.config.js` | `vite.config.js` + `svelte.config.js` | `runtimeCompiler: true` is Vue-specific — drop, no Svelte equivalent. The `vue-cli-plugin-i18n` `enableInSFC` option is for SFC `<i18n>` *blocks* — verified absent (`grep -rn '<i18n>' src/components` shows zero block matches; the matches that exist are `<i18n>` *components*, handled above). Git hash uses Vite `define`; build timestamp uses SvelteKit `%sveltekit.env.PUBLIC_*%` (see Target Stack and Step 8). |
 | `babel.config.js`, `budget.json` | (deleted) | Vue-cli artifacts; no Svelte equivalent needed. |
 | `public/index.html` (with EJS `<%= ... %>`) | `src/app.html` (with `%sveltekit.env.PUBLIC_*%` placeholders) | Preserve `data-build-timestamp-utc` via the SvelteKit env-var path; preserve favicons/meta tags as static `<head>` content. |
@@ -162,7 +162,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
      funFont: true | false,
      currentLang: { code, name, direction, title, fonts } | null }
    ```
-3. **Verify:** unit test — `localStorage.setItem('~~saleh~~-1.6', '{"theme":"dark"}')`, then `persistedStore('~~saleh~~-1.6', defaults)` returns a writable whose initial value has `theme === 'dark'` (and other slots default).
+3. **Verify:** in dev mode (`npm run dev`), open DevTools, run `localStorage.setItem('~~saleh~~-1.6', '{"theme":"dark"}')`, then reload. The store should initialize with `theme === 'dark'` (and other slots default). A unit test would need jsdom/happy-dom — not in Step 1's bare scaffold — so a manual browser check is simpler at this stage.
 
 ### Step 5: port the Vuex store as a single composite
 1. Write `svelte/src/lib/stores/state.js`:
@@ -211,12 +211,13 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    }
    ```
    `updateLangUI` similarly clears `<html dir>` / `<html lang>` and reapplies, never relying on a previous-value parameter.
-4. **Verify:** in `+layout.svelte`, subscribe to `$state` and toggle the theme via `toggleTheme()` from a button. Reload — theme persists. Inspect `localStorage['~~saleh~~-1.6']` — value is a single JSON object with all four slots.
+5. **Verify:** in `+layout.svelte`, subscribe to `$state` and toggle the theme via `toggleTheme()` from a button. Reload — theme persists. Inspect `localStorage['~~saleh~~-1.6']` — value is a single JSON object with all four slots.
 
 ### Step 6: port the layout (App.vue equivalent), keyboard bindings, and console messages
 1. Translate `src/App.vue` to `svelte/src/routes/+layout.svelte`. Port:
    - `flip()` — class manipulation on `#cuerpo` with a 750ms timeout. Direct port.
-   - `applyTheme()`, `applyFont()`, `getBrowserLang()`, `getLangCodeOnInit()`, `updateLangUI()` — port to layout module-level helpers. **Wire them up via `onMount(() => state.subscribe(...))` per Step 5.3** — not via top-level `$:` reactive blocks, which run during SSR/prerender and would crash on `document`/`<html>` access. The `onMount` subscription handles both initial paint and subsequent state changes in one place.
+   - `applyTheme()`, `applyFont()`, `updateLangUI()` — port to layout module-level helpers. **Wire them up via `onMount(() => state.subscribe(...))` per Step 5.3** — not via top-level `$:` reactive blocks, which run during SSR/prerender and would crash on `document`/`<html>` access. The `onMount` subscription handles both initial paint and subsequent state changes in one place.
+   - `getBrowserLang()`, `getLangCodeOnInit()` — these read `navigator.languages`, which is **undefined during SSR/prerender**. Call them only from inside `onMount` (or guard with `import { browser } from '$app/environment'`). Do not call at module scope or from a top-level `$:` block.
    - `handleKeyUp`, `handleKeyDown` — keep the animation behavior (add/remove `.keydown` and `._${key}` classes on `#cuerpo` for non-special keys; suppress space's default for the lang-cycle).
    - `firstHelpMessage()` and `secondHelpMessage()` — the multi-arg `console.log(..., 'color: #88e49a', ...)` calls (`App.vue:~190–204`). Port verbatim, call `firstHelpMessage()` from `onMount`.
    - `goToResume`, `goToAbout`, `goToThirty`, `goToNYCMarathon25`, `goToNYCMarathon24` — port the methods. `goToResume` is `window.location.href = '/cv'` (full nav so Netlify 302 fires). The others use SvelteKit's `goto()` from `$app/navigation`. **Note:** `goToNYCMarathon24` exists as a method but has *no* keyboard binding in the current code — keep the method as dead code (or drop it) since `/nycmarathon24` is reachable by URL.
@@ -292,7 +293,8 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    rm -rf src public node_modules dist
    rm  package.json package-lock.json babel.config.js budget.json vue.config.js
    ```
-   (`docs/`, `LICENSE`, `README.md`, `netlify.toml` stay. `.claude/` and `.review-pr79/` are untracked and stay.)
+   (`docs/`, `LICENSE`, `README.md`, `netlify.toml`, `tests/`, `playwright.config.js`, `.github/`, `.gitignore` stay. `.claude/` and `.review-pr79/` are untracked and stay.)
+   **Before deleting `package.json`**, copy the existing `prettier` config block (`tabWidth: 4, singleQuote: true, trailingComma: 'all', arrowParens: 'always', bracketSpacing: false`) into the new SvelteKit `package.json` after Step 9.2 — otherwise the project's prettier formatting style is silently lost.
 2. **Move the new SvelteKit project up:**
    ```sh
    mv svelte/package.json svelte/package-lock.json svelte/svelte.config.js svelte/vite.config.js svelte/src svelte/static .
@@ -305,7 +307,18 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    publish = "build/"
    ```
    The env-var prefix is **required** — see Step 8.2. Without it, `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` resolves to an empty string and the footer "updated" date breaks silently. **Leave `[[redirects]]` and `[[headers]]` blocks untouched.** Leave the `netlify-plugin-debug-cache` plugin block untouched.
-4. **Verify:**
+4. **Update `playwright.config.js`:** the `webServer` block currently runs `npm run serve` on port 8080 (vue-cli convention). After this cutover the dev server is `vite` on port 5173. Change:
+   ```js
+   webServer: {
+     command: 'npm run dev',
+     url: 'http://localhost:5173',
+     reuseExistingServer: !process.env.CI,
+     timeout: 60000,
+   },
+   use: { baseURL: 'http://localhost:5173', headless: true },
+   ```
+   Without this change the smoke suite can't boot a server and CI fails.
+5. **Verify:**
    ```sh
    npm install
    npm run build

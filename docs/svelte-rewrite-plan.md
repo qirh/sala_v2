@@ -314,22 +314,23 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    Both must exist. `build/_app/` contains the bundled JS/CSS.
 
 ### Step 10: deploy preview QA
+
+**Primary verification: the Playwright smoke suite** at `tests/features.spec.js` and `tests/routes.spec.js` (added in PR #85). The selectors in those tests target user-facing class names (`.lang-item`, `#grid-main`, `.grid-paragraphs`, `.main-title`, body theme classes, `~~saleh~~-1.6` localStorage key) that this plan explicitly preserves. **The same suite that passes against Vue 2 main today must pass against the SvelteKit build.**
+
+Execution:
 1. Push the branch, open a draft PR.
-2. Wait for the Netlify deploy preview.
-3. Run a checklist against the preview URL:
-   - [ ] `/`, `/about`, `/30`, `/nycmarathon24`, `/nycmarathon25`, `/bday25` all load and look right in light + dark themes.
-   - [ ] Language switch with spacebar cycles `en` → `ar`. Arabic font + RTL applied. The `p2` smile icon renders inline in both languages.
-   - [ ] **Every** sequence in Step 6's binding table works (test `c v`, `r e s u m e`, `a b o u t`, `3 0`, `2 5`, `f`, `t`, Konami code, etc.). Test the Arabic equivalents (e.g. `خ`, `ل`, `س ي ر ه`) by switching keyboard layouts.
-   - [ ] Theme toggle persists across reload. `localStorage['~~saleh~~-1.6']` shows the composite object schema (single key with all four slots).
-   - [ ] An existing visitor's preferences carry over: before deploy, in dev tools on production saleh.sh, copy `localStorage['~~saleh~~-1.6']`. After deploy, set the same value on the preview URL — theme/lang/font are honored.
-   - [ ] `view-source:<preview>/` shows `data-build-timestamp-utc="2026-..."` with a real ISO timestamp. The attribute must be **non-empty**: an empty value (`data-build-timestamp-utc=""`) means the `PUBLIC_BUILD_TIMESTAMP_UTC` env var wasn't set during build — SvelteKit substitutes empty strings for unmatched `%sveltekit.env.*%` placeholders. Footer "updated" date is recent.
-   - [ ] About page shows a 7-char git hash linked to `https://github.com/qirh/sala_v2/commit/...`.
-   - [ ] `curl -I <preview>/cv` still returns 302 to Drive (Netlify redirect untouched).
-   - [ ] `curl <preview>/sitemap.xml` returns the existing XML.
-   - [ ] `curl -I <preview>/` shows the existing `Link: </sitemap.xml>; rel="sitemap"` header.
-   - [ ] DevTools console: `firstHelpMessage` is logged on initial load with multi-color CSS styling.
-   - [ ] No console errors on any route.
-4. Promote draft → ready for review.
+2. Wait for the Netlify deploy preview and for CI's Playwright run to go green. The CI workflow added in #85 runs the suite on every PR.
+3. **Locally**, run `npm test` against the SvelteKit dev server. Aim for: 21 pass, 0 fail, 0 skipped. Specifically:
+   - One test is currently `test.fixme()` — `lang change on sub-pages does not throw` in `tests/features.spec.js`. It documents a Vue 2 bug where `Home.vue`'s `store.watch` fires against a removed DOM node after navigating away. The SvelteKit pattern from Step 5.3 (`onMount(state.subscribe(...))`) auto-disposes the subscription on unmount, fixing the bug. **As part of this rewrite, change `test.fixme(...)` back to `test(...)` and verify it passes.**
+4. **Manual checks the Playwright suite doesn't cover** (run against the Netlify preview URL):
+   - [ ] **Build-time interpolation:** `view-source:<preview>/` shows `data-build-timestamp-utc="2026-..."` with a real ISO timestamp — non-empty. An empty attribute means `PUBLIC_BUILD_TIMESTAMP_UTC` wasn't set during the Netlify build (Step 9.3).
+   - [ ] **Git hash:** About page shows a 7-character commit hash, no quote characters around it.
+   - [ ] **Existing-visitor preference carry-over:** in DevTools on production saleh.sh, copy `localStorage['~~saleh~~-1.6']`. Set the same value on the preview URL. Reload — theme/lang/font are honored.
+   - [ ] **Arabic-only keyboard sequences:** Playwright tests cover the ASCII chord cases. Manually test `خ`, `ل`, `س ي ر ه`, `م س ا ع د ه`, and the Arabic Konami code by switching to an Arabic keyboard layout.
+   - [ ] **Netlify-level redirects survive:** `curl -I <preview>/cv` returns `302` with the Drive `Location:` header. `curl <preview>/sitemap.xml` returns the XML. `curl -I <preview>/` shows the `Link: </sitemap.xml>; rel="sitemap"` header.
+   - [ ] **First-load console message:** DevTools console shows `firstHelpMessage`'s multi-color logging on initial load.
+   - [ ] **No console errors** on any route.
+5. Promote draft → ready for review.
 
 ## Risks & mitigations
 

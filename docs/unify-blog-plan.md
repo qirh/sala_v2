@@ -1,5 +1,13 @@
 # Unify saleh.soy into saleh.sh
 
+> **⚠️ Superseded.** The architecture recommended below (subdirectory build, blog stays on pandoc, Vue 2 SPA stays as-is) is **not** the path being taken. Saleh chose to rewrite both saleh.sh and saleh.soy in SvelteKit instead, then merge them. Live plans:
+>
+> - `qirh/sala_v2` PR #84 — Phase 1A, rewrite saleh.sh in SvelteKit.
+> - `qirh/blog` PR #10 — Phase 1B, rewrite saleh.soy in SvelteKit.
+> - Phase 2 (merge) and Phase 3 (domain forwarder) are deferred; will get their own plan docs when work starts.
+>
+> This doc is preserved as historical record of the alternative scoping. Effort estimates and architectural arguments below describe a path that won't be taken.
+
 ## Goal
 Collapse the two-repo / two-domain personal-site setup into a single repo (`sala_v2`) and a single canonical domain (`saleh.sh`), with the blog living at `saleh.sh/blog/...`.
 
@@ -50,7 +58,7 @@ Two viable options. **Option 1 is recommended.**
 
 ### Option 1: `saleh.sh/blog/{slug}` (recommended)
 - New canonical: `saleh.sh/blog/funny-week`.
-- saleh.soy keeps existing) URLs (`saleh.soy/funny-week`) and 301s every path to `saleh.sh/blog/:splat`.
+- saleh.soy keeps existing URLs (`saleh.soy/funny-week`) and 301s every path to `saleh.sh/blog/:splat`.
 - Update internal blog links (`<a href="/">`, `/about`, `/rss.xml`, `/style.css`, etc.) in the three pandoc templates to use `/blog/...` prefix.
 - **Pros:** Clean separation between the SPA and the blog. Easy to mentally model.
 - **Cons:** Inbound saleh.soy links rely on the 301 chain forever. Anyone bookmarking a post URL gets the new path.
@@ -185,8 +193,7 @@ Step 7 (DNS sunset) is later/optional; not on this critical path.
 1. **URL strategy** — Option 1 (`/blog/{slug}`, recommended) or Option 2 (flat)?
 2. **History preservation** — `git subtree` (preserve 75 blog commits) or clean copy (single commit, smaller diff)?
 3. **saleh.soy lifecycle** — keep as a 301 forwarder indefinitely, or set a sunset date?
-4. **17 drafts in `in_progress/`** — leave them alongside the merge, or drop them on the floor?
-5. **Single sitemap or sitemap index** — preference for the simpler all-in-one or the more "correct" index-of-sitemaps?
+4. **Single sitemap or sitemap index** — preference for the simpler all-in-one or the more "correct" index-of-sitemaps?
 
 ## Open questions / follow-ups
 

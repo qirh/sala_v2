@@ -1,12 +1,13 @@
-# Unify saleh.soy into saleh.sh
+# (Superseded) Unify saleh.soy into saleh.sh — alternative scoping
 
-> **⚠️ Superseded.** The architecture recommended below (subdirectory build, blog stays on pandoc, Vue 2 SPA stays as-is) is **not** the path being taken. Saleh chose to rewrite both saleh.sh and saleh.soy in SvelteKit instead, then merge them. Live plans:
+> 🛑 **Don't execute the steps in this document.** They describe an architecture (subdirectory build, blog stays on pandoc, Vue 2 SPA stays as-is) that **was not chosen**. Saleh chose to rewrite both saleh.sh and saleh.soy in SvelteKit instead, then merge them.
 >
+> **Live plans:**
 > - `qirh/sala_v2` PR #84 — Phase 1A, rewrite saleh.sh in SvelteKit.
 > - `qirh/blog` PR #10 — Phase 1B, rewrite saleh.soy in SvelteKit.
 > - Phase 2 (merge) and Phase 3 (domain forwarder) are deferred; will get their own plan docs when work starts.
 >
-> This doc is preserved as historical record of the alternative scoping. Effort estimates and architectural arguments below describe a path that won't be taken.
+> Below is preserved as historical record of the alternative scoping. **Headings still read as if they're live recommendations — they aren't.** All "Recommended" markers, effort estimates, code blocks, and step-by-step instructions describe a path that won't be taken. Read for design discussion only.
 
 ## Goal
 Collapse the two-repo / two-domain personal-site setup into a single repo (`sala_v2`) and a single canonical domain (`saleh.sh`), with the blog living at `saleh.sh/blog/...`.
@@ -26,7 +27,7 @@ Collapse the two-repo / two-domain personal-site setup into a single repo (`sala
 
 The two sites share nothing in terms of code, styling, or build pipeline. The only operational link today is the new `saleh.sh/blog` 302 redirect (#82).
 
-## Recommended architecture: subdirectory build, single repo
+## ~~Recommended~~ Alternative architecture (not chosen): subdirectory build, single repo
 
 Bring the blog source into `sala_v2` as a top-level `blog/` directory. Keep its pandoc + Makefile build untouched. Wire it into the Vue build so `npm run build` produces:
 
@@ -71,7 +72,7 @@ Two viable options. **Option 1 is recommended.**
 
 The blog's existing `/about` actively conflicts with the SPA's `/about`. Option 1 avoids it; Option 2 forces a rename.
 
-## Implementation steps (recommended path: Option 1)
+## Implementation steps (for the alternative path — not chosen)
 
 ### Step 1: Bring the blog source into sala_v2
 Use `git subtree add --prefix=blog https://github.com/qirh/blog.git main` to preserve the 75-commit history under a `blog/` prefix. Alternative: copy files in cleanly with no history (smaller commit, loses provenance).

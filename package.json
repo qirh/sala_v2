@@ -5,6 +5,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "test": "playwright test",
     "clean": "rm -rf node_modules/ dist/",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",
+    "@playwright/test": "^1.59.1",
     "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-service": "^4.5.19",
@@ -75,8 +77,8 @@
     "not ie <= 10"
   ],
   "engines": {
-    "npm": "8.0.0",
-    "node": "14.19.3"
+    "npm": ">=10.0.0",
+    "node": ">=20.0.0"
   },
   "overrides": {
     "fsevents": "^2.3.3",

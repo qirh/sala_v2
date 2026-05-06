@@ -34,6 +34,7 @@ function getNextLang(langCode) {
     const index = langs.findIndex(langObjectFromList);
     return langs[mod(index + 1, langs.length)];
 }
+
 function getPrevLang(langCode) {
     const langObjectFromList = (lang) => lang.code === langCode;
     const index = langs.findIndex(langObjectFromList);

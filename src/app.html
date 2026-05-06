@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" class="color-theme-in-transition" data-build-timestamp-utc="<%= new Date().toISOString() %>">
+<!doctype html>
+<html lang="en" dir="ltr" class="color-theme-in-transition" data-build-timestamp-utc="%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%">
 
 <head>
     <meta charset="utf-8">
@@ -13,10 +13,22 @@
     <link rel="shortcut icon" type="image/png" sizes="192x192" href="/assets/en/icon-192x192.png">
     <link rel="stylesheet" href="/assets/normalize.css">
     <link rel="stylesheet" href="/assets/noscript.css">
-
+    <script>
+        window.__salehKeyBuffer = {
+            pending: [],
+            capture(event) {
+                window.__salehKeyBuffer.pending.push(event.key);
+                if (window.__salehKeyBuffer.pending.length > 32) {
+                    window.__salehKeyBuffer.pending.shift();
+                }
+            }
+        };
+        window.addEventListener('keyup', window.__salehKeyBuffer.capture, true);
+    </script>
+    %sveltekit.head%
 </head>
 
-<body>
+<body data-sveltekit-preload-data="hover">
     <noscript>
         <style>
             body {
@@ -31,7 +43,7 @@
             </section>
         </div>
     </noscript>
-    <div id="app"><router-view></router-view></div>
+    <div id="app">%sveltekit.body%</div>
 </body>
 
 </html>

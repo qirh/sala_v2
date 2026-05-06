@@ -1,4 +1,4 @@
-const {test, expect} = require('@playwright/test');
+import {expect, test} from '@playwright/test';
 
 test('language switcher: click AR flips to RTL + Arabic', async ({page}) => {
     await page.goto('/');
@@ -100,7 +100,7 @@ test('"2 5" chord navigates to /nycmarathon25', async ({page}) => {
     await expect(page).toHaveURL('/nycmarathon25');
 });
 
-test('Vuex persist: theme survives reload', async ({page}) => {
+test('persisted state: theme survives reload', async ({page}) => {
     await page.goto('/');
     await page.keyboard.press('t');
     await expect(page.locator('body')).toHaveClass(/dark-theme/);
@@ -114,17 +114,7 @@ test('Vuex persist: theme survives reload', async ({page}) => {
     await expect(page.locator('body')).toHaveClass(/dark-theme/);
 });
 
-// On Vue 2 main this fails: Home.vue registers a store.watch in created() that
-// manipulates #grid-main, and Vue 2 doesn't auto-dispose component-bound
-// watchers. After navigating to /about and switching language, the watcher
-// fires against a removed DOM node and throws.
-//
-// The SvelteKit rewrite (PR #84) addresses this by wiring DOM-mutating
-// effects through onMount(state.subscribe(...)) in +layout.svelte — the
-// subscription is disposed when the layout unmounts.
-//
-// Unmark this test (`test(` instead of `test.fixme(`) once the rewrite lands.
-test.fixme('lang change on sub-pages does not throw', async ({page}) => {
+test('lang change on sub-pages does not throw', async ({page}) => {
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('console', (m) => {
@@ -140,7 +130,7 @@ test.fixme('lang change on sub-pages does not throw', async ({page}) => {
     expect(errors).toEqual([]);
 });
 
-test('Vuex persist: language survives reload', async ({page}) => {
+test('persisted state: language survives reload', async ({page}) => {
     await page.goto('/');
     await page.locator('.lang-item').filter({hasText: 'عربي'}).click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'ar');

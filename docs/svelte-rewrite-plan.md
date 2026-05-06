@@ -43,7 +43,7 @@ Ship a SvelteKit replacement of the existing Vue 2 SPA at `https://saleh.sh`, wi
   { "theme": "light", "flipDirection": true, "funFont": false, "currentLang": {...} }
   ```
   The replacement is a single `persistedStore('~~saleh~~-1.6', initial)` that reads/writes this exact composite object. Helper methods (`toggleTheme()`, `changeLang(lo)`, etc.) `update()` named slots inside it. **Do not split into per-key stores** — that would invalidate every existing visitor's saved preferences.
-- **Keyboard shortcuts:** drop `vue-mousetrap`. Use [`tinykeys`](https://github.com/jamiebuilds/tinykeys). Bindings are *sequences*, including non-ASCII (Arabic), so verify in Step 6 that tinykeys handles `'م س ا ع د ه'` and similar — fall back to a custom sequence matcher if not.
+- **Keyboard shortcuts:** drop `vue-mousetrap`. Use a small custom sequence matcher in `src/lib/keybindings.js`. This is the fallback path from Step 6; it preserves Arabic/non-ASCII sequences and Konami-code-style arrows without adding a keyboard library.
 - **Icons:** drop `@fortawesome/vue-fontawesome`. Use `@fortawesome/fontawesome-svg-core` directly with a small `<Icon>` Svelte wrapper (~20 lines). Copy the existing `library.add(...)` block from `src/main.js:26-34` verbatim:
   ```
   faGithub, faLinkedin, faGoodreads (brands)
@@ -73,7 +73,7 @@ sala_v2/
 │   │   ├── i18n.js             # svelte-i18n setup, loads ./locales/*.json
 │   │   ├── consts.js           # langs, getNextLang, getLangObjectFromCode, mod
 │   │   ├── persistedStore.js   # composite-object persisted writable helper
-│   │   ├── keybindings.js      # explicit binding table → handlers; uses tinykeys (or custom sequencer)
+│   │   ├── keybindings.js      # explicit binding table → custom sequence matcher → handlers
 │   │   └── components/
 │   │       ├── Home.svelte
 │   │       ├── Icons.svelte
@@ -138,7 +138,7 @@ Each step ends with a verification an agent can run. If verification fails, stop
 
 ### Step 1: scaffold the SvelteKit project alongside the Vue project
 1. Create the new structure in a parallel directory inside the repo: `svelte/`. Run `npm create svelte@latest svelte` (Skeleton project, JS, no TS, no extras).
-2. Inside `svelte/`, install `@sveltejs/adapter-static`, `svelte-preprocess`, `sass`, `svelte-i18n`, `tinykeys`, `@fortawesome/fontawesome-svg-core`, `@fortawesome/free-solid-svg-icons`, `@fortawesome/free-regular-svg-icons`, `@fortawesome/free-brands-svg-icons`.
+2. Inside `svelte/`, install `@sveltejs/adapter-static`, `svelte-preprocess`, `sass`, `svelte-i18n`, `@fortawesome/fontawesome-svg-core`, `@fortawesome/free-solid-svg-icons`, `@fortawesome/free-regular-svg-icons`, `@fortawesome/free-brands-svg-icons`.
 3. Configure `svelte/svelte.config.js` to use `adapter-static` with **`fallback: '200.html'`** (Netlify auto-uses this for SPA fallback; matches the existing `[[redirects]] /* → /, status 200` rule in `netlify.toml`). Enable `svelte-preprocess` with `scss`.
 4. **Verify:** `cd svelte && npm run build` produces `build/200.html`.
 
@@ -243,7 +243,7 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    | `'t'`, `'ل'` | `toggleTheme` |
    | `'up up down down left right left right b a'`, `'i d d q d'`, `'up up down down left right left right ز ش'` | `flip` |
 
-   **Verify tinykeys handles non-ASCII keys** (`خ`, `ل`, `ز`, `ش`, Arabic words). On a fresh tinykeys install, write a tiny test page that binds `'خ'` and triggers it. If tinykeys doesn't handle it (likely — tinykeys parses on `KeyboardEvent.key` and modifier strings; non-ASCII may work but Arabic *sequences* may not), fall back to a ~30-line custom sequence matcher: track the last N keypresses in a buffer, match against the binding list.
+   **Use the custom sequence matcher for non-ASCII keys** (`خ`, `ل`, `ز`, `ش`, Arabic words). It tracks the last N `KeyboardEvent.key` values in a buffer and matches against the binding list.
 3. The `<Home>` component renders inside `+page.svelte`, not the layout.
 4. **Catch-all redirect.** Vue's `{path: '*', redirect: '/'}` (`main.js:51`) sends unknown paths to `/`. SvelteKit doesn't do this by default — `adapter-static`'s fallback serves the SPA shell at the unknown URL but the router just renders an error. Add `src/routes/[...catchall]/+page.js`:
    ```js
@@ -367,8 +367,8 @@ Execution:
 |---|---|
 | Arabic / RTL / font swapping behaves subtly differently after the rewrite. | Step 7 verification explicitly tests `ar`. Diff screenshots side-by-side. |
 | Bundle size regresses meaningfully. | Run `npm run build` and compare `build/_app/immutable/*` total size to current `dist/js/* + dist/css/*` total. Target: same order of magnitude (within 2×). |
-| `tinykeys` doesn't handle non-ASCII (Arabic) characters in sequence bindings. | Step 6 has a built-in fallback: drop in a ~30-line custom sequence matcher that buffers `KeyboardEvent.key` values and matches against the binding table. The current Vue site uses Mousetrap, which *does* handle these — verify behavior parity. |
-| Vue mousetrap binds Konami-code-style sequences (`up up down down ...`); tinykeys' arrow-key handling differs. | Same custom-matcher fallback; or transcribe arrow-key bindings to `ArrowUp`/`ArrowDown` notation. |
+| Custom key matching regresses non-ASCII (Arabic) characters in sequence bindings. | The matcher buffers raw `KeyboardEvent.key` values and the Playwright suite covers the ASCII sequences. Manually verify Arabic keys on the deploy preview. |
+| Vue mousetrap binds Konami-code-style sequences (`up up down down ...`); arrow-key handling differs in the rewrite. | The custom matcher normalizes arrow keys to `up`/`down`/`left`/`right` before matching. |
 | `<i18n>` slot interpolation in `Home.vue` (`p2` with `{smile}`) doesn't have a 1:1 svelte-i18n equivalent. | Step 7 splits `p2` into `p2_before_smile` + `p2_after_smile` and renders the icon between them. The original `p2` key stays in JSON for rollback. |
 | `vue-cli-plugin-i18n` `enableInSFC: true` was active — losing it might drop translations defined inline as `<i18n>` SFC blocks. | Verified via `grep -rn '<i18n>' src/components`: zero SFC block matches. The `<i18n>` matches in `Home.vue` are the *component*, handled separately. No translations lost. |
 | `PUBLIC_BUILD_TIMESTAMP_UTC` env var not set during `npm run dev` → SvelteKit substitutes an empty string, so `data-build-timestamp-utc=""` and the footer "updated" date is empty in dev. | Set the env var in `.env` for dev, or accept the empty timestamp in dev only. CI sets it via `netlify.toml`. The **same failure mode applies in production** if Step 9.3's build command drops the env-var prefix — Step 10's QA checklist verifies the attribute is non-empty. |

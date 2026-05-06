@@ -88,10 +88,19 @@ sala_v2/
 │   │   ├── 30/+page.svelte
 │   │   ├── nycmarathon24/+page.svelte
 │   │   ├── nycmarathon25/+page.svelte
-│   │   └── bday25/+page.svelte
+│   │   ├── bday25/+page.svelte
+│   │   └── [...catchall]/
+│   │       └── +page.js        # throws redirect(307, '/') — replaces Vue's {path: '*', redirect: '/'}
 │   └── assets/
 │       └── styles/             # COPY of src/assets/styles/*.scss — unchanged
 ├── static/                     # COPY of public/* (favicon, /assets/*.jpg, sitemap.xml, robots.txt)
+├── tests/                      # from PR #85 — survives the cutover
+│   ├── features.spec.js
+│   └── routes.spec.js
+├── playwright.config.js        # from PR #85; webServer command updated in Step 9.4
+├── .github/
+│   └── workflows/build.yml     # from PR #85
+├── .gitignore                  # from PR #85
 └── docs/
     └── svelte-rewrite-plan.md  # this file
 ```
@@ -103,7 +112,7 @@ sala_v2/
 | Old (Vue 2) | New (Svelte 5) | Notes |
 |---|---|---|
 | `public/index.html` | `src/app.html` | SvelteKit owns the shell; preserve `<noscript>` block, fonts preload, `<meta>` tags. |
-| `src/main.js` | `src/routes/+layout.svelte` (boot side) + `src/routes/+page.svelte` + `vite.config.js` (git describe) | Routes from `VueRouter` become SvelteKit filesystem routes. |
+| `src/main.js` | `src/routes/+layout.svelte` (boot side) + `src/routes/+page.svelte` + `vite.config.js` (git describe) | Routes from `VueRouter` become SvelteKit filesystem routes. **Don't forget the catch-all:** Vue's `{path: '*', redirect: '/'}` (`main.js:51`) translates to `src/routes/[...catchall]/+page.js` that throws `redirect(307, '/')`. Without it, unknown paths render SvelteKit's default 404 instead of redirecting home — and the Playwright `unknown path redirects to home` test in `tests/routes.spec.js:43` fails. |
 | `src/App.vue` | `src/routes/+page.svelte` | Top-level page; `flip()` and key handlers move to `+layout.svelte`. |
 | `src/components/Home.vue` | `src/lib/components/Home.svelte` | |
 | `src/components/About.vue` | `src/routes/about/+page.svelte` | |
@@ -236,7 +245,14 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
 
    **Verify tinykeys handles non-ASCII keys** (`خ`, `ل`, `ز`, `ش`, Arabic words). On a fresh tinykeys install, write a tiny test page that binds `'خ'` and triggers it. If tinykeys doesn't handle it (likely — tinykeys parses on `KeyboardEvent.key` and modifier strings; non-ASCII may work but Arabic *sequences* may not), fall back to a ~30-line custom sequence matcher: track the last N keypresses in a buffer, match against the binding list.
 3. The `<Home>` component renders inside `+page.svelte`, not the layout.
-4. **Verify:** `npm run dev`. Open `/`. Test each entry in the binding table works — switch keyboard layout to Arabic (or paste keys via dev console) to test those rows. Toggle theme with `t`. Cycle language with spacebar. Flip animation runs on Konami code.
+4. **Catch-all redirect.** Vue's `{path: '*', redirect: '/'}` (`main.js:51`) sends unknown paths to `/`. SvelteKit doesn't do this by default — `adapter-static`'s fallback serves the SPA shell at the unknown URL but the router just renders an error. Add `src/routes/[...catchall]/+page.js`:
+   ```js
+   import { redirect } from '@sveltejs/kit';
+   export const prerender = false;
+   export const load = () => { throw redirect(307, '/'); };
+   ```
+   `prerender: false` is required: a catch-all has infinite paths and can't be prerendered. With adapter-static + the Netlify SPA-fallback rewrite, requests to `/foo` get the `200.html` shell, the client-side router matches `[...catchall]`, the load throws, SvelteKit calls `goto('/')`. Browser URL flips to `/`. The Playwright test `unknown path redirects to home` (`tests/routes.spec.js:43`) verifies this.
+5. **Verify:** `npm run dev`. Open `/`. Test each entry in the binding table works — switch keyboard layout to Arabic (or paste keys via dev console) to test those rows. Toggle theme with `t`. Cycle language with spacebar. Flip animation runs on Konami code. Visit `/this-does-not-exist` — URL should land at `/`.
 
 ### Step 7: port the per-page components
 1. For each of `About`, `Thirty`, `NYCMarathon24`, `NYCMarathon25`, `Bday25`: copy template HTML from the Vue `<template>` block into a Svelte page; replace `{{ ... }}` Vue interpolation with `{...}` Svelte; replace `v-if` / `v-for` with `{#if}` / `{#each}`; copy SCSS via `<style lang="scss">`.
@@ -307,17 +323,17 @@ The build runs in `svelte/`, alongside the existing Vue setup, so nothing in the
    publish = "build/"
    ```
    The env-var prefix is **required** — see Step 8.2. Without it, `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` resolves to an empty string and the footer "updated" date breaks silently. **Leave `[[redirects]]` and `[[headers]]` blocks untouched.** Leave the `netlify-plugin-debug-cache` plugin block untouched.
-4. **Update `playwright.config.js`:** the `webServer` block currently runs `npm run serve` on port 8080 (vue-cli convention). After this cutover the dev server is `vite` on port 5173. Change:
+4. **Update `playwright.config.js`:** the `webServer` block currently runs `npm run serve` on port 8080 (vue-cli convention). After this cutover that script doesn't exist. Switch to SvelteKit's preview server, which serves the **production build** (so tests verify the actual bundle, including build-time substitutions). Pin port 8080 to keep `baseURL` unchanged:
    ```js
    webServer: {
-     command: 'npm run dev',
-     url: 'http://localhost:5173',
+     command: 'npm run preview -- --host 127.0.0.1 --port 8080',
+     url: 'http://127.0.0.1:8080',
      reuseExistingServer: !process.env.CI,
      timeout: 60000,
    },
-   use: { baseURL: 'http://localhost:5173', headless: true },
+   use: { baseURL: 'http://127.0.0.1:8080', headless: true },
    ```
-   Without this change the smoke suite can't boot a server and CI fails.
+   Because preview serves `build/`, callers must run `npm run build` first. The CI workflow already does (`build` step runs before `npm test`); for local runs, do `npm run build && npm test` (or add `"pretest": "npm run build"` to `package.json` if you want it automatic). Without this change the smoke suite can't boot a server and CI fails.
 5. **Verify:**
    ```sh
    npm install
@@ -357,6 +373,8 @@ Execution:
 | `vue-cli-plugin-i18n` `enableInSFC: true` was active — losing it might drop translations defined inline as `<i18n>` SFC blocks. | Verified via `grep -rn '<i18n>' src/components`: zero SFC block matches. The `<i18n>` matches in `Home.vue` are the *component*, handled separately. No translations lost. |
 | `PUBLIC_BUILD_TIMESTAMP_UTC` env var not set during `npm run dev` → SvelteKit substitutes an empty string, so `data-build-timestamp-utc=""` and the footer "updated" date is empty in dev. | Set the env var in `.env` for dev, or accept the empty timestamp in dev only. CI sets it via `netlify.toml`. The **same failure mode applies in production** if Step 9.3's build command drops the env-var prefix — Step 10's QA checklist verifies the attribute is non-empty. |
 | Existing visitors' Vuex-persist state shape on disk has more or fewer slots than `defaults`. | Step 4's `persistedStore` merges `{ ...defaults, ...stored }`, so missing slots get defaults and extra slots are preserved. Step 5's helpers always overwrite cleanly. |
+| Catch-all redirect missing → `/this-does-not-exist` shows SvelteKit's default 404 page instead of redirecting to `/`. | Step 6.4 specifies the `[...catchall]/+page.js` route. The Playwright test in `tests/routes.spec.js:43` (`unknown path redirects to home`) catches this regression. |
+| Step 9.4 forgotten → `playwright.config.js` still references `npm run serve` and port 8080 with vue-cli's dev server. After cutover the script doesn't exist; the smoke suite can't boot. | Step 9.4 makes the change explicit. The CI workflow's `npm test` step fails loudly if missed. |
 
 ## Notes for the executing agent
 

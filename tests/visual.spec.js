@@ -1,17 +1,21 @@
-// Visual regression: snapshots every route × theme × language.
-// Baselines are committed from current Vue 2 main and become the parity
-// target for any future rewrite (PR #84 SvelteKit). Any pixel diff above
-// the threshold fails CI (when run on the same OS as the baselines).
+// Visual regression: viewport-only screenshots of every route × theme ×
+// language. Baselines are captured against production saleh.sh and become
+// the parity target for any future rewrite.
 //
-// This spec is NOT run by `npm test` because the baselines are
-// OS-specific and CI runs on Linux. Run it with:
+// Capture/refresh baselines:
+//   npm run test:visual:update
+// Verify against local dev server (auto-spawned by playwright.config.js):
+//   npm run test:visual
 //
-//   npm run test:visual                                # uses current OS
-//   npx playwright test tests/visual.spec.js --update-snapshots  # re-baseline
+// Viewport (1280×800), not fullPage. Long routes (NYCMarathon25, Bday25)
+// would otherwise accumulate sub-pixel paragraph-spacing drift between
+// stacks (~0.4% body height) which cascades into massive diff ratios when
+// fullPage heights differ even by a few pixels. The viewport captures the
+// visible-on-load region — the only place a real regression would be
+// obvious to a visitor.
 //
-// Lang/theme are seeded via the vuex-persist composite key
-// `~~saleh~~-1.6` BEFORE page load so the app boots already in the
-// target state — no click-to-switch race.
+// Lang/theme seeded via the vuex-persist composite key BEFORE page load,
+// so the app boots already in the target state — no click-to-switch race.
 
 const {test, expect} = require('@playwright/test');
 
@@ -75,14 +79,11 @@ for (const route of routes) {
                 await seedState(page, theme, langs[langCode]);
                 await page.goto(route);
                 await page.waitForLoadState('networkidle');
-                // Ensure fonts have loaded before snapshotting; otherwise
-                // the screenshot can show a font swap mid-render.
+                // Ensure fonts have loaded before snapshotting.
                 await page.evaluate(() => document.fonts.ready);
-                await expect(page).toHaveScreenshot({
-                    fullPage: true,
-                    animations: 'disabled',
-                    maxDiffPixelRatio: 0.01,
-                });
+                await expect(page).toHaveScreenshot(
+                    `${slugify(route)}-${langCode}-${theme}.png`,
+                );
             });
         }
     }

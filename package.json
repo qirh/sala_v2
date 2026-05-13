@@ -6,7 +6,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "playwright test",
+    "test:parity": "node scripts/parity_test.mjs",
     "test:visual": "VISUAL=1 playwright test tests/visual.spec.js",
+    "test:visual:update": "VISUAL=1 PARITY_TARGET=prod playwright test tests/visual.spec.js --update-snapshots",
     "clean": "rm -rf node_modules/ dist/",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },

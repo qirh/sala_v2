@@ -1,16 +1,21 @@
 // Visual regression: snapshots every route × theme × language.
 // Baselines are committed from current Vue 2 main and become the parity
 // target for any future rewrite (PR #84 SvelteKit). Any pixel diff above
-// the threshold below fails CI.
+// the threshold fails CI (when run on the same OS as the baselines).
 //
-// To intentionally re-baseline after a deliberate visual change, run:
-//   npx playwright test tests/visual.spec.js --update-snapshots
+// This spec is NOT run by `npm test` because the baselines are
+// OS-specific and CI runs on Linux. Run it with:
+//
+//   npm run test:visual                                # uses current OS
+//   npx playwright test tests/visual.spec.js --update-snapshots  # re-baseline
 //
 // Lang/theme are seeded via the vuex-persist composite key
 // `~~saleh~~-1.6` BEFORE page load so the app boots already in the
-// target state — no click-to-switch race with animations.
+// target state — no click-to-switch race.
 
 const {test, expect} = require('@playwright/test');
+
+const PERSIST_KEY = '~~saleh~~-1.6';
 
 const routes = [
     '/',
@@ -40,34 +45,39 @@ const langs = {
     },
 };
 
-const PERSIST_KEY = '~~saleh~~-1.6';
+async function seedState(page, theme, lang) {
+    await page.addInitScript(
+        ({theme, lang, key}) => {
+            localStorage.setItem(
+                key,
+                JSON.stringify({
+                    theme,
+                    flipDirection: true,
+                    funFont: false,
+                    currentLang: lang,
+                }),
+            );
+        },
+        {theme, lang, key: PERSIST_KEY},
+    );
+}
 
-function seedState({theme, lang}) {
-    return ({theme: t, lang: l, key}) => {
-        localStorage.setItem(
-            key,
-            JSON.stringify({
-                theme: t,
-                flipDirection: true,
-                funFont: false,
-                currentLang: l,
-            }),
-        );
-    };
+function slugify(route) {
+    return route === '/' ? 'home' : route.slice(1);
 }
 
 for (const route of routes) {
     for (const theme of themes) {
         for (const langCode of Object.keys(langs)) {
-            test(`visual ${route} [${langCode}, ${theme}]`, async ({page}) => {
-                await page.addInitScript(
-                    seedState({theme, lang: langs[langCode]}),
-                    {theme, lang: langs[langCode], key: PERSIST_KEY},
-                );
+            test(`visual ${slugify(route)} [${langCode}, ${theme}]`, async ({
+                page,
+            }) => {
+                await seedState(page, theme, langs[langCode]);
                 await page.goto(route);
                 await page.waitForLoadState('networkidle');
-                // The flip animation runs on initial paint; let it settle.
-                await page.waitForTimeout(800);
+                // Ensure fonts have loaded before snapshotting; otherwise
+                // the screenshot can show a font swap mid-render.
+                await page.evaluate(() => document.fonts.ready);
                 await expect(page).toHaveScreenshot({
                     fullPage: true,
                     animations: 'disabled',

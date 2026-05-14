@@ -102,19 +102,19 @@ jobs:
           fi
 
       # --- Suite 4: visual regression ---------------------------------------
-      # Committed baselines are macOS-only. Capture fresh Linux baselines
-      # from production at test time, then run visual against a
-      # Playwright-spawned local preview built from this PR. Match = "this
-      # PR renders identically to current production on Linux/Chromium."
+      # Baselines are committed as PNGs under tests/visual.spec.js-snapshots/
+      # — both macOS-darwin (for local dev) and Linux (for CI). They reflect
+      # "what the SvelteKit build is expected to render"; this run compares
+      # the PR's build against them. Match = "this PR didn't drift from the
+      # committed visual reference."
       #
-      # NOTE: pre-SvelteKit-cutover, prod is Vue 2 and the PR is SvelteKit,
-      # so this suite is expected to FAIL on the rewrite branch. Once
-      # SvelteKit ships to prod, both sides match and visual becomes
-      # actionable signal.
-      - name: Capture Linux visual baselines from production
-        run: npm run test:visual:update
-
-      - name: Visual regression (PR preview vs prod baselines)
+      # To re-baseline after a deliberate visual change:
+      #   npm run test:visual:update                                     # local OS
+      #   docker run --rm -v "$PWD:/work" -w /work \
+      #     mcr.microsoft.com/playwright:v1.59.1-jammy \
+      #     bash -c "npm ci && npx playwright install chromium \
+      #              && VISUAL=1 npx playwright test --update-snapshots"  # Linux
+      - name: Visual regression
         id: visual
         continue-on-error: true
         run: npm run test:visual

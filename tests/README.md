@@ -51,12 +51,31 @@ Conversely, the blog's suite has things this one doesn't need:
 ## How to run
 
 ```sh
-npm test                    # functional + routes (20 + fixme, ~8s)
-npm run test:visual         # visual regression vs committed baselines (~40s)
-npm run test:visual:update  # re-baseline against production (PARITY_TARGET=prod)
+npm test                    # functional + routes (28 + fixme, ~10s)
+npm run test:visual         # visual regression vs committed baselines (~30s)
+npm run test:visual:update  # re-baseline against the local build (for your OS)
 npm run test:parity         # HTTP + content parity vs PREVIEW_URL (~5s)
 PREVIEW_URL=https://deploy-preview-XX--musing-rosalind-eedabd.netlify.app npm run test:parity
 ```
+
+## Visual baselines: macOS + Linux
+
+`tests/visual.spec.js-snapshots/` contains **both** `*-chromium-darwin.png` (for local dev on macOS) **and** `*-chromium-linux.png` (for CI on Ubuntu). Same content, different OS-suffixed filenames — Playwright picks the right one automatically based on `runner.os`.
+
+Re-baseline after a deliberate visual change:
+
+```sh
+# Your OS (writes only the matching set):
+npm run test:visual:update
+
+# Linux baselines for CI (run in Docker so the renderer matches the runner):
+docker run --rm -v "$PWD:/work" -w /work \
+  mcr.microsoft.com/playwright:v1.59.1-jammy \
+  bash -c "npm ci && npx playwright install chromium && \
+           VISUAL=1 npx playwright test --update-snapshots"
+```
+
+Commit both sets together.
 
 ## Phase 2 merge
 

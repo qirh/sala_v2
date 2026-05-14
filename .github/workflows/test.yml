@@ -59,54 +59,50 @@ jobs:
         continue-on-error: true
         run: npm test
 
-      # --- Suite 3: parity (HTTP mode) --------------------------------------
-      # HTTP-mode compares status, Location, Content-Type, and Link headers
-      # between production saleh.sh and this PR's build. Catches regressions
-      # in the 8 Netlify redirects (/cv, /resume, /spider-man, /spiderman,
-      # /address, /sunnyside, /blog, /posts) plus sitemap.xml/robots.txt.
+      # --- Suite 3: parity (HTTP mode, vs deploy preview) ------------------
+      # parity_test.mjs must compare prod (Netlify edge) against another
+      # Netlify-edge target — not a local `vite preview`, which doesn't
+      # run the redirects, the Link header, or Content-Type overrides.
+      # The deploy preview URL is predictable from the PR number, so we
+      # wait for Netlify to be ready, then run parity against it.
       #
-      # Content-mode is intentionally skipped: production is currently Vue 2
-      # (JS-rendered, plain fetch returns the noscript shell) while the
-      # SvelteKit preview is prerendered. They'd diff meaninglessly. Switch
-      # to --mode=all once SvelteKit is on prod.
-      - name: Build for parity
-        run: PUBLIC_BUILD_TIMESTAMP_UTC=$(date -u +%FT%TZ) npm run build
-
-      - name: Start preview server
+      # Push-to-main has no PR preview, so this suite is PR-only.
+      - name: Wait for Netlify deploy preview
+        if: github.event_name == 'pull_request'
+        env:
+          PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
         run: |
-          npm run preview -- --host 127.0.0.1 --port 8080 > /tmp/preview.log 2>&1 &
-          echo $! > /tmp/preview.pid
-          for _ in $(seq 1 20); do
-            if curl -fsS http://127.0.0.1:8080/ >/dev/null 2>&1; then
-              echo "preview ready"
+          for i in $(seq 1 60); do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 10 "$PREVIEW_URL/" || echo "000")
+            if [ "$code" = "200" ]; then
+              echo "deploy preview ready ($PREVIEW_URL)"
               exit 0
             fi
-            sleep 1
+            echo "  attempt $i: HTTP $code — sleeping 10s"
+            sleep 10
           done
-          echo "preview server did not come up:" >&2
-          cat /tmp/preview.log >&2
+          echo "deploy preview did not come up in 10 minutes" >&2
           exit 1
 
       - name: Parity HTTP-mode (vs production)
+        if: github.event_name == 'pull_request'
         id: parity
         continue-on-error: true
         env:
-          PREVIEW_URL: http://127.0.0.1:8080
+          PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
         run: npm run test:parity -- --mode=http
 
-      - name: Stop preview server
-        if: always()
-        run: |
-          if [ -f /tmp/preview.pid ]; then
-            kill "$(cat /tmp/preview.pid)" 2>/dev/null || true
-          fi
-
-      # --- Suite 4: visual regression ---------------------------------------
+      # --- Suite 4: visual regression (against deploy preview) -------------
+      # Run visual against the deploy preview URL — same Netlify-served
+      # SvelteKit bundle prod will serve. The baseURL trick:
+      # PARITY_TARGET=prod + PROD_URL=<deploy preview> makes playwright.config
+      # skip the local webServer and point baseURL at the remote URL.
+      #
       # Baselines are committed as PNGs under tests/visual.spec.js-snapshots/
-      # — both macOS-darwin (for local dev) and Linux (for CI). They reflect
+      # — darwin (local dev on macOS) + linux (CI on Ubuntu). They reflect
       # "what the SvelteKit build is expected to render"; this run compares
-      # the PR's build against them. Match = "this PR didn't drift from the
-      # committed visual reference."
+      # the deploy preview against them. Push-to-main has no deploy preview,
+      # so this suite is PR-only.
       #
       # To re-baseline after a deliberate visual change:
       #   npm run test:visual:update                                     # local OS
@@ -114,9 +110,13 @@ jobs:
       #     mcr.microsoft.com/playwright:v1.59.1-jammy \
       #     bash -c "npm ci && npx playwright install chromium \
       #              && VISUAL=1 npx playwright test --update-snapshots"  # Linux
-      - name: Visual regression
+      - name: Visual regression (vs deploy preview)
+        if: github.event_name == 'pull_request'
         id: visual
         continue-on-error: true
+        env:
+          PARITY_TARGET: prod
+          PROD_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
         run: npm run test:visual
 
       # --- Artifacts --------------------------------------------------------
@@ -152,8 +152,8 @@ jobs:
             |---|---|
             | Type-check (svelte-check) | ${{ steps.check.outcome == 'success' && '✅ pass' || '❌ fail' }} |
             | Functional | ${{ steps.functional.outcome == 'success' && '✅ pass' || '❌ fail' }} |
-            | Parity HTTP (vs prod) | ${{ steps.parity.outcome == 'success' && '✅ pass' || '❌ fail' }} |
-            | Visual regression (vs prod) | ${{ steps.visual.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Parity HTTP (vs prod, via deploy preview) | ${{ steps.parity.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Visual regression | ${{ steps.visual.outcome == 'success' && '✅ pass' || '❌ fail' }} |
 
             [Full run details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
@@ -161,8 +161,9 @@ jobs:
         if: |
           steps.check.outcome != 'success' ||
           steps.functional.outcome != 'success' ||
-          steps.parity.outcome != 'success' ||
-          steps.visual.outcome != 'success'
+          (github.event_name == 'pull_request' && (
+            steps.parity.outcome != 'success' ||
+            steps.visual.outcome != 'success'))
         run: |
           echo "::error::At least one suite failed"
           echo "  check:      ${{ steps.check.outcome }}"

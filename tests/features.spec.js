@@ -204,15 +204,21 @@ test('"h e l p" chord logs the help message', async ({page}) => {
 // (#84) uses a custom sequence matcher that reads `KeyboardEvent.key` — this
 // approach exercises both implementations.
 async function pressAr(page, char) {
+    // Dispatch both `keypress` (Vue 2 / Mousetrap) and `keyup` (SvelteKit's
+    // custom matcher) so the same test works against either stack. Playwright's
+    // built-in `keyboard.press(arabicChar)` doesn't reliably synthesize
+    // either event for non-ASCII chars without an Arabic keyboard layout.
     await page.evaluate((c) => {
-        const e = new KeyboardEvent('keypress', {
+        const opts = {
             key: c,
             keyCode: c.charCodeAt(0),
             charCode: c.charCodeAt(0),
             which: c.charCodeAt(0),
             bubbles: true,
-        });
-        document.dispatchEvent(e);
+        };
+        document.dispatchEvent(new KeyboardEvent('keydown', opts));
+        document.dispatchEvent(new KeyboardEvent('keypress', opts));
+        document.dispatchEvent(new KeyboardEvent('keyup', opts));
     }, char);
 }
 

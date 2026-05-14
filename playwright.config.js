@@ -52,7 +52,11 @@ export default defineConfig({
         TARGET === 'prod'
             ? undefined
             : {
-                  command: 'npm run build && npm run preview -- --host 127.0.0.1 --port 8080',
+                  // PUBLIC_BUILD_TIMESTAMP_UTC must be set inline with the
+                  // build (env vars don't propagate across npm-script processes),
+                  // or `%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%` in app.html
+                  // resolves to an empty string and tests catch it.
+                  command: 'PUBLIC_BUILD_TIMESTAMP_UTC=$(date -u +%FT%TZ) npm run build && npm run preview -- --host 127.0.0.1 --port 8080',
                   url: PREVIEW_URL,
                   reuseExistingServer: !process.env.CI,
                   timeout: 120000,

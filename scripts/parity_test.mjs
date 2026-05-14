@@ -89,6 +89,11 @@ async function fetchHead(url) {
         status: res.status,
         location: res.headers.get('location') || '',
         contentType: ct.split(';')[0].trim(),
+        // The `Link: </sitemap.xml>; rel="sitemap"` header was added in #81
+        // for agent-readiness. It applies to every path via `[[headers]]
+        // for = "/*"` in netlify.toml. If that block ever gets dropped the
+        // site silently loses agent discoverability.
+        link: res.headers.get('link') || '',
     };
 }
 
@@ -218,6 +223,11 @@ async function checkHttp() {
         if (prod.contentType !== preview.contentType) {
             mismatches.push(
                 `content-type (prod="${prod.contentType}" preview="${preview.contentType}")`,
+            );
+        }
+        if (prod.link !== preview.link) {
+            mismatches.push(
+                `link (prod="${prod.link}" preview="${preview.link}")`,
             );
         }
         if (mismatches.length === 0) {

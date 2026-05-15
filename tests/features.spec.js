@@ -57,16 +57,24 @@ test('t toggles theme on sub-pages (regression: shortcuts must be global)', asyn
         await page.keyboard.press(k);
     }
     await expect(page).toHaveURL('/about');
-    // toggle theme and assert it flips from whatever state it's in
-    const before = await page.evaluate(() =>
-        document.body.classList.contains('dark-theme') ? 'dark' : 'light',
+    // Unlisted routes (matching prod) deliberately don't cascade the
+    // theme class onto body, so we can't assert body classes here.
+    // Instead read the persisted store directly — that's the state the
+    // shortcut is meant to flip, and what / will re-pick up on nav back.
+    const persistKey = '~~saleh~~-1.6';
+    const before = await page.evaluate(
+        (k) => JSON.parse(localStorage.getItem(k)).theme,
+        persistKey,
     );
     await page.keyboard.press('y');
     await page.keyboard.press('t');
-    await page.waitForFunction((before) => {
-        const isDark = document.body.classList.contains('dark-theme');
-        return (before === 'light' && isDark) || (before === 'dark' && !isDark);
-    }, before);
+    await page.waitForFunction(
+        ({key, before}) => {
+            const cur = JSON.parse(localStorage.getItem(key)).theme;
+            return cur && cur !== before;
+        },
+        {key: persistKey, before},
+    );
 });
 
 test('f toggles font on home', async ({page}) => {

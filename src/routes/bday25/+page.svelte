@@ -1,7 +1,7 @@
 <div>
     <a
         style="position: absolute; top: 8px; left: 16px"
-        href="https://saleh.sh"
+        href="/"
     >
         &lt;-back
     </a>

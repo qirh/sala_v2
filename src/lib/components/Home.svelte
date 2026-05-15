@@ -81,7 +81,7 @@
         <div class="grid-paragraphs">
             <p>{$_('p1')}</p>
             <p>
-                {$_('p2_before_smile')}<Icon icon={['far', 'smile']} />{$_('p2_after_smile')}
+                {$_('p2_before_smile')}<Icon icon={['far', 'smile']} />
             </p>
             <p>{$_('p3')}</p>
             <p>{$_('p4')}</p>

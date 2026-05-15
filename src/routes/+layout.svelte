@@ -99,7 +99,6 @@
 
         locale.set(currentLang.code);
         document.documentElement.setAttribute('lang', currentLang.code);
-        document.documentElement.setAttribute('dir', currentLang.direction);
         document.title = currentLang.title;
 
         document

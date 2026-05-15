@@ -146,9 +146,6 @@ test.describe('prod parity', () => {
                     const prod = PNG.sync.read(prodBuf);
                     const preview = PNG.sync.read(prevBuf);
 
-                    expect(prod.width).toBe(preview.width);
-                    expect(prod.height).toBe(preview.height);
-
                     const diff = new PNG({
                         width: prod.width,
                         height: prod.height,

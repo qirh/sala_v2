@@ -54,6 +54,11 @@
     grid-area: grid-paragraphs;
     margin-right: 4em;
     align-self: start;
+    line-height: 0;
+
+    p:not(:last-child) {
+        margin-bottom: 0;
+    }
 }
 
 .grid-picture {

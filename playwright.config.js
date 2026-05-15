@@ -8,9 +8,10 @@
 //     excluded from `npm test` (CI is Linux, baselines are macOS). Opt in
 //     via `npm run test:visual` (sets VISUAL=1 so testIgnore lets it run).
 //
-// Baselines are captured against production saleh.sh, committed, and
-// re-checked against `vite preview` (auto-spawned via webServer below) on
-// every run.
+// Baselines are committed and re-checked against `vite preview`
+// (auto-spawned via webServer below) on every run. The projects cover the
+// original desktop baseline, the large laptop viewport that catches
+// centering regressions, and a phone viewport.
 
 import {defineConfig, devices} from '@playwright/test';
 
@@ -67,6 +68,21 @@ export default defineConfig({
             use: {
                 ...devices['Desktop Chrome'],
                 viewport: {width: 1280, height: 800},
+            },
+        },
+        {
+            name: 'chromium-laptop',
+            use: {
+                ...devices['Desktop Chrome'],
+                viewport: {width: 2048, height: 1024},
+            },
+        },
+        {
+            name: 'chromium-phone',
+            use: {
+                ...devices['Desktop Chrome'],
+                viewport: {width: 390, height: 844},
+                isMobile: true,
             },
         },
     ],

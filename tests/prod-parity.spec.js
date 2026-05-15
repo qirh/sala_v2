@@ -87,10 +87,10 @@ async function seedState(page, theme, lang) {
     );
 }
 
-async function captureRoute(browser, base, route, theme, lang) {
-    const ctx = await browser.newContext({
-        viewport: {width: 1280, height: 800},
-    });
+async function captureRoute(browser, browserContextOptions, base, route, theme, lang) {
+    // Inherit viewport + device emulation from the active project so a
+    // single spec covers chromium / chromium-laptop / chromium-phone.
+    const ctx = await browser.newContext(browserContextOptions);
     const page = await ctx.newPage();
     await seedState(page, theme, lang);
     await page.goto(base + route, {waitUntil: 'networkidle'});
@@ -115,9 +115,20 @@ test.describe('prod parity', () => {
             for (const langCode of Object.keys(langs)) {
                 test(`${slugify(route)} [${langCode}, ${theme}]`, async ({
                     browser,
+                    browserName,
+                    contextOptions,
                 }, testInfo) => {
+                    const opts = {
+                        ...contextOptions,
+                        viewport: testInfo.project.use.viewport,
+                        deviceScaleFactor:
+                            testInfo.project.use.deviceScaleFactor,
+                        isMobile: testInfo.project.use.isMobile,
+                        hasTouch: testInfo.project.use.hasTouch,
+                    };
                     const prodBuf = await captureRoute(
                         browser,
+                        opts,
                         PROD_URL,
                         route,
                         theme,
@@ -125,6 +136,7 @@ test.describe('prod parity', () => {
                     );
                     const prevBuf = await captureRoute(
                         browser,
+                        opts,
                         PREVIEW_URL,
                         route,
                         theme,

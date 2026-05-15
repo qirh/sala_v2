@@ -73,10 +73,6 @@
 </div>
 
 <style lang="scss">
-    :global(body) {
-        background-color: rgb(255, 255, 255);
-    }
-
     div,
     h3,
     a,

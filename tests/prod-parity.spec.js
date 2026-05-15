@@ -49,6 +49,14 @@ const routes = [
 
 const themes = ['light', 'dark'];
 
+// System color-scheme preference. Catches regressions in the
+// `@media (prefers-color-scheme: dark)` cascade, which the in-page
+// theme toggle does NOT exercise: that toggle writes a class to body,
+// which overrides the media query. The OS-level preference only
+// matters when no class is set — i.e. unlisted routes after layout
+// scoping.
+const colorSchemes = ['light', 'dark'];
+
 const langs = {
     en: {
         code: 'en',
@@ -113,7 +121,8 @@ test.describe('prod parity', () => {
     for (const route of routes) {
         for (const theme of themes) {
             for (const langCode of Object.keys(langs)) {
-                test(`${slugify(route)} [${langCode}, ${theme}]`, async ({
+                for (const colorScheme of colorSchemes) {
+                    test(`${slugify(route)} [${langCode}, ${theme}, os-${colorScheme}]`, async ({
                     browser,
                     browserName,
                     contextOptions,
@@ -125,6 +134,7 @@ test.describe('prod parity', () => {
                             testInfo.project.use.deviceScaleFactor,
                         isMobile: testInfo.project.use.isMobile,
                         hasTouch: testInfo.project.use.hasTouch,
+                        colorScheme,
                     };
                     const prodBuf = await captureRoute(
                         browser,
@@ -185,6 +195,7 @@ test.describe('prod parity', () => {
                         `pixel-diff ratio ${ratio.toFixed(4)} exceeds ${MAX_DIFF_RATIO}`,
                     ).toBeLessThanOrEqual(MAX_DIFF_RATIO);
                 });
+                }
             }
         }
     }

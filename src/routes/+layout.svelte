@@ -222,6 +222,14 @@
         processKeyUp(event.key, matchKeybinding);
     }
 
+    // Re-apply theme/font on route change so navigating to an
+    // unlisted route strips the classes (and back to / re-adds them).
+    afterNavigate(() => {
+        const s = get(appState);
+        applyTheme(s.theme);
+        applyFont(s.funFont, s.currentLang);
+    });
+
     onMount(() => {
         const matchKeybinding = createKeybindingMatcher({
             secondHelpMessage,
@@ -250,13 +258,6 @@
 
         document.addEventListener('keydown', keydown);
         document.addEventListener('keyup', keyup);
-        // Re-apply theme/font on route change so navigating to an
-        // unlisted route strips the classes (and back to / re-adds them).
-        afterNavigate(() => {
-            const s = get(appState);
-            applyTheme(s.theme);
-            applyFont(s.funFont, s.currentLang);
-        });
         firstHelpMessage();
 
         const langObject = getLangObjectFromCode(getLangCodeOnInit());

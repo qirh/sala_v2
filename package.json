@@ -10,6 +10,7 @@
     "lint": "npm run check",
     "test": "playwright test",
     "test:parity": "node scripts/parity_test.mjs",
+    "test:prod-parity": "playwright test tests/prod-parity.spec.js",
     "test:visual": "VISUAL=1 playwright test tests/visual.spec.js",
     "test:visual:update": "VISUAL=1 playwright test tests/visual.spec.js --update-snapshots",
     "clean": "rm -rf node_modules/ build/ .svelte-kit/"
@@ -46,6 +47,8 @@
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/kit": "^2.59.1",
     "@sveltejs/vite-plugin-svelte": "^7.1.1",
+    "pixelmatch": "^7.2.0",
+    "pngjs": "^7.0.0",
     "sass": "^1.99.0",
     "svelte": "^5.55.5",
     "svelte-check": "^4.4.8",

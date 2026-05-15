@@ -1,5 +1,5 @@
 <script>
-    import {goto, afterNavigate} from '$app/navigation';
+    import {goto} from '$app/navigation';
     import {onMount} from 'svelte';
     import {get} from 'svelte/store';
     import {getLangObjectFromCode, getNextLang, langs} from '$lib/consts.js';
@@ -74,22 +74,13 @@
         goto('/nycmarathon25');
     }
 
-    // Theme + font classes only apply on the home route. The unlisted
-    // routes (/about, /30, /nycmarathon24, /nycmarathon25, /bday25) ship
-    // their own document-level styles in prod and don't pick up the
-    // global theme/font cascade — match that.
-    function isThemedRoute() {
-        if (typeof window === 'undefined') {
-            return false;
-        }
-        return window.location.pathname === '/' || window.location.pathname === '';
-    }
-
+    // Apply theme + font classes to body on every route. The rewrite
+    // intentionally diverges from prod here: prod's Vue 2 build only
+    // toggled these on /, so an explicit theme choice didn't carry to
+    // unlisted sub-pages (they fell back to @media prefers-color-scheme).
+    // Carrying the user's chosen theme everywhere is the obviously
+    // correct behavior — accept the prod-parity diff in exchange.
     function applyTheme(theme) {
-        if (!isThemedRoute()) {
-            document.body.classList.remove('dark-theme', 'light-theme');
-            return;
-        }
         document.body.classList.toggle('dark-theme', theme === 'dark');
         document.body.classList.toggle('light-theme', theme !== 'dark');
     }
@@ -102,9 +93,6 @@
         allFontClasses.forEach((fontClass) => {
             document.body.classList.remove(fontClass);
         });
-        if (!isThemedRoute()) {
-            return;
-        }
         document.body.classList.add(
             funFont ? currentLang.fonts[1] : currentLang.fonts[0],
         );
@@ -221,14 +209,6 @@
 
         processKeyUp(event.key, matchKeybinding);
     }
-
-    // Re-apply theme/font on route change so navigating to an
-    // unlisted route strips the classes (and back to / re-adds them).
-    afterNavigate(() => {
-        const s = get(appState);
-        applyTheme(s.theme);
-        applyFont(s.funFont, s.currentLang);
-    });
 
     onMount(() => {
         const matchKeybinding = createKeybindingMatcher({

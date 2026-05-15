@@ -69,4 +69,12 @@
         max-width: 100%;
         height: auto;
     }
+
+    // Override global.scss's `* { white-space: pre-wrap }`. Vue 2's
+    // template compiler stripped inter-element whitespace; Svelte
+    // preserves it, which inflates page height when combined with the
+    // global pre-wrap rule.
+    div {
+        white-space: normal;
+    }
 </style>

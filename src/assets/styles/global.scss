@@ -31,15 +31,18 @@ body {
     perspective: 500px;
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
-    // Inherit `line-height: 1.15` from normalize.css's `html` rule.
-    // The previous `font-size: 0 / line-height: 0` hack (with a `#cuerpo`
-    // `font-size: initial; line-height: normal` reset) was an inline-block-
-    // whitespace workaround that Vue 2's CSS minifier stripped from the
-    // production bundle anyway. SvelteKit's bundler keeps it, which causes
-    // `#cuerpo` descendants to use `line-height: normal` (font-default)
-    // instead of the inherited 1.15. The 1-2px per-element delta accumulates
-    // on long routes. Just removing the rules lets the normalize.css value
-    // cascade, matching production exactly.
+    font-size: 0;
+    line-height: 0;
+}
+
+#app {
+    font-size: 0;
+    line-height: 0;
+}
+
+#cuerpo {
+    font-size: initial;
+    line-height: normal;
 }
 
 .toolTip {

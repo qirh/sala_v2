@@ -78,6 +78,13 @@ export default defineConfig({
             },
         },
         {
+            name: 'chromium-mbp16',
+            use: {
+                ...devices['Desktop Chrome'],
+                viewport: {width: 1728, height: 1117},
+            },
+        },
+        {
             name: 'chromium-phone',
             use: {
                 ...devices['Desktop Chrome'],

@@ -1,5 +1,5 @@
 <script>
-    import {goto} from '$app/navigation';
+    import {goto, afterNavigate} from '$app/navigation';
     import {onMount} from 'svelte';
     import {get} from 'svelte/store';
     import {getLangObjectFromCode, getNextLang, langs} from '$lib/consts.js';
@@ -74,7 +74,22 @@
         goto('/nycmarathon25');
     }
 
+    // Theme + font classes only apply on the home route. The unlisted
+    // routes (/about, /30, /nycmarathon24, /nycmarathon25, /bday25) ship
+    // their own document-level styles in prod and don't pick up the
+    // global theme/font cascade — match that.
+    function isThemedRoute() {
+        if (typeof window === 'undefined') {
+            return false;
+        }
+        return window.location.pathname === '/' || window.location.pathname === '';
+    }
+
     function applyTheme(theme) {
+        if (!isThemedRoute()) {
+            document.body.classList.remove('dark-theme', 'light-theme');
+            return;
+        }
         document.body.classList.toggle('dark-theme', theme === 'dark');
         document.body.classList.toggle('light-theme', theme !== 'dark');
     }
@@ -87,6 +102,9 @@
         allFontClasses.forEach((fontClass) => {
             document.body.classList.remove(fontClass);
         });
+        if (!isThemedRoute()) {
+            return;
+        }
         document.body.classList.add(
             funFont ? currentLang.fonts[1] : currentLang.fonts[0],
         );
@@ -232,6 +250,13 @@
 
         document.addEventListener('keydown', keydown);
         document.addEventListener('keyup', keyup);
+        // Re-apply theme/font on route change so navigating to an
+        // unlisted route strips the classes (and back to / re-adds them).
+        afterNavigate(() => {
+            const s = get(appState);
+            applyTheme(s.theme);
+            applyFont(s.funFont, s.currentLang);
+        });
         firstHelpMessage();
 
         const langObject = getLangObjectFromCode(getLangCodeOnInit());

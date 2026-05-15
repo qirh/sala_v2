@@ -76,5 +76,10 @@
     // global pre-wrap rule.
     div {
         white-space: normal;
+        // Prod inherits normalize.css's `html { line-height: 1.15 }` through
+        // body; the rewrite's `body { line-height: 0 }` short-circuits that,
+        // so children fall back to `normal` (~1.2). Force 1.15 here so the
+        // text block matches prod height exactly.
+        line-height: 1.15;
     }
 </style>

@@ -110,5 +110,7 @@
     // between <h2>, <img>, <br>, and bare-text content.
     div {
         white-space: normal;
+        // See bday25/+page.svelte for rationale.
+        line-height: 1.15;
     }
 </style>

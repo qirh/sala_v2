@@ -119,13 +119,32 @@ jobs:
           PROD_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
         run: npm run test:visual
 
+      # --- Suite 5: prod-parity (vs production saleh.sh) -------------------
+      # Pixel-diff the deploy preview against the live prod site. This is
+      # the strongest catch for "the rewrite changed how a page looks"
+      # because the baselines are the live site, not committed snapshots
+      # taken from the preview itself (which would only catch drift _from
+      # the preview_).
+      #
+      # Currently informational only (continue-on-error: true) because
+      # several categories of legitimate diff are still being worked
+      # through — see docs/test-suite.md.
+      - name: Prod-parity (vs saleh.sh)
+        if: github.event_name == 'pull_request'
+        id: prod_parity
+        continue-on-error: true
+        env:
+          PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
+        run: npm run test:prod-parity
+
       # --- Artifacts --------------------------------------------------------
       - name: Upload Playwright report
         if: |
           steps.check.outcome == 'failure' ||
           steps.functional.outcome == 'failure' ||
           steps.parity.outcome == 'failure' ||
-          steps.visual.outcome == 'failure'
+          steps.visual.outcome == 'failure' ||
+          steps.prod_parity.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
@@ -154,6 +173,7 @@ jobs:
             | Functional | ${{ steps.functional.outcome == 'success' && '✅ pass' || '❌ fail' }} |
             | Parity HTTP (vs prod, via deploy preview) | ${{ steps.parity.outcome == 'success' && '✅ pass' || '❌ fail' }} |
             | Visual regression | ${{ steps.visual.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Prod-parity (vs saleh.sh, informational) | ${{ steps.prod_parity.outcome == 'success' && '✅ pass' || '⚠️ diffs' }} |
 
             [Full run details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 

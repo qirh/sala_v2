@@ -1,4 +1,4 @@
-const {test, expect} = require('@playwright/test');
+import {expect, test} from '@playwright/test';
 
 test('language switcher: click AR flips to RTL + Arabic', async ({page}) => {
     await page.goto('/');
@@ -57,16 +57,24 @@ test('t toggles theme on sub-pages (regression: shortcuts must be global)', asyn
         await page.keyboard.press(k);
     }
     await expect(page).toHaveURL('/about');
-    // toggle theme and assert it flips from whatever state it's in
-    const before = await page.evaluate(() =>
-        document.body.classList.contains('dark-theme') ? 'dark' : 'light',
+    // Unlisted routes (matching prod) deliberately don't cascade the
+    // theme class onto body, so we can't assert body classes here.
+    // Instead read the persisted store directly — that's the state the
+    // shortcut is meant to flip, and what / will re-pick up on nav back.
+    const persistKey = '~~saleh~~-1.6';
+    const before = await page.evaluate(
+        (k) => JSON.parse(localStorage.getItem(k)).theme,
+        persistKey,
     );
     await page.keyboard.press('y');
     await page.keyboard.press('t');
-    await page.waitForFunction((before) => {
-        const isDark = document.body.classList.contains('dark-theme');
-        return (before === 'light' && isDark) || (before === 'dark' && !isDark);
-    }, before);
+    await page.waitForFunction(
+        ({key, before}) => {
+            const cur = JSON.parse(localStorage.getItem(key)).theme;
+            return cur && cur !== before;
+        },
+        {key: persistKey, before},
+    );
 });
 
 test('f toggles font on home', async ({page}) => {
@@ -100,7 +108,7 @@ test('"2 5" chord navigates to /nycmarathon25', async ({page}) => {
     await expect(page).toHaveURL('/nycmarathon25');
 });
 
-test('Vuex persist: theme survives reload', async ({page}) => {
+test('persisted state: theme survives reload', async ({page}) => {
     await page.goto('/');
     await page.keyboard.press('t');
     await expect(page.locator('body')).toHaveClass(/dark-theme/);
@@ -114,17 +122,7 @@ test('Vuex persist: theme survives reload', async ({page}) => {
     await expect(page.locator('body')).toHaveClass(/dark-theme/);
 });
 
-// On Vue 2 main this fails: Home.vue registers a store.watch in created() that
-// manipulates #grid-main, and Vue 2 doesn't auto-dispose component-bound
-// watchers. After navigating to /about and switching language, the watcher
-// fires against a removed DOM node and throws.
-//
-// The SvelteKit rewrite (PR #84) addresses this by wiring DOM-mutating
-// effects through onMount(state.subscribe(...)) in +layout.svelte — the
-// subscription is disposed when the layout unmounts.
-//
-// Unmark this test (`test(` instead of `test.fixme(`) once the rewrite lands.
-test.fixme('lang change on sub-pages does not throw', async ({page}) => {
+test('lang change on sub-pages does not throw', async ({page}) => {
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('console', (m) => {
@@ -140,7 +138,7 @@ test.fixme('lang change on sub-pages does not throw', async ({page}) => {
     expect(errors).toEqual([]);
 });
 
-test('Vuex persist: language survives reload', async ({page}) => {
+test('persisted state: language survives reload', async ({page}) => {
     await page.goto('/');
     await page.locator('.lang-item').filter({hasText: 'عربي'}).click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
@@ -214,15 +212,21 @@ test('"h e l p" chord logs the help message', async ({page}) => {
 // (#84) uses a custom sequence matcher that reads `KeyboardEvent.key` — this
 // approach exercises both implementations.
 async function pressAr(page, char) {
+    // Dispatch both `keypress` (Vue 2 / Mousetrap) and `keyup` (SvelteKit's
+    // custom matcher) so the same test works against either stack. Playwright's
+    // built-in `keyboard.press(arabicChar)` doesn't reliably synthesize
+    // either event for non-ASCII chars without an Arabic keyboard layout.
     await page.evaluate((c) => {
-        const e = new KeyboardEvent('keypress', {
+        const opts = {
             key: c,
             keyCode: c.charCodeAt(0),
             charCode: c.charCodeAt(0),
             which: c.charCodeAt(0),
             bubbles: true,
-        });
-        document.dispatchEvent(e);
+        };
+        document.dispatchEvent(new KeyboardEvent('keydown', opts));
+        document.dispatchEvent(new KeyboardEvent('keypress', opts));
+        document.dispatchEvent(new KeyboardEvent('keyup', opts));
     }, char);
 }
 

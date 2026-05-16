@@ -31,6 +31,18 @@ body {
     perspective: 500px;
     transform-style: preserve-3d;
     -webkit-font-smoothing: antialiased;
+    font-size: 0;
+    line-height: 0;
+}
+
+#app {
+    font-size: 0;
+    line-height: 0;
+}
+
+#cuerpo {
+    font-size: initial;
+    line-height: normal;
 }
 
 .toolTip {

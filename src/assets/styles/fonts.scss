@@ -15,10 +15,10 @@
 
 // arabic
 @font-face {
-  font-family: 'amiri';
-  src: url('/assets/fonts/amiri.ttf') format('ttf');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'amiri';
+    src: url('/assets/fonts/amiri.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: 'aref-ruqaa';
@@ -38,7 +38,7 @@
 
 // arabic
 .font-amiri {
-  font-family: 'amiri', -apple-system, sans-serif;
+    font-family: 'amiri', -apple-system, sans-serif;
 }
 .font-aref-ruqaa {
     font-family: 'aref-ruqaa', -apple-system, sans-serif;

@@ -1,8 +1,11 @@
 # https://docs.netlify.com/configure-builds/file-based-configuration/#sample-file
 [build]
 base = "/"
-publish = "dist/"
-command = "npm run build"
+publish = "build/"
+command = "PUBLIC_BUILD_TIMESTAMP_UTC=$(date -u +%FT%TZ) npm run build"
+
+[build.environment]
+NODE_VERSION = "20.20.2"
 
 # let's test this
 # [build.processing]

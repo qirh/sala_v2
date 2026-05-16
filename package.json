@@ -1,66 +1,26 @@
 {
   "name": "sala_v2",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --threshold error",
+    "lint": "npm run check",
     "test": "playwright test",
     "test:parity": "node scripts/parity_test.mjs",
+    "test:prod-parity": "playwright test tests/prod-parity.spec.js",
     "test:visual": "VISUAL=1 playwright test tests/visual.spec.js",
-    "test:visual:update": "VISUAL=1 PARITY_TARGET=prod playwright test tests/visual.spec.js --update-snapshots",
-    "clean": "rm -rf node_modules/ dist/",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+    "test:visual:update": "VISUAL=1 playwright test tests/visual.spec.js --update-snapshots",
+    "clean": "rm -rf node_modules/ build/ .svelte-kit/"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/vue-fontawesome": "^0.1.10",
-    "core-js": "^3.19.1",
-    "vue": "^2.7.16",
-    "vue-i18n": "^8.26.7",
-    "vue-mousetrap": "1.0.2",
-    "vue-router": "^3.5.3",
-    "vuex": "^3.6.0",
-    "vuex-persist": "^2.3.0"
-  },
-  "devDependencies": {
-    "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@playwright/test": "^1.59.1",
-    "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-service": "^4.5.19",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "git-describe": "^4.1.0",
-    "netlify-plugin-a11y": "0.0.12",
-    "sass": "^1.93.2",
-    "sass-loader": "^8.0.2",
-    "vue-cli-plugin-git-describe": "^1.0.0",
-    "vue-cli-plugin-i18n": "^1.0.1",
-    "vue-template-compiler": "^2.6.12"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/prettier"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "globals": {
-      "GIT_DESCRIBE": "readonly"
-    }
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "svelte-i18n": "^4.0.1"
   },
   "prettier": {
     "tabWidth": 4,
@@ -69,11 +29,6 @@
     "arrowParens": "always",
     "bracketSpacing": false
   },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -81,10 +36,23 @@
   ],
   "engines": {
     "npm": ">=10.0.0",
-    "node": ">=20.0.0"
+    "node": ">=20.19.0"
   },
   "overrides": {
     "fsevents": "^2.3.3",
     "chokidar": "^3.6.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.59.1",
+    "@sveltejs/vite-plugin-svelte": "^7.1.1",
+    "pixelmatch": "^7.2.0",
+    "pngjs": "^7.0.0",
+    "sass": "^1.99.0",
+    "svelte": "^5.55.5",
+    "svelte-check": "^4.4.8",
+    "svelte-preprocess": "^6.0.3",
+    "vite": "^8.0.10"
   }
 }

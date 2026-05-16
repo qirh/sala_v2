@@ -1,0 +1,193 @@
+name: tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+# Cancel earlier in-progress runs when new commits come in on the same PR/branch.
+concurrency:
+  group: tests-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  # Sticky PR comment writes; checkout reads.
+  pull-requests: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Playwright Chromium (cold cache)
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium --with-deps
+      - name: Install Playwright system deps (warm cache)
+        if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      # --- Suite 1: type-check (svelte-check) -------------------------------
+      - name: Type-check
+        id: check
+        continue-on-error: true
+        run: npm run check
+
+      # --- Suite 2: functional ----------------------------------------------
+      # Playwright's webServer auto-spawns vite preview (with the inline
+      # PUBLIC_BUILD_TIMESTAMP_UTC env var prefix; see playwright.config.js).
+      - name: Functional tests
+        id: functional
+        continue-on-error: true
+        run: npm test
+
+      # --- Suite 3: parity (HTTP mode, vs deploy preview) ------------------
+      # parity_test.mjs must compare prod (Netlify edge) against another
+      # Netlify-edge target — not a local `vite preview`, which doesn't
+      # run the redirects, the Link header, or Content-Type overrides.
+      # The deploy preview URL is predictable from the PR number, so we
+      # wait for Netlify to be ready, then run parity against it.
+      #
+      # Push-to-main has no PR preview, so this suite is PR-only.
+      - name: Wait for Netlify deploy preview
+        if: github.event_name == 'pull_request'
+        env:
+          PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
+        run: |
+          for i in $(seq 1 60); do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 10 "$PREVIEW_URL/" || echo "000")
+            if [ "$code" = "200" ]; then
+              echo "deploy preview ready ($PREVIEW_URL)"
+              exit 0
+            fi
+            echo "  attempt $i: HTTP $code — sleeping 10s"
+            sleep 10
+          done
+          echo "deploy preview did not come up in 10 minutes" >&2
+          exit 1
+
+      - name: Parity HTTP-mode (vs production)
+        if: github.event_name == 'pull_request'
+        id: parity
+        continue-on-error: true
+        env:
+          PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
+        run: npm run test:parity -- --mode=http
+
+      # --- Suite 4: visual regression (against deploy preview) -------------
+      # Run visual against the deploy preview URL — same Netlify-served
+      # SvelteKit bundle prod will serve. The baseURL trick:
+      # PARITY_TARGET=prod + PROD_URL=<deploy preview> makes playwright.config
+      # skip the local webServer and point baseURL at the remote URL.
+      #
+      # Baselines are committed as PNGs under tests/visual.spec.js-snapshots/
+      # — darwin (local dev on macOS) + linux (CI on Ubuntu). They reflect
+      # "what the SvelteKit build is expected to render"; this run compares
+      # the deploy preview against them. Push-to-main has no deploy preview,
+      # so this suite is PR-only.
+      #
+      # To re-baseline after a deliberate visual change:
+      #   npm run test:visual:update                                     # local OS
+      #   docker run --rm -v "$PWD:/work" -w /work \
+      #     mcr.microsoft.com/playwright:v1.59.1-jammy \
+      #     bash -c "npm ci && npx playwright install chromium \
+      #              && VISUAL=1 npx playwright test --update-snapshots"  # Linux
+      - name: Visual regression (vs deploy preview)
+        if: github.event_name == 'pull_request'
+        id: visual
+        continue-on-error: true
+        env:
+          PARITY_TARGET: prod
+          PROD_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
+        run: npm run test:visual
+
+      # --- Suite 5: prod-parity (vs production saleh.sh) -------------------
+      # Pixel-diff the deploy preview against the live prod site. This is
+      # the strongest catch for "the rewrite changed how a page looks"
+      # because the baselines are the live site, not committed snapshots
+      # taken from the preview itself (which would only catch drift _from
+      # the preview_).
+      #
+      # Currently informational only (continue-on-error: true) because
+      # several categories of legitimate diff are still being worked
+      # through — see docs/test-suite.md.
+      - name: Prod-parity (vs saleh.sh)
+        if: github.event_name == 'pull_request'
+        id: prod_parity
+        continue-on-error: true
+        env:
+          PREVIEW_URL: https://deploy-preview-${{ github.event.pull_request.number }}--musing-rosalind-eedabd.netlify.app
+        run: npm run test:prod-parity
+
+      # --- Artifacts --------------------------------------------------------
+      - name: Upload Playwright report
+        if: |
+          steps.check.outcome == 'failure' ||
+          steps.functional.outcome == 'failure' ||
+          steps.parity.outcome == 'failure' ||
+          steps.visual.outcome == 'failure' ||
+          steps.prod_parity.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      # --- PR sticky comment ------------------------------------------------
+      # The `header:` field identifies the comment for in-place updates —
+      # subsequent runs edit the same comment instead of appending new ones.
+      - name: Comment results on PR
+        if: github.event_name == 'pull_request' && always()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: tests
+          message: |
+            ## Test results
+
+            **Commit:** `${{ github.event.pull_request.head.sha }}`
+
+            | Suite | Result |
+            |---|---|
+            | Type-check (svelte-check) | ${{ steps.check.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Functional | ${{ steps.functional.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Parity HTTP (vs prod, via deploy preview) | ${{ steps.parity.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Visual regression | ${{ steps.visual.outcome == 'success' && '✅ pass' || '❌ fail' }} |
+            | Prod-parity (vs saleh.sh, informational) | ${{ steps.prod_parity.outcome == 'success' && '✅ pass' || '⚠️ diffs' }} |
+
+            [Full run details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+      - name: Fail job if any suite failed
+        if: |
+          steps.check.outcome != 'success' ||
+          steps.functional.outcome != 'success' ||
+          (github.event_name == 'pull_request' && (
+            steps.parity.outcome != 'success' ||
+            steps.visual.outcome != 'success'))
+        run: |
+          echo "::error::At least one suite failed"
+          echo "  check:      ${{ steps.check.outcome }}"
+          echo "  functional: ${{ steps.functional.outcome }}"
+          echo "  parity:     ${{ steps.parity.outcome }}"
+          echo "  visual:     ${{ steps.visual.outcome }}"
+          exit 1

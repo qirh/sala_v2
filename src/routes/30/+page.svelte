@@ -1,0 +1,71 @@
+<svelte:head>
+    <title>30 — soft invite (weather and mood pending)</title>
+    <meta name="description" content="soft invite to bike 30 loops around Prospect Park for my 30th birthday — join for part, all, or just picnic." />
+    <meta property="og:title" content="30 — soft invite (weather and mood pending)" />
+    <meta property="og:description" content="soft invite to bike 30 loops around Prospect Park for my 30th birthday — join for part, all, or just picnic." />
+    <meta property="og:image" content="https://saleh.sh/assets/moi_30.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saleh.sh/30" />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
+<div>
+    <h4>Soft invite (weather and mood pending)</h4>
+    <img
+        class="rotate"
+        width="200"
+        height="204"
+        src="/assets/moi_30.jpg"
+        alt=""
+    />
+
+    <br />
+    Welcome to birthday festivities expectacular. The plan is to bike
+    <b>30</b> loops around prospect park (the big loop not the small one).
+    <br />
+    Feel free to join the misery by doing part or all of it. Or just come to
+    picnic in the park and I can take a break and join you (0 pressure).
+
+    <h4>
+        Where?
+        <a
+            style="display: inline"
+            href="https://www.openstreetmap.org/#map=15/40.6619/-73.9708"
+            >Prospect park</a
+        >
+    </h4>
+    (i don't know where exactly yet, we'll decide when the date is closer)
+    <h4>When?</h4>
+    june 26 2022
+    <h4>Why?</h4>
+    1992 + (-2022) = 30
+    <h4>30??? surely you won't finish?!</h4>
+    i don't care, finishing is not the point, but i def will give it a shot
+    <h4>More info?</h4>
+    text me a few days before
+</div>
+
+<style lang="scss">
+    .rotate {
+        animation: rotation 8s infinite linear;
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+    // Override global.scss's `* { white-space: pre-wrap }`. Vue 2's
+    // template compiler stripped inter-element whitespace; Svelte
+    // preserves it, which inflates page height when combined with the
+    // global pre-wrap rule.
+    div {
+        white-space: normal;
+        // See bday25/+page.svelte for rationale.
+        line-height: 1.15;
+    }
+</style>

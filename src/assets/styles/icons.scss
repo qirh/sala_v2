@@ -1,5 +1,13 @@
 @import "variables";
 
+// FontAwesome 7 ships `.svg-inline--fa { width: var(--fa-width, 1.25em) }`,
+// where FA5 sized icons by their per-icon `fa-w-N` class (effectively 1em
+// for 16-wide viewBoxes — the vast majority). Restore the FA5 default so
+// the social-icon row keeps the same horizontal grid as prod.
+:root {
+    --fa-width: 1em;
+}
+
 .icon {
     opacity: .75;
     margin-right: 0.4vw;

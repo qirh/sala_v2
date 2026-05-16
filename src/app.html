@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="color-theme-in-transition" data-build-timestamp-utc="%sveltekit.env.PUBLIC_BUILD_TIMESTAMP_UTC%">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="~~saleh~~">
+    <title>🌕🌗🌘🌑🌒🌓🌕</title>
+
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/en/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/en/icon-180x180.png">
+    <link rel="shortcut icon" type="image/png" sizes="192x192" href="/assets/en/icon-192x192.png">
+    <link rel="stylesheet" href="/assets/normalize.css">
+    <link rel="stylesheet" href="/assets/noscript.css">
+    <script>
+        window.__salehKeyBuffer = {
+            pending: [],
+            capture(event) {
+                window.__salehKeyBuffer.pending.push(event.key);
+                if (window.__salehKeyBuffer.pending.length > 32) {
+                    window.__salehKeyBuffer.pending.shift();
+                }
+            }
+        };
+        window.addEventListener('keyup', window.__salehKeyBuffer.capture, true);
+    </script>
+    %sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover"><noscript>
+        <style>
+            body {
+                padding: 0
+            }
+        </style>
+        <div class="noscript">
+            <section class="section-main">
+                <img class="picture" alt="picture of saleh" title="covid hair" src="/assets/moi.jpg" />
+                <div class="elem section-main-p">hot & good at computing</div>
+                <a class="elem section-main-p" href="mailto:saleh@alghusson.com">saleh@alghusson.com</a>
+            </section>
+        </div>
+    </noscript><script>
+        (function () {
+            try {
+                var raw = localStorage.getItem('~~saleh~~-1.6');
+                if (!raw) return;
+                var s = JSON.parse(raw);
+                if (!s) return;
+                var cl = document.body.classList;
+                if (s.theme === 'dark') cl.add('dark-theme');
+                else if (s.theme === 'light') cl.add('light-theme');
+                if (s.currentLang && s.currentLang.fonts) {
+                    var font = s.currentLang.fonts[s.funFont ? 1 : 0];
+                    if (font) cl.add(font);
+                }
+            } catch (e) { /* swallow */ }
+        })();
+    </script><div id="app">%sveltekit.body%</div></body>
+
+</html>

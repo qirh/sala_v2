@@ -1,23 +1,24 @@
 // Visual regression: viewport-only screenshots of every route × theme ×
-// language. Baselines are captured against production saleh.sh and become
-// the parity target for any future rewrite.
+// language. Baselines are committed and become the parity target for any
+// future rewrite.
 //
 // Capture/refresh baselines:
 //   npm run test:visual:update
 // Verify against local dev server (auto-spawned by playwright.config.js):
 //   npm run test:visual
 //
-// Viewport (1280×800), not fullPage. Long routes (NYCMarathon25, Bday25)
-// would otherwise accumulate sub-pixel paragraph-spacing drift between
-// stacks (~0.4% body height) which cascades into massive diff ratios when
-// fullPage heights differ even by a few pixels. The viewport captures the
-// visible-on-load region — the only place a real regression would be
-// obvious to a visitor.
+// Viewport-only, not fullPage. Long routes (NYCMarathon25, Bday25) would
+// otherwise accumulate sub-pixel paragraph-spacing drift between stacks
+// (~0.4% body height) which cascades into massive diff ratios when fullPage
+// heights differ even by a few pixels. The viewport captures the
+// visible-on-load region — the only place a real regression would be obvious
+// to a visitor. See playwright.config.js for the desktop/laptop/phone
+// viewport matrix.
 //
 // Lang/theme seeded via the vuex-persist composite key BEFORE page load,
 // so the app boots already in the target state — no click-to-switch race.
 
-const {test, expect} = require('@playwright/test');
+import {test, expect} from '@playwright/test';
 
 const PERSIST_KEY = '~~saleh~~-1.6';
 

@@ -4,6 +4,8 @@ xcuserdata/
 # npm
 node_modules/
 dist/
+build/
+.svelte-kit/
 npm-debug.log*
 
 # vscode

@@ -1,0 +1,125 @@
+<svelte:head>
+    <title>invitation to see me suffer the 2024 NYC marathon</title>
+    <meta name="description" content="cheerleading squad invitation for my first NYC marathon — earned the bib over two years and now have to actually run it." />
+    <meta property="og:title" content="invitation to see me suffer the 2024 NYC marathon" />
+    <meta property="og:description" content="cheerleading squad invitation for my first NYC marathon — earned the bib over two years and now have to actually run it." />
+    <meta property="og:image" content="https://saleh.sh/assets/moi_race.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saleh.sh/nycmarathon24" />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
+<div>
+    <a
+        style="position: absolute; top: 8px; left: 16px"
+        href="/"
+    >
+        &lt;-back
+    </a>
+    <br />
+    <h2>Invitation to see me suffer the 2024 NYC Marathon</h2>
+    <img
+        width="200"
+        height="267"
+        src="/assets/moi_race.jpg"
+        alt=""
+    />
+
+    <br />
+    <br />
+    Hello dear friends :) Welcome to my 2024 NYC Marathon cheerleading squad
+    invitation page.
+    <br />
+    <br />
+    As you might know, I made a decision 2 years ago to work on getting a
+    bib for the NYC Marathon. I did a lot of work and made many sacrifices
+    to get a guaranteed entry. It took a while, but I made it.
+    <br />
+    <br />
+    Back then I categorized this decision as a "later" problem, the marathon
+    was so far in the future. And that I would either train for it, or I
+    would cancel my participation.
+    <br />
+    <br />
+    Well, that time is now, and I have neither trained for it nor cancelled.
+    Which is the one thing I told myself I would not do.
+    <br />
+    <br />
+    It will be a day (hopefully I finish within 24 hours) of pure pain and
+    misery, and I will probably take a very long time to finish, but
+    inshallah I will finish!
+    <br />
+    <br />
+    <h3>Logistics (in case you want to come support me, and you should)</h3>
+    Figuring out logistics of where to meet someone during NYC marathon is
+    tough work. I assume that I will not have access to my phone most of the
+    race (it will be in my fanny pack). But I will try to wear my headphones
+    most of the time. So call me if you want to communicate.
+    <br />
+    <br />
+    The marathon is on Nov 3, 2024. My wave start is at 10:30am. My bib
+    number is <b>35052</b>. You can track me (and other runners) on the NYRR
+    <a href="https://apps.apple.com/us/app/6680190121">ios</a> or
+    <a
+        href="https://play.google.com/store/apps/details?id=com.tcs.mobility.nyrr"
+        >android</a
+    >
+    apps. They also have live tracking on the
+    <a href="https://liveresults.nyrr.org/e/NY2024#/dash/R2K8WMH3"
+        >web app</a
+    >. Keep in mind that these tracking solutions are not that accurate.
+    <br />
+    <br />
+    Here is a
+    <a
+        href="https://www.nytimes.com/article/track-runners-nyc-marathon.html?unlocked_article_code=1.WE4.TOwy.6634HYtHIu0s&smid=url-share"
+        >NY Times article about how to track runners.</a
+    >
+    <br />
+    <br />
+    You can also request to follow my location on Find my Friends if you
+    have an iphone.
+    <br />
+    <br />
+    <h3>Best place to meet</h3>
+    For your consideration, I made a chart of my expected mood levels. Also,
+    here is a
+    <a
+        href="https://prodsitecore.blob.core.windows.net/nyrrsitecoreblob/nyrr/pdf/race-course-maps/tcsnycm24_map_course_081324_m_ol.pdf"
+        >Course map</a
+    >.
+    <br />
+    <br />
+    <img
+        width="800"
+        height="442"
+        src="/assets/mood_per_mile.png"
+        alt=""
+    />
+</div>
+
+<style lang="scss">
+    div,
+    h2,
+    h3,
+    a,
+    b {
+        font-family: 'Roboto', Arial, sans-serif;
+        font-size: 1.1em;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    // Override global.scss's `* { white-space: pre-wrap }`. Vue 2's
+    // compiler stripped inter-element whitespace; Svelte preserves it.
+    // Leaving pre-wrap on inflates the page with visible newlines
+    // between <h2>, <img>, <br>, and bare-text content.
+    div {
+        white-space: normal;
+        // See bday25/+page.svelte for rationale.
+        line-height: 1.15;
+    }
+</style>

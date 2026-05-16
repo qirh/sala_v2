@@ -64,7 +64,7 @@
         <img
             class="recurse svg-inline--fa"
             alt=""
-            src="/assets/notion_light.svg"
+            src="/assets/recurse_light.svg"
         />
     </a>
 </div>

@@ -91,7 +91,6 @@
             <img
                 class="picture"
                 alt="Saleh in running gear"
-                rel="preload"
                 title={$_('pictureTitle')}
                 src="/assets/moi.jpg"
             />

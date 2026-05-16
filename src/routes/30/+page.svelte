@@ -4,7 +4,6 @@
         class="rotate"
         width="200"
         height="auto"
-        rel="preload"
         src="/assets/moi_30.jpg"
         alt=""
     />

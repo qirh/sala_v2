@@ -10,7 +10,6 @@
     <img
         width="200"
         height="auto"
-        rel="preload"
         src="/assets/moi_race.jpg"
         alt=""
     />
@@ -83,7 +82,6 @@
     <img
         width="800"
         height="auto"
-        rel="preload"
         src="/assets/mood_per_mile.png"
         alt=""
     />

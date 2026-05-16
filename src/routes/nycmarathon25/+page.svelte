@@ -23,17 +23,17 @@
     HOWEVER! Past marathon performance is not indicative of future results. This year, we will run a <b>VERY</b> <i>fast</i> marathon, because we have followed a <b>VERY</b> intense (HIIT) 12 week training plan:
     <br />
     <h3>Week 1 -- personal record for that session</h3>
-    <img width="300" height="auto" rel="preload" src="/assets/training_1.jpeg" alt="" />
+    <img width="300" height="auto" src="/assets/training_1.jpeg" alt="" />
 
     <h3>a quick highlight of Weeks 2-9</h3>
-    <img width="600" height="auto" rel="preload" src="/assets/training_2.jpg" alt="" />
+    <img width="600" height="auto" src="/assets/training_2.jpg" alt="" />
 
     <h3>Week 10 -- despite challenging market conditions, we made it out of bed that day</h3>
-    <img width="300" height="auto" rel="preload" src="/assets/training_3.jpeg" alt="" />
+    <img width="300" height="auto" src="/assets/training_3.jpeg" alt="" />
     <h3>Week 11 -- corportate retreat -- no time for training</h3>
     <br />
     <h3>Week 12 -- strategic partnership with emotional support personnel ❤️❤️❤️❤️</h3>
-    <img width="300" height="auto" rel="preload" src="/assets/training_4.jpeg" alt="" />
+    <img width="300" height="auto" src="/assets/training_4.jpeg" alt="" />
 
     <h1>Logistics: how to track me</h1>
     <ul>
@@ -55,7 +55,6 @@
     <img
         width="500"
         height="auto"
-        rel="preload"
         src="/assets/nyc_marathon_25_expected_times.png"
         alt=""
     />

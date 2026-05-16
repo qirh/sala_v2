@@ -7,7 +7,7 @@
     </a>
     <br />
     <h2>Invitation to celebrate my birthday (2025)</h2>
-    <img width="200" height="auto" src="/assets/bday25_moi.jpg" alt="" />
+    <img width="200" height="302" src="/assets/bday25_moi.jpg" alt="" />
 
     <br />
     <br />
@@ -21,7 +21,7 @@
     <br />
     <br />
 
-    <img width="800" height="auto" src="/assets/bday25_route.jpeg" alt="" />
+    <img width="800" height="466" src="/assets/bday25_route.jpeg" alt="" />
     <br />
     <br />
     I'm not sure what the total mileage will be, but I think it should be close to ~24-28 miles 😨

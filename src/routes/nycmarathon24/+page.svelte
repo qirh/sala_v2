@@ -9,7 +9,7 @@
     <h2>Invitation to see me suffer the 2024 NYC Marathon</h2>
     <img
         width="200"
-        height="auto"
+        height="267"
         src="/assets/moi_race.jpg"
         alt=""
     />
@@ -81,7 +81,7 @@
     <br />
     <img
         width="800"
-        height="auto"
+        height="442"
         src="/assets/mood_per_mile.png"
         alt=""
     />

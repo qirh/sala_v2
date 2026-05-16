@@ -3,7 +3,7 @@
     <img
         class="rotate"
         width="200"
-        height="auto"
+        height="204"
         src="/assets/moi_30.jpg"
         alt=""
     />

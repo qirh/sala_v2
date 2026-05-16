@@ -1,3 +1,14 @@
+<svelte:head>
+    <title>invitation to see me suffer the 2024 NYC marathon</title>
+    <meta name="description" content="cheerleading squad invitation for my first NYC marathon — earned the bib over two years and now have to actually run it." />
+    <meta property="og:title" content="invitation to see me suffer the 2024 NYC marathon" />
+    <meta property="og:description" content="cheerleading squad invitation for my first NYC marathon — earned the bib over two years and now have to actually run it." />
+    <meta property="og:image" content="https://saleh.sh/assets/moi_race.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saleh.sh/nycmarathon24" />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <div>
     <a
         style="position: absolute; top: 8px; left: 16px"

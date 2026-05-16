@@ -1,3 +1,14 @@
+<svelte:head>
+    <title>letter to shareholders — 2025 NYC marathon</title>
+    <meta name="description" content="2nd annual shareholder letter — past marathon performance is not indicative of future results, and this year we run fast." />
+    <meta property="og:title" content="letter to shareholders — 2025 NYC marathon" />
+    <meta property="og:description" content="2nd annual shareholder letter — past marathon performance is not indicative of future results, and this year we run fast." />
+    <meta property="og:image" content="https://saleh.sh/assets/training_2.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saleh.sh/nycmarathon25" />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <div>
     <a
         style="position: absolute; top: 8px; left: 16px"

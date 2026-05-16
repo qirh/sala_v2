@@ -1,3 +1,14 @@
+<svelte:head>
+    <title>30 — soft invite (weather and mood pending)</title>
+    <meta name="description" content="soft invite to bike 30 loops around Prospect Park for my 30th birthday — join for part, all, or just picnic." />
+    <meta property="og:title" content="30 — soft invite (weather and mood pending)" />
+    <meta property="og:description" content="soft invite to bike 30 loops around Prospect Park for my 30th birthday — join for part, all, or just picnic." />
+    <meta property="og:image" content="https://saleh.sh/assets/moi_30.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saleh.sh/30" />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <div>
     <h4>Soft invite (weather and mood pending)</h4>
     <img

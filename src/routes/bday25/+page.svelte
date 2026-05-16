@@ -1,3 +1,14 @@
+<svelte:head>
+    <title>birthday 2025 — tri-state run</title>
+    <meta name="description" content="celebrating my 2025 birthday with a ~24-28 mile tri-state run from Fort Lee NJ through Manhattan to Greenwich CT." />
+    <meta property="og:title" content="birthday 2025 — tri-state run" />
+    <meta property="og:description" content="celebrating my 2025 birthday with a ~24-28 mile tri-state run from Fort Lee NJ through Manhattan to Greenwich CT." />
+    <meta property="og:image" content="https://saleh.sh/assets/bday25_moi.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saleh.sh/bday25" />
+    <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <div>
     <a
         style="position: absolute; top: 8px; left: 16px"
